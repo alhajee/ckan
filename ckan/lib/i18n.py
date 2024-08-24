@@ -62,13 +62,13 @@ log = logging.getLogger(__name__)
 # we don't have a Portuguese territory translation currently.
 LOCALE_ALIASES['pt'] = 'pt_BR'
 
-# CKAN root directory
-_CKAN_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), u'..'))
+# FMLD root directory
+_FMLD_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), u'..'))
 
 
 def get_ckan_i18n_dir() -> str:
     path = config.get(u'ckan.i18n_directory') or os.path.join(
-        _CKAN_DIR, u'i18n')
+        _FMLD_DIR, u'i18n')
     if os.path.isdir(os.path.join(path, u'i18n')):
         path = os.path.join(path, u'i18n')
 
@@ -230,7 +230,7 @@ def get_identifier_from_locale_class(locale: Locale) -> str:
 
 def handle_request(request: Request, tmpl_context: Any) -> str:
     ''' Set the language for the request '''
-    lang = request.environ.get('CKAN_LANG') or \
+    lang = request.environ.get('FMLD_LANG') or \
         config.get('ckan.locale_default')
     if lang != 'en':
         set_lang(lang)
@@ -326,7 +326,7 @@ def build_js_translations() -> None:
     '''
     Build JavaScript translation files.
 
-    Takes the PO files from CKAN and from plugins that implement
+    Takes the PO files from FMLD and from plugins that implement
     ``ITranslation`` and creates corresponding JS translation files in
     ``ckan.i18n_directory``. These include only those translation
     strings that are actually used in JS files.
@@ -337,7 +337,7 @@ def build_js_translations() -> None:
     _check_js_translations_dest_dir()
 
     # Collect all language codes (an extension might add support for a
-    # language that isn't supported by CKAN core, yet).
+    # language that isn't supported by FMLD core, yet).
     langs = set()
     i18n_dirs: dict[str, str] = collections.OrderedDict([
         (ckan_i18n_dir, u'ckan')])

@@ -205,7 +205,7 @@ class Repository():
 
     def init_db(self) -> None:
         '''Ensures tables, const data and some default config is created.
-        This method MUST be run before using CKAN for the first time.
+        This method MUST be run before using FMLD for the first time.
         Before this method is run, you can either have a clean db or tables
         that may have been setup with either upgrade_db or a previous run of
         init_db.
@@ -277,7 +277,7 @@ class Repository():
             # `alembic_version` contains current migration version of the
             # DB. If we drop this information, next attempt to apply migrations
             # will fail. Don't worry about `<PLUGIN>_alembic_version` tables
-            # created by extensions - CKAN metadata does not track them, so
+            # created by extensions - FMLD metadata does not track them, so
             # they'll never appear in this list.
             if table.name == 'alembic_version':
                 continue
@@ -353,7 +353,7 @@ class Repository():
     def downgrade_db(self, version: str='base') -> None:
         self.setup_migration_version_control()
         alembic_downgrade(self.alembic_config, version)
-        log.info(u'CKAN database version set to: %s', version)
+        log.info(u'FMLD database version set to: %s', version)
 
     def upgrade_db(self, version: str='head') -> None:
         '''Upgrade db using sqlalchemy migrations.
@@ -375,12 +375,12 @@ class Repository():
 
         if version_after != version_before:
             log.info(
-                u'CKAN database version upgraded: %s -> %s',
+                u'FMLD database version upgraded: %s -> %s',
                 version_before,
                 version_after
             )
         else:
-            log.info(u'CKAN database version remains as: %s', version_after)
+            log.info(u'FMLD database version remains as: %s', version_after)
 
     def are_tables_created(self) -> bool:
         meta.metadata = MetaData()

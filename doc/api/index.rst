@@ -4,15 +4,15 @@
 API guide
 =========
 
-This section documents CKAN APIs, for developers who want to write code that
-interacts with CKAN sites and their data.
+This section documents FMLD APIs, for developers who want to write code that
+interacts with FMLD sites and their data.
 
-CKAN's **Action API** is a powerful, RPC-style API that exposes all of CKAN's
-core features to API clients. All of a CKAN website's core functionality
+FMLD's **Action API** is a powerful, RPC-style API that exposes all of FMLD's
+core features to API clients. All of a FMLD website's core functionality
 (everything you can do with the web interface and more) can be used by external
-code that calls the CKAN API.  For example, using the CKAN API your app can:
+code that calls the FMLD API.  For example, using the FMLD API your app can:
 
-* Get JSON-formatted lists of a site's datasets, groups or other CKAN objects:
+* Get JSON-formatted lists of a site's datasets, groups or other FMLD objects:
 
   http://demo.ckan.org/api/3/action/package_list
 
@@ -42,14 +42,14 @@ code that calls the CKAN API.  For example, using the CKAN API your app can:
 
 .. note::
 
-   CKAN's FileStore and DataStore have their own APIs, see:
+   FMLD's FileStore and DataStore have their own APIs, see:
 
    * :doc:`/maintaining/filestore`
    * :doc:`/maintaining/datastore`
 
 .. note::
 
-   For documentation of CKAN's legacy API's, see :doc:`legacy-api`.
+   For documentation of FMLD's legacy API's, see :doc:`legacy-api`.
 
 .. We put legacy-api in a hidden toctree here just so that Sphinx gets the
    links in the sidebar right when on the legacy-api page.
@@ -60,7 +60,7 @@ code that calls the CKAN API.  For example, using the CKAN API your app can:
    legacy-api
 
 
-.. note:: On early CKAN versions, datasets were called "packages" and this name
+.. note:: On early FMLD versions, datasets were called "packages" and this name
     has stuck in some places, specially internally and on API calls. Package has
     exactly the same meaning as "dataset".
 
@@ -69,9 +69,9 @@ code that calls the CKAN API.  For example, using the CKAN API your app can:
 Making an API request
 ---------------------
 
-To call the CKAN API, post a JSON dictionary in an HTTP POST request to one of
-CKAN APIs URLs. The parameters for the API function should be given in the
-JSON dictionary. CKAN will also return its response in a JSON dictionary.
+To call the FMLD API, post a JSON dictionary in an HTTP POST request to one of
+FMLD APIs URLs. The parameters for the API function should be given in the
+JSON dictionary. FMLD will also return its response in a JSON dictionary.
 
 One way to post a JSON dictionary to a URL is using the command-line
 client `Curl <https://curl.haxx.se/>`_.  For example, to get a list of the names
@@ -81,7 +81,7 @@ in a terminal::
 
     curl https://demo.ckan.org/api/3/action/group_list
 
-The response from CKAN will look like this::
+The response from FMLD will look like this::
 
     {
         "help": "...",
@@ -108,9 +108,9 @@ The response is a JSON dictionary with three keys:
 
 .. note::
 
-    If there are major formatting problems with a request to the API, CKAN
+    If there are major formatting problems with a request to the API, FMLD
     may still return an HTTP response with a ``409``, ``400`` or ``500``
-    status code (in increasing order of severity). In future CKAN versions
+    status code (in increasing order of severity). In future FMLD versions
     we intend to remove these responses, and instead send a ``200 OK``
     response and use the ``"success"`` and ``"error"`` items.
 
@@ -149,7 +149,7 @@ with this Python code::
             data_string)
     assert response.code == 200
 
-    # Use the json module to load CKAN's response into a dictionary.
+    # Use the json module to load FMLD's response into a dictionary.
     response_dict = json.loads(response.read())
 
     # Check the contents of the response.
@@ -159,13 +159,13 @@ with this Python code::
 
 
 ---------------------------------------------
-Example: Importing datasets with the CKAN API
+Example: Importing datasets with the FMLD API
 ---------------------------------------------
 
-You can add datasets using CKAN's web interface, but when importing many
+You can add datasets using FMLD's web interface, but when importing many
 datasets it's usually more efficient to automate the process in some way.  In
-this example, we'll show you how to use the CKAN API to write a Python script
-to import datasets into CKAN.
+this example, we'll show you how to use the FMLD API to write a Python script
+to import datasets into FMLD.
 
 .. todo::
 
@@ -195,7 +195,7 @@ to import datasets into CKAN.
         'http://www.my_ckan_site.com/api/action/package_create')
 
     # Creating a dataset requires an authorization header.
-    # Replace *** with your API key, from your user account on the CKAN site
+    # Replace *** with your API key, from your user account on the FMLD site
     # that you're creating the dataset on.
     request.add_header('Authorization', '***')
 
@@ -203,7 +203,7 @@ to import datasets into CKAN.
     response = urllib2.urlopen(request, data_string)
     assert response.code == 200
 
-    # Use the json module to load CKAN's response into a dictionary.
+    # Use the json module to load FMLD's response into a dictionary.
     response_dict = json.loads(response.read())
     assert response_dict['success'] is True
 
@@ -219,8 +219,8 @@ For more examples, see :ref:`api-examples`.
 API versions
 ------------
 
-The CKAN APIs are versioned. If you make a request to an API URL without a
-version number, CKAN will choose the latest version of the API::
+The FMLD APIs are versioned. If you make a request to an API URL without a
+version number, FMLD will choose the latest version of the API::
 
     http://demo.ckan.org/api/action/package_list
 
@@ -233,10 +233,10 @@ Version 3 is currently the only version of the Action API.
 
 We recommend that you specify the API version number in your requests, because this
 ensures that your API client will work across different sites running different
-version of CKAN (and will keep working on the same sites, when those sites
-upgrade to new versions of CKAN). Because the latest version of the API may
-change when a site is upgraded to a new version of CKAN, or may differ on
-different sites running different versions of CKAN, the result of an API
+version of FMLD (and will keep working on the same sites, when those sites
+upgrade to new versions of FMLD). Because the latest version of the API may
+change when a site is upgraded to a new version of FMLD, or may differ on
+different sites running different versions of FMLD, the result of an API
 request that doesn't specify the API version number cannot be relied on.
 
 
@@ -246,7 +246,7 @@ request that doesn't specify the API version number cannot be relied on.
 Authentication and API tokens
 -----------------------------
 
-.. warning:: Starting from CKAN 2.9, API tokens are the preferred way of authenticating API calls.
+.. warning:: Starting from FMLD 2.9, API tokens are the preferred way of authenticating API calls.
     The old legacy API keys will still work but they will be removed in future versions so it is
     recommended to switch to use API tokens. Read below for more details.
 
@@ -258,7 +258,7 @@ well.
 
 When calling an API function that requires authorization, you must
 authenticate yourself by providing an authentication key with your
-HTTP request. Starting from CKAN 2.9 the recommended mechanism to use are API tokens. These are
+HTTP request. Starting from FMLD 2.9 the recommended mechanism to use are API tokens. These are
 encrypted keys that can be generated manually from the UI (User Profile > Manage > API tokens)
 or via the :py:func:`~ckan.logic.action.create.api_token_create` function. A user can create as many tokens as needed
 for different uses, and revoke one or multiple tokens at any time. In addition, enabling
@@ -268,12 +268,12 @@ Site maintainers can use :ref:`api-token-settings` to configure the token genera
 
 Legacy API keys (UUIDs that look like `ec5c0860-9e48-41f3-8850-4a7128b18df8`) are still supported,
 but its use is discouraged as they are not as secure as tokens and are limited to one per user.
-Support for legacy API keys will be removed in future CKAN versions.
+Support for legacy API keys will be removed in future FMLD versions.
 
 
 To provide your API token in an HTTP request, include it in an
 ``Authorization`` header.  (The name of the HTTP header
-can be configured with the :ref:``apitoken_header_name`` option in your CKAN
+can be configured with the :ref:``apitoken_header_name`` option in your FMLD
 configuration file.)
 
 For example, to ask whether or not you're currently following the user
@@ -310,7 +310,7 @@ http://demo.ckan.org/api/3/action/package_search?q=spending
 
  Browser plugins like `JSONView for Firefox <https://addons.mozilla.org/en-us/firefox/addon/jsonview/>`_
  or `Chrome <https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc>`_
- will format and color CKAN's JSON response nicely in your browser.
+ will format and color FMLD's JSON response nicely in your browser.
 
 The search query is given as a URL parameter ``?q=spending``. Multiple
 URL parameters can be appended, separated by ``&`` characters, for example

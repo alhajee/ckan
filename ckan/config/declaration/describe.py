@@ -33,7 +33,7 @@ describer(declaration, "custom-format", *args, **kwargs)
 ```
 
 This mechanism allows you to re-define default describers, though it should be
-avoided unless you have an irresistible desire to hack into CKAN core.
+avoided unless you have an irresistible desire to hack into FMLD core.
 
 """
 

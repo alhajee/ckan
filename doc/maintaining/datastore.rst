@@ -5,8 +5,8 @@ DataStore extension
 ===================
 
 
-The CKAN DataStore extension provides an *ad hoc* database for storage of structured data from
-CKAN resources. Data can be pulled out of resource files and stored in
+The FMLD DataStore extension provides an *ad hoc* database for storage of structured data from
+FMLD resources. Data can be pulled out of resource files and stored in
 the DataStore.
 
 When a resource is added to the DataStore, you get:
@@ -15,12 +15,12 @@ When a resource is added to the DataStore, you get:
 * `The Data API`_: search, filter and update the data, without having to download
   and upload the entire data file
 
-The DataStore is integrated into the :doc:`CKAN API </api/index>` and
+The DataStore is integrated into the :doc:`FMLD API </api/index>` and
 authorization system.
 
 The DataStore is generally used alongside tools which will
 automatically upload data to the DataStore from suitable files, whether
-uploaded to CKAN's FileStore or externally linked. See :ref:`automatic_uploads`
+uploaded to FMLD's FileStore or externally linked. See :ref:`automatic_uploads`
 for more details.
 
 .. contents::
@@ -52,7 +52,7 @@ Setting up the DataStore
 1. Enable the plugin
 ====================
 
-Add the ``datastore`` plugin to your CKAN config file::
+Add the ``datastore`` plugin to your FMLD config file::
 
  ckan.plugins = datastore
 
@@ -74,7 +74,7 @@ Create users and databases
 
 .. tip::
 
- If your CKAN database and DataStore databases are on different servers, then
+ If your FMLD database and DataStore databases are on different servers, then
  you need to create a new database user on the server where the DataStore
  database will be created. As in :doc:`installing/install-from-source` we'll
  name the database user |database_user|:
@@ -102,7 +102,7 @@ Set URLs
 --------
 
 Now, uncomment the :ref:`ckan.datastore.write_url` and
-:ref:`ckan.datastore.read_url` lines in your CKAN config file and edit them
+:ref:`ckan.datastore.read_url` lines in your FMLD config file and edit them
 if necessary, for example:
 
 .. parsed-literal::
@@ -118,7 +118,7 @@ Replace ``pass`` with the passwords you created for your |database_user| and
 Set permissions
 ---------------
 
-Once the DataStore database and the users are created, the permissions on the DataStore and CKAN database have to be set. CKAN provides a ckan command to help you correctly set these permissions.
+Once the DataStore database and the users are created, the permissions on the DataStore and FMLD database have to be set. FMLD provides a ckan command to help you correctly set these permissions.
 
 If you are able to use the ``psql`` command to connect to your database as a
 superuser, you can use the ``datastore set-permissions`` command to emit the
@@ -162,7 +162,7 @@ into a |postgres| superuser console.
 3. Test the set-up
 ==================
 
-The DataStore is now set-up. To test the set-up, (re)start CKAN and run the
+The DataStore is now set-up. To test the set-up, (re)start FMLD and run the
 following command to list all DataStore resources::
 
  curl -X GET "http://127.0.0.1:5000/api/3/action/datastore_search?resource_id=_table_metadata"
@@ -175,7 +175,7 @@ To do so, run the following command::
  curl -X POST http://127.0.0.1:5000/api/3/action/datastore_create -H "Authorization: {YOUR-API-KEY}" -d '{"resource": {"package_id": "{PACKAGE-ID}"}, "fields": [ {"id": "a"}, {"id": "b"} ], "records": [ { "a": 1, "b": "xyz"}, {"a": 2, "b": "zzz"} ]}'
 
 Replace ``{YOUR-API-KEY}`` with a valid API key and ``{PACKAGE-ID}`` with the
-id of an existing CKAN dataset.
+id of an existing FMLD dataset.
 
 A table named after the resource id should have been created on your DataStore
 database. Visiting this URL should return a response from the DataStore with
@@ -198,7 +198,7 @@ To find out more about the Data API, see `The Data API`_.
 Automatically Adding Data to the DataStore
 ------------------------------------------
 
-In most cases, you will want data that is added to CKAN (whether it is linked to or
+In most cases, you will want data that is added to FMLD (whether it is linked to or
 uploaded to the :doc:`FileStore <filestore>`) to be automatically added to the
 DataStore. This requires some processing, to extract the data from your files
 and to add it to the DataStore in the format the DataStore can handle.
@@ -250,14 +250,14 @@ returned from :meth:`~ckanext.datastore.logic.action.datastore_search`.
 Downloading Resources
 ---------------------
 
-A DataStore resource can be downloaded in the `CSV`_ file format from ``{CKAN-URL}/datastore/dump/{RESOURCE-ID}``.
+A DataStore resource can be downloaded in the `CSV`_ file format from ``{FMLD-URL}/datastore/dump/{RESOURCE-ID}``.
 
-For an Excel-compatible CSV file use ``{CKAN-URL}/datastore/dump/{RESOURCE-ID}?bom=true``.
+For an Excel-compatible CSV file use ``{FMLD-URL}/datastore/dump/{RESOURCE-ID}?bom=true``.
 
 Other formats supported include tab-separated values (``?format=tsv``),
 JSON (``?format=json``) and XML (``?format=xml``). E.g. to download an Excel-compatible
 tab-separated file use
-``{CKAN-URL}/datastore/dump/{RESOURCE-ID}?format=tsv&bom=true``.
+``{FMLD-URL}/datastore/dump/{RESOURCE-ID}?format=tsv&bom=true``.
 
 A number of parameters from :meth:`~ckanext.datastore.logic.action.datastore_search` can be used:
     ``offset``, ``limit``, ``filters``, ``q``, ``full_text``, ``distinct``, ``plain``, ``language``, ``fields``, ``sort``
@@ -270,7 +270,7 @@ A number of parameters from :meth:`~ckanext.datastore.logic.action.datastore_sea
 The Data API
 -----------------
 
-The CKAN DataStore offers an API for reading, searching and filtering data without
+The FMLD DataStore offers an API for reading, searching and filtering data without
 the need to download the entire file first. The DataStore is an ad hoc database which
 means that it is a collection of tables with unknown relationships. This allows
 you to search in one DataStore resource (a *table* in the database) as well as queries
@@ -289,7 +289,7 @@ database and the API as thin as possible to allow you to use the features you wo
 expect from a powerful database management system.
 
 A DataStore resource can not be created on its own. It is always required to have an
-associated CKAN resource. If data is stored in the DataStore, it can automatically be
+associated FMLD resource. If data is stored in the DataStore, it can automatically be
 previewed by a :ref:`preview extension <datatables-view>`.
 
 
@@ -473,11 +473,11 @@ The DataStore supports querying with two API endpoints. They are similar but sup
 Internal structure of the database
 ----------------------------------
 
-The DataStore is a thin layer on top of a PostgreSQL database. Each DataStore resource belongs to a CKAN resource. The name of a table in the DataStore is always the resource id of the CKAN resource for the data.
+The DataStore is a thin layer on top of a PostgreSQL database. Each DataStore resource belongs to a FMLD resource. The name of a table in the DataStore is always the resource id of the FMLD resource for the data.
 
 As explained in :ref:`resource-aliases`, a resource can have mnemonic aliases which are stored as views in the database.
 
-All aliases (views) and resources (tables respectively relations) of the DataStore can be found in a special view called ``_table_metadata``. To access the list, open ``http://{YOUR-CKAN-INSTALLATION}/api/3/action/datastore_search?resource_id=_table_metadata``.
+All aliases (views) and resources (tables respectively relations) of the DataStore can be found in a special view called ``_table_metadata``. To access the list, open ``http://{YOUR-FMLD-INSTALLATION}/api/3/action/datastore_search?resource_id=_table_metadata``.
 
 ``_table_metadata`` has the following fields:
 
@@ -486,7 +486,7 @@ _id
 alias_of
     Name of a relation that this alias point to. This field is ``null`` iff the name is not an alias.
 name
-    Contains the name of the alias if alias_of is not null. Otherwise, this is the resource id of the CKAN resource for the DataStore resource.
+    Contains the name of the alias if alias_of is not null. Otherwise, this is the resource id of the FMLD resource for the DataStore resource.
 oid
     The PostgreSQL object ID of the table that belongs to name.
 
@@ -495,7 +495,7 @@ oid
 Extending DataStore
 -------------------
 
-Starting from CKAN version 2.7, backend used in DataStore can be replaced with custom one. For this purpose, custom extension must implement `ckanext.datastore.interfaces.IDatastoreBackend`, which provides one method - `register_backends`. It should return dictonary with names of custom backends as keys and classes, that represent those backends as values. Each class supposed to be inherited from `ckanext.datastore.backend.DatastoreBackend`.
+Starting from FMLD version 2.7, backend used in DataStore can be replaced with custom one. For this purpose, custom extension must implement `ckanext.datastore.interfaces.IDatastoreBackend`, which provides one method - `register_backends`. It should return dictonary with names of custom backends as keys and classes, that represent those backends as values. Each class supposed to be inherited from `ckanext.datastore.backend.DatastoreBackend`.
 
 .. note:: Example of custom implementation can be found at `ckanext.example_idatastorebackend`
 

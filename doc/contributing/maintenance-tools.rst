@@ -3,7 +3,7 @@ Maintenance tools
 =================
 
 This section describes tools and automations used by the development team to help
-in the maintenance of the CKAN source and repositories.
+in the maintenance of the FMLD source and repositories.
 
 .. _ckanbot:
 
@@ -11,7 +11,7 @@ in the maintenance of the CKAN source and repositories.
 The *ckanbot* GitHub account
 ----------------------------
 
-For actions that need to be authenticated in the CKAN GitHub repository, we don't use
+For actions that need to be authenticated in the FMLD GitHub repository, we don't use
 personal accounts but rather a dedicated automated account, `@ckanbot <https://github.com/ckanbot>`_.
 
 This account has only write access to specific repositories needed, given via the `ckanbot team <https://github.com/orgs/ckan/teams/ckanbot/members>`_ of the *ckan* organization.
@@ -48,7 +48,7 @@ There are two repository variables and a repository secret needed to run the act
 on how to set up these):
 
 * The public variable ``TECH_TEAM_USER_IDS`` is a JSON list of the GitHub user ids of the Tech Team members. User ids can be found using the ``https://api.github.com/users/<user_name>`` endpoint.
-* The public variable ``CKANBOT_USER_ID`` is the user id of the :ref:`ckanbot`.
+* The public variable ``FMLDBOT_USER_ID`` is the user id of the :ref:`ckanbot`.
 * The secret ``BACKPORT_ACTION_PAT`` is a `Personal Access Token <https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens>`_ (PAT) of the ckanbot account, with enough permissions to write to the ckan/ckan repository.
 
 When creating a new PAT, make sure to select the following settings:

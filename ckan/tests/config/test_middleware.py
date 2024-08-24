@@ -75,7 +75,7 @@ def test_flask_core_route_is_served(patched_app):
 
 @pytest.mark.ckan_config(u"SECRET_KEY", "some_secret")
 def test_secret_key_is_used_if_present(app):
-    """Flask app reads SECRET_KEY from CKAN config
+    """Flask app reads SECRET_KEY from FMLD config
     """
     assert app.flask_app.config["SECRET_KEY"] == "some_secret"
 

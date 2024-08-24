@@ -855,7 +855,7 @@ def user_name_exists(user_name: str, context: Context) -> Any:
 
 
 def role_exists(role: str, context: Context) -> Any:
-    """Ensures that value is an existing CKAN Role name.
+    """Ensures that value is an existing FMLD Role name.
     """
     if role not in authz.ROLE_PERMISSIONS:
         raise Invalid(_('role does not exist.'))

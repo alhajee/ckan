@@ -3,7 +3,7 @@ Template Blocks
 ===============
 
 These blocks can be extended by child templates to replace or extend common
-CKAN functionality.
+FMLD functionality.
 
 Usage
 -----

@@ -2403,7 +2403,7 @@ class TestSendEmailNotifications(object):
             messages[0],
             user["email"],
             user["name"],
-            "1 new activity from CKAN",
+            "1 new activity from FMLD",
         )
 
     @pytest.mark.usefixtures("with_request_context")
@@ -2427,7 +2427,7 @@ class TestSendEmailNotifications(object):
             messages[0],
             user["email"],
             user["name"],
-            "3 new activities from CKAN",
+            "3 new activities from FMLD",
         )
 
     def test_no_notifications_if_dashboard_visited(self, mail_server):

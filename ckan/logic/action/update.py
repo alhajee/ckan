@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-'''API functions for updating existing data in CKAN.'''
+'''API functions for updating existing data in FMLD.'''
 from __future__ import annotations
 
 from ckan.types.logic import ActionResult
@@ -1204,7 +1204,7 @@ def config_option_update(
 
     .. versionadded:: 2.4
 
-    Allows to modify some CKAN runtime-editable config options
+    Allows to modify some FMLD runtime-editable config options
 
     It takes arbitrary key, value pairs and checks the keys against the
     config options update schema. If some of the provided keys are not present
@@ -1241,7 +1241,7 @@ def config_option_update(
 
     .. warning:: You should only add config options that you are comfortable
         they can be edited during runtime, such as ones you've added in your
-        own extension, or have reviewed the use of in core CKAN.
+        own extension, or have reviewed the use of in core FMLD.
 
     '''
     model = context['model']
@@ -1282,7 +1282,7 @@ def config_option_update(
         # Save value in database
         model.set_system_info(key, value)
 
-        # Update CKAN's `config` object
+        # Update FMLD's `config` object
         config[key] = value
 
         # Only add it to the app_globals (`g`) object if explicitly defined

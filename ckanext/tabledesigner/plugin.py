@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from typing import List, Type, cast, Any
 
-from ckan.common import CKANConfig
+from ckan.common import FMLDConfig
 from ckan.types import Schema, ValidatorFactory
 import ckan.plugins as p
 from ckan.plugins.toolkit import (
@@ -31,13 +31,13 @@ class TableDesignerPlugin(p.SingletonPlugin):
 
     # IConfigurer
 
-    def update_config(self, config: CKANConfig):
+    def update_config(self, config: FMLDConfig):
         add_template_directory(config, "templates")
         add_resource('assets', 'ckanext-tabledesigner')
 
     # IConfigurable
 
-    def configure(self, config: CKANConfig):
+    def configure(self, config: FMLDConfig):
         coltypes = dict(_standard_column_types)
         for plugin in p.PluginImplementations(interfaces.IColumnTypes):
             coltypes = plugin.column_types(coltypes)

@@ -1,1 +1,1 @@
-Added `bytes` property to the test CKANResponse class which returns bytes from the response data.
+Added `bytes` property to the test FMLDResponse class which returns bytes from the response data.

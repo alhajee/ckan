@@ -6,14 +6,13 @@ If you find a potential security vulnerability please email security@ckan.org, r
 
 We aim to respond to all valid reports within three working days.
 
-
 ## Supported Versions
 
-Security updates are offered for the **2 most recent** minor CKAN releases. It is critical to always run the latest patch
-release for a minor version. To find out the currently supported version and learn more about CKAN releases see here:
+Security updates are offered for the **2 most recent** minor FMLD releases. It is critical to always run the latest patch
+release for a minor version. To find out the currently supported version and learn more about FMLD releases see here:
 
     https://docs.ckan.org/en/latest/maintaining/releases.html
 
 Fixed security vulnerabilites are assigned a CVE and registered using [GitHub Security Advisories](https://github.com/ckan/ckan/security/advisories), and also included in the [CHANGELOG.rst](CHANGELOG.rst).
 
-Again, only the latest patch release contains all security patches applied so please ensure your CKAN instance is running on a supported version to avoid exposing your users and your data.
+Again, only the latest patch release contains all security patches applied so please ensure your FMLD instance is running on a supported version to avoid exposing your users and your data.

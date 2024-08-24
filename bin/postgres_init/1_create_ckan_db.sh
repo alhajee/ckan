@@ -1,6 +1,6 @@
 #!/bin/sh
-psql -U postgres -c "CREATE USER ${CKAN_POSTGRES_USER} \
-    WITH PASSWORD '${CKAN_POSTGRES_PWD}' \
+psql -U postgres -c "CREATE USER ${FMLD_POSTGRES_USER} \
+    WITH PASSWORD '${FMLD_POSTGRES_PWD}' \
     NOSUPERUSER NOCREATEDB NOCREATEROLE;"
 
-createdb -U postgres -e -O ${CKAN_POSTGRES_USER} ${CKAN_POSTGRES_DB} -E utf-8
+createdb -U postgres -e -O ${FMLD_POSTGRES_USER} ${FMLD_POSTGRES_DB} -E utf-8

@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from typing import Any
 from ckan.types import Schema
-from ckan.common import CKANConfig
+from ckan.common import FMLDConfig
 from datetime import datetime, timedelta
 
 import ckan.model as model
@@ -24,7 +24,7 @@ class ExpireApiTokenPlugin(p.SingletonPlugin):
 
     # IConfigurer
 
-    def update_config(self, config_: CKANConfig):
+    def update_config(self, config_: FMLDConfig):
         p.toolkit.add_template_directory(config_, u"templates")
 
     # ITemplateHelpers

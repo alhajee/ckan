@@ -145,7 +145,7 @@ def _tag_string_to_list(tag_string: str) -> list[dict[str, str]]:
 def _form_save_redirect(pkg_name: str,
                         action: str,
                         package_type: Optional[str] = None) -> Response:
-    """This redirects the user to the CKAN package/read page,
+    """This redirects the user to the FMLD package/read page,
     unless there is request parameter giving an alternate location,
     perhaps an external website.
     @param pkg_name - Name of the package just edited

@@ -1,4 +1,4 @@
-# Install CKAN locally
+# Install FMLD locally
 python setup.py develop --user
 
 # Create ini file

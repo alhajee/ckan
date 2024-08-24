@@ -263,7 +263,7 @@ def package_history(id: str, activity_id: str) -> Union[Response, str]:
     # the current one. It's not displayed to the user anyway.
     pkg_dict["name"] = current_pkg["name"]
 
-    # Earlier versions of CKAN only stored the package table in the
+    # Earlier versions of FMLD only stored the package table in the
     # activity, so add a placeholder for resources, or the template
     # will crash.
     pkg_dict.setdefault("resources", [])

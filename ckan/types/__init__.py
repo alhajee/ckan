@@ -31,7 +31,7 @@ __all__ = [
     "Response", "Request",
     "ActionResult",
     "Model", "AlchemySession", "Query",
-    "Config", "CKANApp",
+    "Config", "FMLDApp",
     "DataDict", "ErrorDict",
     "FlattenKey", "FlattenErrorDict", "FlattenDataDict",
     "SignalMapping", "Context",
@@ -43,7 +43,7 @@ __all__ = [
     "PFeed", "PFeedFactory", "PResourceUploader", "PUploader",
 ]
 Config: TypeAlias = Dict[str, Union[str, Mapping[str, str]]]
-CKANApp = Any
+FMLDApp = Any
 
 # dictionary passed to actions
 DataDict: TypeAlias = "dict[str, Any]"

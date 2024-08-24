@@ -1,1 +1,1 @@
-Environment variables prefixed with `CKAN_` can be used as variables inside config file via `option = %(CKAN_***)s`
+Environment variables prefixed with `FMLD_` can be used as variables inside config file via `option = %(FMLD_***)s`

@@ -22,7 +22,7 @@ from ckan.cli import error_shout
 from ckan.common import config_declaration, config
 
 
-class CKANAlembicConfig(AlembicConfig):
+class FMLDAlembicConfig(AlembicConfig):
     def get_template_directory(self):
         return os.path.join(os.path.dirname(ckan.__file__),
                             u"../contrib/alembic")
@@ -42,7 +42,7 @@ def generate():
               u"template.",
               default=u'.')
 def extension(output_dir: str):
-    """Generate empty extension files to expand CKAN.
+    """Generate empty extension files to expand FMLD.
     """
     try:
         from cookiecutter.main import cookiecutter
@@ -76,10 +76,10 @@ def extension(output_dir: str):
     description = click.prompt(u"Brief description of the project",
                                default=u"")
     keywords = click.prompt(u"List of keywords (separated by spaces)",
-                            default=u"CKAN")
+                            default=u"FMLD")
 
-    # Ensure one instance of 'CKAN' in keywords
-    keywords = [u"CKAN"] + [
+    # Ensure one instance of 'FMLD' in keywords
+    keywords = [u"FMLD"] + [
         k for k in keywords.strip().split() if k.lower() != u"ckan"
     ]
     keywords = u' '.join(keywords)
@@ -151,7 +151,7 @@ def remove_code_examples(root: str):
 @click.option('-i', '--include-plugin', multiple=True,
               help="Include config declaration from the given plugin")
 def make_config(output_path: str, include_plugin: list[str]):
-    u"""Generate a new CKAN configuration ini file."""
+    u"""Generate a new FMLD configuration ini file."""
 
     # Output to current directory if no path is specified
     if u'/' not in output_path:
@@ -192,7 +192,7 @@ def make_config(output_path: str, include_plugin: list[str]):
               u"--plugin",
               help=(u"Plugin's that requires migration"
                     u"(name, used in `ckan.plugins` config section). "
-                    u"If not provided, core CKAN migration created instead."))
+                    u"If not provided, core FMLD migration created instead."))
 @click.option(u"-m",
               u"--message",
               help=u"Message string to use with `revision`.")
@@ -209,7 +209,7 @@ def migration(plugin: str, message: str, autogenerate: bool):
     if not config:
         error_shout(u'Config is not loaded')
         raise click.Abort()
-    alembic_config = CKANAlembicConfig(_resolve_alembic_config(plugin))
+    alembic_config = FMLDAlembicConfig(_resolve_alembic_config(plugin))
     assert alembic_config.config_file_name
     migration_dir = os.path.dirname(alembic_config.config_file_name)
     alembic_config.set_main_option("sqlalchemy.url", config["sqlalchemy.url"])
@@ -287,7 +287,7 @@ def fake_data(ctx: click.Context, category: Optional[str],
 
     """
     try:
-        from ckan.tests.factories import CKANFactory
+        from ckan.tests.factories import FMLDFactory
     except ImportError as e:
         error_shout(e)
         error_shout("Make sure you have dev-dependencies installed:")
@@ -310,10 +310,10 @@ def fake_data(ctx: click.Context, category: Optional[str],
         error_shout(f"{import_path} cannot be imported")
         raise click.Abort()
 
-    if not isinstance(factory, type) or not issubclass(factory, CKANFactory):
+    if not isinstance(factory, type) or not issubclass(factory, FMLDFactory):
         error_shout("Factory must be a subclass of `{module}:{cls}`".format(
-            module=CKANFactory.__module__,
-            cls=CKANFactory.__name__,
+            module=FMLDFactory.__module__,
+            cls=FMLDFactory.__name__,
         ))
         raise click.Abort()
 

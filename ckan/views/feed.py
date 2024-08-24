@@ -69,7 +69,7 @@ class Enclosure(str):
         self.mime_type = u'application/json'
 
 
-class CKANFeed(FeedGenerator):
+class FMLDFeed(FeedGenerator):
     def __init__(
         self,
         feed_title: str,
@@ -84,7 +84,7 @@ class CKANFeed(FeedGenerator):
         first_page: Optional[str],
         last_page: Optional[str],
     ) -> None:
-        super(CKANFeed, self).__init__()
+        super(FMLDFeed, self).__init__()
 
         self.title(feed_title)
         self.link(href=feed_link, rel=u"alternate")
@@ -144,7 +144,7 @@ def output_feed(
         return "".join(ch for ch in s if unicodedata.category(ch)[0] != "C")
 
     # TODO: language
-    feed_class: PFeedFactory = CKANFeed
+    feed_class: PFeedFactory = FMLDFeed
     for plugin in plugins.PluginImplementations(plugins.IFeed):
         if hasattr(plugin, u'get_feed_class'):
             feed_class = plugin.get_feed_class()

@@ -45,7 +45,7 @@ def users(force: bool):
     Invalid images are the ones with mimetypes not defined in
     `ckan.upload.user.mimetypes` configuration option.
 
-    This command will work only for CKAN's default Upload, other
+    This command will work only for FMLD's default Upload, other
     extensions defining upload interfaces will need to implement its
     own logic to retrieve and determine if an uploaded image contains
     an invalid mimetype.

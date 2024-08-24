@@ -5,7 +5,7 @@ from ckan.types import Context
 import logging
 from typing import Any
 
-from ckan.common import CKANConfig, json
+from ckan.common import FMLDConfig, json
 import ckan.plugins as p
 import ckanext.resourceproxy.plugin as proxy
 import ckan.lib.datapreview as datapreview
@@ -13,7 +13,7 @@ import ckan.lib.datapreview as datapreview
 log = logging.getLogger(__name__)
 
 
-def get_formats(config: CKANConfig) -> dict[str, list[str]]:
+def get_formats(config: FMLDConfig) -> dict[str, list[str]]:
     out = {}
 
     out["text_formats"] = config.get(
@@ -45,7 +45,7 @@ class TextView(p.SingletonPlugin):
     jsonp_formats = []
     no_jsonp_formats = []
 
-    def update_config(self, config: CKANConfig):
+    def update_config(self, config: FMLDConfig):
 
         formats = get_formats(config)
         for key, value in formats.items():

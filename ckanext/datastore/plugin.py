@@ -9,7 +9,7 @@ import ckan.plugins as p
 from ckan.model.core import State
 
 from ckan.types import Action, AuthFunction, Context
-from ckan.common import CKANConfig
+from ckan.common import FMLDConfig
 
 import ckanext.datastore.helpers as datastore_helpers
 import ckanext.datastore.logic.action as action
@@ -58,7 +58,7 @@ class DatastorePlugin(p.SingletonPlugin):
         if idatastore_extensions and idatastore_extensions[0].__class__ != cls:
             msg = ('The "datastore" plugin must be the first IDatastore '
                    'plugin loaded. Change the order it is loaded in '
-                   '"ckan.plugins" in your CKAN .ini file and try again.')
+                   '"ckan.plugins" in your FMLD .ini file and try again.')
             raise DatastoreException(msg)
 
         return super().__new__(cls, *args, **kwargs)
@@ -73,7 +73,7 @@ class DatastorePlugin(p.SingletonPlugin):
 
     # IConfigurer
 
-    def update_config(self, config: CKANConfig):
+    def update_config(self, config: FMLDConfig):
         DatastoreBackend.register_backends()
         DatastoreBackend.set_active_backend(config)
 
@@ -85,7 +85,7 @@ class DatastorePlugin(p.SingletonPlugin):
 
     # IConfigurable
 
-    def configure(self, config: CKANConfig):
+    def configure(self, config: FMLDConfig):
         self.config = config
         self.backend.configure(config)
 

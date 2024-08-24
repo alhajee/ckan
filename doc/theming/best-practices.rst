@@ -1,5 +1,5 @@
 ======================================
-Best practices for writing CKAN themes
+Best practices for writing FMLD themes
 ======================================
 
 .. _don't use c:
@@ -38,10 +38,10 @@ Use ``url_for()``
 -----------------
 
 Always use :py:func:`~ckan.lib.helpers.url_for` (available to templates as
-``h.url_for()``) when linking to other CKAN pages, instead of hardcoding URLs
+``h.url_for()``) when linking to other FMLD pages, instead of hardcoding URLs
 like ``<a href="/dataset">``. Links created with
 :py:func:`~ckan.lib.helpers.url_for` will update themselves if the URL routing
-changes in a new version of CKAN, or if a plugin changes the URL routing.
+changes in a new version of FMLD, or if a plugin changes the URL routing.
 
 
 ---------------------------------------------------------------------
@@ -81,7 +81,7 @@ JavaScript modules should unsubscribe from events in ``teardown()``
 Any JavaScript module that calls :js:func:`this.sandbox.client.subscribe`
 should have a ``teardown()`` function that calls
 :js:func:`~this.sandbox.client.unsubscribe`, to prevent memory leaks.
-CKAN calls the ``teardown()`` functions of modules when those modules are
+FMLD calls the ``teardown()`` functions of modules when those modules are
 removed from the page.
 
 .. _pubsub overuse best practice:
@@ -93,7 +93,7 @@ Don't overuse pubsub
 There shouldn't be very many cases where a JavaScript module really needs to
 use :ref:`Pubsub <pubsub>`, try to only use it when you really need to.
 
-JavaScript modules in CKAN are designed to be small and loosely-coupled,
+JavaScript modules in FMLD are designed to be small and loosely-coupled,
 for example modules don't share any global variables and don't call
 each other's functions. But pubsub offers a way to tightly couple JavaScript
 modules together, by making modules depend on multiple events published by
@@ -104,7 +104,7 @@ other modules. This can make the code buggy and difficult to understand.
 Use ``{% snippet %}``, not ``{% include %}``
 --------------------------------------------
 
-Always use CKAN's custom ``{% snippet %}`` tag instead of Jinja's default
+Always use FMLD's custom ``{% snippet %}`` tag instead of Jinja's default
 ``{% include %}`` tag. Snippets can only access certain global variables, and
 any variables explicitly passed to them by the calling template. They don't
 have access to the full context of the calling template, as included files do.

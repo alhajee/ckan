@@ -568,7 +568,7 @@ class TestUser(object):
 
         user_url = url_for("user.index")
         user_response = app.get(user_url, status=200)
-        assert "<title>All Users - CKAN</title>" in user_response
+        assert "<title>All Users - FMLD</title>" in user_response
 
     @mock.patch("ckan.lib.mailer.send_reset_link")
     def test_request_reset_by_email(self, send_reset_link, app):
@@ -859,7 +859,7 @@ class TestCSRFToken:
     def test_csrf_tags_contains_values(self, app):
         response = app.get(url_for("home.index"))
         res_html = BeautifulSoup(response.data)
-        # Using the same selector as CKAN client.js
+        # Using the same selector as FMLD client.js
         csrf_field_name = res_html.select_one("meta[name=csrf_field_name]")
         assert csrf_field_name.attrs["content"] == "_csrf_token"
         csrf_token = res_html.select_one("meta[name=_csrf_token]")

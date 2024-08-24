@@ -2,36 +2,36 @@
 .. _upgrading:
 
 ==============
-Upgrading CKAN
+Upgrading FMLD
 ==============
 
-This document explains how to upgrade a site to a newer version of CKAN. It will
-walk you through the steps to upgrade your CKAN site to a newer version of CKAN.
+This document explains how to upgrade a site to a newer version of FMLD. It will
+walk you through the steps to upgrade your FMLD site to a newer version of FMLD.
 
 .. include:: /_supported_versions.rst
 
 1. Prepare the upgrade
 ======================
 
-*  Before upgrading your version of CKAN you should check that any custom
-   templates or extensions you're using work with the new version of CKAN.
-   For example, you could install the new version of CKAN in a new virtual
+*  Before upgrading your version of FMLD you should check that any custom
+   templates or extensions you're using work with the new version of FMLD.
+   For example, you could install the new version of FMLD in a new virtual
    environment and use that to test your templates and extensions.
 
 * You should also read the :doc:`/changelog` to see if there are any extra
   notes to be aware of when upgrading to the new version.
 
-.. warning:: You should always **backup your CKAN database** before upgrading CKAN. If something
-   goes wrong with the CKAN upgrade you can use the backup to restore the database
-   to its pre-upgrade state. See :ref:`Backup your CKAN database <db dumping and loading>`
+.. warning:: You should always **backup your FMLD database** before upgrading FMLD. If something
+   goes wrong with the FMLD upgrade you can use the backup to restore the database
+   to its pre-upgrade state. See :ref:`Backup your FMLD database <db dumping and loading>`
 
 
-2. Upgrade CKAN
+2. Upgrade FMLD
 ===============
 
-The process of upgrading CKAN differs depending on whether you have a package
-install or a source install of CKAN, and whether you're upgrading to a
-:ref:`major, minor or patch release <releases>` of CKAN. Follow the
+The process of upgrading FMLD differs depending on whether you have a package
+install or a source install of FMLD, and whether you're upgrading to a
+:ref:`major, minor or patch release <releases>` of FMLD. Follow the
 appropriate one of these documents:
 
 .. toctree::
@@ -46,13 +46,13 @@ appropriate one of these documents:
 .. seealso::
 
    :doc:`/maintaining/releases`
-     Information about the different CKAN releases and the officially supported
+     Information about the different FMLD releases and the officially supported
      versions.
 
    :doc:`/changelog`
-     The changelog lists all CKAN releases and the main changes introduced in
+     The changelog lists all FMLD releases and the main changes introduced in
      each release.
 
    :doc:`/contributing/release-process`
-     Documentation of the process that the CKAN developers follow to do a
-     CKAN release.
+     Documentation of the process that the FMLD developers follow to do a
+     FMLD release.

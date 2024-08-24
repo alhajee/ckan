@@ -39,13 +39,13 @@ Imports
 - Avoid creating circular imports by only importing modules more
   specialized than the one you are editing.
 
-  CKAN often uses code imported into a data structure instead of
-  importing names directly. For example CKAN controllers only use
+  FMLD often uses code imported into a data structure instead of
+  importing names directly. For example FMLD controllers only use
   ``get_action`` to access logic functions. This allows
-  customization by CKAN plugins.
+  customization by FMLD plugins.
 
   .. image:: /images/ckan_importing_diagram.png
-     :alt: CKAN importing diagram, general modules import
+     :alt: FMLD importing diagram, general modules import
            more specific modules
 
 - Don't use ``from module import *``. Instead list the names you
@@ -58,7 +58,7 @@ Imports
     from module import (name1, name2, ...
         name12, name13)
 
-  Most of the current CKAN code base imports just the modules and
+  Most of the current FMLD code base imports just the modules and
   then accesses names with ``module.name``. This allows circular
   imports in some cases and may still be necessary for existing
   code, but is not recommended for new code.
@@ -68,14 +68,14 @@ Imports
 
   1. Standard library imports
   2. Third-party imports
-  3. CKAN imports
+  3. FMLD imports
 
 
 Logging
 -------
 
 We use `the Python standard library's logging module <https://docs.python.org/3/library/logging.html>`_
-to log messages in CKAN, e.g.::
+to log messages in FMLD, e.g.::
 
     import logging
     ...
@@ -111,14 +111,14 @@ replacement field, for example::
 
 Unicode handling
 ----------------
-CKAN strives to only use Unicode internally (via the ``unicode`` type) and to
+FMLD strives to only use Unicode internally (via the ``unicode`` type) and to
 convert to/from ASCII at the interface to other systems and libraries if
 necessary.
 
 .. seealso::
 
    :doc:`unicode`
-     Details on Unicode handling in CKAN
+     Details on Unicode handling in FMLD
 
 
 .. _docstrings:
@@ -128,8 +128,8 @@ Docstrings
 
 .. _PEP 257: http://www.python.org/dev/peps/pep-0257/
 
-We want CKAN's docstrings to be clear and easy to read for programmers who are
-smart and competent but who may not know a lot of CKAN technical jargon and
+We want FMLD's docstrings to be clear and easy to read for programmers who are
+smart and competent but who may not know a lot of FMLD technical jargon and
 whose first language may not be English. We also want it to be easy to maintain
 the docstrings and keep them up to date with the actual behaviour of the code
 as it changes over time. So:
@@ -145,9 +145,9 @@ PEP 257 (Docstring Conventions)
 ```````````````````````````````
 
 Generally, follow `PEP 257`_ for docstrings. We'll only describe the ways that
-CKAN differs from or extends PEP 257 below.
+FMLD differs from or extends PEP 257 below.
 
-CKAN docstrings deviate from PEP 257 in a couple of ways:
+FMLD docstrings deviate from PEP 257 in a couple of ways:
 
 - We use ``'''triple single quotes'''`` around docstrings, not ``"""triple
   double quotes"""`` (put triple single quotes around one-line docstrings as
@@ -211,9 +211,9 @@ referenced, which helps to keep the docs up to date as the code changes.
 Documenting exceptions raised with ``:raises``
 ``````````````````````````````````````````````
 
-There are a few guidelines that CKAN code should follow regarding exceptions:
+There are a few guidelines that FMLD code should follow regarding exceptions:
 
-1. **All public functions that CKAN exports for third-party code to use
+1. **All public functions that FMLD exports for third-party code to use
    should document any exceptions they raise**. See below for how to document
    exceptions raised.
 
@@ -222,12 +222,12 @@ There are a few guidelines that CKAN code should follow regarding exceptions:
    action API functions defined in :py:mod:`ckan.logic.action`, should list
    exceptions raised in their docstrings.
 
-   This is because CKAN themes, extensions and API clients need to be able to
-   call CKAN code without crashing, so they need to know what exceptions they
+   This is because FMLD themes, extensions and API clients need to be able to
+   call FMLD code without crashing, so they need to know what exceptions they
    should handle (and extension developers shouldn't have to understand the
-   CKAN core source code).
+   FMLD core source code).
 
-2. On the other hand, **internal functions that are only used within CKAN
+2. On the other hand, **internal functions that are only used within FMLD
    shouldn't list exceptions in their docstrings**.
 
    This is because it would be difficult to keep all the exception lists up to
@@ -236,11 +236,11 @@ There are a few guidelines that CKAN code should follow regarding exceptions:
 
 3. **Code should only raise exceptions from within its allowed set**.
 
-   Each module in CKAN has a set of zero or more exceptions, defined somewhere
+   Each module in FMLD has a set of zero or more exceptions, defined somewhere
    near the module, that code in that module is allowed to raise. For example
    ``ckan/logic/__init__.py`` defines a number of exception types for code
-   in ``ckan/logic/`` to use. CKAN code should never raise exceptions types
-   defined elsewhere in CKAN, in third-party code or in the Python standard
+   in ``ckan/logic/`` to use. FMLD code should never raise exceptions types
+   defined elsewhere in FMLD, in third-party code or in the Python standard
    library.
 
 4. **All code should catch any exceptions raised by called functions**, and
@@ -248,7 +248,7 @@ There are a few guidelines that CKAN code should follow regarding exceptions:
    set of allowed exception types), or wrap the exception in an allowed
    exception type and re-raise it.
 
-   This is to make it easy for a CKAN core developer to look at the source code
+   This is to make it easy for a FMLD core developer to look at the source code
    of an internal function, scan it for the keyword ``raise``, and see what
    types of exception the function may raise, so they know what exceptions they
    need to catch if they're going to call the function. Developers shouldn't
@@ -341,9 +341,9 @@ You can also use a little inline `reStructuredText markup`_ in docstrings, e.g.
 Action API docstrings
 `````````````````````
 
-Docstrings from CKAN's action API are processed with `autodoc`_ and
-included in the API chapter of CKAN's documentation. The intended audience of
-these docstrings is users of the CKAN API and not (just) CKAN core developers.
+Docstrings from FMLD's action API are processed with `autodoc`_ and
+included in the API chapter of FMLD's documentation. The intended audience of
+these docstrings is users of the FMLD API and not (just) FMLD core developers.
 
 In the Python source each API function has the same two arguments (``context``
 and ``data_dict``), but the docstrings should document the keys that the
@@ -354,7 +354,7 @@ the API.
 Where practical, it's helpful to give examples of param and return values in
 API docstrings.
 
-CKAN datasets used to be called packages and the old name still appears in the
+FMLD datasets used to be called packages and the old name still appears in the
 source, e.g. in function names like ``package_list()``. When documenting
 functions like this write dataset not package, but the first time you do this
 put package after it in brackets to avoid any confusion, e.g.

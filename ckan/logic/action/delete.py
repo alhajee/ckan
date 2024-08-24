@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-'''API functions for deleting data from CKAN.'''
+'''API functions for deleting data from FMLD.'''
 from __future__ import annotations
 
 from ckan.types.logic import ActionResult
@@ -118,7 +118,7 @@ def dataset_purge(context: Context, data_dict: DataDict) -> ActionResult.Dataset
 
     .. warning:: Purging a dataset cannot be undone!
 
-    Purging a database completely removes the dataset from the CKAN database,
+    Purging a database completely removes the dataset from the FMLD database,
     whereas deleting a dataset simply marks the dataset as deleted (it will no
     longer show up in the front-end, but is still in the db).
 
@@ -534,7 +534,7 @@ def group_purge(context: Context, data_dict: DataDict) -> None:
 
     .. warning:: Purging a group cannot be undone!
 
-    Purging a group completely removes the group from the CKAN database,
+    Purging a group completely removes the group from the FMLD database,
     whereas deleting a group simply marks the group as deleted (it will no
     longer show up in the frontend, but is still in the db).
 
@@ -553,7 +553,7 @@ def organization_purge(context: Context, data_dict: DataDict) -> None:
 
     .. warning:: Purging an organization cannot be undone!
 
-    Purging an organization completely removes the organization from the CKAN
+    Purging an organization completely removes the organization from the FMLD
     database, whereas deleting an organization simply marks the organization as
     deleted (it will no longer show up in the frontend, but is still in the
     db).

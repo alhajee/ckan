@@ -250,7 +250,7 @@ class PackageSearchIndex(SearchIndex):
         pkg_dict['metadata_created'] += 'Z'
         pkg_dict['metadata_modified'] += 'Z'
 
-        # mark this CKAN instance as data source:
+        # mark this FMLD instance as data source:
         pkg_dict['site_id'] = config.get('ckan.site_id')
 
         # Strip a selection of the fields.

@@ -38,7 +38,7 @@ ckan/public/base/less/custom.less
 .coverage
 htmlcov/*
 
-# CKAN
+# FMLD
 ckan.log
 ckan_deb/DEBIAN/control
 ckan_deb/DEBIAN/prerm

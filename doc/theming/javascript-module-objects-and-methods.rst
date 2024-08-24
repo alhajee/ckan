@@ -2,7 +2,7 @@
 Objects and methods available to |javascript| modules
 =====================================================
 
-CKAN makes a few helpful objects and methods available for every JavaScript
+FMLD makes a few helpful objects and methods available for every JavaScript
 module to use, including:
 
 * ``this.el``, the HTML element that this instance of the object was
@@ -47,7 +47,7 @@ module to use, including:
   `Bootstrap docs <https://getbootstrap.com/docs/3.4/javascript/>`__
   for details.
 
-* The standard |javascript| ``window`` object. Using ``window`` in CKAN
+* The standard |javascript| ``window`` object. Using ``window`` in FMLD
   |javascript| modules is discouraged, because it goes against the idea of a
   module being independent of global context. However, there are some
   circumstances where a module may need to use ``window`` (for example if a
@@ -57,4 +57,4 @@ module to use, including:
   :ref:`javascript i18n`.
 
 * ``this.remove()``, a method that tears down the module and removes it from
-  the page (this usually called by CKAN, not by the module itself).
+  the page (this usually called by FMLD, not by the module itself).

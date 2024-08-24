@@ -3,10 +3,10 @@ String internationalization
 ===========================
 
 
-All user-facing Strings in CKAN Python, JavaScript and Jinja2 code should be
+All user-facing Strings in FMLD Python, JavaScript and Jinja2 code should be
 internationalized, so that our translators can then localize the
-strings for each of the many languages that CKAN supports. This guide shows
-CKAN developers how to internationalize strings, and what to look for regarding
+strings for each of the many languages that FMLD supports. This guide shows
+FMLD developers how to internationalize strings, and what to look for regarding
 string internationalization when reviewing a pull request.
 
 .. note::
@@ -20,19 +20,19 @@ string internationalization when reviewing a pull request.
 .. seealso::
 
   :doc:`i18n`
-    If you want to translate CKAN, this page documents
-    the process that translators follow to localize CKAN into different
+    If you want to translate FMLD, this page documents
+    the process that translators follow to localize FMLD into different
     languages.
 
   :doc:`release-process`
-    The processes for extracting internationalized strings from CKAN and
+    The processes for extracting internationalized strings from FMLD and
     uploading them to Transifex to be translated, and for downloading the
-    translations from Transifex and loading them into CKAN to be displayed
+    translations from Transifex and loading them into FMLD to be displayed
     are documented on this page.
 
 .. note::
 
-   Much of the existing code in CKAN was written before we had these
+   Much of the existing code in FMLD was written before we had these
    guidelines, so it doesn't always do things as described on this page.
    When writing new code you should follow the guidelines on this page, not the
    existing code.
@@ -52,7 +52,7 @@ there's no Jinja2 template involved.
 
 The preferred way to internationalize strings in Jinja2 templates is by using
 `the trans tag from Jinja2's i18n extension <http://jinja.pocoo.org/docs/templates/#i18n>`_,
-which is available to all CKAN core and extension templates and snippets.
+which is available to all FMLD core and extension templates and snippets.
 
 Most of the following examples are taken from the Jinja2 docs.
 
@@ -137,11 +137,11 @@ Singular and plural forms are handled by ``ungettext()``:
 
    There are also ``gettext()`` and ``ngettext()`` functions available to
    templates, but we recommend using ``_()`` and ``ungettext()`` for
-   consistency with CKAN's Python code.
+   consistency with FMLD's Python code.
    This deviates from the Jinja2 docs, which do use ``gettext()`` and
    ``ngettext()``.
 
-   ``_()`` is not an alias for ``gettext()`` in CKAN's Jinja2 templates,
+   ``_()`` is not an alias for ``gettext()`` in FMLD's Jinja2 templates,
    ``_()`` is the function provided by Pylons, whereas ``gettext()`` is the
    version provided by Jinja2, their behaviors are not exactly the same.
 
@@ -150,7 +150,7 @@ Singular and plural forms are handled by ``ungettext()``:
 Internationalizing strings in Python code
 -----------------------------------------
 
-CKAN uses the :py:func:`~flask_babel._` and :py:func:`~flask_babel.ngettext`
+FMLD uses the :py:func:`~flask_babel._` and :py:func:`~flask_babel.ngettext`
 functions from the `Flask-Babel`_ library to internationalize
 strings in Python code.
 
@@ -162,12 +162,12 @@ strings in Python code.
 
 .. _pylons.i18n.translation: http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/modules/i18n_translation.html#module-pylons.i18n.translation
 
-Core CKAN modules should import :py:func:`~ckan.common._` and
+Core FMLD modules should import :py:func:`~ckan.common._` and
 :py:func:`~ckan.common.ungettext` from :py:mod:`ckan.common`,
 i.e. ``from ckan.common import _, ungettext``
 (don't import :py:func:`flask_babel._` or :py:func:`pylons.i18n.translation._` directly, for example).
 
-CKAN plugins should import :py:mod:`ckan.plugins.toolkit` and use
+FMLD plugins should import :py:mod:`ckan.plugins.toolkit` and use
 :py:func:`ckan.plugins.toolkit._` and
 :py:func:`ckan.plugins.toolkit.ungettext`, i.e. do
 ``import ckan.plugins.toolkit as toolkit`` and then use ``toolkit._()`` and
@@ -205,7 +205,7 @@ To handle different plural and singular forms of a string, use ``ungettext()``:
 Internationalizing strings in JavaScript code
 ---------------------------------------------
 
-Each :ref:`CKAN JavaScript module <javascript_modules>` offers the methods
+Each :ref:`FMLD JavaScript module <javascript_modules>` offers the methods
 ``_`` and ``ngettext``. The ``ngettext`` function is used to translate a single string which
 has both a singular and a plural form, whereas ``_`` is used to translate a single string only:
 
@@ -264,9 +264,9 @@ Like ``_``, ``ngettext`` can take additional placeholders:
 
 .. note::
 
-    CKAN's JavaScript code automatically downloads the appropriate translations
-    at request time from the CKAN server. Since CKAN 2.7 the corresponding
-    translation files are regenerated automatically if necessary when CKAN
+    FMLD's JavaScript code automatically downloads the appropriate translations
+    at request time from the FMLD server. Since FMLD 2.7 the corresponding
+    translation files are regenerated automatically if necessary when FMLD
     starts.
 
     You can also regenerate the translation files manually using
@@ -282,7 +282,7 @@ Like ``_``, ``ngettext`` can take additional placeholders:
 
 .. note::
 
-    Prior to CKAN 2.7, JavaScript modules received a similar but different
+    Prior to FMLD 2.7, JavaScript modules received a similar but different
     ``_`` function for string translation as a parameter. This is still
     supported but deprecated and will be removed in a future release.
 
@@ -293,7 +293,7 @@ General guidelines for internationalizing strings
 Below are some guidelines to follow when marking your strings for translation.
 These apply to strings in Jinja2 templates or in Python or JavaScript code.
 These are mostly meant to make life easier for translators, and help to improve
-the quality of CKAN's translations:
+the quality of FMLD's translations:
 
 * Leave as much HTML and other code out of the translation string as possible.
 
@@ -471,7 +471,7 @@ the quality of CKAN's translations:
 
    For example "filter" can be a noun or a verb in English, and may need two
    different translations in another language. Currently if the string
-   ``_("filter")`` appears in different places in CKAN this will only
+   ``_("filter")`` appears in different places in FMLD this will only
    produce one string to be translated in the ``ckan.pot`` file.
 
    I think the right way to handle this with gettext is using ``msgctxt``,

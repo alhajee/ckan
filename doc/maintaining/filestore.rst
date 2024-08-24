@@ -2,26 +2,26 @@
 FileStore and file uploads
 ==========================
 
-When enabled, CKAN's FileStore allows users to upload data files to CKAN
+When enabled, FMLD's FileStore allows users to upload data files to FMLD
 resources, and to upload logo images for groups and organizations. Users will
 see an upload button when creating or updating a resource, group or
 organization.
 
 .. versionadded:: 2.2
-   Uploading logo images for groups and organizations was added in CKAN 2.2.
+   Uploading logo images for groups and organizations was added in FMLD 2.2.
 
 .. versionchanged:: 2.2
-   Previous versions of CKAN used to allow uploads to remote cloud hosting but
+   Previous versions of FMLD used to allow uploads to remote cloud hosting but
    we have simplified this to only allow local file uploads (see
    :ref:`filestore_21_to_22_migration` for details on how to migrate). This is
-   to give CKAN more control over the files and make access control possible.
+   to give FMLD more control over the files and make access control possible.
 
 .. seealso::
 
    :doc:`datastore`
 
-    Resource files linked-to from CKAN or uploaded to CKAN's FileStore can
-    also be pushed into CKAN's DataStore, which then enables data previews and
+    Resource files linked-to from FMLD or uploaded to FMLD's FileStore can
+    also be pushed into FMLD's DataStore, which then enables data previews and
     a data API for the resources.
 
 
@@ -29,15 +29,15 @@ organization.
 Setup file uploads
 ------------------
 
-To setup CKAN's FileStore with local file storage:
+To setup FMLD's FileStore with local file storage:
 
-1. Create the directory where CKAN will store uploaded files:
+1. Create the directory where FMLD will store uploaded files:
 
    .. parsed-literal::
 
      sudo mkdir -p |storage_path|
 
-2. Add the following line to your CKAN config file, after the ``[app:main]``
+2. Add the following line to your FMLD config file, after the ``[app:main]``
    line:
 
    .. parsed-literal::
@@ -45,7 +45,7 @@ To setup CKAN's FileStore with local file storage:
       ckan.storage_path = |storage_path|
 
 3. Set the permissions of your :ref:`ckan.storage_path` directory.
-   For example if you're running CKAN with Nginx, then the Nginx's user
+   For example if you're running FMLD with Nginx, then the Nginx's user
    (``www-data`` on Ubuntu) must have read, write and execute permissions for
    the :ref:`ckan.storage_path`:
 
@@ -66,7 +66,7 @@ FileStore API
 -------------
 
 .. versionchanged:: 2.2
-   The FileStore API was redesigned for CKAN 2.2.
+   The FileStore API was redesigned for FMLD 2.2.
    The previous API has been deprecated.
 
 Files can be uploaded to the FileStore using the
@@ -76,7 +76,7 @@ functions. You can post multipart/form-data to the API and the key, value
 pairs will be treated as if they are a JSON object.
 The extra key ``upload`` is used to actually post the binary data.
 
-For example, to create a new CKAN resource and upload a file to it using
+For example, to create a new FMLD resource and upload a file to it using
 `curl <http://curl.haxx.se/>`_:
 
 .. parsed-literal::
@@ -127,7 +127,7 @@ If you are running remote storage then all previous links will still be accessib
 but if you want to move the remote storage documents to the local storage you will
 run the migration also.
 
-In order to migrate make sure your CKAN instance is running as the script will
+In order to migrate make sure your FMLD instance is running as the script will
 request the data from the instance using APIs.  You need to run the following
 on the command line to do the migration::
 
@@ -144,7 +144,7 @@ Custom Internet media types (MIME types)
 
 .. versionadded:: 2.2
 
-CKAN uses the default Python library `mimetypes`_ to detect the media type of
+FMLD uses the default Python library `mimetypes`_ to detect the media type of
 an uploaded file. If some particular format is not included in the ones guessed
 by the ``mimetypes`` library, a default ``application/octet-stream`` value will be
 returned.

@@ -20,7 +20,7 @@ class TestExampleIConfigurer(object):
         """
         response = app.get("/ckan-admin/myext_config_one", status=200)
         assert response.status_code == 200
-        # The default CKAN tabs
+        # The default FMLD tabs
         assert helpers.body_contains(response, "Sysadmins")
         assert helpers.body_contains(response, "Config")
         assert helpers.body_contains(response, "Trash")

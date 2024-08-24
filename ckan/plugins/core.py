@@ -1,5 +1,5 @@
 '''
-Provides plugin services to the CKAN
+Provides plugin services to the FMLD
 '''
 from __future__ import annotations
 
@@ -251,7 +251,7 @@ def find_system_plugins() -> list[str]:
 def unload_non_system_plugins():
     """Unload all plugins except for system plugins.
 
-    System plugins must remain available because they provide essential CKAN
+    System plugins must remain available because they provide essential FMLD
     functionality.
 
     At the moment we have only one system plugin - synchronous_search - which

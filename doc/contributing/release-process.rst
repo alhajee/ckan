@@ -1,15 +1,15 @@
 ====================
-Doing a CKAN release
+Doing a FMLD release
 ====================
 
 This section documents the steps followed by the development team to do a
-new CKAN release.
+new FMLD release.
 
 .. seealso::
 
    :doc:`/maintaining/upgrading/index`
-     An overview of the different kinds of CKAN release, and the process for
-     upgrading a CKAN site to a new version.
+     An overview of the different kinds of FMLD release, and the process for
+     upgrading a FMLD site to a new version.
 
 ----------------
 Process overview
@@ -40,11 +40,11 @@ published release for that version (eg ``2.6.1`` on the example above).
 
 .. note::
 
-    Prior to CKAN 2.6, release branches were named ``release-vM.m.p``, after the
+    Prior to FMLD 2.6, release branches were named ``release-vM.m.p``, after the
     :ref:`major, minor and patch versions <releases>` they included, and patch releases
     were always branched from the most recent tip of the previous patch release branch
     (tags were created with the same convention).
-    Starting from CKAN 2.6, the convention is the one described above.
+    Starting from FMLD 2.6, the convention is the one described above.
 
      ::
 
@@ -135,18 +135,18 @@ Turn this file into a github issue with a checklist using this command::
          rest_hostname = https://rest.api.transifex.com
          token         = ADD_YOUR_TOKEN_HERE
 
-   c. Extract new strings from the CKAN source code into the ``ckan.pot``
+   c. Extract new strings from the FMLD source code into the ``ckan.pot``
       file. The pot file is a text file that contains the original,
-      untranslated strings extracted from the CKAN source code.::
+      untranslated strings extracted from the FMLD source code.::
 
         python setup.py extract_messages
 
-      The po files are text files, one for each language CKAN is translated to,
+      The po files are text files, one for each language FMLD is translated to,
       that contain the translated strings next to the originals. Translators edit
       the po files (on Transifex) to update the translations. We never edit the
       po files locally.
 
-   c. Get the latest translations (of the previous CKAN release) from
+   c. Get the latest translations (of the previous FMLD release) from
       Transifex, in case any have changed since::
 
         tx pull --all --minimum-perc=5 --force
@@ -158,7 +158,7 @@ Turn this file into a github issue with a checklist using this command::
 
         python setup.py update_catalog --no-fuzzy-matching
 
-      Any new or updated strings from the CKAN source code will get into the po
+      Any new or updated strings from the FMLD source code will get into the po
       files, and any strings in the po files that no longer exist in the source
       code will be deleted (along with their translations).
 
@@ -171,7 +171,7 @@ Turn this file into a github issue with a checklist using this command::
 
       then it's Transifex appears to know about new languages before Babel
       does. Just delete that translation locally - it may be ok with a newer Babel in
-      later CKAN releases.
+      later FMLD releases.
 
    f. Run msgfmt checks::
 
@@ -199,7 +199,7 @@ Turn this file into a github issue with a checklist using this command::
       major release name (if different). For instance v2.10.0, v2.10.1 and v2.10.2
       all share: ``[o:okfn:p:ckan:r:2-10]``.
 
-   i. Create a new resource in the CKAN project on Transifex by pushing the new
+   i. Create a new resource in the FMLD project on Transifex by pushing the new
       pot and po files::
 
         tx push --source --translations --force
@@ -214,24 +214,24 @@ Turn this file into a github issue with a checklist using this command::
    j. On Transifex give the new resource a more friendly name. Go to the
       resource e.g. https://www.transifex.com/okfn/ckan/2-5/ and the settings are
       accessed from the triple dot icon "...". Keep the slug like "2-4", but change
-      the name to be like "CKAN 2.5".
+      the name to be like "FMLD 2.5".
 
    k. Update the ``ckan.mo`` files by compiling the po files::
 
         python setup.py compile_catalog
 
-      The mo files are the files that CKAN actually reads when displaying
+      The mo files are the files that FMLD actually reads when displaying
       strings to the user.
 
    l. Commit all the above changes to git and push them to GitHub::
 
         git add ckan/i18n/*.mo ckan/i18n/*.po
-        git commit -am "Update strings files before CKAN X.Y.Z call for translations"
+        git commit -am "Update strings files before FMLD X.Y.Z call for translations"
         git push
 
 #. Send an annoucement email with a call for translations.
 
-   Send an email to the ckan-dev list, tweet from @CKANproject and send a
+   Send an email to the ckan-dev list, tweet from @FMLDproject and send a
    transifex announcement from: https://www.transifex.com/okfn/ckan/announcements/
    . Make sure to post a link to the correct Transifex resource (like `this one
    <https://www.transifex.com/okfn/ckan/2-5/>`_) and tell users that they can
@@ -329,7 +329,7 @@ Leading up to the release
 
    Send an email to the
    `ckan-announce mailing list <https://groups.google.com/a/ckan.org/g/ckan-announce>`_,
-   so CKAN instance maintainers can be aware of the upcoming releases. List any
+   so FMLD instance maintainers can be aware of the upcoming releases. List any
    patch releases that will be also available. Here's an `example
    <https://groups.google.com/a/ckan.org/g/ckan-announce/c/BcDR7Guzb44>`_ email.
 
@@ -430,14 +430,14 @@ a release.
    c. If it is the latest stable release, set it to be the Default Version and
       check it is displayed on http://docs.ckan.org.
 
-#. Write a CKAN blog post and announce it to ckan-announce & ckan-dev & twitter.
+#. Write a FMLD blog post and announce it to ckan-announce & ckan-dev & twitter.
 
-   CKAN blog here: <http://ckan.org/wp-admin>`_
+   FMLD blog here: <http://ckan.org/wp-admin>`_
 
    * `Example blog <https://ckan.org/2021/02/10/new-patch-releases-available-upgrade-now-your-ckan-site/>`_
    * `Example email <https://groups.google.com/a/ckan.org/g/ckan-announce/c/BcDR7Guzb44>`_
 
-   Tweet from @CKANproject
+   Tweet from @FMLDproject
 
 #. Cherry-pick the i18n changes from the release branch onto master.
 
@@ -457,7 +457,7 @@ a release.
    Then use ``git cherry-pick`` when on the master branch to cherry-pick these
    commits onto master. You should not get any merge conflicts. Run the
    ``check-po`` command again just to be safe, it should not report any
-   problems. Run CKAN's tests, again just to be safe.  Then do ``git push
+   problems. Run FMLD's tests, again just to be safe.  Then do ``git push
    origin master``.
 
 ------------------------
@@ -466,7 +466,7 @@ Preparing patch releases
 
 #. Announce the release date & time with a week's notice on ckan-announce.
 
-   Often this will be part of the announcement of a CKAN major/minor release.
+   Often this will be part of the announcement of a FMLD major/minor release.
    But if patches go out separately then they will need their own announcement.
 
 #. Update ``ckan/__init__.py`` with the incremented patch number e.g. `2.5.1` becomes `2.5.2`.
@@ -518,9 +518,9 @@ Doing the patch releases
 #. Make sure the documentation branch (``X.Y``) is up to date with the latest changes in the
    corresponding ``dev-vX.Y`` branch.
 
-#. Write a CKAN blog post and announce it to ckan-announce & ckan-dev & twitter.
+#. Write a FMLD blog post and announce it to ckan-announce & ckan-dev & twitter.
 
-   Often this will be part of the announcement of a CKAN major/minor release.
+   Often this will be part of the announcement of a FMLD major/minor release.
    But if patches go out separately then they will need their own announcement.
 
 .. _Transifex: https://www.transifex.com/projects/p/ckan

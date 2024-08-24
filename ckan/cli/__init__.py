@@ -15,7 +15,7 @@ from ckan.types import Config
 log = logging.getLogger(__name__)
 
 
-class CKANConfigLoader(object):
+class FMLDConfigLoader(object):
     config: Config
     config_file: str
     parser: ConfigParser
@@ -30,7 +30,7 @@ class CKANConfigLoader(object):
         self.section = u'app:main'
         defaults = dict(
             (k, v) for k, v in os.environ.items()
-            if k.startswith("CKAN_"))
+            if k.startswith("FMLD_"))
         defaults['__file__'] = os.path.abspath(self.config_file)
         self._update_defaults(defaults)
         self._create_config_object()
@@ -126,11 +126,11 @@ def load_config(ini_path: Optional[str] = None) -> Config:
             ini_path = os.path.expanduser(ini_path)
         filename: Optional[str] = os.path.abspath(ini_path)
         config_source = [u'-c parameter']
-    elif os.environ.get(u'CKAN_INI'):
-        filename = os.environ[u'CKAN_INI']
-        config_source = [u'$CKAN_INI']
+    elif os.environ.get(u'FMLD_INI'):
+        filename = os.environ[u'FMLD_INI']
+        config_source = [u'$FMLD_INI']
     else:
-        # deprecated method since CKAN 2.9
+        # deprecated method since FMLD 2.9
         default_filenames = [u'ckan.ini', u'development.ini']
         config_source = default_filenames
         filename = None
@@ -142,9 +142,9 @@ def load_config(ini_path: Optional[str] = None) -> Config:
         if not filename:
             # give really clear error message for this common situation
             msg = u'''
-ERROR: You need to specify the CKAN config (.ini) file path.
+ERROR: You need to specify the FMLD config (.ini) file path.
 
-Use the --config parameter or set environment variable CKAN_INI
+Use the --config parameter or set environment variable FMLD_INI
 or have one of {} in the current directory.'''
             msg = msg.format(u', '.join(default_filenames))
             raise CkanConfigurationException(msg)
@@ -154,7 +154,7 @@ or have one of {} in the current directory.'''
         msg += u'\n(Given by: %s)' % config_source
         raise CkanConfigurationException(msg)
 
-    config_loader = CKANConfigLoader(filename)
+    config_loader = FMLDConfigLoader(filename)
     loggingFileConfig(filename)
     log.info(u'Using configuration file {}'.format(filename))
 

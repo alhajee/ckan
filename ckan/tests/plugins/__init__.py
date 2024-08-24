@@ -18,7 +18,7 @@ right times and with the right parameters.
 Everything in :mod:`ckan.plugins.toolkit` should have tests, because these
 functions are part of the API for extensions to use. But
 :mod:`~ckan.plugins.toolkit` imports most of these functions from elsewhere
-in CKAN, so the tests should be elsewhere also, in the test modules for the
+in FMLD, so the tests should be elsewhere also, in the test modules for the
 modules where the functions are defined.
 
 Other than the plugin interfaces and plugins toolkit, any other code in

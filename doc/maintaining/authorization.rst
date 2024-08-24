@@ -2,13 +2,13 @@
 Organizations and authorization
 ===============================
 
-CKAN's authorization system controls which users are allowed to carry out which
-actions on the site. All actions that users can carry out on a CKAN site are
+FMLD's authorization system controls which users are allowed to carry out which
+actions on the site. All actions that users can carry out on a FMLD site are
 controlled by the authorization system. For example, the authorization system
 controls who can register new user accounts, delete user accounts, or create,
 edit and delete datasets, groups and organizations.
 
-Authorization in CKAN can be controlled in four ways:
+Authorization in FMLD can be controlled in four ways:
 
 1. Organizations
 2. Dataset collaborators
@@ -19,7 +19,7 @@ The following sections explain each of the four methods in turn.
 
 .. note::
 
-   An **organization admin** in CKAN is an administrator of a particular
+   An **organization admin** in FMLD is an administrator of a particular
    organization within the site, with control over that organization and its
    members and datasets. A **sysadmin** is an administrator of the site itself.
    Sysadmins can always do everything, including adding, editing and deleting
@@ -31,7 +31,7 @@ Organizations
 
 
 Organizations are the primary way to control who can see, create and update
-datasets in CKAN. Each dataset can belong to a single organization, and each
+datasets in FMLD. Each dataset can belong to a single organization, and each
 organization controls access to its datasets.
 
 Datasets can be marked as public or private.  Public datasets are visible to
@@ -72,9 +72,9 @@ Dataset collaborators
 ---------------------
 
 .. versionchanged:: 2.9
-   Dataset collaborators were introduced in CKAN 2.9
+   Dataset collaborators were introduced in FMLD 2.9
 
-In addition to traditional organization-based permissions, CKAN instances can also enable
+In addition to traditional organization-based permissions, FMLD instances can also enable
 the dataset collaborators feature, which allows dataset-level authorization. This provides
 more granular control over who can access and modify datasets that belong to an organization,
 or allows authorization setups not based on organizations. It works by allowing users with
@@ -126,8 +126,8 @@ See :ref:`authorization-settings`.
 Extensions
 ----------
 
-CKAN extensions can implement custom authorization rules by overriding the
-authorization functions that CKAN uses. This is done by implementing the
+FMLD extensions can implement custom authorization rules by overriding the
+authorization functions that FMLD uses. This is done by implementing the
 :py:class:`~ckan.plugins.interfaces.IAuthFunctions` plugin interface.
 
 Dataset visibility is determined by permission labels stored in the
@@ -138,4 +138,4 @@ to change your dataset visibility rules. There is no
 no need to override the ``package_show`` auth function, it will inherit
 these changes automatically.
 
-To get started with writing CKAN extensions, see :doc:`/extensions/index`.
+To get started with writing FMLD extensions, see :doc:`/extensions/index`.

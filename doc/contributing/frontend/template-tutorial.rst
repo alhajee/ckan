@@ -10,7 +10,7 @@ Extending a base template
 
 Firstly we need to extend a parent template to provide us with some
 basic page structure. This can be any other HTML page however the most
-common one is ``page.html`` which provides the full CKAN theme including
+common one is ``page.html`` which provides the full FMLD theme including
 header and footer.
 
 ::

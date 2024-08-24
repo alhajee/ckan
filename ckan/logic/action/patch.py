@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-'''API functions for partial updates of existing data in CKAN'''
+'''API functions for partial updates of existing data in FMLD'''
 
 from ckan.logic import (
     get_action as _get_action,

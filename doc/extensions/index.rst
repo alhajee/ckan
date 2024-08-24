@@ -2,14 +2,14 @@
 Extending guide
 ===============
 
-The following sections will teach you how to customize and extend CKAN's
-features by developing your own CKAN extensions.
+The following sections will teach you how to customize and extend FMLD's
+features by developing your own FMLD extensions.
 
 .. seealso::
 
-    Some **core extensions** come packaged with CKAN. Core extensions don't
+    Some **core extensions** come packaged with FMLD. Core extensions don't
     need to be installed before you can use them as they're installed when you
-    install CKAN, they can simply be enabled by following the setup
+    install FMLD, they can simply be enabled by following the setup
     instructions in each extension's documentation (some core extensions are
     already enabled by default). For example, the :doc:`datastore extension
     </maintaining/datastore>`, :doc:`multilingual extension
@@ -20,8 +20,8 @@ features by developing your own CKAN extensions.
 
 .. seealso::
 
-    **External extensions** are CKAN extensions that don't come packaged with
-    CKAN, but must be downloaded and installed separately. Find
+    **External extensions** are FMLD extensions that don't come packaged with
+    FMLD, but must be downloaded and installed separately. Find
     external extensions at `https://extensions.ckan.org/
     <https://extensions.ckan.org/>`_.  Again, follow
     each extension's own documentation to install, setup, and use the extension.

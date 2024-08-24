@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# CKAN documentation build configuration file, created by
+# FMLD documentation build configuration file, created by
 # sphinx-quickstart on Sun Oct 25 16:47:17 2009.
 #
 # This file is execfile()d with the current directory set to its containing dir.
@@ -74,9 +74,9 @@ rst_epilog = '''
 .. |nodejs| replace:: Node.js
 
 .. _Jinja2: http://jinja.pocoo.org/
-.. _CKAN front page: http://127.0.0.1:5000
+.. _FMLD front page: http://127.0.0.1:5000
 .. _bootstrap: http://getbootstrap.com/2.3.2/
-.. _CKAN issue tracker: https://github.com/ckan/ckan/issues
+.. _FMLD issue tracker: https://github.com/ckan/ckan/issues
 
 '''
 
@@ -104,8 +104,8 @@ source_suffix = '.rst'
 master_doc = 'contents'
 
 # General information about the project.
-project = u'CKAN'
-project_short_name = u'CKAN'
+project = u'FMLD'
+project_short_name = u'FMLD'
 copyright = u'&copy; 2009-{} '.format(date.today().strftime("%Y"))
 copyright += u'''<a href="https://okfn.org/">Open Knowledge Foundation</a> and
     <a href="https://github.com/ckan/ckan/graphs/contributors">contributors</a>.
@@ -131,7 +131,7 @@ release = ckan.__version__
 version_re = None
 point_releases_ = None
 
-SUPPORTED_CKAN_VERSIONS = 2
+SUPPORTED_FMLD_VERSIONS = 2
 
 
 def get_release_tags():
@@ -177,7 +177,7 @@ def get_status_of_this_version():
     '''
     equiv_point_release = get_equivalent_point_release(version)
     point_releases_ = get_point_releases()
-    supported_point_releases = point_releases_[-int(SUPPORTED_CKAN_VERSIONS):]
+    supported_point_releases = point_releases_[-int(SUPPORTED_FMLD_VERSIONS):]
     if equiv_point_release in supported_point_releases:
         return 'supported'
     else:
@@ -378,11 +378,11 @@ def write_substitutions_file(**kwargs):
 current_release_tag_value = get_current_release_tag()
 current_release_version = get_current_release_version()
 previous_release_version = get_previous_release_version()
-previous_release_version_format = f"**CKAN {previous_release_version}**"
+previous_release_version_format = f"**FMLD {previous_release_version}**"
 current_minor_version = current_release_version[:current_release_version.find(".", 3)]
 latest_release_tag_value = get_latest_release_tag()
 latest_release_version = get_latest_release_version()
-latest_release_version_format = f"**CKAN {latest_release_version}**"
+latest_release_version_format = f"**FMLD {latest_release_version}**"
 latest_minor_version = latest_release_version[:latest_release_version.find(".", 3)]
 is_master = "a" in release.split(".")[-1]
 is_supported = get_status_of_this_version() == 'supported'
@@ -521,7 +521,7 @@ html_static_path = ['_static']
 #html_file_suffix = ''
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'CKANdoc'
+htmlhelp_basename = 'FMLDdoc'
 
 
 # Options for LaTeX output
@@ -536,8 +536,8 @@ htmlhelp_basename = 'CKANdoc'
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, document class [howto/manual]).
 latex_documents = [
-  ('contents', 'CKAN.tex', u'CKAN documentation',
-   u'CKAN contributors', 'manual'),
+  ('contents', 'FMLD.tex', u'FMLD documentation',
+   u'FMLD contributors', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of

@@ -2,7 +2,7 @@
 """**All auth functions should have tests.**
 
 Most auth function tests should be unit tests that test the auth function in
-isolation, without bringing in other parts of CKAN or touching the database.
+isolation, without bringing in other parts of FMLD or touching the database.
 This requires using the ``mock`` library to mock ``ckan.model``, see
 :ref:`mock`.
 

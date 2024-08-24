@@ -2,10 +2,10 @@
 
 import requests
 
-from ckan.common import config, CKANRequest
+from ckan.common import config, FMLDRequest
 
 
-def check_recaptcha(request: CKANRequest) -> None:
+def check_recaptcha(request: FMLDRequest) -> None:
     '''Check a user's recaptcha submission is valid, and raise CaptchaError
     on failure.'''
     recaptcha_private_key = config.get('ckan.recaptcha.privatekey')

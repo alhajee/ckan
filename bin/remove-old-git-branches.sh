@@ -29,7 +29,7 @@ prepare_branches() {
 
   echo
   echo List of all branches that can be removed stored into $tmp_file. Review it\'s content and run \'$0 --apply $tmp_file\'.
-  echo NOTE. This command requires write access to CKAN repository and will actually remove all branches that are listed in $tmp_file.
+  echo NOTE. This command requires write access to FMLD repository and will actually remove all branches that are listed in $tmp_file.
 }
 
 if [[ $# -gt 0 ]];

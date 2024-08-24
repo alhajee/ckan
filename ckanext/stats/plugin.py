@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-from ckan.common import CKANConfig
+from ckan.common import FMLDConfig
 from logging import getLogger
 
 import ckan.plugins as p
@@ -15,7 +15,7 @@ class StatsPlugin(p.SingletonPlugin):
     p.implements(p.IConfigurer)
     p.implements(p.IBlueprint)
 
-    def update_config(self, config: CKANConfig):
+    def update_config(self, config: FMLDConfig):
         p.toolkit.add_template_directory(config, u'templates')
         p.toolkit.add_resource(u'assets', u'ckanext_stats')
 

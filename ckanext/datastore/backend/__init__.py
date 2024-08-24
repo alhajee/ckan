@@ -7,7 +7,7 @@ import logging
 from typing import Any, Container
 
 import ckan.plugins as plugins
-from ckan.common import CKANConfig, config
+from ckan.common import FMLDConfig, config
 from ckanext.datastore.interfaces import IDatastoreBackend
 
 log = logging.getLogger(__name__)
@@ -78,11 +78,11 @@ class DatastoreBackend:
             cls._backends.update(plugin.register_backends())
 
     @classmethod
-    def set_active_backend(cls, config: CKANConfig):
+    def set_active_backend(cls, config: FMLDConfig):
         """Choose most suitable backend depending on configuration
 
         :param config: configuration object
-        :rtype: ckan.common.CKANConfig
+        :rtype: ckan.common.FMLDConfig
 
         """
         schema = config.get(u'ckan.datastore.write_url').split(u':')[0]
@@ -97,12 +97,12 @@ class DatastoreBackend:
         """
         return cls._active_backend
 
-    def configure(self, config: CKANConfig):
+    def configure(self, config: FMLDConfig):
         """Configure backend, set inner variables, make some initial setup.
 
         :param config: configuration object
         :returns: config
-        :rtype: CKANConfig
+        :rtype: FMLDConfig
 
         """
 

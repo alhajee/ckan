@@ -95,13 +95,13 @@ class TestGetAllQueues(RQTestBase):
         u"""
         Test that foreign RQ-queues are ignored.
         """
-        # Create queues for this CKAN instance
+        # Create queues for this FMLD instance
         self.enqueue(queue=u"q1")
         self.enqueue(queue=u"q2")
-        # Create queue for another CKAN instance
+        # Create queue for another FMLD instance
         with changed_config(u"ckan.site_id", u"some-other-ckan-instance"):
             self.enqueue(queue=u"q2")
-        # Create queue not related to CKAN
+        # Create queue not related to FMLD
         rq.Queue(u"q4").enqueue_call(jobs.test_job)
         all_queues = jobs.get_all_queues()
         names = {jobs.remove_queue_name_prefix(q.name) for q in all_queues}

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Any, cast
 from ckan.types import Schema, ValidatorFactory
-from ckan.common import CKANConfig
+from ckan.common import FMLDConfig
 from ckan.types import (
     Context, FlattenDataDict, FlattenErrorDict, FlattenKey,
 )
@@ -24,7 +24,7 @@ class ExampleIDataDictionaryFormPlugin(plugins.SingletonPlugin):
 
     # IConfigurer
 
-    def update_config(self, config: CKANConfig):
+    def update_config(self, config: FMLDConfig):
         add_template_directory(config, 'templates')
 
     # IDataDictionaryForm

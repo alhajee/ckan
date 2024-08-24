@@ -1,7 +1,7 @@
 # encoding: utf-8
 from __future__ import annotations
 
-from ckan.common import CKANConfig
+from ckan.common import FMLDConfig
 from typing import Any, cast
 from ckan.types import Context, ValidatorFactory
 import ckan.plugins as p
@@ -31,7 +31,7 @@ class DataTablesView(p.SingletonPlugin):
 
     # IConfigurer
 
-    def update_config(self, config: CKANConfig):
+    def update_config(self, config: FMLDConfig):
         u'''
         Set up the resource library, public directory and
         template directory for the view

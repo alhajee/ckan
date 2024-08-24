@@ -1,10 +1,10 @@
 # encoding: utf-8
 
-'''A Sphinx extension to automatically document CKAN's crazy plugins toolkit,
+'''A Sphinx extension to automatically document FMLD's crazy plugins toolkit,
 autodoc-style.
 
 Sphinx's autodoc extension can document modules or classes, but although it
-masquerades as a module CKAN's plugins toolkit is actually neither a module nor
+masquerades as a module FMLD's plugins toolkit is actually neither a module nor
 a class, it's an object-instance of a class, and it's an object with weird
 __getattr__ behavior too. Autodoc can't handle it, so we have this custom
 Sphinx extension to automate documenting it instead.

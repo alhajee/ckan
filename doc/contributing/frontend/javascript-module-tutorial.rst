@@ -2,7 +2,7 @@
 Building a JavaScript Module
 ============================
 
-CKAN makes heavy use of modules to add additional functionality to the
+FMLD makes heavy use of modules to add additional functionality to the
 page. Essentially all a module consists of is an object with an
 ``.initialize()`` and ``.teardown()`` method.
 
@@ -23,7 +23,7 @@ just fine without our module JavaScript loaded.
       <button class="btn" name="package" value="101">Submit</button>
     </form>
 
-Here it's the ``data-module="favorite"`` that tells the CKAN module
+Here it's the ``data-module="favorite"`` that tells the FMLD module
 loader to create a new instance for this element.
 
 JavaScript

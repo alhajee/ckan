@@ -14,7 +14,7 @@ v.2.11.0 2024-08-21
 
 Overview
 --------
-- CKAN 2.11 supports Python 3.9 to 3.12
+- FMLD 2.11 supports Python 3.9 to 3.12
 - This version requires a requirements upgrade on source installations
 - This version requires a database upgrade. The minimum version required is PostgreSQL 12.
 - This version does not require a Solr schema upgrade if you are already using the 2.10 schema,
@@ -28,7 +28,7 @@ Major features
 
 - Added support for **Python** 3.11 and 3.12 (`#8357
   <https://github.com/ckan/ckan/pull/8357>`_)
-- **Table Designer** is a form-builder for CKAN DataStore tables with enforced data validation.
+- **Table Designer** is a form-builder for FMLD DataStore tables with enforced data validation.
   Use the :doc:`maintaining/table-designer` on the resource url/upload control for (`#6118 <https://github.com/ckan/ckan/pull/6118>`_):
 
   - automatic creation of DataTable view for new Table Designer resources
@@ -54,7 +54,7 @@ Major features
   ``ckan datastore upgrade`` after upgrading to this release. (`#7971
   <https://github.com/ckan/ckan/pull/7971>`_)
 
-- Start using **htmx** (`htmx.org <https://htmx.org/>`_) to modernize the CKAN frontend. For
+- Start using **htmx** (`htmx.org <https://htmx.org/>`_) to modernize the FMLD frontend. For
   more information check :doc:`theming/htmx`. (`#7685
   <https://github.com/ckan/ckan/pull/7685>`_)
 
@@ -99,7 +99,7 @@ Minor changes
           ...
 
 - The PyUtilib dependency has been removed. All the primitives for the plugin system are
-  now defined in CKAN. (`#7976 <https://github.com/ckan/ckan/pull/7976>`_)
+  now defined in FMLD. (`#7976 <https://github.com/ckan/ckan/pull/7976>`_)
 - Allow sysadmins to change usernames of other accounts (`#4193
   <https://github.com/ckan/ckan/pull/4193>`_)
 - ``date_str_to_datetime`` helper accepts values with timezone information.
@@ -142,7 +142,7 @@ Minor changes
   plugins. Use ``ckan db upgrade --skip-plugins`` if this behavior does not fit
   into your deployment process. (`#7961
   <https://github.com/ckan/ckan/pull/7961>`_)
-- Added ``bytes`` property to the test CKANResponse class which returns bytes
+- Added ``bytes`` property to the test FMLDResponse class which returns bytes
   from the response data. (`#7982 <https://github.com/ckan/ckan/pull/7982>`_)
 - Activity plugin now tracks new, changed, and deleted resource views. (`#8043
   <https://github.com/ckan/ckan/pull/8043>`_)
@@ -167,9 +167,9 @@ Minor changes
   (`#8228 <https://github.com/ckan/ckan/pull/8228>`_)
 - add ``ckan generate migration --autogenerate`` option, sync models with
   migrations (`#8238 <https://github.com/ckan/ckan/pull/8238>`_)
-- Integrate flask-multistatic extension into the CKAN code base and remove it
+- Integrate flask-multistatic extension into the FMLD code base and remove it
   from requirements. (`#7244 <https://github.com/ckan/ckan/pull/7244>`_)
-- Added ``--disable-debugger`` option to CKAN cli ``run`` command. (`#7278
+- Added ``--disable-debugger`` option to FMLD cli ``run`` command. (`#7278
   <https://github.com/ckan/ckan/pull/7278>`_)
 - Added new ``datastore_records_delete`` action.
 
@@ -182,9 +182,9 @@ Minor changes
 - Add a new optional parameter to the ``datastore_dictionary`` helper that filters the
   columns returned and fix a datatablesview show-columns bug with it (`#7387
   <https://github.com/ckan/ckan/pull/7387>`_)
-- update documenatation for CKAN SHELL command. (`#7402
+- update documenatation for FMLD SHELL command. (`#7402
   <https://github.com/ckan/ckan/pull/7402>`_)
-- Improve CKAN Data API dialog with syntax highlighting, multiple client
+- Improve FMLD Data API dialog with syntax highlighting, multiple client
   languages and jinja2 blocks for expansion (`#7573
   <https://github.com/ckan/ckan/pull/7573>`_)
 - Added ``ckan.datatables.null_label`` config option and ``h.datatablesview_null_label`` helper.
@@ -268,7 +268,7 @@ Bug fixes
 - Fix 500 error caused from passing null to a field using the
   ``ckanext.datastore.logic.schema.json_validator`` in its schema (`#7346
   <https://github.com/ckan/ckan/pull/7346>`_)
-- Create user reference added in Installing CKAN from source (`#7366
+- Create user reference added in Installing FMLD from source (`#7366
   <https://github.com/ckan/ckan/pull/7366>`_)
 - Fixed links and labels on dashboard/organization page. (`#7432
   <https://github.com/ckan/ckan/pull/7432>`_)
@@ -313,7 +313,7 @@ Bug fixes
   packaging.version for version comparison/testing,
   Remove ``ckan.plugins.toolkit._version_str_2_list()`` method because of no use.
   (`#7777 <https://github.com/ckan/ckan/pull/7777>`_)
-- Use current CKAN version in cookiecutter tests runner template (`#7938
+- Use current FMLD version in cookiecutter tests runner template (`#7938
   <https://github.com/ckan/ckan/pull/7938>`_)
 - URLs in activities always points to ``/organization/*`` but custom org types
   requeres ``/custom-organization/*`` URLs. This fixes those links. (`#7943
@@ -322,7 +322,7 @@ Bug fixes
   <https://github.com/ckan/ckan/pull/7944>`_)
 - Add missing translations to aria-label attributes (`#7945
   <https://github.com/ckan/ckan/pull/7945>`_)
-- libmagic error when CKAN 2.10.3 is installed from source (`#7986
+- libmagic error when FMLD 2.10.3 is installed from source (`#7986
   <https://github.com/ckan/ckan/pull/7986>`_)
 - Populate email notification checkbox from the profile it's on, not from the
   logged-in user (`#8124 <https://github.com/ckan/ckan/pull/8124>`_)
@@ -355,9 +355,9 @@ Bug fixes
 Migration notes
 ---------------
 
-- Starting from CKAN 2.11, the :ref:`SECRET_KEY` configuration option is
-  required to start CKAN. This is the secret token that is used by security
-  related tasks by CKAN and its extensions. Previous CKAN versions relied on
+- Starting from FMLD 2.11, the :ref:`SECRET_KEY` configuration option is
+  required to start FMLD. This is the secret token that is used by security
+  related tasks by FMLD and its extensions. Previous FMLD versions relied on
   the ``beaker.session.secret`` config option for this.
   The ``ckan generate config`` command generates a unique value for this option
   each time it generates a config file. Alternatively, you  can generate one
@@ -391,7 +391,7 @@ Migration notes
   ================================= ==============================================
 
 - When parsing the configuration file, the default behaviour starting from
-  CKAN 2.11 is the old ``strict`` mode,  where CKAN will not
+  FMLD 2.11 is the old ``strict`` mode,  where FMLD will not
   start unless **all** config options are valid according to the validators
   defined in the :ref:`configuration declaration <declare-config-options>`. For every invalid
   config option,
@@ -492,7 +492,7 @@ Migration notes
   (`#7685 <https://github.com/ckan/ckan/pull/7685>`_)
 - Tracking feature has been moved to its own core extension. Therefore,
   ``ckan.tracking_enabled`` configuration option should be changed to adding
-  ``tracking`` to CKAN's plugins list. ``g.tracking_enabled`` attribute no
+  ``tracking`` to FMLD's plugins list. ``g.tracking_enabled`` attribute no
   longer exist. ``tracking_summary`` info will be returned if the extension is enabled.
   ``include_tracking`` parameter is no longer required. (`#7772
   <https://github.com/ckan/ckan/pull/7772>`_)
@@ -678,7 +678,7 @@ Bugfixes
   user activity streams (`#7980 <https://github.com/ckan/ckan/pull/7980>`_)
 - Removes extra <<<HEAD from resources list template (`#7998
   <https://github.com/ckan/ckan/pull/7998>`_)
-- CKAN does not start without ``beaker.session.validate_key`` option introduced
+- FMLD does not start without ``beaker.session.validate_key`` option introduced
   in v2.10.3 (`#8023 <https://github.com/ckan/ckan/pull/8023>`_)
 - Editing of resources unavailable from package view page. (`#8025
   <https://github.com/ckan/ckan/pull/8025>`_)
@@ -840,7 +840,7 @@ Migration notes
   uses the Python ``pickle`` module, which is considered unsafe. While there is
   no direct known vulnerability using this vector, a safer alternative is to
   store the session data in the `client-side cookie <https://beaker.readthedocs.io/en/latest/sessions.html#cookie-based>`_.
-  This will probably be the default behaviour in future CKAN versions::
+  This will probably be the default behaviour in future FMLD versions::
 
     # ckan.ini
 
@@ -861,7 +861,7 @@ v.2.10.0 2023-02-15
 
 Overview
 --------
-- CKAN 2.10 supports Python 3.7 to 3.10
+- FMLD 2.10 supports Python 3.7 to 3.10
 - This version requires a requirements upgrade on source installations
 - This version requires a database upgrade
 - This version does not require a Solr schema upgrade if you are already using the 2.9 schema,
@@ -871,7 +871,7 @@ Overview
 Major features
 --------------
 - Added **CSRF protection** to the frontend forms to protect against Cross-Site
-  Request Forgery attacks. This feature is enabled by default in CKAN core,
+  Request Forgery attacks. This feature is enabled by default in FMLD core,
   extensions are excluded from the CSRF protection to give time to update them,
   but CSRF protection will be enforced in the future.
   To enforce the CSRF protection in extensions you can use
@@ -883,7 +883,7 @@ Major features
   might be logged out) and will affect all plugins that modify the standard authentication process. Please
   check the *Migration notes* section below to learn more (`#6560 <https://github.com/ckan/ckan/pull/6560>`_).
 - **Configuration declaration**: declare configuration options to ensure
-  validation and default values. All declared CKAN configuration options
+  validation and default values. All declared FMLD configuration options
   are validated and converted to the expected type during the application
   startup. See the *Migration notes* section below to understand the changes
   involved and check the :ref:`documentation <declare-config-options>`.
@@ -896,10 +896,10 @@ Major features
   <https://github.com/ckan/ckan/pull/5169>`_)
 - Add CLI commands for API Token management (`#5868
   <https://github.com/ckan/ckan/pull/5868>`_)
-- The CKAN source code is fully typed now (`#5924 <https://github.com/ckan/ckan/pull/5924>`_)
+- The FMLD source code is fully typed now (`#5924 <https://github.com/ckan/ckan/pull/5924>`_)
 - Add extensible snippet for resource uploads (`#6226
   <https://github.com/ckan/ckan/pull/6226>`_)
-- Migrated to **Bootstrap 5** from v3 for the default CKAN theme. Bootstrap v3
+- Migrated to **Bootstrap 5** from v3 for the default FMLD theme. Bootstrap v3
   templates are still available for use by specifying the base template
   folder in the configuration (`#6307
   <https://github.com/ckan/ckan/pull/6307>`_)::
@@ -907,7 +907,7 @@ Major features
     ckan.base_public_folder=public-bs3
     ckan.base_templates_folder=templates-bs3
 
-- Removed the **Docker** related files from the main CKAN repository. A brand new official
+- Removed the **Docker** related files from the main FMLD repository. A brand new official
   Docker setup can be found at the `ckan/ckan-docker
   <https://github.com/ckan/ckan-docker>`_ repository. (`#7370
   <https://github.com/ckan/ckan/pull/7370>`_)
@@ -935,7 +935,7 @@ Major features
   break some existing JS modules from the frontend that perform API calls, so
   it should be used with caution. (`#7088
   <https://github.com/ckan/ckan/pull/7088>`_)
-- CKAN now records the last time a user was active on the site. The minimum
+- FMLD now records the last time a user was active on the site. The minimum
   interval between records can be controlled with the
   :ref:`ckan.user.last_active_interval` config option. (`#6466
   <https://github.com/ckan/ckan/pull/6466>`_)
@@ -951,7 +951,7 @@ Major features
           __tablename__ = "ext_model"
           id = Column(String(50), primary_key=True)
           ... (`#7351 <https://github.com/ckan/ckan/pull/7351>`_)
-- Add dev containers / GitHub Codespaces config (See the `documentation <https://github.com/ckan/ckan/wiki/CKAN-in-GitHub-Codespaces>`_
+- Add dev containers / GitHub Codespaces config (See the `documentation <https://github.com/ckan/ckan/wiki/FMLD-in-GitHub-Codespaces>`_
 
 
 Minor changes
@@ -985,8 +985,8 @@ Minor changes
   <https://github.com/ckan/ckan/pull/xloader-127>`_)
 - Add `organization_followee_count` to the get api (`#2628
   <https://github.com/ckan/ckan/pull/2628>`_)
-- Environment variables prefixed with `CKAN_` can be used as variables inside
-  config file via ``option = %(CKAN_***)s`` (`#6192
+- Environment variables prefixed with `FMLD_` can be used as variables inside
+  config file via ``option = %(FMLD_***)s`` (`#6192
   <https://github.com/ckan/ckan/pull/6192>`_)
 - CLI command ``less`` is now renamed to ``sass`` as the preprocessor was changed in
   #6175. (`#6287 <https://github.com/ckan/ckan/pull/6287>`_)
@@ -1098,7 +1098,7 @@ Bugfixes
   change (`#7085 <https://github.com/ckan/ckan/pull/7085>`_)
 - Fix urls containing unicode encoded in hex (`#7107
   <https://github.com/ckan/ckan/pull/7107>`_)
-- Fix a bug that causes CKAN to only register the first blueprint of plugins.
+- Fix a bug that causes FMLD to only register the first blueprint of plugins.
   (`#7108 <https://github.com/ckan/ckan/pull/7108>`_)
 - remove old deleted resources on package_update so that performance is
   consistent over time (no longer degrading) (`#7119
@@ -1107,7 +1107,7 @@ Bugfixes
   ckan config file (`#7133 <https://github.com/ckan/ckan/pull/7133>`_)
 - Fixed broken organization delete form (`#7150
   <https://github.com/ckan/ckan/pull/7150>`_)
-- Fix the current year reference for CKAN documentation (`#7153
+- Fix the current year reference for FMLD documentation (`#7153
   <https://github.com/ckan/ckan/pull/7153>`_)
 - Fix bootstrap 3 webassets files to point to valid assets. (`#7161
   <https://github.com/ckan/ckan/pull/7161>`_)
@@ -1143,24 +1143,24 @@ Migration notes
 
 - Changes in the authenticated users management (logged in users): The old ``auth_tkt`` cookie
   created by repoze.who does not exist anymore. Flask-login stores the logged-in user
-  identifier in the Flask session. CKAN uses `Beaker <https://beaker.readthedocs.io/en/latest/sessions.html>`_
+  identifier in the Flask session. FMLD uses `Beaker <https://beaker.readthedocs.io/en/latest/sessions.html>`_
   to manage the session, and the default session backend stores this session information
   as files on the server (on ``/tmp``). This means that **if the session data is deleted
   in the server, all users will be logged out of the site**.
   This can happen for instance:
 
-	* if the CKAN container is redeployed in a Docker / cloud setup and the session directory is not persisted
+	* if the FMLD container is redeployed in a Docker / cloud setup and the session directory is not persisted
 	* if the sessions are periodically cleaned by an external script
 
-  Here's a summary of the behaviour changes between CKAN versions:
+  Here's a summary of the behaviour changes between FMLD versions:
 
   .. list-table::
      :widths: 40 30 30
      :header-rows: 1
 
      * - Action
-       - CKAN < 2.10
-       - CKAN >= 2.10
+       - FMLD < 2.10
+       - FMLD >= 2.10
      * - Clear cookies
        - User logged out
        - User logged out (If ``remember_me`` cookie is deleted)
@@ -1171,7 +1171,7 @@ Migration notes
   The way to keep the old behaviour with the Beaker backend is to store the
   session data in the `cookie itself <https://beaker.readthedocs.io/en/latest/sessions.html#cookie-based>`_
   (note that this stores *all* session data, not just the user identifier). This will probably
-  be the default behaviour in future CKAN versions::
+  be the default behaviour in future FMLD versions::
 
 	# ckan.ini
 	beaker.session.type = cookie
@@ -1186,16 +1186,16 @@ Migration notes
   for details).
 - It is recommended that you review the :ref:`session-settings` and :ref:`flask-login-remember-me-cookie-settings` to
   make sure they cover your security requirements.
-- Due to the newly introduced :ref:`declare-config-options`, all declared CKAN configuration options
+- Due to the newly introduced :ref:`declare-config-options`, all declared FMLD configuration options
   are validated and converted to the expected type during the application startup::
 
       debug = config.get("debug")
 
-      # CKAN <= v2.9
+      # FMLD <= v2.9
       assert type(debug) is str
       assert debug == "false" # or any value that is specified in the config file
 
-      # CKAN >= v2.10
+      # FMLD >= v2.10
       assert type(debug) is bool
       assert debug is False # or ``True``
 
@@ -1226,16 +1226,16 @@ Migration notes
       plugins = config.get("ckan.plugins")
 
   The second major change affects default values for configuration options.
-  Starting from CKAN 2.10,
+  Starting from FMLD 2.10,
   the majority of the config options have a declared default value. It means
   that
   whenever you invoke ``config.get`` method, the *declared default* value is
   returned instead of ``None``. Example::
 
-      # CKAN v2.9
+      # FMLD v2.9
       assert config.get("search.facets.limit") is None
 
-      # CKAN v2.10
+      # FMLD v2.10
       assert config.get("search.facets.limit") == 10
 
   The second argument to ``config.get`` should be only used to get
@@ -1354,7 +1354,7 @@ Removals and deprecations
   <https://github.com/ckan/ckan/pull/6648>`_)
 - Remove deprecated ``fields`` parameter in ``resource_search`` method. (`#6687
   <https://github.com/ckan/ckan/pull/6687>`_)
-- The ``ISession`` interface has been removed from CKAN. To extend SQLAlchemy use
+- The ``ISession`` interface has been removed from FMLD. To extend SQLAlchemy use
   event listeners instead. (`#6699 <https://github.com/ckan/ckan/pull/6699>`_)
 - ``unselected_facet_items`` helper has been removed. You can use
   ``get_facet_items_dict`` with ``exclude_active=True`` instead. (`#6765
@@ -1424,7 +1424,7 @@ Migration notes
   uses the Python ``pickle`` module, which is considered unsafe. While there is
   no direct known vulnerability using this vector, a safer alternative is to
   store the session data in the `client-side cookie <https://beaker.readthedocs.io/en/latest/sessions.html#cookie-based>`_.
-  This will probably be the default behaviour in future CKAN versions::
+  This will probably be the default behaviour in future FMLD versions::
 
 	# ckan.ini
 	beaker.session.type = cookie
@@ -1451,7 +1451,7 @@ Major changes
 Minor changes
 -------------
 
-- Add dev containers / GitHub Codespaces config for CKAN 2.9 (See the `documentation <https://github.com/ckan/ckan/wiki/CKAN-in-GitHub-Codespaces>`_
+- Add dev containers / GitHub Codespaces config for FMLD 2.9 (See the `documentation <https://github.com/ckan/ckan/wiki/FMLD-in-GitHub-Codespaces>`_
 - Add new group command: ``clean``.
   Add ``clean users`` command to delete users containing images with formats
   not supported in ``ckan.upload.user.mimetypes`` config option (`#7241
@@ -1498,7 +1498,7 @@ Bugfixes
 
 - Fixes incorrectly encoded url current_url (`#6685 <https://github.com/ckan/ckan/pull/6685>`_)
 - Check if locale exists on i18n JS API (`#6698 <https://github.com/ckan/ckan/pull/6698>`_)
-- Add ``csrf_input()`` helper for cross-CKAN version compatibilty (`#7016 <https://github.com/ckan/ckan/issues/7016>`_)
+- Add ``csrf_input()`` helper for cross-FMLD version compatibilty (`#7016 <https://github.com/ckan/ckan/issues/7016>`_)
 - Fix not empty validator (`#6658 <https://github.com/ckan/ckan/pull/6658>`_)
 - Use ``get_action()`` in patch actions to allow custom logic (`#6519 <https://github.com/ckan/ckan/pull/6519>`_)
 - Allow to extend organization_facets (`#6682 <https://github.com/ckan/ckan/pull/6682>`_)
@@ -1544,7 +1544,7 @@ Minor changes
 - Bump markdown requirement to support Python 3.9
 - Update psycopg2 to support PostgreSQL 12
 - Add auth functions for 17 actions that didn't have them before (`#7045 <https://github.com/ckan/ckan/pull/7045>`_)
-- Add no-op ``csrf_input()`` helper to help extensions with cross-CKAN version suport (`#7030  <https://github.com/ckan/ckan/pull/7030>`_)
+- Add no-op ``csrf_input()`` helper to help extensions with cross-FMLD version suport (`#7030  <https://github.com/ckan/ckan/pull/7030>`_)
 
 
 v.2.9.5 2022-01-19
@@ -1554,8 +1554,8 @@ v.2.9.5 2022-01-19
 Major features
 --------------
 
-- Solr 8 support. Starting from version 2.9.5, CKAN supports Solr versions 6 and 8. Support for Solr 6 will be dropped in the next
-  CKAN minor version (2.10). Note that if you want to use Solr 8 you need to use the ``ckan/config/solr/schema.solr8.xml`` file, or
+- Solr 8 support. Starting from version 2.9.5, FMLD supports Solr versions 6 and 8. Support for Solr 6 will be dropped in the next
+  FMLD minor version (2.10). Note that if you want to use Solr 8 you need to use the ``ckan/config/solr/schema.solr8.xml`` file, or
   alternatively you can use the ``ckan/ckan-solr:2.9-solr8`` Docker image which comes pre-configured. (`#6530 <https://github.com/ckan/ckan/pull/6530>`_)
 
 
@@ -1676,7 +1676,7 @@ v.2.9.2 2021-02-10
 ==================
 
 General notes:
- * Note: To use PostgreSQL 12 on CKAN 2.9 you need to upgrade psycopg2 to at least 2.8.4 (more details in `#5796 <https://github.com/ckan/ckan/issues/5796>`_)
+ * Note: To use PostgreSQL 12 on FMLD 2.9 you need to upgrade psycopg2 to at least 2.8.4 (more details in `#5796 <https://github.com/ckan/ckan/issues/5796>`_)
 
 
 Major features
@@ -1839,16 +1839,16 @@ Migration notes
 - A full history of dataset changes is now displayed in the Activity Stream to
   admins, and optionally to the public. By default this is enabled for new
   installs, but disabled for sites which upgrade (just in case the history is
-  sensitive). When upgrading, open data CKANs are encouraged to make this
+  sensitive). When upgrading, open data FMLDs are encouraged to make this
   history open to the public, by setting this in production.ini:
   ``ckan.auth.public_activity_stream_detail = true`` (`#3972
   <https://github.com/ckan/ckan/pull/3972>`_)
-- When upgrading from previous CKAN versions, the Activity Stream needs a
+- When upgrading from previous FMLD versions, the Activity Stream needs a
   migrate_package_activity.py running for displaying the history of dataset
-  changes. This can be performed while CKAN is running or stopped (whereas the
-  standard `paster db upgrade` migrations need CKAN to be stopped). Ideally it
-  is run before CKAN is upgraded, but it can be run afterwards. If running
-  previous versions or this version of CKAN, download and run
+  changes. This can be performed while FMLD is running or stopped (whereas the
+  standard `paster db upgrade` migrations need FMLD to be stopped). Ideally it
+  is run before FMLD is upgraded, but it can be run afterwards. If running
+  previous versions or this version of FMLD, download and run
   migrate_package_activity.py like this::
 
     cd /usr/lib/ckan/default/src/ckan/
@@ -1856,7 +1856,7 @@ Migration notes
     wget https://raw.githubusercontent.com/ckan/ckan/2.9/ckan/migration/revision_legacy_code.py
     python migrate_package_activity.py -c /etc/ckan/production.ini
 
-  Future versions of CKAN are likely to need a slightly different procedure.
+  Future versions of FMLD are likely to need a slightly different procedure.
   Full info about this migration is found here:
   https://github.com/ckan/ckan/wiki/Migrate-package-activity (`#4784
   <https://github.com/ckan/ckan/pull/4784>`_)
@@ -1871,11 +1871,11 @@ Migration notes
 Major features
 --------------
 
-- Python 3 support. CKAN nows supports Python 3.6, 3.7 and 3.8 (`Overview <https://github.com/ckan/ckan/projects/3>`_).
+- Python 3 support. FMLD nows supports Python 3.6, 3.7 and 3.8 (`Overview <https://github.com/ckan/ckan/projects/3>`_).
   Check `this page <https://github.com/ckan/ckan/wiki/Python-3-migration-guide-for-extensions>`_ for support on how to
   migrate existing extensions to Python 3.
 - Dataset collaborators: In addition to traditional organization-based
-  permissions, CKAN instances can also enable the dataset collaborators feature, which allows dataset-level authorization.
+  permissions, FMLD instances can also enable the dataset collaborators feature, which allows dataset-level authorization.
   This provides  more granular control over who can access and modify datasets that belong to
   an organization, or allows authorization setups not based on organizations. It works by
   allowing users with appropriate permissions to give permissions to other users over individual
@@ -1997,7 +1997,7 @@ Bugfixes
   <https://github.com/ckan/ckan/pull/5172>`_)
 - Add metadata_modified field to resource (`#5236
   <https://github.com/ckan/ckan/pull/5236>`_)
-- Send the right URL of CKAN to datapusher (`#5281
+- Send the right URL of FMLD to datapusher (`#5281
   <https://github.com/ckan/ckan/pull/5281>`_)
 - Multiline translation strings not translated (`#5339
   <https://github.com/ckan/ckan/pull/5339>`_)
@@ -2020,7 +2020,7 @@ Removals and deprecations
 - Revision and History UI is removed: `/revision/*` & `/dataset/{id}/history`
   in favour of `/dataset/changes/` visible in the Activity Stream.
   ``model.ActivityDetail`` is no longer used and will be removed in the next
-  CKAN release. (`#3972 <https://github.com/ckan/ckan/pull/3972>`_)
+  FMLD release. (`#3972 <https://github.com/ckan/ckan/pull/3972>`_)
 - ``c.action`` and ``c.controller`` variables should be avoided.
   ``ckan.plugins.toolkit.get_endpoint`` can be used instead. This function
   returns tuple of two items(depending on request handler):
@@ -2036,8 +2036,8 @@ Removals and deprecations
 
   In this code snippet, will be called if current request is handled via
   Flask's
-  dataset blueprint in CKAN>=2.9, and, in the same time, it's still working for
-  Pylons package controller in CKAN<2.9 (`#4319
+  dataset blueprint in FMLD>=2.9, and, in the same time, it's still working for
+  Pylons package controller in FMLD<2.9 (`#4319
   <https://github.com/ckan/ckan/pull/4319>`_)
 - The following logic functions have been removed (`#4627 <https://github.com/ckan/ckan/pull/4627>`_):
   * ``dashboard_activity_list_html``
@@ -2072,7 +2072,7 @@ Fixes:
 
 * Fixes incorrectly encoded url current_url (`#6685 <https://github.com/ckan/ckan/pull/6685>`_)
 * Check if locale exists on i18n JS API (`#6698 <https://github.com/ckan/ckan/pull/6698>`_)
-* Add ``csrf_input()`` helper for cross-CKAN version compatibilty (`#7016 <https://github.com/ckan/ckan/issues/7016>`_)
+* Add ``csrf_input()`` helper for cross-FMLD version compatibilty (`#7016 <https://github.com/ckan/ckan/issues/7016>`_)
 * Fix not empty validator (`#6658 <https://github.com/ckan/ckan/pull/6658>`_)
 * Use ``get_action()`` in patch actions to allow custom logic (`#6519 <https://github.com/ckan/ckan/pull/6519>`_)
 * Allow to extend organization_facets (`#6682 <https://github.com/ckan/ckan/pull/6682>`_)
@@ -2130,7 +2130,7 @@ v.2.8.7 2021-02-10
 ==================
 
 General notes:
-* Note: To use PostgreSQL 12 on CKAN 2.8 you need to upgrade SQLAlchemy to 1.2.17 and vdm to 0.15 (more details in `#5796 <https://github.com/ckan/ckan/issues/5796>`_)
+* Note: To use PostgreSQL 12 on FMLD 2.8 you need to upgrade SQLAlchemy to 1.2.17 and vdm to 0.15 (more details in `#5796 <https://github.com/ckan/ckan/issues/5796>`_)
 
 
 Fixes:
@@ -2163,7 +2163,7 @@ Fixes:
 * Fix skip to content link hiding on screen readers (`#5556 <https://github.com/ckan/ckan/pull/5556>`_)
 * Fix unflattening of dataset extras (`#5602 <https://github.com/ckan/ckan/pull/5611>`_)
 * Fix minified JS files in 2.7 (`#5557 <https://github.com/ckan/ckan/pull/5561>`_)
-* Send the right URL of CKAN to datapusher (`#5281 <https://github.com/ckan/ckan/pull/5281>`_)
+* Send the right URL of FMLD to datapusher (`#5281 <https://github.com/ckan/ckan/pull/5281>`_)
 * Fix fullscreen for resource webpageview (`#5552 <https://github.com/ckan/ckan/pull/5552>`_)
 * PackageSearchIndex.index_package(): catch IndexError from date parsing (`#5535 <https://github.com/ckan/ckan/pull/5535>`_)
 * Fix collapsible menu in mobile view (`#5448 <https://github.com/ckan/ckan/pull/5448>`_)
@@ -2261,7 +2261,7 @@ Fixes:
 * Fix `feeds` urls generation (`#4854 <https://github.com/ckan/ckan/pull/4854>`_)
 * More robust auth functions for `resource_view_show` (`#4827 <https://github.com/ckan/ckan/issues/4827>`_)
 * Allow to customize the DataProxy URL (`#4874 <https://github.com/ckan/ckan/issues/4874>`_)
-* Allow custom CKAN callback URL for the DataPusher (`#4878 <https://github.com/ckan/ckan/issues/4878>`_)
+* Allow custom FMLD callback URL for the DataPusher (`#4878 <https://github.com/ckan/ckan/issues/4878>`_)
 * Add `psycopg>=2.8` support (`#4841 <https://github.com/ckan/ckan/pull/4841>`_)
 
 v.2.8.2 2018-12-12
@@ -2330,7 +2330,7 @@ General notes:
 
       ProgrammingError: (psycopg2.ProgrammingError) function populate_full_text_trigger() does not exist
 
-   CKAN developers should also re-run set-permissions on the test database:
+   FMLD developers should also re-run set-permissions on the test database:
    :ref:`datastore-test-set-permissions`
 
  * There are several old features being officially deprecated starting from
@@ -2356,7 +2356,7 @@ Minor changes:
  * CLI commands require a Flask test request context (#3760)
  * Allow IValidator to override existing validators (#3865)
  * Shrink datastore_create response size (#3810)
- * Stable version URLs CKAN for documentation (#4209)
+ * Stable version URLs FMLD for documentation (#4209)
  * API Documentation update (#4136)
  * Documentation of Data Dictionary  (#3989)
  * Remove datastore legacy mode (#4041)
@@ -2372,11 +2372,11 @@ Bug fixes:
  * Search buttons need accessible labels (#2550)
  * Column name length limit for datastore upload (#2804)
  * #2373: Do not validate packages or resources from database to views (#3016)
- * Creation of dataset - different behaviour between Web API & CKAN Interface functionality (#3528)
+ * Creation of dataset - different behaviour between Web API & FMLD Interface functionality (#3528)
  * Redirecting to same page in non-root hosted ckan adds extra root_path to url  (#3499)
  * Beaker 1.8.0 exception when the code is served from OSX via Vagrant (#3512)
  * Add "Add Dataset" button to user's and group's page (#2794)
- * Some links in CKAN is not reachable (#2898)
+ * Some links in FMLD is not reachable (#2898)
  * Exception when specifying a directory in the ckan.i18n_directory option (#3539)
  * Resource view filter user filters JS error (#3590)
  * Recaptcha v1 will stop working 2018-3-31 (#4061)
@@ -2388,7 +2388,7 @@ Bug fixes:
  * Resource URL is not validated on create/update (#3660)
  * Upload to Datastore tab shows incorrect time at Upload Log (#3588)
  * Filter results button is not working (#3593)
- * Broken link in "Upgrading CKAN’s dependencies" doc page (#3637)
+ * Broken link in "Upgrading FMLD’s dependencies" doc page (#3637)
  * Default logo image not properly saved (#3656)
  * Activity test relies on datetime.now() (#3644)
  * Info block text for Format field not properly aligned in resource form page (#3663)
@@ -2410,18 +2410,18 @@ Bug fixes:
  * Paster/CLI config-tool requires _get_test_app which in turn requires a dev-only dependency (#3806)
  * Change log doesn't mention necessary Solr scheme upgrade (#3851)
  * TypeError: expected byte string object, value of type unicode found (#3921)
- * CKAN's state table clashes with PostGIS generated TIGER state table (#3929)
+ * FMLD's state table clashes with PostGIS generated TIGER state table (#3929)
  * [Docker] entrypoint initdb.d sql files copied to root (#3939)
  * DataStore status page throws TypeError - Bleach upgrade regression (#3968)
  * Source install error with who.ini (#4020)
- * making a JSONP call to the CKAN API returns the wrong mime type (#4022)
+ * making a JSONP call to the FMLD API returns the wrong mime type (#4022)
  * Deleting a resource sets datastore_active=False to all resources and overrides their extras (#4042)
  * Deleting first Group and Organization custom field is not possible (#4094)
 
 Changes and deprecations:
- * The default templates included in CKAN core have been updated to use Bootstrap 3. Extensions
+ * The default templates included in FMLD core have been updated to use Bootstrap 3. Extensions
    implementing custom themes are encouraged to update their templates, but they can still
-   make CKAN load the old Bootstrap 2 templates during the transition using the following
+   make FMLD load the old Bootstrap 2 templates during the transition using the following
    configuration options::
 
         ckan.base_public_folder = public-bs2
@@ -2429,7 +2429,7 @@ Changes and deprecations:
 
  * The API versions 1 and 2 (also known as the REST API), ie ``/api/rest/*`` have been
    completely removed in favour of the version 3 (action API, ``/api/action/*``).
- * The old Celery based background jobs have been removed in CKAN 2.8 in favour of the new RQ based
+ * The old Celery based background jobs have been removed in FMLD 2.8 in favour of the new RQ based
    jobs (http://docs.ckan.org/en/latest/maintaining/background-tasks.html). Extensions can still
    of course use Celery but they will need to handle the management themselves.
  * After introducing dataset blueprint, `h.get_facet_items_dict` takes search_facets as second argument.
@@ -2495,7 +2495,7 @@ Fixes:
 
 * Fix unflattening of dataset extras (`#5602 <https://github.com/ckan/ckan/pull/5611>`_)
 * Fix minified JS files in 2.7 (`#5557 <https://github.com/ckan/ckan/pull/5561>`_)
-* Send the right URL of CKAN to datapusher (`#5281 <https://github.com/ckan/ckan/pull/5281>`_)
+* Send the right URL of FMLD to datapusher (`#5281 <https://github.com/ckan/ckan/pull/5281>`_)
 * Fix fullscreen for resource webpageview (`#5552 <https://github.com/ckan/ckan/pull/5552>`_)
 * PackageSearchIndex.index_package(): catch IndexError from date parsing (`#5535 <https://github.com/ckan/ckan/pull/5535>`_)
 * Fix collapsible menu in mobile view (`#5448 <https://github.com/ckan/ckan/pull/5448>`_)
@@ -2578,7 +2578,7 @@ Fixes:
  * Make reorder resources button translatable (`#4838 <https://github.com/ckan/ckan/issues/4838>`_)
  * More robust auth functions for `resource_view_show` (`#4827 <https://github.com/ckan/ckan/issues/4827>`_)
  * Allow to customize the DataProxy URL (`#4874 <https://github.com/ckan/ckan/issues/4874>`_)
- * Allow custom CKAN callback URL for the DataPusher (`#4878 <https://github.com/ckan/ckan/issues/4878>`_)
+ * Allow custom FMLD callback URL for the DataPusher (`#4878 <https://github.com/ckan/ckan/issues/4878>`_)
 
 v2.7.5 2018-12-12
 =================
@@ -2607,7 +2607,7 @@ v2.7.3 2018-03-15
 General notes:
  * As with all patch releases this one does not include requirement changes.
    However in some scenarios you might encounter the following error while
-   installing or upgrading this version of CKAN::
+   installing or upgrading this version of FMLD::
 
      Error: could not determine PostgreSQL version from '10.2'
 
@@ -2627,7 +2627,7 @@ General notes:
    previous state. Remember, you only need to run the script if all the following are
    true:
 
-   1. You are currently running CKAN 2.7.0 or 2.7.2, and
+   1. You are currently running FMLD 2.7.0 or 2.7.2, and
    2. You have enabled the DataStore, and
    3. One or more resources with data on the DataStore have been deleted (or you
       suspect they might have been)
@@ -2679,8 +2679,8 @@ v2.7.0 2017-08-02
 =================
 
 General notes:
- * Starting from this version, CKAN requires at least Postgres 9.3
- * Starting from this version, CKAN requires a Redis database. Please
+ * Starting from this version, FMLD requires at least Postgres 9.3
+ * Starting from this version, FMLD requires a Redis database. Please
    refer to the new `ckan.redis.url
    <http://docs.ckan.org/en/ckan-2.7.0/maintaining/configuration.html#ckan-redis-url>`_
    configuration option.
@@ -2766,17 +2766,17 @@ API changes:
 Deprecations:
  * The API versions 1 and 2 (also known as the REST API, ie ``/api/rest/*`` will removed
    in favour of the version 3 (action API, ``/api/action/*``), which was introduced in
-   CKAN 2.0. The REST API will be removed on CKAN 2.8.
- * The default theme included in CKAN core will switch to use Bootstrap 3 instead of
-   Bootstrap 2 in CKAN 2.8. The current Bootstrap 2 based templates will still be included
-   in the next CKAN versions, so existing themes will still work. Bootstrap 2 templates will
+   FMLD 2.0. The REST API will be removed on FMLD 2.8.
+ * The default theme included in FMLD core will switch to use Bootstrap 3 instead of
+   Bootstrap 2 in FMLD 2.8. The current Bootstrap 2 based templates will still be included
+   in the next FMLD versions, so existing themes will still work. Bootstrap 2 templates will
    be eventually removed though, so instances are encouraged to update their themes using
    the available documentation (https://getbootstrap.com/migration/)
  * The activity stream related actions ending with ``*_list`` (eg ``package_activity_list``)
-   and ``*_html`` (eg ``package_activity_list_html``) will be removed in CKAN 2.8 in favour of
+   and ``*_html`` (eg ``package_activity_list_html``) will be removed in FMLD 2.8 in favour of
    more efficient alternatives and are now deprecated.
- * The legacy revisions controller (ie ``/revisions/*``) will be completely removed in CKAN 2.8.
- * The old Celery based background jobs will be removed in CKAN 2.8 in favour of the new RQ based
+ * The legacy revisions controller (ie ``/revisions/*``) will be completely removed in FMLD 2.8.
+ * The old Celery based background jobs will be removed in FMLD 2.8 in favour of the new RQ based
    jobs (http://docs.ckan.org/en/latest/maintaining/background-tasks.html). Extensions can still
    of course use Celery but they will need to handle the management themselves.
 
@@ -2820,7 +2820,7 @@ Fixes:
  * Fix `ValueError` in `url_validator` (`#4629 <https://github.com/ckan/ckan/issues/4629>`_)
  * More robust auth functions for `resource_view_show` (`#4827 <https://github.com/ckan/ckan/issues/4827>`_)
  * Allow to customize the DataProxy URL (`#4874 <https://github.com/ckan/ckan/issues/4874>`_)
- * Allow custom CKAN callback URL for the DataPusher (`#4878 <https://github.com/ckan/ckan/issues/4878>`_)
+ * Allow custom FMLD callback URL for the DataPusher (`#4878 <https://github.com/ckan/ckan/issues/4878>`_)
 
 v2.6.7 2018-12-12
 =================
@@ -2833,7 +2833,7 @@ v2.6.6 2018-05-09
 =================
 
 * Adding filter at resoruce preview doesn't work while site is setup with ckan.root_path param (#4140)
-* Stable version URLs CKAN for documentation (#4209)
+* Stable version URLs FMLD for documentation (#4209)
 * Add Warning in docs sidebar (#4209)
 
 v2.6.5 2018-03-15
@@ -2913,7 +2913,7 @@ v2.6.1 2017-02-22
 v2.6.0 2016-11-02
 =================
 
-Note: Starting from this version, CKAN requires at least Python 2.7 and Postgres 9.2
+Note: Starting from this version, FMLD requires at least Python 2.7 and Postgres 9.2
 
 Note: This version requires a requirements upgrade on source installations
 
@@ -3132,7 +3132,7 @@ Note: This version requires a database upgrade
 Note: This version does not require a Solr schema upgrade
 
 Major:
- * CKAN extension language translations integrated using ITranslations interface (#2461, #2643)
+ * FMLD extension language translations integrated using ITranslations interface (#2461, #2643)
  * Speed improvements for displaying a dataset (#2234), home page (#2554), searching (#2382, #2724) and API actions: package_show (#1078) and user_list (#2752).
  * An interface to replace the file uploader, allowing integration with other cloud storage providers (IUploader interface) (#2510)
 
@@ -3177,8 +3177,8 @@ Changes and deprecations
   introduces both ``python-markdown`` and ``bleach`` as dependencies, as ``bleach``
   is used to clean any HTML provided to the markdown processor.
 
-* This is the last version of CKAN to support Postgresql 8.x, 9.0 and 9.1. The
-  next minor version of CKAN will require Postgresql 9.2 or later.
+* This is the last version of FMLD to support Postgresql 8.x, 9.0 and 9.1. The
+  next minor version of FMLD will require Postgresql 9.2 or later.
 
 
 v2.5.0 2015-12-17
@@ -3309,7 +3309,7 @@ Note: This version requires a database upgrade
 Note: This version requires a Solr schema upgrade
 
 Major:
- * CKAN config can now be set from environment variables and via the API (#2429)
+ * FMLD config can now be set from environment variables and via the API (#2429)
 
 Minor:
  * API calls now faster: ``group_show``, ``organization_show``, ``user_show``,
@@ -3355,7 +3355,7 @@ Changes and deprecations
 
 * The default of allowing anyone to create datasets, groups and organizations
   has been changed to False. It is advised to ensure you set all of the
-  :ref:`authorization-settings` options explicitly in your CKAN config. (#2164)
+  :ref:`authorization-settings` options explicitly in your FMLD config. (#2164)
 
 * The ``package_show`` API call does not return the ``tracking_summary``,
   keys in the dataset or resources by default any more.
@@ -3379,7 +3379,7 @@ Changes and deprecations
   ``packages`` key - i.e. datasets that use the vocabulary or tag.
   However ``tag_show`` now has an ``include_datasets`` option. (#1886)
 
-* Config option ``site_url`` is now required - CKAN will not abort during
+* Config option ``site_url`` is now required - FMLD will not abort during
   start-up if it is not set. (#1976)
 
 v2.3.5 2016-11-02
@@ -3494,9 +3494,9 @@ Minor:
  * Remove help string from API calls (#1318)
  * Add "datapusher submit" command to upload existing resources data (#1792)
  * More template blocks to allow for easier extension maintenance (#1301)
- * CKAN API - remove help string from standard calls (#1318)
+ * FMLD API - remove help string from standard calls (#1318)
  * Hide activity by selected users on activity stream (#1330)
- * Documentation and clarification about "CKAN Flavored Markdown" (#1332)
+ * Documentation and clarification about "FMLD Flavored Markdown" (#1332)
  * Resource formats are now guessed automatically (#1350)
  * New JavaScript modules tutorial (#1377)
  * Allow overriding dataset, group, org validation (#1400)
@@ -3506,7 +3506,7 @@ Minor:
  * Allow people to create unowned datasets when they belong to an org (#1473)
  * Add res_type to Solr schema (#1495)
  * Separate data and metadata licenses on create dataset page (#1503)
- * Allow CKAN (and paster) to find config from envvar (#1597)
+ * Allow FMLD (and paster) to find config from envvar (#1597)
  * Added xlsx and tsv to the defaults for ckan.datapusher.formats. (#1644)
  * Add resource extras to Solr search index (#1709)
  * Prevent packages update in organization_update (#1711)
@@ -3672,7 +3672,7 @@ Changes and deprecations
   Options documentation (`who.httponly`).
 
 * The OpenID login option has been removed and is no longer supported. See
-  "Troubleshooting" if you are upgrading an existing CKAN instance as you may
+  "Troubleshooting" if you are upgrading an existing FMLD instance as you may
   need to update your ``who.ini`` file.
 
 Template changes
@@ -3708,7 +3708,7 @@ Troubleshooting:
 
   Also see the next point for OpenID related changes.
 
-* Exception on first load after upgrading from a previous CKAN version::
+* Exception on first load after upgrading from a previous FMLD version::
 
     ImportError: <module 'ckan.lib.authenticator' from '/usr/lib/ckan/default/src/ckan/ckan/lib/authenticator.py'> has no 'OpenIDAuthenticator' attribute
 
@@ -3860,7 +3860,7 @@ Major:
    email address. An invite email is sent to them, allowing to change their user
    name and password (#1178)
  * Disable user registration with a configuration option (#1226)
- * Great effort in improving documentation, specially for customizing CKAN, with
+ * Great effort in improving documentation, specially for customizing FMLD, with
    a complete tutorial for writing extensions and customizing the theme. User
    and sysadmin guides have also been moved to the main documentation
    (#943, #847, #1253)
@@ -3879,7 +3879,7 @@ Minor:
  * Changes in requirements management (#1149)
  * Add offset/limit to package_list action (#1179)
  * Document all available configuraton options (#848)
- * Make CKAN sqlalchemy 0.8.4 compatible (#1427)
+ * Make FMLD sqlalchemy 0.8.4 compatible (#1427)
  * UI labelling and cleanup (#1030)
  * Better UX for empty groups/orgs (#1094)
  * Improve performance of group_dictize when the group has a lot of packages
@@ -3902,14 +3902,14 @@ Bug fixes:
    (#1127)
  * Can not reactivate a deleted dataset from the UI (#607)
  * Non-existent user profile should give error (#1068)
- * Recaptcha not working in CKAN 2.0 (jinja templates) (#1070)
+ * Recaptcha not working in FMLD 2.0 (jinja templates) (#1070)
  * Groups and organizations can be visited with interchangeable URLs (#1180)
  * Dataset Source (url) and Version fields missing (#1187)
  * Fix problems with private / public datasets and organizations (#1188)
  * group_show should never return private data (#1191)
  * When editing a dataset, the organization field is not set (#1199)
  * Fix resource_delete action (#1216)
- * Fix trash purge action redirect broken for CKAN instances not at / (#1217)
+ * Fix trash purge action redirect broken for FMLD instances not at / (#1217)
  * Title edit for existing dataset changes the URL (#1232)
  * 'facet.limit' in package_search wrongly handled (#1237)
  * h.SI_number_span doesn't close <span /> correctly (#1238)
@@ -3934,7 +3934,7 @@ Bug fixes:
 
 API changes and deprecations:
  * The Solr schema file is now always named ``schema.xml`` regardless of the
-   CKAN version. Old schema files have been kept for backwards compatibility
+   FMLD version. Old schema files have been kept for backwards compatibility
    but users are encouraged to point to the new unified one (#1314)
  * The FileStore and file uploads have been completely refactored and simplified
    to only support local storage backend. The links from previous versions of
@@ -3957,14 +3957,14 @@ API changes and deprecations:
    called when updating a resource using the web frontend or the
    resource_update API action (#1052)
  * Dataset moderation has been deprecated, and the code will probably be removed
-   in later CKAN versions (#1139)
+   in later FMLD versions (#1139)
  * Some front end libraries have been updated, this may affect existing custom
    themes: Bootstrap 2.0.3 > 2.3.2, Font Awesome 3.0.2 > 3.2.1,
    jQuery 1.7.2 > 1.10.2 (#1082)
  * SQLite is officially no longer supported as the tests backend
 
 Troubleshooting:
- * Exception on startup after upgrading from a previous CKAN version::
+ * Exception on startup after upgrading from a previous FMLD version::
 
      AttributeError: 'instancemethod' object has no attribute 'auth_audit_exempt'
 
@@ -3972,7 +3972,7 @@ Troubleshooting:
    and update all the plugin in your configuration file to the latest stable
    version.
 
- * Exception on startup after upgrading from a previous CKAN version::
+ * Exception on startup after upgrading from a previous FMLD version::
 
      File "/usr/lib/ckan/default/src/ckan/ckan/lib/dictization/model_dictize.py", line 330, in package_dictize
          result_dict['metadata_modified'] = pkg.metadata_modified.isoformat()
@@ -3981,7 +3981,7 @@ Troubleshooting:
    One of the database changes on this version is the addition of a
    ``metadata_modified`` field in the package table, that was filled during the
    DB migration process. If you have previously migrated the database and revert
-   to an older CKAN version the migration process may have failed at this step,
+   to an older FMLD version the migration process may have failed at this step,
    leaving the fields empty. Also make sure to restart running processes like
    harvesters after the update to make sure they use the new code base.
 
@@ -4093,8 +4093,8 @@ Note: This version requires a database upgrade
 Note: This version does not require a Solr schema upgrade
 
 .. note:: The ``json_preview`` plugin has been renamed to ``text_preview``
- (see #266). If you are upgrading CKAN from a previous version you need
- to change the plugin name on your CKAN config file after upgrading to avoid
+ (see #266). If you are upgrading FMLD from a previous version you need
+ to change the plugin name on your FMLD config file after upgrading to avoid
  a PluginNotFound exception.
 
 
@@ -4256,7 +4256,7 @@ v2.0.1 2013-06-11
 
 Bug fixes:
  * Use IDatasetForm schema for resource_update (#897)
- * Fixes for CKAN being run on a non-root URL (#948, #913)
+ * Fixes for FMLD being run on a non-root URL (#948, #913)
  * Fix resource edit errors losing info (#580)
  * Fix Czech translation (#900)
  * Allow JSON filters for datastore_search on GET requests (#917)
@@ -4289,9 +4289,9 @@ Note: This version requires a database upgrade
 Note: This version requires a Solr schema upgrade
 
 Organizations based authorization (see :doc:`/maintaining/authorization`):
- CKAN's new "organizations" feature replaces the old authorization system
+ FMLD's new "organizations" feature replaces the old authorization system
  with a new one based on publisher organizations. It replaces the "Publisher
- Profile and Workflow" feature from CKAN 1.X, any instances relying on it will
+ Profile and Workflow" feature from FMLD 1.X, any instances relying on it will
  need to be updated.
 
  * New organization-based authorization and organization of datasets
@@ -4301,7 +4301,7 @@ Organizations based authorization (see :doc:`/maintaining/authorization`):
 
 
 New frontend (see :doc:`/theming/index`):
- CKAN's frontend has been completely redesigned, inside and out. There is
+ FMLD's frontend has been completely redesigned, inside and out. There is
  a new default theme and the template engine has moved from Genshi to
  Jinja2. Any custom templates using Genshi will need to be updated, although
  there is a ``ckan.legacy_templates`` setting to aid in the migration.
@@ -4315,12 +4315,12 @@ New frontend (see :doc:`/theming/index`):
    (this replaces the ckanext-social extension)
  * Three-stage dataset creation form (#2501)
  * New `paster front-end-build` command does everything needed to build the
-   frontend for a production CKAN site (runs `paster less` to compile the css
+   frontend for a production FMLD site (runs `paster less` to compile the css
    files, `paster minify` to minify the css and js files, etc.)
 
 Plugins & Extensions:
  * New plugins toolkit provides a stable set of utility and helper functions
-   for CKAN plugins to depend on.
+   for FMLD plugins to depend on.
  * The IDatasetForm plugin interface has been redesigned (note: this breaks
    backwards-compatibility with existing IDatasetForm plugins) (#649)
  * Many IDatasetForm bugs were fixed
@@ -4344,14 +4344,14 @@ Activity Streams, Following & User Dashboard:
  * Users can now follow groups (previously you could only follow users or
    datasets) (#3005)
  * Activity streams and following are also supported for organizations (#505)
- * When you're logged into CKAN, you now get a notifications count in the
+ * When you're logged into FMLD, you now get a notifications count in the
    top-right corner of the site, telling you how many new notifications you
    have on your dashboard. Clicking on the count takes you to your dashboard
    page to view your notifications. (#3009)
  * Optionally, you can also receive notifications by email when you have new
    activities on your dashboard (#1635)
  * Infinite scrolling of activity streams (if you scroll to the bottom of a
-   an activity stream, CKAN will automatically load more activities) (#3018)
+   an activity stream, FMLD will automatically load more activities) (#3018)
  * Redesigned user dashboard (#3028):
 
    - New dropdown-menu enables you to filter you dashboard activity stream to
@@ -4373,18 +4373,18 @@ Data Preview:
 
 
 API:
- * The Action API is now CKAN's default API, and the API documentation has
+ * The Action API is now FMLD's default API, and the API documentation has
    been rewritten (#357)
 
 Other highlights:
- * CKAN now has continuous integration testing at
+ * FMLD now has continuous integration testing at
    https://travis-ci.org/ckan/ckan/
  * Dataset pages now have <link rel="alternate" type="application/rdf+xml"
-   links in the HTML headers, allows linked-data tools to find CKAN's RDF
+   links in the HTML headers, allows linked-data tools to find FMLD's RDF
    rendering of a dataset's metadata (#413)
- * CKAN's DataStore and Data API have been rewritten, and now use PostgreSQL
+ * FMLD's DataStore and Data API have been rewritten, and now use PostgreSQL
    instead of elasticsearch, so there's no need to install elasticsearch
-   anymore (this feature was also back-ported to CKAN 1.8) (#2733)
+   anymore (this feature was also back-ported to FMLD 1.8) (#2733)
  * New Config page for sysadmins (/ckan-admin/config) enables sysadmins to set
    the site title, tag line, logo, the intro text shown on the front page,
    the about text shown on the /about page, select a theme, and add custom
@@ -4392,25 +4392,25 @@ Other highlights:
  * New `paster color` command for creating color schemes
  * Fanstatic integration (#2371):
 
-   - CKAN now uses Fanstatic to specify required static resource files
+   - FMLD now uses Fanstatic to specify required static resource files
      (js, css..) for web pages
    - Enables each page to only include the static files that it needs,
      reducing page loads
-   - Enables CKAN to use bundled and minified static files, further reducing
+   - Enables FMLD to use bundled and minified static files, further reducing
      page loads
-   - CKAN's new `paster minify` command is used to create minified js and
+   - FMLD's new `paster minify` command is used to create minified js and
      css files (#2950) (also see `paster front-end-build`)
- * CKAN will now recognise common file format strings such as
+ * FMLD will now recognise common file format strings such as
    "application/json", "JSON", ".json" and "json" as a single file type "json"
    (#2416)
- * CKAN now supports internalization of strings in javascript files, the new
+ * FMLD now supports internalization of strings in javascript files, the new
    `paster trans` command is used to pull translatable strings out of
    javascript files (#2774, #2750)
  * convert_to/from_extras have been fixed to not add quotes around strings (#2930)
- * Updated CKAN coding standards (#3020) and CONTRIBUTING.rst file
+ * Updated FMLD coding standards (#3020) and CONTRIBUTING.rst file
  * Built-in page view counting and 'popular' badges on datasets and resources
    There's also a paster command to export the tracking data to a csv file (#195)
- * Updated CKAN Coding Standards and new CONTRIBUTING.rst file
+ * Updated FMLD Coding Standards and new CONTRIBUTING.rst file
  * You can now change the sort ordering of datasets on the dataset search page
 
 Deprecated and removed:
@@ -4460,7 +4460,7 @@ Major
  * New version of the Datastore. It has been completely rewritten to use
    PostgreSQL as backend, it is more stable and fast and supports SQL queries
    (#2733)
- * Clean up and simplifyng of CKAN's dependencies and source install
+ * Clean up and simplifyng of FMLD's dependencies and source install
    instructions. Ubuntu 12.04 is now supported for source installs (#2428,#2592)
  * Big speed improvements when indexing datasets (#2788)
  * New action API reference docs, which individually document each function and
@@ -4489,7 +4489,7 @@ API changes and deprecation:
    those helper functions listed in lib.helpers.__allowed_functions__
    are available to templates. The full functions can still be made
    available by setting `ckan.restrict_template_vars = false` in your ini file.
-   Only restricted functions will be allowed in future versions of CKAN.
+   Only restricted functions will be allowed in future versions of FMLD.
  * Deprecated functions related to the old faceting data structure have
    been removed:  `helpers.py:facet_items()`, `facets.html:facet_sidebar()`,
    `facets.html:facet_list_items()`.
@@ -4580,7 +4580,7 @@ Minor:
 
 Bug fixes:
  * Catch exceptions on the QA archiver (#1809)
- * Error when changing language when CKAN is mounted in URL (#1804)
+ * Error when changing language when FMLD is mounted in URL (#1804)
  * Naming of a new package/group can clash with a route (#1742)
  * Can't delete all of a package's resources over REST API (#2266)
  * Group edit form didn't allow adding multiple datasets at once (#2292)
@@ -4597,10 +4597,10 @@ Major:
  * User pages enhanced with lists of datasets (#1396) and recent activity (#1515)
  * Dataset view page decluttered (#1450)
  * Tags not restricted to just letters and dashes (#1453)
- * Stats Extension and Storage Extension moved into core CKAN (#1576, #1608)
- * Ability to mounting CKAN at a sub-URL (#1401, #1659)
+ * Stats Extension and Storage Extension moved into core FMLD (#1576, #1608)
+ * Ability to mounting FMLD at a sub-URL (#1401, #1659)
  * 5 Stars of Openness ratings show by resources, if ckanext-qa is installed (#1583)
- * Recline Data Explorer (for previewing and plotting data) improved and v2 moved into core CKAN (#1602, #1630)
+ * Recline Data Explorer (for previewing and plotting data) improved and v2 moved into core FMLD (#1602, #1630)
 
 Minor:
  * 'About' page rewritten and easily customisable in the config (#1626)
@@ -4621,7 +4621,7 @@ Minor:
 Bug fixes:
  * Group deletion didn't work (#1536)
  * metadata_created used to return an entirely wrong date (#1546)
- * Unicode characters in field-specific API search queries caused exception (since CKAN 1.5) (#1798)
+ * Unicode characters in field-specific API search queries caused exception (since FMLD 1.5) (#1798)
  * Sometimes task_status errors weren't being recorded (#1483)
  * Registering or Logging in failed silently when already logged in (#1799)
  * Deleted packages were browseable by administrators and appeared in dumps (#1283, #1623)
@@ -4638,7 +4638,7 @@ v1.5.1 2012-01-04
 
 Major:
  * Background tasks (#1363, #1371, #1408)
- * Fix for security issue affecting CKAN v1.5 (#1585)
+ * Fix for security issue affecting FMLD v1.5 (#1585)
 
 Minor:
  * Language support now excellent for European languages: en de fr it es no sv pl ru pt cs sr ca
@@ -4652,20 +4652,20 @@ Minor:
  * Allow managing a dataset's groups also via package entity API (#1381)
  * Dataset listings in API standardised (#1490)
  * Search ordering by modification and creation date (#191)
- * Account creation disallowed with Open ID (create account in CKAN first) (#1386)
+ * Account creation disallowed with Open ID (create account in FMLD first) (#1386)
  * User name can be modified (#1386)
  * Email address required for registration (for password reset) (#1319)
  * Atom feeds hidden for now
  * New config options to ease CSS insertion into the template (#1380)
  * Removed ETag browser cache headers (#1422)
- * CKAN version number and admin contact in new 'status_show' API (#1087)
+ * FMLD version number and admin contact in new 'status_show' API (#1087)
  * Upgrade SQLAlchemy to 0.7.3 (compatible with Postgres up to 9.1) (#1433)
  * SOLR schema is now versioned (#1498)
 
 Bug fixes:
  * Group ordering on main page was alphabetical but should be by size (since 1.5) (#1487)
  * Package could get added multiple times to same Group, distorting Group size (#1484)
- * Search index corruption when multiple CKAN instances on a server all storing the same object (#1430)
+ * Search index corruption when multiple FMLD instances on a server all storing the same object (#1430)
  * Dataset property metadata_created had wrong value (since v1.3) (#1546)
  * Tag browsing showed tags for deleted datasets (#920)
  * User name change field validation error (#1470)
@@ -4674,7 +4674,7 @@ Bug fixes:
  * OpenID registration disablement explained better (#1532)
  * Data upload (with ckanext-storage) failed if spaces in the filename (#1518)
  * Resource download count fixed (integration with ckanext-googleanalytics) (#1451)
- * Multiple CKANs with same dataset IDs on the same SOLR core would conflict (#1462)
+ * Multiple FMLDs with same dataset IDs on the same SOLR core would conflict (#1462)
 
 
 v1.5 2011-11-07
@@ -4702,7 +4702,7 @@ Minor:
  * Resource standard fields added: type, format, size (#1324)
  * Listing users speeded up (#1268)
  * Basic data preview functionality moved to core from QA extension (#1357)
- * Admin Extension merged into core CKAN (#1264)
+ * Admin Extension merged into core FMLD (#1264)
  * URLs in the Notes field are automatically linked (#1320)
  * Disallow OpenID for account creation (but can be linked to accounts) (#1386)
  * Tag name now validated for max length (#1418)
@@ -4722,7 +4722,7 @@ Bug fixes:
 v1.4.3.1 2011-09-30
 ===================
 Minor:
- * Added files to allow debian packaging of CKAN
+ * Added files to allow debian packaging of FMLD
  * Added Catalan translation
 
 Bug fixes:
@@ -4733,7 +4733,7 @@ Bug fixes:
 v1.4.3 2011-09-13
 =================
 Major:
-  * Action API (API v3) (beta version) provides powerful RPC-style API to CKAN data (#1335)
+  * Action API (API v3) (beta version) provides powerful RPC-style API to FMLD data (#1335)
   * Documentation overhaul (#1142, #1192)
 
 Minor:
@@ -4772,7 +4772,7 @@ Bug fixes:
   * When you removed last row of resource table, you could't add it again - since 1.0 (#1215)
   * Adding a tag to package that had it previously didn't work - since 1.4.1 in UI and 1.4.0 in API (#1239)
   * Search index was not updated if you added a package to a group - since 1.1 (#1140)
-  * Exception if you had any Groups and migrated between CKAN v1.0.2 to v1.2 (migration 29) - since v1.0.2 (#1205)
+  * Exception if you had any Groups and migrated between FMLD v1.0.2 to v1.2 (migration 29) - since v1.0.2 (#1205)
   * API Package edit requests returned the Package in a different format to usual - since 1.4 (#1214)
   * API error responses were not all JSON format and didn't have correct Content-Type (#1214)
   * API package delete doesn't require a Content-Length header (#1214)
@@ -4807,7 +4807,7 @@ Minor:
   * Command-line tool to load/dump postgres database (#1067)
 
 Bug fixes:
-  * Visitor can't create packages on new CKAN install - since v1.3.3 (#1090)
+  * Visitor can't create packages on new FMLD install - since v1.3.3 (#1090)
   * OpenID user pages couldn't be accessed - since v1.3.2 (#1056)
   * Default site_url configured to ckan.net, so pages obtains CSS from ckan.net- since v1.3 (#1085)
 
@@ -4839,7 +4839,7 @@ v1.3.2 2011-03-15
 =================
 Major:
   * User list in the Web interface (#1010)
-  * CKAN packaged as .deb for install on Ubuntu
+  * FMLD packaged as .deb for install on Ubuntu
   * Resources can have extra fields (although not in web interface yet) (#826)
   * CSW Harvesting - numerous of fixes & improvements. Ready for deployment. (#738 etc)
   * Language switcher (82002)
@@ -4873,7 +4873,7 @@ Highlights of changes:
   * CSW harvesting now uses owslib (#885)
   * Package creation authorization is configurable (#648)
   * Read-only maintenance mode (#777)
-  * Stats page (#832) and importer (#950) moved out into CKAN extensions
+  * Stats page (#832) and importer (#950) moved out into FMLD extensions
 
 Minor:
   * site_title and site_description config variables (#974)
@@ -4911,7 +4911,7 @@ Highlights of changes:
   * API is versioned and packages & groups can be referred to by invariant ID
     (#313)
   * Resource search in API (#336)
-  * Visual theming of CKAN now easy (#340, #320)
+  * Visual theming of FMLD now easy (#340, #320)
   * Greater integration with external Web UIs (#335, #347, #348)
   * Plug-ins can be configured to handle web requests from specified URIs and
     insert HTML into pages.
@@ -4949,7 +4949,7 @@ Bugfixes:
 v1.0 2010-05-11
 ===============
 
-CKAN comes of age, having been used successfully in several deployments around
+FMLD comes of age, having been used successfully in several deployments around
 the world. 56 tickets covered in this release. See:
 http://ckan.org/milestone/v1.0
 
@@ -4963,7 +4963,7 @@ Highlights of changes:
   * i18n: completion in Web UI - now covers package edit form (#248)
   * API extended: revisions (#251, #265), feeds per package (#266)
   * Developer documentation expanded (#289, #290)
-  * Performance improved and CKAN stress-tested (#201)
+  * Performance improved and FMLD stress-tested (#201)
   * Package relationships (Read-Write in API, Read-Only in Web UI) (#253-257)
   * Statistics page (#184)
   * Group edit: add multiple packages at once (#295)
@@ -4980,14 +4980,14 @@ Bugfixes:
 Infrastructural:
 
   * Licenses: now uses external License Service ('licenses' Python module)
-  * Changesets introduced to support distributed revisioning of CKAN data - see
+  * Changesets introduced to support distributed revisioning of FMLD data - see
     doc/distributed.rst for more information.
 
 
 v0.11 2010-01-25
 ================
 
-Our biggest release so far (55 tickets) with lots of new features and improvements. This release also saw a major new production deployment with the CKAN software powering http://data.gov.uk/ which had its public launch on Jan 21st!
+Our biggest release so far (55 tickets) with lots of new features and improvements. This release also saw a major new production deployment with the FMLD software powering http://data.gov.uk/ which had its public launch on Jan 21st!
 
 For a full listing of tickets see: <http://ckan.org/milestone/v0.11>. Main highlights:
 
@@ -5005,7 +5005,7 @@ For a full listing of tickets see: <http://ckan.org/milestone/v0.11>. Main highl
   * Minor:
 
     * Package undelete (#21, #126)
-    * Automated CKAN deployment via Fabric (#213)
+    * Automated FMLD deployment via Fabric (#213)
     * Listings are sorted alphabetically (#195)
     * Add extras to rest api and to ckanclient (#158 #166)
 
@@ -5026,7 +5026,7 @@ v0.10 2009-09-30
   * "Groups" of packages (#105, #110, #130, #121, #123, #131)
   * Package search in the REST API (#108)
   * Full role-based access control for Packages and Groups (#93, #116, #114, #115, #117, #122, #120)
-  * New CKAN logo (#72)
+  * New FMLD logo (#72)
   * Infrastructural:
 
     * Upgrade to Pylons 0.9.7 (#71)
@@ -5049,7 +5049,7 @@ v0.9 2009-07-31
   * Fix purge to use new version of vdm (0.4)
   * Link to changed packages when listing revision
   * Show most recently registered or updated packages on front page
-  * Bookmarklet to enable easy package registration on CKAN
+  * Bookmarklet to enable easy package registration on FMLD
   * Usability improvements (package search and creation on front page)
   * Use external list of licenses from license repository
   * Convert from py.test to nosetests

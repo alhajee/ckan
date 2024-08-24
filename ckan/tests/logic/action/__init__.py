@@ -13,7 +13,7 @@ functions.
 
 One thing :func:`~ckan.tests.helpers.call_action` does is to add
 ``ignore_auth: True`` into the ``context`` dict that's passed to the action
-function, so that CKAN will not call the action function's authorization
+function, so that FMLD will not call the action function's authorization
 function.  The tests for an action function *don't* need to cover
 authorization, because the authorization functions have their own tests in
 :mod:`ckan.tests.logic.auth`. But action function tests *do* need to cover

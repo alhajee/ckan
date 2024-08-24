@@ -1,23 +1,23 @@
 =========================================================
-Upgrading a CKAN 2 package install to a new patch release
+Upgrading a FMLD 2 package install to a new patch release
 =========================================================
 
 .. note::
 
-   Before upgrading CKAN you should check the compatibility of any custom
+   Before upgrading FMLD you should check the compatibility of any custom
    themes or extensions you're using, check the changelog, and backup your
    database. See :ref:`upgrading`.
 
 :ref:`Patch releases <releases>` are distributed in the same package as the
-minor release they belong to, so for example CKAN ``2.0``, ``2.0.1``,
-``2.0.2``, etc.  will all be installed using the CKAN ``2.0`` package
+minor release they belong to, so for example FMLD ``2.0``, ``2.0.1``,
+``2.0.2``, etc.  will all be installed using the FMLD ``2.0`` package
 (``python-ckan_2.0_amd64.deb``):
 
-#. Download the CKAN package::
+#. Download the FMLD package::
 
     wget https://packaging.ckan.org/python-ckan_2.0_amd64.deb
 
-   You can check the actual CKAN version from a package running the following
+   You can check the actual FMLD version from a package running the following
    command::
 
     dpkg --info python-ckan_2.0_amd64.deb
@@ -33,7 +33,7 @@ minor release they belong to, so for example CKAN ``2.0``, ``2.0.1``,
 
     sudo dpkg -i python-ckan_2.0_amd64.deb
 
-   Your CKAN instance should be upgraded straight away.
+   Your FMLD instance should be upgraded straight away.
 
    .. note::
 
@@ -54,12 +54,12 @@ minor release they belong to, so for example CKAN ``2.0``, ``2.0.1``,
         The default action is to keep your current version.
        *** ckan_default (Y/I/N/O/D/Z) [default=N] ?
 
-      Your local CKAN configuration file in |config_dir| will not be replaced.
+      Your local FMLD configuration file in |config_dir| will not be replaced.
 
    .. note::
 
-     The install process will uninstall any existing CKAN extensions or other
-     libraries located in the ``src`` directory of the CKAN virtualenv. To
+     The install process will uninstall any existing FMLD extensions or other
+     libraries located in the ``src`` directory of the FMLD virtualenv. To
      enable them again, the installation process will iterate all folders in
      the ``src`` directory, reinstall the requirements listed in
      ``pip-requirements.txt`` and ``requirements.txt`` files and run
@@ -77,6 +77,6 @@ minor release they belong to, so for example CKAN ``2.0``, ``2.0.1``,
 
 #. You're done!
 
-You should now be able to visit your CKAN website in your web browser and see
-that it's running the new version of CKAN.
+You should now be able to visit your FMLD website in your web browser and see
+that it's running the new version of FMLD.
 

@@ -44,7 +44,7 @@ def get_proxified_resource_url(
 
 @p.toolkit.blanket.config_declarations
 class ResourceProxy(p.SingletonPlugin):
-    """A proxy for CKAN resources to get around the same
+    """A proxy for FMLD resources to get around the same
     origin policy for previews
     """
     p.implements(p.ITemplateHelpers, inherit=True)

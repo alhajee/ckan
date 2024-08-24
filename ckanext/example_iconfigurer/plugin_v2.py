@@ -3,7 +3,7 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from ckan.types import Schema
-from ckan.common import CKANConfig
+from ckan.common import FMLDConfig
 
 
 class ExampleIConfigurerPlugin(plugins.SingletonPlugin):
@@ -12,7 +12,7 @@ class ExampleIConfigurerPlugin(plugins.SingletonPlugin):
 
     # IConfigurer
 
-    def update_config(self, config: CKANConfig):
+    def update_config(self, config: FMLDConfig):
         # Add extension templates directory
         toolkit.add_template_directory(config, 'templates')
 
@@ -23,7 +23,7 @@ class ExampleIConfigurerPlugin(plugins.SingletonPlugin):
         is_positive_integer = toolkit.get_validator('is_positive_integer')
 
         schema.update({
-            # This is an existing CKAN core configuration option, we are just
+            # This is an existing FMLD core configuration option, we are just
             # making it available to be editable at runtime
             'ckan.datasets_per_page': [ignore_missing, is_positive_integer],
 

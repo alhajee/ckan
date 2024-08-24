@@ -81,7 +81,7 @@ class CreateTestData(object):
         package.add_tags([ckan.model.Tag('123'), ckan.model.Tag('456'),
                 ckan.model.Tag('789')])
 
-        # Add the above translations to CKAN.
+        # Add the above translations to FMLD.
         for (lang_code, translations) in (('de', german_translations),
                 ('fr', french_translations), ('en', english_translations)):
             for term in terms:

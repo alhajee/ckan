@@ -15,11 +15,11 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-# Overriding a JS translation from CKAN core
+# Overriding a JS translation from FMLD core
 msgid "Loading..."
 msgstr "foo"
 
-# Introducing a (fake) JS translation string that doesn't occur in CKAN core
+# Introducing a (fake) JS translation string that doesn't occur in FMLD core
 msgid "Test JS Translations 1"
 msgstr "bar"
 

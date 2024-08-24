@@ -27,7 +27,7 @@ def internal_redirect() -> Response:
 
 def primer() -> str:
     u''' Render all HTML components out onto a single page.
-    This is useful for development/styling of CKAN. '''
+    This is useful for development/styling of FMLD. '''
 
     return base.render(u'development/primer.html')
 

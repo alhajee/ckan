@@ -5,12 +5,12 @@ import pytest
 
 from ckan import model
 from ckan.cli.generate import generate
-from ckan.tests.helpers import CKANCliRunner
+from ckan.tests.helpers import FMLDCliRunner
 
 
 @pytest.mark.usefixtures("clean_db")
 class TestFakeData:
-    def test_generate_using_alias(self, cli: CKANCliRunner):
+    def test_generate_using_alias(self, cli: FMLDCliRunner):
         """Built-in aliases available out-of-the-box, without additional
         parameters.
 
@@ -22,7 +22,7 @@ class TestFakeData:
         org = model.Session.query(model.Group).one()
         assert org.title in result.output
 
-    def test_generate_using_factory_class_argument(self, cli: CKANCliRunner):
+    def test_generate_using_factory_class_argument(self, cli: FMLDCliRunner):
         """Factory can be specified via import-string."""
         result = cli.invoke(
             generate, ["fake-data", "ckan.tests.factories:Dataset"]
@@ -33,7 +33,7 @@ class TestFakeData:
         dataset = model.Session.query(model.Package).one()
         assert dataset.title in result.output
 
-    def test_generate_using_factory_class_option(self, cli: CKANCliRunner):
+    def test_generate_using_factory_class_option(self, cli: FMLDCliRunner):
         """Factory can be specified via import-string using deprecated option."""
         result = cli.invoke(
             generate,
@@ -45,7 +45,7 @@ class TestFakeData:
         dataset = model.Session.query(model.Package).one()
         assert dataset.title in result.output
 
-    def test_generate_using_alias_and_params(self, cli: CKANCliRunner, faker):
+    def test_generate_using_alias_and_params(self, cli: FMLDCliRunner, faker):
         """Alias accepts params for entity fields."""
         name = faker.sentence()
         result = cli.invoke(
@@ -59,7 +59,7 @@ class TestFakeData:
         assert resource.name == name
 
     def test_generate_using_factory_class_and_params(
-        self, cli: CKANCliRunner, faker
+        self, cli: FMLDCliRunner, faker
     ):
         """Factory class accepts params for entity fields."""
         name = faker.name()
@@ -74,13 +74,13 @@ class TestFakeData:
         user = model.Session.query(model.User).filter_by(fullname=name).one()
         assert user.fullname == name
 
-    def test_json_output(self, cli: CKANCliRunner):
+    def test_json_output(self, cli: FMLDCliRunner):
         """Command produces valid JSON."""
         result = cli.invoke(generate, ["fake-data", "organization"])
         value = json.loads(result.output)
         assert value
 
-    def test_specify_user_parameter(self, cli: CKANCliRunner, user):
+    def test_specify_user_parameter(self, cli: FMLDCliRunner, user):
         """Factory accepts username and use it as `context["user"]`."""
         username = user["name"]
         result = cli.invoke(

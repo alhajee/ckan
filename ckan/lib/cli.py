@@ -24,7 +24,7 @@ import ckan.lib.maintain as maintain
 _cli_test_request_context: Any = None
 
 
-# NB No CKAN imports are allowed until after the config file is loaded.
+# NB No FMLD imports are allowed until after the config file is loaded.
 #    i.e. do the imports in methods, after _load_config is called.
 #    Otherwise loggers get disabled.
 
@@ -190,7 +190,7 @@ class CkanCommand(paste.script.command.Command):  # type: ignore
     '''DEPRECATED - Instead use ckan.cli.cli.CkanCommand or extensions
     should use IClick.
 
-    Base class for classes that implement CKAN paster commands to
+    Base class for classes that implement FMLD paster commands to
     inherit.'''
     parser = paste.script.command.Command.standard_parser(verbose=True)
     parser.add_option('-c', '--config', dest='config',

@@ -73,8 +73,8 @@ class TestDatasetTermTranslation:
                     offset,
                     status=200,
                     environ_overrides={
-                        "CKAN_LANG": lang_code,
-                        "CKAN_CURRENT_URL": offset,
+                        "FMLD_LANG": lang_code,
+                        "FMLD_CURRENT_URL": offset,
                     },
                 )
                 terms = "A Novel By Tolstoy"

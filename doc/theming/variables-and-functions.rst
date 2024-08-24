@@ -4,7 +4,7 @@
 Variables and functions available to templates
 ==============================================
 
-The following global variables and functions are available to all CKAN
+The following global variables and functions are available to all FMLD
 templates in their top-level namespace:
 
 .. note::
@@ -19,7 +19,7 @@ templates in their top-level namespace:
      attributes of :py:data:`c`.
 
      To see which additional global variables and context attributes are
-     available to a given template, use CKAN's
+     available to a given template, use FMLD's
      :ref:`debug footer <debug footer>`.
 
    * Any variables explicitly passed into a template snippet in the calling
@@ -40,7 +40,7 @@ templates in their top-level namespace:
 
    ``tmpl_context`` is usually abbreviated to ``c`` (an alias).
 
-   Using ``c`` in CKAN is discouraged, use template helper functions instead.
+   Using ``c`` in FMLD is discouraged, use template helper functions instead.
    See :ref:`don't use c`.
 
    ``c`` is not available to snippets.
@@ -63,7 +63,7 @@ templates in their top-level namespace:
 
 .. py:data:: h
 
-   CKAN's :ref:`template helper functions <template helper functions>`, plus
+   FMLD's :ref:`template helper functions <template helper functions>`, plus
    any
    :ref:`custom template helper functions <custom template helper functions>`
    provided by any extensions.

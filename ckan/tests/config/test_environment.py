@@ -9,17 +9,17 @@ from ckan.config import environment
 from ckan.exceptions import CkanConfigurationException
 
 ENV_VAR_LIST = [
-    (u"CKAN_SQLALCHEMY_URL", u"postgresql://mynewsqlurl/"),
-    (u"CKAN_DATASTORE_WRITE_URL", u"http://mynewdbwriteurl/"),
-    (u"CKAN_DATASTORE_READ_URL", u"http://mynewdbreadurl/"),
-    (u"CKAN_SOLR_URL", u"http://mynewsolrurl/solr"),
-    (u"CKAN_SITE_ID", u"my-site"),
-    (u"CKAN_SMTP_SERVER", u"mail.example.com"),
-    (u"CKAN_SMTP_STARTTLS", u"True"),
-    (u"CKAN_SMTP_USER", u"my_user"),
-    (u"CKAN_SMTP_PASSWORD", u"password"),
-    (u"CKAN_SMTP_MAIL_FROM", u"server@example.com"),
-    (u"CKAN_MAX_UPLOAD_SIZE_MB", u"50"),
+    (u"FMLD_SQLALCHEMY_URL", u"postgresql://mynewsqlurl/"),
+    (u"FMLD_DATASTORE_WRITE_URL", u"http://mynewdbwriteurl/"),
+    (u"FMLD_DATASTORE_READ_URL", u"http://mynewdbreadurl/"),
+    (u"FMLD_SOLR_URL", u"http://mynewsolrurl/solr"),
+    (u"FMLD_SITE_ID", u"my-site"),
+    (u"FMLD_SMTP_SERVER", u"mail.example.com"),
+    (u"FMLD_SMTP_STARTTLS", u"True"),
+    (u"FMLD_SMTP_USER", u"my_user"),
+    (u"FMLD_SMTP_PASSWORD", u"password"),
+    (u"FMLD_SMTP_MAIL_FROM", u"server@example.com"),
+    (u"FMLD_MAX_UPLOAD_SIZE_MB", u"50"),
 ]
 
 
@@ -104,7 +104,7 @@ def test_config_from_envs_are_normalized(ckan_config):
         config file and extensions
         but those settings are not normalized """
 
-    os.environ['CKAN_SMTP_STARTTLS'] = 'false'
+    os.environ['FMLD_SMTP_STARTTLS'] = 'false'
     environment.update_config()
 
     assert ckan_config["smtp.starttls"] is False

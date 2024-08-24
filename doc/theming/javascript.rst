@@ -1,18 +1,18 @@
 .. _javascript_modules:
 
 =============================
-Customizing CKAN's JavaScript
+Customizing FMLD's JavaScript
 =============================
 
-JavaScript code in CKAN is broken down into *modules*: small, independent units
-of JavaScript code. CKAN themes can add JavaScript features by providing their
-own modules. This tutorial will explain the main concepts involved in CKAN
+JavaScript code in FMLD is broken down into *modules*: small, independent units
+of JavaScript code. FMLD themes can add JavaScript features by providing their
+own modules. This tutorial will explain the main concepts involved in FMLD
 JavaScript modules and walk you through the process of adding custom modules
 to themes.
 
 .. seealso::
 
-   This tutorial assumes a basic understanding of CKAN plugins and templating,
+   This tutorial assumes a basic understanding of FMLD plugins and templating,
    see:
 
    * :doc:`/extensions/index`
@@ -40,9 +40,9 @@ to themes.
 Overview
 --------
 
-The idea behind CKAN's JavaScript modules is to keep the code simple and
+The idea behind FMLD's JavaScript modules is to keep the code simple and
 easy to test, debug and maintain, by breaking it down into small,
-independent modules. JavaScript modules in CKAN don't share global
+independent modules. JavaScript modules in FMLD don't share global
 variables, and don't call each other's code.
 
 These JavaScript modules are attached to HTML elements in the page, and enhance
@@ -54,7 +54,7 @@ but the functionality should still be there. This is a programming technique
 known as *graceful degradation*, and is a basic tenet of web accessibility.
 
 In the sections below, we'll walk you through the steps to add a new JavaScript
-feature to CKAN - dataset info popovers. We'll add an info button to each
+feature to FMLD - dataset info popovers. We'll add an info button to each
 dataset on the datasets page which, when clicked, opens a popover containing
 some extra information and user actions related to the dataset:
 
@@ -66,9 +66,9 @@ some extra information and user actions related to the dataset:
 Initializing a JavaScript module
 --------------------------------
 
-To get CKAN to call some custom JavaScript code, we need to:
+To get FMLD to call some custom JavaScript code, we need to:
 
-1. Implement a |javascript| module, and register it with CKAN.
+1. Implement a |javascript| module, and register it with FMLD.
    Create the file ``ckanext-example_theme/ckanext/example_theme_docs/assets/example_theme_popover.js``, with these
    contents:
 
@@ -76,12 +76,12 @@ To get CKAN to call some custom JavaScript code, we need to:
       :language: javascript
 
    This bit of |javascript| calls the ``ckan.module()`` function to register a
-   new JavaScript module with CKAN. ``ckan.module()`` takes two arguments: the
+   new JavaScript module with FMLD. ``ckan.module()`` takes two arguments: the
    name of the module being registered (``'example_theme_popover'`` in this
    example) and a function that returns the module itself. The function takes
    two arguments, which we'll look at later. The module is just a |javascript|
    object with a single attribute, ``initialize``, whose value is a function
-   that CKAN will call to initialize the module. In this example, the
+   that FMLD will call to initialize the module. In this example, the
    initialize function just prints out a confirmation message - this
    |javascript| module doesn't do anything interesting yet.
 
@@ -96,7 +96,7 @@ To get CKAN to call some custom JavaScript code, we need to:
       `DOM ready <http://api.jquery.com/ready/>`_.
 
 2. Include the |javascript| module in a page, using Assets, and apply it to
-   one or more HTML elements on that page. We'll override CKAN's
+   one or more HTML elements on that page. We'll override FMLD's
    ``package_item.html`` template snippet to insert our module whenever a
    package is rendered as part of a list of packages (for example, on the
    dataset search page). Create the file
@@ -131,7 +131,7 @@ To get CKAN to call some custom JavaScript code, we need to:
    message printed once for each dataset. The ``package_item.html`` template
    snippet is rendered once for each dataset that's shown in the list, so your
    ``<button>`` element with the ``data-module="example_theme_popover"``
-   attribute is rendered once for each dataset, and CKAN creates a new instance
+   attribute is rendered once for each dataset, and FMLD creates a new instance
    of your |javascript| module for each of these ``<button>`` elements.  If you
    view the source of your page, however, you'll see that
    ``example_theme_popover.js`` is only included with a ``<script>`` tag once.
@@ -162,13 +162,13 @@ this:
 This adds some ``data-module-*`` attributes to our ``<button>`` element, e.g.
 ``data-module-title="{{ package.title }}"`` (``{{ package.title }}`` is a
 :ref:`Jinja2 expression <expressions and variables>` that evaluates to the
-title of the dataset, CKAN passes the Jinja2 variable ``package`` to our
+title of the dataset, FMLD passes the Jinja2 variable ``package`` to our
 template).
 
 .. warning::
 
    Although HTML 5 treats any attribute named ``data-*`` as a data attribute,
-   only attributes named ``data-module-*`` will be passed as options to a CKAN
+   only attributes named ``data-module-*`` will be passed as options to a FMLD
    |javascript| module. So we have to named our parameters
    ``data-module-title`` etc., not just ``data-title``.
 
@@ -227,13 +227,13 @@ instead. For example...
 .. _ajax:
 
 ----------------------------------------------------
-Ajax, event handling and CKAN's |javascript| sandbox
+Ajax, event handling and FMLD's |javascript| sandbox
 ----------------------------------------------------
 
 So far, we've used simple |javascript| string formatting to put together the
 contents of our popover. If we want the popover to contain much more complex
 HTML we really need to render a template for it, using the full power of
-:doc:`Jinja2 templates <templates>` and CKAN's
+:doc:`Jinja2 templates <templates>` and FMLD's
 :ref:`template helper functions <template helper functions>`. Let's edit our
 plugin to use a Jinja2 template to render the contents of the popups nicely.
 
@@ -264,15 +264,15 @@ and put these contents in it:
 
 This is a Jinja2 template that renders some nice looking contents for a
 popover, containing a few bits of information about a dataset. It uses a number
-of CKAN's Jinja2 templating features, including marking user-visible strings
+of FMLD's Jinja2 templating features, including marking user-visible strings
 for translation and calling template helper functions. See :doc:`templates`
-for details about Jinja2 templating in CKAN.
+for details about Jinja2 templating in FMLD.
 
 .. note::
 
    The new template file has to be in a ``templates/ajax_snippets/`` directory
    so that we can use the template from our |javascript| code using
-   CKAN's :js:func:`~this.sandbox.client.getTemplate` function. Only templates
+   FMLD's :js:func:`~this.sandbox.client.getTemplate` function. Only templates
    from ``ajax_snippets`` directories are available from the
    :js:func:`~this.sandbox.client.getTemplate` function.
 
@@ -285,20 +285,20 @@ There's a lot going on in this new |javascript| code, including:
 * Using `jQuery's event handling API <http://api.jquery.com/category/events/>`_
   to get our functions to be called when the user clicks on a button.
 
-* Using a function from CKAN's :doc:`JavaScript sandbox <javascript-sandbox>`.
+* Using a function from FMLD's :doc:`JavaScript sandbox <javascript-sandbox>`.
 
   The sandbox is a |javascript| object, available to all |javascript| modules
   as ``this.sandbox``, that contains a collection of useful functions and
   variables.
 
-  :js:data:`this.sandbox.client` is a CKAN API client written in |javascript|, that
-  should be used whenever a |javascript| module needs to talk to the CKAN API,
+  :js:data:`this.sandbox.client` is a FMLD API client written in |javascript|, that
+  should be used whenever a |javascript| module needs to talk to the FMLD API,
   instead of modules doing their own HTTP requests.
 
   :js:func:`this.sandbox.client.getTemplate` is a function that sends an
   asynchronous (ajax) HTTP request (i.e. send an HTTP request from
   |javascript| and receive the response in |javascript|, without causing
-  the browser to reload the whole page) to CKAN asking for a template snippet
+  the browser to reload the whole page) to FMLD asking for a template snippet
   to be rendered.
 
 Hopefully the liberal commenting in the code below makes it clear enough what's
@@ -315,14 +315,14 @@ include a custom CSS file. Now we need to create that file,
 .. literalinclude:: /../ckanext/example_theme_docs/v18_snippet_api/assets/example_theme_popover.css
    :language: css
 
-Restart CKAN, and your dataset popovers should be looking much better.
+Restart FMLD, and your dataset popovers should be looking much better.
 
 
 --------------
 Error handling
 --------------
 
-What if our JavaScript makes an Ajax request to CKAN, such as our
+What if our JavaScript makes an Ajax request to FMLD, such as our
 :js:func:`~this.sandbox.client.getTemplate` call above, and gets an error in
 response? We can simulate this by changing the name of the requested template
 file to one that doesn't exist:
@@ -335,12 +335,12 @@ file to one that doesn't exist:
 If you reload the datasets page after making this change, you'll see that when
 you click on a popover its contents remain *Loading...*. If you have a
 development console open in your browser, you'll see the error response from
-CKAN each time you click to open a popover.
+FMLD each time you click to open a popover.
 
 Our JavaScript module's ``_onReceiveSnippet()`` function is only called if the
-request gets a successful response from CKAN.
+request gets a successful response from FMLD.
 :js:func:`~this.sandbox.client.getTemplate` also accepts a second callback
-function parameter that will be called when CKAN sends an error response.
+function parameter that will be called when FMLD sends an error response.
 Add this parameter to the :js:func:`~this.sandbox.client.getTemplate` call:
 
 .. literalinclude:: /../ckanext/example_theme_docs/v19_02_error_handling/assets/example_theme_popover.js
@@ -352,12 +352,12 @@ Now add the new error function to the JavaScript module:
 
 .. literalinclude:: /../ckanext/example_theme_docs/v19_02_error_handling/assets/example_theme_popover.js
    :language: javascript
-   :start-after: // This function is called when CKAN responds with an error.
+   :start-after: // This function is called when FMLD responds with an error.
    :end-before: // End of _onReceiveSnippetError
 
-After making these changes, you should see that if CKAN responds with an
+After making these changes, you should see that if FMLD responds with an
 error, the contents of the popover are replaced with the error message from
-CKAN.
+FMLD.
 
 
 .. _pubsub:
@@ -375,7 +375,7 @@ info buttons on the page, popovers for all of them will be shown at once:
 .. image:: /images/example_theme_overlapping_popovers.png
    :alt: Dataset info popovers overlapping with eachother
 
-To make one popover disappear when another appears, we can use CKAN's
+To make one popover disappear when another appears, we can use FMLD's
 :js:func:`~this.sandbox.client.publish` and
 :js:func:`~this.sandbox.client.subscribe` functions. These pair of functions
 allow different instances of a JavaScript module (or instances of different
@@ -401,7 +401,7 @@ The way it works is:
    :js:func:`~this.sandbox.client.unsubscribe`.
 
    All modules that subscribe to events should have a ``teardown()`` function
-   that unsubscribes from the event, to prevent memory leaks. CKAN calls the
+   that unsubscribes from the event, to prevent memory leaks. FMLD calls the
    ``teardown()`` functions of modules when those modules are removed from the
    page. See :ref:`pubsub unsubscribe best practice`.
 
@@ -411,7 +411,7 @@ The way it works is:
    See :ref:`pubsub overuse best practice`.
 
 Remember that because we attach our ``example_theme_popover.js`` module to a
-``<button>`` element that is rendered once for each dataset on the page, CKAN
+``<button>`` element that is rendered once for each dataset on the page, FMLD
 creates one instance of our module for each dataset. The only way these objects
 can communicate with each other so that one object can hide its popover when
 another object shows its popover, is by using pubsub.
@@ -427,7 +427,7 @@ pubsub to make the dataset popovers disappear whenever a new popover appears:
 jQuery plugins
 --------------
 
-CKAN provides a number of custom jQuery plugins for JavaScript modules to use
+FMLD provides a number of custom jQuery plugins for JavaScript modules to use
 by default, see :doc:`jquery-plugins`.
 Extensions can also add their own jQuery plugins, and the plugins will then be
 available to all JavaScript code via the :js:data:`this.$` object.
@@ -437,17 +437,17 @@ available to all JavaScript code via the :js:data:`this.$` object.
    `How to Create a Basic Plugin <http://learn.jquery.com/plugins/basic-plugin-creation/>`_
      jQuery's own documentation on writing jQuery plugins. Read this for all
      the details on writing jQuery plugins, here we'll only provide a simple
-     example and show you how to integrate it with CKAN.
+     example and show you how to integrate it with FMLD.
 
 It's a good idea to implement any JavaScript functionality not directly related
-to CKAN as a jQuery plugin. That way your CKAN JavaScript modules will be
-smaller as they'll contain only the CKAN-specific code, and your jQuery plugins
-will also be reusable on non-CKAN sites. CKAN core uses jQuery plugins to
+to FMLD as a jQuery plugin. That way your FMLD JavaScript modules will be
+smaller as they'll contain only the FMLD-specific code, and your jQuery plugins
+will also be reusable on non-FMLD sites. FMLD core uses jQuery plugins to
 implement features including date formatting, warning users about unsaved
 changes when leaving a page containing a form without submitting the form,
 restricting the set of characters that can be typed into an input field, etc.
 
-Let's add a jQuery plugin to our CKAN extension that makes our info buttons
+Let's add a jQuery plugin to our FMLD extension that makes our info buttons
 turn green when clicked.
 
 .. todo:: Replace this with a more realistic example.
@@ -498,10 +498,10 @@ attribute to ``green`` and add the CSS class ``greenified`` to the element in
 a single expression by chaining our jQuery method with another method:
 ``$('a').greenify().addClass('greenified');``
 
-Before we can use our ``greenify()`` method in CKAN, we need to import the
-``jquery.greenify.js`` file into the CKAN page. To do this, add a
+Before we can use our ``greenify()`` method in FMLD, we need to import the
+``jquery.greenify.js`` file into the FMLD page. To do this, add a
 ``{% asset %}`` tag to a template file, just as you would do to include any
-other JavaScript or CSS file in CKAN. Edit the ``package_item.html`` file:
+other JavaScript or CSS file in FMLD. Edit the ``package_item.html`` file:
 
 .. literalinclude:: /../ckanext/example_theme_docs/v21_custom_jquery_plugin/templates/snippets/package_item.html
    :language: django

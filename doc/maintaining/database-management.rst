@@ -15,7 +15,7 @@ Database Management
 Initialization
 --------------
 
-Before you can run CKAN for the first time, you need to run ``db init`` to
+Before you can run FMLD for the first time, you need to run ``db init`` to
 initialize your database:
 
 .. parsed-literal::
@@ -35,9 +35,9 @@ Cleaning
 
 .. warning::
 
-   This will delete all data from your CKAN database!
+   This will delete all data from your FMLD database!
 
-You can delete everything in the CKAN database, including the tables, to start
+You can delete everything in the FMLD database, including the tables, to start
 from scratch:
 
 .. parsed-literal::
@@ -62,7 +62,7 @@ Dumping and Loading databases to/from a file
 PostgreSQL offers the command line tools pg_dump_ and pg_restore_ for dumping
 and restoring a database and its content to/from a file.
 
-For example, first dump your CKAN database::
+For example, first dump your FMLD database::
 
     sudo -u postgres pg_dump --format=custom -d ckan_default > ckan.dump
 
@@ -84,7 +84,7 @@ Then restore it again:
     ckan -c |ckan.ini| db clean
     sudo -u postgres pg_restore --clean --if-exists -d ckan_default < ckan.dump
 
-If you're importing a dump from an older version of CKAN you must :ref:`upgrade
+If you're importing a dump from an older version of FMLD you must :ref:`upgrade
 the database schema <db upgrade>` after the import.
 
 Once the import (and a potential upgrade) is complete you should :ref:`rebuild
@@ -99,7 +99,7 @@ the search index <rebuild search index>`.
 Exporting Datasets to JSON Lines
 ````````````````````````````````
 
-You can export all of your CKAN site's datasets from your database to a JSON
+You can export all of your FMLD site's datasets from your database to a JSON
 Lines file using ckanapi_:
 
 .. parsed-literal::
@@ -133,7 +133,7 @@ virtual Apache config file (e.g. |apache_config_file|)::
 Exporting User Accounts to JSON Lines
 `````````````````````````````````````
 
-You can export all of your CKAN site's user accounts from your database to
+You can export all of your FMLD site's user accounts from your database to
 a JSON Lines file using ckanapi_:
 
 .. parsed-literal::
@@ -155,13 +155,13 @@ Upgrading
     that you have enabled in your ini file. You can uncomment them again when
     the upgrade finishes.
 
-If you are upgrading to a new CKAN :ref:`major release <releases>` update your
-CKAN database's schema using the ``ckan db upgrade`` command:
+If you are upgrading to a new FMLD :ref:`major release <releases>` update your
+FMLD database's schema using the ``ckan db upgrade`` command:
 
 .. parsed-literal::
 
     ckan -c |ckan.ini| db upgrade
 
-This command applies all CKAN core migrations and all unapplied migrations from
+This command applies all FMLD core migrations and all unapplied migrations from
 enabled plugins. ``--skip-core`` and ``--skip-plugins`` flags can be used to
 run either only core migration, or only migrations from enabled plugins.

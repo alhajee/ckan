@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from ckan.common import CKANConfig
+from ckan.common import FMLDConfig
 from ckan.config.declaration.load import GroupV1, OptionV1
 import pytest
 
@@ -141,34 +141,34 @@ class TestDeclaration:
         decl = Declaration()
         decl.declare(Key().a, 10)
 
-        cfg = CKANConfig()
+        cfg = FMLDConfig()
         decl.make_safe(cfg)
-        assert cfg == CKANConfig({"a": 10})
+        assert cfg == FMLDConfig({"a": 10})
 
     def test_make_safe_no_overrides(self):
         decl = Declaration()
         decl.declare(Key().a, 10)
 
-        cfg = CKANConfig({"a": 20})
+        cfg = FMLDConfig({"a": 20})
         decl.make_safe(cfg)
-        assert cfg == CKANConfig({"a": 20})
+        assert cfg == FMLDConfig({"a": 20})
 
     def test_normalize_convert_types(self):
         decl = Declaration()
         decl.declare_int(Key().a, "10")
 
-        cfg = CKANConfig()
+        cfg = FMLDConfig()
         decl.normalize(cfg)
         # in non-safe mode default value has no effect
-        assert cfg == CKANConfig()
+        assert cfg == FMLDConfig()
 
         decl.make_safe(cfg)
         decl.normalize(cfg)
-        assert cfg == CKANConfig({"a": 10})
+        assert cfg == FMLDConfig({"a": 10})
 
-        cfg = CKANConfig({"a": "20"})
+        cfg = FMLDConfig({"a": "20"})
         decl.normalize(cfg)
-        assert cfg == CKANConfig({"a": 20})
+        assert cfg == FMLDConfig({"a": 20})
 
     @pytest.mark.parametrize("raw,safe", [
         ({}, {"a": "default"}),
@@ -180,6 +180,6 @@ class TestDeclaration:
         option = decl.declare(Key().a, "default")
         option.legacy_key = "legacy_a"
 
-        cfg = CKANConfig(raw)
+        cfg = FMLDConfig(raw)
         decl.make_safe(cfg)
-        assert cfg == CKANConfig(safe)
+        assert cfg == FMLDConfig(safe)

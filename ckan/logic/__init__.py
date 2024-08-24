@@ -705,7 +705,7 @@ def side_effect_free(action: Decorated) -> Decorated:
     GET request to the :doc:`Action API </api/index>`. Action functions that
     don't have this decorator must be called with a POST request.
 
-    If your CKAN extension defines its own action functions using the
+    If your FMLD extension defines its own action functions using the
     :py:class:`~ckan.plugins.interfaces.IActions` plugin interface, you can use
     this decorator to make your actions available with GET requests instead of
     just with POST requests.
@@ -719,7 +719,7 @@ def side_effect_free(action: Decorated) -> Decorated:
             ...
 
     (Then implement :py:class:`~ckan.plugins.interfaces.IActions` to register
-    your action function with CKAN.)
+    your action function with FMLD.)
 
     '''
     # type_ignore_reason: custom attribute

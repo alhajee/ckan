@@ -13,7 +13,7 @@ class TestMakeChanges:
     def test_edit(self):
         config_lines = """
 [app:main]
-ckan.site_title = CKAN
+ckan.site_title = FMLD
         """.split(
             "\n"
         )
@@ -37,7 +37,7 @@ ckan.site_title = New Title
     def test_new(self):
         config_lines = """
 [app:main]
-ckan.site_title = CKAN
+ckan.site_title = FMLD
         """.split(
             "\n"
         )
@@ -53,7 +53,7 @@ ckan.site_title = CKAN
             == """
 [app:main]
 ckan.option = New stuff
-ckan.site_title = CKAN
+ckan.site_title = FMLD
         """.split(
                 "\n"
             )
@@ -87,7 +87,7 @@ keys = root, ckan, ckanext
     def test_new_section_before_appmain(self):
         config_lines = """
 [app:main]
-ckan.site_title = CKAN
+ckan.site_title = FMLD
 """.split(
             "\n"
         )
@@ -107,7 +107,7 @@ ckan.site_title = CKAN
 keys = root, ckan, ckanext
 
 [app:main]
-ckan.site_title = CKAN
+ckan.site_title = FMLD
 """.split(
                 "\n"
             )
@@ -116,7 +116,7 @@ ckan.site_title = CKAN
     def test_edit_commented_line(self):
         config_lines = """
 [app:main]
-#ckan.site_title = CKAN
+#ckan.site_title = FMLD
         """.split(
             "\n"
         )
@@ -140,7 +140,7 @@ ckan.site_title = New Title
     def test_comment_out_line(self):
         config_lines = """
 [app:main]
-ckan.site_title = CKAN
+ckan.site_title = FMLD
         """.split(
             "\n"
         )
@@ -166,10 +166,10 @@ ckan.site_title = CKAN
     def test_edit_repeated_commented_line(self):
         config_lines = """
 [app:main]
-#ckan.site_title = CKAN1
-ckan.site_title = CKAN2
-ckan.site_title = CKAN3
-#ckan.site_title = CKAN4
+#ckan.site_title = FMLD1
+ckan.site_title = FMLD2
+ckan.site_title = FMLD3
+#ckan.site_title = FMLD4
         """.split(
             "\n"
         )
@@ -185,9 +185,9 @@ ckan.site_title = CKAN3
             == """
 [app:main]
 ckan.site_title = New Title
-#ckan.site_title = CKAN2
-#ckan.site_title = CKAN3
-#ckan.site_title = CKAN4
+#ckan.site_title = FMLD2
+#ckan.site_title = FMLD3
+#ckan.site_title = FMLD4
         """.split(
                 "\n"
             )
@@ -198,7 +198,7 @@ class TestParseConfig:
     def test_parse_basic(self):
         input_lines = """
 [app:main]
-ckan.site_title = CKAN
+ckan.site_title = FMLD
 """.split(
             "\n"
         )
@@ -208,7 +208,7 @@ ckan.site_title = CKAN
         # do string comparison to avoid needing an __eq__method on Option
         assert (
             str(out) == "{"
-            "'app:main-ckan.site_title': <Option [app:main] ckan.site_title = CKAN>"
+            "'app:main-ckan.site_title': <Option [app:main] ckan.site_title = FMLD>"
             "}"
         )
 
@@ -219,7 +219,7 @@ keys = root, ckan, ckanext
 level = WARNING
 
 [app:main]
-ckan.site_title = CKAN
+ckan.site_title = FMLD
 """.split(
             "\n"
         )
@@ -228,7 +228,7 @@ ckan.site_title = CKAN
 
         assert (
             str(out) == "["
-            "('app:main-ckan.site_title', <Option [app:main] ckan.site_title = CKAN>), "
+            "('app:main-ckan.site_title', <Option [app:main] ckan.site_title = FMLD>), "
             "('logger-keys', <Option [logger] keys = root, ckan, ckanext>), "
             "('logger-level', <Option [logger] level = WARNING>)"
             "]"
@@ -237,7 +237,7 @@ ckan.site_title = CKAN
     def test_parse_comment(self):
         input_lines = """
 [app:main]
-#ckan.site_title = CKAN
+#ckan.site_title = FMLD
 """.split(
             "\n"
         )
@@ -246,27 +246,27 @@ ckan.site_title = CKAN
 
         assert (
             str(out) == "{"
-            "'app:main-ckan.site_title': <Option [app:main] #ckan.site_title = CKAN>"
+            "'app:main-ckan.site_title': <Option [app:main] #ckan.site_title = FMLD>"
             "}"
         )
 
 
 class TestParseOptionString:
     def test_parse_basic(self):
-        input_line = "ckan.site_title = CKAN"
+        input_line = "ckan.site_title = FMLD"
         out = config_tool.parse_option_string("app:main", input_line)
-        assert repr(out) == "<Option [app:main] ckan.site_title = CKAN>"
-        assert str(out) == "ckan.site_title = CKAN"
+        assert repr(out) == "<Option [app:main] ckan.site_title = FMLD>"
+        assert str(out) == "ckan.site_title = FMLD"
 
     def test_parse_extra_spaces(self):
-        input_line = "ckan.site_title  =  CKAN "
+        input_line = "ckan.site_title  =  FMLD "
         out = config_tool.parse_option_string("app:main", input_line)
-        assert repr(out) == "<Option [app:main] ckan.site_title  =  CKAN >"
-        assert str(out) == "ckan.site_title  =  CKAN "
+        assert repr(out) == "<Option [app:main] ckan.site_title  =  FMLD >"
+        assert str(out) == "ckan.site_title  =  FMLD "
         assert out.key == "ckan.site_title"
-        assert out.value == "CKAN"
+        assert out.value == "FMLD"
 
     def test_parse_invalid_space(self):
-        input_line = " ckan.site_title = CKAN"
+        input_line = " ckan.site_title = FMLD"
         out = config_tool.parse_option_string("app:main", input_line)
         assert out is None

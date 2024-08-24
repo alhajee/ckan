@@ -2,13 +2,13 @@
 Assets
 ======
 
-.. Note:: Assets are only supported  on CKAN 2.9 and above. If you
-          are using CKAN <= 2.8, refer to the legacy `Fanstatic resources
+.. Note:: Assets are only supported  on FMLD 2.9 and above. If you
+          are using FMLD <= 2.8, refer to the legacy `Fanstatic resources
           <https://docs.ckan.org/en/2.8/contributing/frontend/resources.html>`_
           documentation.
 
 Assets are .css and .js files that may be included in an html page.
-Assets are included in the page by using the ``{% asset %}`` tag. CKAN then
+Assets are included in the page by using the ``{% asset %}`` tag. FMLD then
 uses `Webassets <https://webassets.readthedocs.io/en/latest/>`_ to serve these assets.
 
 ::
@@ -27,7 +27,7 @@ defined by the assets configuration, not in the location of the ``{% asset %}`` 
 Duplicate assets will not be added and any dependencies will be included as
 well as the assets, all in the correct order (see below for details).
 
-Extensions can add new libraries to CKAN using a helper function defined in 
+Extensions can add new libraries to FMLD using a helper function defined in 
 the :doc:` plugins-toolkit <plugins-toolkit>`. See below.
 
 In debug mode assets are served un-minified and un-bundled (ie each asset is

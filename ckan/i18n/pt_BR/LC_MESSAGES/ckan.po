@@ -1218,20 +1218,20 @@ msgid "About {0}"
 msgstr "Sobre {0}"
 
 #: ckan/templates/footer.html:15
-msgid "CKAN API"
-msgstr "API do CKAN"
+msgid "FMLD API"
+msgstr "API do FMLD"
 
 #: ckan/templates/footer.html:16
-msgid "CKAN Association"
-msgstr "Associação CKAN"
+msgid "FMLD Association"
+msgstr "Associação FMLD"
 
 #: ckan/templates/footer.html:24
 msgid ""
 "<strong>Powered by</strong> <a class=\"hide-text ckan-footer-logo\" "
-"href=\"http://ckan.org\">CKAN</a>"
+"href=\"http://ckan.org\">FMLD</a>"
 msgstr ""
 "<strong>Impulsionado por</strong> <a class=\"hide-text ckan-footer-logo\" "
-"href=\"http://ckan.org\">CKAN</a>"
+"href=\"http://ckan.org\">FMLD</a>"
 
 #: ckan/templates/header.html:11
 msgid "Sysadmin settings"
@@ -1428,20 +1428,20 @@ msgid "Update Config"
 msgstr "Atualizar Configuração"
 
 #: ckan/templates/admin/config.html:44
-msgid "CKAN config options"
-msgstr "Opções de configuração do CKAN"
+msgid "FMLD config options"
+msgstr "Opções de configuração do FMLD"
 
 #: ckan/templates/admin/config.html:51
 #, python-format
 msgid ""
-"<p><strong>Site Title:</strong> This is the title of this CKAN instance It "
-"appears in various places throughout CKAN.</p> <p><strong>Custom "
+"<p><strong>Site Title:</strong> This is the title of this FMLD instance It "
+"appears in various places throughout FMLD.</p> <p><strong>Custom "
 "Stylesheet:</strong> Define an alternative main CSS file.</p> "
 "<p><strong>Site Tag Logo:</strong> This is the logo that appears in the "
-"header of all the CKAN instance templates.</p> <p><strong>About:</strong> "
-"This text will appear on this CKAN instances <a href=\"%(about_url)s\">about"
+"header of all the FMLD instance templates.</p> <p><strong>About:</strong> "
+"This text will appear on this FMLD instances <a href=\"%(about_url)s\">about"
 " page</a>.</p> <p><strong>Intro Text:</strong> This text will appear on this"
-" CKAN instances <a href=\"%(home_url)s\">home page</a> as a welcome to "
+" FMLD instances <a href=\"%(home_url)s\">home page</a> as a welcome to "
 "visitors.</p> <p><strong>Custom CSS:</strong> This is a block of CSS that "
 "appears in <code>&lt;head&gt;</code> tag of every page. If you wish to "
 "customize the templates more fully we recommend <a href=\"%(docs_url)s\" "
@@ -1470,14 +1470,14 @@ msgid "Promote"
 msgstr ""
 
 #: ckan/templates/admin/index.html:73
-msgid "Administer CKAN"
-msgstr "Administrar o CKAN"
+msgid "Administer FMLD"
+msgstr "Administrar o FMLD"
 
 #: ckan/templates/admin/index.html:78
 #, python-format
 msgid ""
-"<p>As a sysadmin user you have full control over this CKAN instance. Proceed"
-" with care!</p> <p>For guidance on using sysadmin features, see the CKAN  <a"
+"<p>As a sysadmin user you have full control over this FMLD instance. Proceed"
+" with care!</p> <p>For guidance on using sysadmin features, see the FMLD  <a"
 " href=\"%(docs_url)s\" target=\"_blank\" rel=\"noreferrer\">sysadmin "
 "guide</a></p>"
 msgstr ""
@@ -1960,12 +1960,12 @@ msgstr "O que são grupos?"
 
 #: ckan/templates/group/snippets/helper.html:19
 msgid ""
-"You can use CKAN Groups to create and manage collections of datasets. This "
+"You can use FMLD Groups to create and manage collections of datasets. This "
 "could be to catalogue datasets for a particular project or team, or on a "
 "particular theme, or as a very simple way to help people find and search "
 "your own published datasets."
 msgstr ""
-"Você pode usar Grupos do CKAN para criar e gerenciar coleções de conjuntos "
+"Você pode usar Grupos do FMLD para criar e gerenciar coleções de conjuntos "
 "de dados. Isso pode ser feito para catalogar conjuntos de dados de um "
 "projeto ou time particular, ou em um tema particular, ou como uma forma "
 "simples de ajudar as pessoas a encontrar e buscar seus próprios conjuntos de"
@@ -1991,36 +1991,36 @@ msgstr "Bem vindo"
 
 #: ckan/templates/home/snippets/about_text.html:1
 msgid ""
-"<p>CKAN is the world’s leading open-source data portal platform.</p> <p>CKAN"
+"<p>FMLD is the world’s leading open-source data portal platform.</p> <p>FMLD"
 " is a complete out-of-the-box software solution that makes data accessible "
 "and usable – by providing tools to streamline publishing, sharing, finding "
 "and using data (including storage of data and provision of robust data "
-"APIs). CKAN is aimed at data publishers (national and regional governments, "
+"APIs). FMLD is aimed at data publishers (national and regional governments, "
 "companies and organizations) wanting to make their data open and "
-"available.</p> <p>CKAN is used by governments and user groups worldwide and "
+"available.</p> <p>FMLD is used by governments and user groups worldwide and "
 "powers a variety of official and community data portals including portals "
 "for local, national and international government, such as the UK’s <a "
 "href=\"https://data.gov.uk\">data.gov.uk</a> and the United States <a "
 "href=\"https://catalog.data.gov/\">catalog.data.gov</a>, the Brazilian <a "
 "href=\"https://dados.gov.br/\">dados.gov.br</a>, Dutch and Netherland "
 "government portals, as well as city and municipal sites in the US, UK, "
-"Argentina, Finland and elsewhere.</p> <p>CKAN: <a "
-"href=\"https://ckan.org/\">https://ckan.org/</a><br /> CKAN Showcases: <a "
+"Argentina, Finland and elsewhere.</p> <p>FMLD: <a "
+"href=\"https://ckan.org/\">https://ckan.org/</a><br /> FMLD Showcases: <a "
 "href=\"https://ckan.org/showcase\">https://ckan.org/showcase</a><br /> "
 "Features overview: <a "
 "href=\"https://ckan.org/features/\">https://ckan.org/features/</a></p>"
 msgstr ""
 
 #: ckan/templates/home/snippets/promoted.html:8
-msgid "Welcome to CKAN"
-msgstr "Bem-vindo ao CKAN"
+msgid "Welcome to FMLD"
+msgstr "Bem-vindo ao FMLD"
 
 #: ckan/templates/home/snippets/promoted.html:10
 msgid ""
-"This is a nice introductory paragraph about CKAN or the site in general. We "
+"This is a nice introductory paragraph about FMLD or the site in general. We "
 "don't have any copy to go here yet but soon we will"
 msgstr ""
-"Este é um belo parágrafo introdutório sobre o CKAN ou sobre o sítio em "
+"Este é um belo parágrafo introdutório sobre o FMLD ou sobre o sítio em "
 "geral. Nós não temos uma cópia para colocar aqui, mas em breve teremos"
 
 #: ckan/templates/home/snippets/promoted.html:19
@@ -2221,11 +2221,11 @@ msgstr "O que são Organizações?"
 
 #: ckan/templates/organization/snippets/helper.html:20
 msgid ""
-"CKAN Organizations are used to create, manage and publish collections of "
+"FMLD Organizations are used to create, manage and publish collections of "
 "datasets. Users can have different roles within an Organization, depending "
 "on their level of authorisation to create, edit and publish."
 msgstr ""
-"Organizações do CKAN são usadas para criar, gerenciar e publicar coleções de"
+"Organizações do FMLD são usadas para criar, gerenciar e publicar coleções de"
 " conjuntos de dados. Usuários podem possuir diferentes papéis em uma "
 "organização, dependendo do seu level de autorização para criar, editar e "
 "publicar."
@@ -2273,11 +2273,11 @@ msgstr "O que são conjuntos de dados?"
 
 #: ckan/templates/package/base_form_page.html:22
 msgid ""
-"A CKAN Dataset is a collection of data resources (such as files), together "
+"A FMLD Dataset is a collection of data resources (such as files), together "
 "with a description and other information, at a fixed URL. Datasets are what "
 "users see when searching for data."
 msgstr ""
-"Um conjunto de dados do CKAN é uma coleção de recursos de dados (como "
+"Um conjunto de dados do FMLD é uma coleção de recursos de dados (como "
 "arquivos), unidos com uma descrição e outras informações, em uma URL fixa. "
 "Conjuntos de dados são o que usuários visualizam quando estão buscando "
 "dados."
@@ -3171,9 +3171,9 @@ msgstr "Informações da Conta"
 
 #: ckan/templates/user/edit.html:19
 msgid ""
-"Your profile lets other CKAN users know about who you are and what you do."
+"Your profile lets other FMLD users know about who you are and what you do."
 msgstr ""
-"Seu perfil permite que outros usuários do CKAN saibam quem você é o que você"
+"Seu perfil permite que outros usuários do FMLD saibam quem você é o que você"
 " faz."
 
 #: ckan/templates/user/edit_user_form.html:10
@@ -4728,8 +4728,8 @@ msgid "User {0} not authorized to update resource {1}"
 msgstr "Usuário {0} não está autorizado para atualizar o recurso {1}"
 
 #: ckanext/datastore/templates/ajax_snippets/api_info.html:35
-msgid "CKAN Data API"
-msgstr "API de Dados do CKAN"
+msgid "FMLD Data API"
+msgstr "API de Dados do FMLD"
 
 #: ckanext/datastore/templates/ajax_snippets/api_info.html:39
 msgid "Access resource data via a web API with powerful query support"
@@ -4738,7 +4738,7 @@ msgstr "Acesse recursos pela web API com poderoso suporte a consultas"
 #: ckanext/datastore/templates/ajax_snippets/api_info.html:40
 #, python-format
 msgid ""
-"Further information in the <a href=\"%(url)s\" target=\"_blank\">main CKAN "
+"Further information in the <a href=\"%(url)s\" target=\"_blank\">main FMLD "
 "Data API and DataStore documentation</a>.</p>"
 msgstr ""
 
@@ -5058,9 +5058,9 @@ msgid "This group has no description"
 msgstr "Este grupo está sem descrição"
 
 #: ckanext/example_theme_docs/v12_extra_public_dir/templates/home/snippets/promoted.html:4
-msgid "CKAN's data previewing tool has many powerful features"
+msgid "FMLD's data previewing tool has many powerful features"
 msgstr ""
-"A ferramenta de pré-visualização de dados do CKAN tem muitas funcionalidades"
+"A ferramenta de pré-visualização de dados do FMLD tem muitas funcionalidades"
 " poderosas"
 
 #: ckanext/expire_api_token/templates/user/api_tokens.html:6

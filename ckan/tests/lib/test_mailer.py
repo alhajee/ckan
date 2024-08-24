@@ -180,7 +180,7 @@ class TestMailer(MailerBase):
         with pytest.raises(mailer.MailerException):
             mailer.mail_user(**test_email)
 
-    @pytest.mark.ckan_config("ckan.site_title", "My CKAN instance")
+    @pytest.mark.ckan_config("ckan.site_title", "My FMLD instance")
     def test_from_field_format(self, mail_server):
 
         msgs = mail_server.get_smtp_messages()

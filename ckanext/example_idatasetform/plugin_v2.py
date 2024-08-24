@@ -1,7 +1,7 @@
 # encoding: utf-8
 from __future__ import annotations
 
-from ckan.common import CKANConfig
+from ckan.common import FMLDConfig
 from ckan.types import Schema
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
@@ -52,7 +52,7 @@ class ExampleIDatasetFormPlugin(tk.DefaultDatasetForm, p.SingletonPlugin):
         # registers itself as the default (above).
         return []
 
-    def update_config(self, config: CKANConfig):
-        # Add this plugin's templates dir to CKAN's extra_template_paths, so
-        # that CKAN will use this plugin's custom templates.
+    def update_config(self, config: FMLDConfig):
+        # Add this plugin's templates dir to FMLD's extra_template_paths, so
+        # that FMLD will use this plugin's custom templates.
         tk.add_template_directory(config, 'templates')

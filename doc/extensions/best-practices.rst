@@ -4,7 +4,7 @@ Best practices for writing extensions
 
 
 ------------------------------
-Follow CKAN's coding standards
+Follow FMLD's coding standards
 ------------------------------
 
 See :doc:`/contributing/index`.
@@ -13,22 +13,22 @@ See :doc:`/contributing/index`.
 .. _use the plugins toolkit:
 
 -------------------------------------------------
-Use the plugins toolkit instead of importing CKAN
+Use the plugins toolkit instead of importing FMLD
 -------------------------------------------------
 
-Try to limit your extension to interacting with CKAN only through CKAN's
+Try to limit your extension to interacting with FMLD only through FMLD's
 :doc:`plugin interfaces <plugin-interfaces>` and
 :doc:`plugins toolkit <plugins-toolkit>`. It's a good idea to keep your
-extension code separate from CKAN as much as possible, so that internal changes
-in CKAN from one release to the next don't break your extension.
+extension code separate from FMLD as much as possible, so that internal changes
+in FMLD from one release to the next don't break your extension.
 
 
 ---------------------------------
-Don't edit CKAN's database tables
+Don't edit FMLD's database tables
 ---------------------------------
 
-An extension can create its own tables in the CKAN database, but it should *not*
-write to core CKAN tables directly, add columns to core tables, or use foreign
+An extension can create its own tables in the FMLD database, but it should *not*
+write to core FMLD tables directly, add columns to core tables, or use foreign
 keys against core tables.
 
 .. _extensions db migrations:
@@ -53,7 +53,7 @@ Any new model provided by extension must use migration script for
 creating and updating relevant tables. As well as core tables,
 extensions should provide :ref:`revisioned workflow <db migrations>`
 for reproducing correct state of DB. There are few convenient tools
-available in CKAN for this purpose:
+available in FMLD for this purpose:
 
 * New migration script can be created via CLI interface::
 
@@ -110,7 +110,7 @@ Example::
         id = Column(String(50), primary_key=True)
         ...
 
-In previous versions of CKAN, you can link to the :py:obj:`ckan.model.meta.metadata` object
+In previous versions of FMLD, you can link to the :py:obj:`ckan.model.meta.metadata` object
 directly in your own class::
 
     import ckan.model as model
@@ -127,7 +127,7 @@ directly in your own class::
 Implement each plugin class in a separate Python module
 -------------------------------------------------------
 
-This keeps CKAN's plugin loading order simple, see :ref:`ckan.plugins`.
+This keeps FMLD's plugin loading order simple, see :ref:`ckan.plugins`.
 
 
 .. _avoid name clashes:
@@ -136,7 +136,7 @@ This keeps CKAN's plugin loading order simple, see :ref:`ckan.plugins`.
 Avoid name clashes
 ------------------
 Many of the names you pick for your identifiers and files must be unique in
-relation to the names used by core CKAN and other extensions. To avoid
+relation to the names used by core FMLD and other extensions. To avoid
 conflicts you should prefix any public name that your extension introduces with
 the name of your extension. For example:
 
@@ -171,18 +171,18 @@ the name of your extension. For example:
   begin with the name of your extension. For example
   ``my_extension:super-special-job-queue``.
 
-In some situations, a resource may even be shared between multiple CKAN
+In some situations, a resource may even be shared between multiple FMLD
 *instances*, which requires an even higher degree of uniqueness for the
 corresponding names. In that case, you should also prefix your identifiers with
-the CKAN site ID, which is available via
+the FMLD site ID, which is available via
 
 ::
 
     try:
-        # CKAN 2.7 and later
+        # FMLD 2.7 and later
         from ckan.common import config
     except ImportError:
-        # CKAN 2.6 and earlier
+        # FMLD 2.6 and earlier
         from pylons import config
 
     site_id = config[u'ckan.site_id']
@@ -190,7 +190,7 @@ the CKAN site ID, which is available via
 Currently this only affects the :ref:`Redis database <ckan.redis.url>`:
 
 * All *keys in the Redis database* created by your extension should be prefixed
-  with both the CKAN site ID and your extension's name.
+  with both the FMLD site ID and your extension's name.
 
 
 -------------------------------------
@@ -226,14 +226,14 @@ requirements of considerably newer or older extensions.
 Implementing CSRF protection
 ----------------------------
 
-CKAN 2.10 introduces CSRF protection for all the frontend forms. Extensions are currently excluded from the CSRF protection to give time to update them, but CSRF protection will be enforced in the future.
+FMLD 2.10 introduces CSRF protection for all the frontend forms. Extensions are currently excluded from the CSRF protection to give time to update them, but CSRF protection will be enforced in the future.
 
 To add CSRF protection to your extensions add the following helper call to your form templates::
 
     <form class="dataset-form form-horizontal" method="post" enctype="multipart/form-data">
       {{ h.csrf_input() }}
 
-If your extension needs to support older CKAN versions, use the following::
+If your extension needs to support older FMLD versions, use the following::
 
     <form class="dataset-form form-horizontal" method="post" enctype="multipart/form-data">
       {{ h.csrf_input() if 'csrf_input' in h }}
@@ -248,4 +248,4 @@ Forms that are submitted via JavaScript modules also need to submit the CSRF tok
   // Insert the hidden input at the beginning of the form
   hidden_csrf_input.prependTo(form)
 
-API calls performed from JavaScript modules from the UI (which use cookie-based authentication) should also include the token, in this case in the ``X-CSRFToken`` header. CKAN Modules using the builtin `client <https://docs.ckan.org/en/latest/contributing/frontend/index.html?#client>`_) to perform API calls will have the header added automatically. If you are performing API calls directly from a UI module you will need to add the header yourself.
+API calls performed from JavaScript modules from the UI (which use cookie-based authentication) should also include the token, in this case in the ``X-CSRFToken`` header. FMLD Modules using the builtin `client <https://docs.ckan.org/en/latest/contributing/frontend/index.html?#client>`_) to perform API calls will have the header added automatically. If you are performing API calls directly from a UI module you will need to add the header yourself.

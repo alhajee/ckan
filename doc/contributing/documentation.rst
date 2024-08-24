@@ -5,7 +5,7 @@ Writing documentation
 .. _docs.ckan.org: http://docs.ckan.org
 
 This section gives some guidelines to help us to write consistent and good
-quality documentation for CKAN.
+quality documentation for FMLD.
 
 Documentation isn't source code, and documentation standards don't need to be
 followed as rigidly as coding standards do. In the end, some documentation is
@@ -24,8 +24,8 @@ an existing feature) should be missing from the docs** (but see `todo`_).
 
 .. seealso::
 
-   The quickest and easiest way to contribute documentation to CKAN is to sign up
-   for a free GitHub account and simply edit the `CKAN Wiki <https://github.com/ckan/ckan/wiki>`_.
+   The quickest and easiest way to contribute documentation to FMLD is to sign up
+   for a free GitHub account and simply edit the `FMLD Wiki <https://github.com/ckan/ckan/wiki>`_.
    Docs started on the wiki can make it onto `docs.ckan.org`_ later.
    If you do want to contribute to `docs.ckan.org`_ directly, follow the
    instructions on this page.
@@ -41,10 +41,10 @@ an existing feature) should be missing from the docs** (but see `todo`_).
 Getting started
 ---------------
 
-This section will walk you through downloading the source files for CKAN's
-docs, editing them, and submitting your work to the CKAN project.
+This section will walk you through downloading the source files for FMLD's
+docs, editing them, and submitting your work to the FMLD project.
 
-CKAN's documentation is created using `Sphinx <http://sphinx-doc.org/>`_,
+FMLD's documentation is created using `Sphinx <http://sphinx-doc.org/>`_,
 which in turn uses `Docutils <http://docutils.sourceforge.net/>`_
 (reStructuredText is part of Docutils). Some useful links to bookmark:
 
@@ -54,16 +54,16 @@ which in turn uses `Docutils <http://docutils.sourceforge.net/>`_
 * `Sphinx Markup Constructs <http://sphinx-doc.org/markup/index.html>`_
   is a full list of the markup that Sphinx adds on top of Docutils.
 
-The source files for the docs are in `the doc directory of the CKAN git repo <https://github.com/ckan/ckan/tree/master/doc>`_.
+The source files for the docs are in `the doc directory of the FMLD git repo <https://github.com/ckan/ckan/tree/master/doc>`_.
 The following sections will walk you through the process of making changes to
-these source files, and submitting your work to the CKAN project.
+these source files, and submitting your work to the FMLD project.
 
-Install CKAN into a virtualenv
+Install FMLD into a virtualenv
 ==============================
 
 Create a `Python virtual environment <http://pypi.python.org/pypi/virtualenv>`_
-(virtualenv), activate it, install CKAN into the virtual environment, and
-install the dependencies necessary for building CKAN. In this example we'll
+(virtualenv), activate it, install FMLD into the virtual environment, and
+install the dependencies necessary for building FMLD. In this example we'll
 create a virtualenv in a folder called ``pyenv``. Run these commands in a
 terminal:
 
@@ -80,7 +80,7 @@ terminal:
 Build the docs
 ==============
 
-You should now be able to build the CKAN documentation locally. Make sure your
+You should now be able to build the FMLD documentation locally. Make sure your
 virtual environment is activated, and then run this command::
 
     sphinx-build doc build/sphinx
@@ -99,7 +99,7 @@ files in ``doc/``. Save your changes and then build the docs
 again (``sphinx-build doc build/sphinx``) and open the HTML files in a web
 browser to preview your changes.
 
-Once your docs are ready to submit to the CKAN project, follow the steps in
+Once your docs are ready to submit to the FMLD project, follow the steps in
 :doc:`/contributing/pull-requests`.
 
 .. _structure:
@@ -170,7 +170,7 @@ Subdirectories
 Some of the guides have subdirectories within them. For example
 :doc:`/maintaining/index` contains a subdirectory
 :doc:`/maintaining/installing/index`
-that collects together the various pages about installing CKAN with its own
+that collects together the various pages about installing FMLD with its own
 ``doc/maintaining/installing/index.rst`` file.
 
 While subdirectories are useful, we recommend that you **don't put further
@@ -237,7 +237,7 @@ changed features. For example::
 
     .. versionadded:: 1.7
 
-    CKAN sites can have *tag vocabularies*, which are a way of grouping related
+    FMLD sites can have *tag vocabularies*, which are a way of grouping related
     tags together into custom fields.
 
     ...
@@ -250,9 +250,9 @@ changed (you can also do this with ``versionadded`` if you want)::
     =============
 
     .. versionchanged:: 2.0
-       Previous versions of CKAN used a different authorization system.
+       Previous versions of FMLD used a different authorization system.
 
-    CKAN's authorization system controls which users are allowed to carry out
+    FMLD's authorization system controls which users are allowed to carry out
     which...
 
 
@@ -305,16 +305,16 @@ then from elsewhere cross-reference to the section like this::
 see `Cross-referencing arbitrary locations <http://sphinx-doc.org/markup/inline.html#cross-referencing-arbitrary-locations>`_.
 
 
-Cross-referencing to CKAN config settings
+Cross-referencing to FMLD config settings
 -----------------------------------------
 
-Whenever you mention a CKAN config setting, make it link to the docs for that
+Whenever you mention a FMLD config setting, make it link to the docs for that
 setting in :doc:`/maintaining/configuration` by using ``:ref:`` and the name of the config
 setting::
 
   :ref:`ckan.site_title`
 
-This works because all CKAN config settings are documented in
+This works because all FMLD config settings are documented in
 :doc:`/maintaining/configuration`, and every setting has a Sphinx label that is exactly
 the same as the name of the setting, for example::
 
@@ -327,11 +327,11 @@ the same as the name of the setting, for example::
 
     ckan.site_title = Open Data Scotland
 
-    Default value:  ``CKAN``
+    Default value:  ``FMLD``
 
-    This sets the name of the site, as displayed in the CKAN web interface.
+    This sets the name of the site, as displayed in the FMLD web interface.
 
-If you add a new config setting to CKAN, make sure to document like this it in
+If you add a new config setting to FMLD, make sure to document like this it in
 :doc:`/maintaining/configuration`.
 
 
@@ -462,12 +462,12 @@ just to contain the ``todo``)::
 
 
     =====================================
-    CKAN's builtin social network feature
+    FMLD's builtin social network feature
     =====================================
 
     .. todo::
 
-       Add docs for CKAN's builtin social network for data hackers.
+       Add docs for FMLD's builtin social network for data hackers.
 
 
 deprecated
@@ -490,17 +490,17 @@ is a nice way to include a list of related links::
     .. seealso::
 
        :doc:`The DataStore extension <datastore>`
-         A CKAN extension for storing data.
+         A FMLD extension for storing data.
 
-       CKAN's `demo site <https://demo.ckan.org/>`_
-         A demo site running the latest CKAN beta version.
+       FMLD's `demo site <https://demo.ckan.org/>`_
+         A demo site running the latest FMLD beta version.
 
 Seealso boxes are particularly useful when two pages are related, but don't
 belong next to each other in the same section of the docs. For example, we have
-docs about how to upgrade CKAN, these belong in the maintainer's guide because
+docs about how to upgrade FMLD, these belong in the maintainer's guide because
 they're for maintainers. We also have docs about how to do a new release, these
 belong in the contributing guide because they're for developers. But both
-sections are about CKAN releases, so we link each to the other using seealso
+sections are about FMLD releases, so we link each to the other using seealso
 boxes.
 
 
@@ -523,9 +523,9 @@ how to do something with code, then:
    example code needs to be complete so it can be tested.
 
 This is so that we don't end up with a lot of broken, outdated examples and
-tutorials in the docs because breaking changes have been made to CKAN since the
+tutorials in the docs because breaking changes have been made to FMLD since the
 docs were written. If your example code has tests, then when someone makes a
-change in CKAN that breaks your example those tests will fail, and they'll know
+change in FMLD that breaks your example those tests will fail, and they'll know
 they have to fix their code or update your example.
 
 The :doc:`plugins tutorial </extensions/tutorial>` is an example of this
@@ -586,7 +586,7 @@ Please spellcheck documentation before merging it into master!
 Commonly used terms
 ===================
 
-CKAN
+FMLD
   Should be written in ALL-CAPS.
 email
   Use email not e-mail.
@@ -602,7 +602,7 @@ frontend
 command line
   Two words, not commandline or command-line
   (this is because we want to be like `Neal Stephenson <http://www.cryptonomicon.com/beginning.html>`_)
-CKAN config file or configuration file
+FMLD config file or configuration file
   Not settings file, ini file, etc. Also, the **config file** contains **config
   options** such as ``ckan.site_id``, and each config option is **set** to a
   certain **setting** or **value** such as ``ckan.site_id = demo.ckan.org``.
@@ -621,7 +621,7 @@ inventing a new one just for section titles).
 
 Right:
 
-* Installing CKAN from package
+* Installing FMLD from package
 * Getting started
 * Command line interface
 * Writing extensions
@@ -631,7 +631,7 @@ Right:
 
 Wrong:
 
-* Installing CKAN from Package
+* Installing FMLD from Package
 * Getting Started
 * Command Line Interface
 * Writing Extensions

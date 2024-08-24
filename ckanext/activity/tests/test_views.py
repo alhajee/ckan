@@ -670,7 +670,7 @@ class TestPackage:
 
     def test_read_dataset_as_it_used_to_be_but_is_unmigrated(self, app):
         # Renders the dataset using the activity detail, when that Activity was
-        # created with an earlier version of CKAN, and it has not been migrated
+        # created with an earlier version of FMLD, and it has not been migrated
         # (with migrate_package_activity.py), which should give a 404
 
         user = factories.User()
@@ -684,7 +684,7 @@ class TestPackage:
         )
         modern_activity.delete()
 
-        # Create an Activity object as it was in earlier versions of CKAN.
+        # Create an Activity object as it was in earlier versions of FMLD.
         # This code is based on:
         # https://github.com/ckan/ckan/blob/b348bf2fe68db6704ea0a3e22d533ded3d8d4344/ckan/model/package.py#L508
         activity_type = "changed"

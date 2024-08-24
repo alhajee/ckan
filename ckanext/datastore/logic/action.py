@@ -40,7 +40,7 @@ def datastore_create(context: Context, data_dict: dict[str, Any]):
     multiple times to initially insert more data, add/remove fields, change the
     aliases or indexes as well as the primary keys.
 
-    To create an empty datastore resource and a CKAN resource at the same time,
+    To create an empty datastore resource and a FMLD resource at the same time,
     provide ``resource`` with a valid ``package_id`` and omit the
     ``resource_id``.
 
@@ -534,8 +534,8 @@ def datastore_search(context: Context, data_dict: dict[str, Any]):
     The datastore_search action allows you to search data in a resource. By
     default 100 rows are returned - see the `limit` parameter for more info.
 
-    A DataStore resource that belongs to a private CKAN resource can only be
-    read by you if you have access to the CKAN resource and send the
+    A DataStore resource that belongs to a private FMLD resource can only be
+    read by you if you have access to the FMLD resource and send the
     appropriate authorization.
 
     :param resource_id: id or alias of the resource to be searched against
@@ -667,7 +667,7 @@ def datastore_search_sql(context: Context, data_dict: dict[str, Any]):
     There is an enforced timeout on SQL queries to avoid an unintended DOS.
     The number of results returned is limited to 32000, unless set in the
     site's configuration ``ckan.datastore.search.rows_max``
-    Queries are only allowed if you have access to the all the CKAN resources
+    Queries are only allowed if you have access to the all the FMLD resources
     in the query and send the appropriate authorization.
 
     .. note:: This action is not available by default and needs to be enabled
@@ -722,7 +722,7 @@ def datastore_search_sql(context: Context, data_dict: dict[str, Any]):
 def set_datastore_active_flag(
         context: Context, data_dict: dict[str, Any], flag: bool):
     '''
-    Set appropriate datastore_active flag on CKAN resource.
+    Set appropriate datastore_active flag on FMLD resource.
 
     Called after creation or deletion of DataStore table.
     '''

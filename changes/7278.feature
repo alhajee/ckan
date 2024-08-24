@@ -1,1 +1,1 @@
-Added --disable-debugger option to CKAN cli `run` command.
+Added --disable-debugger option to FMLD cli `run` command.

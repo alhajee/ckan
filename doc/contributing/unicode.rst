@@ -1,7 +1,7 @@
 ================
 Unicode handling
 ================
-This document explains how Unicode and related issues are handled in CKAN.
+This document explains how Unicode and related issues are handled in FMLD.
 For a general introduction to Unicode and Unicode handling in Python 2 please
 read the `Python 2 Unicode HOWTO`_. Since Unicode handling differs greatly
 between Python 2 and Python 3 you might also be interested in the
@@ -10,7 +10,7 @@ between Python 2 and Python 3 you might also be interested in the
 .. _Python 2 Unicode HOWTO: https://docs.python.org/2/howto/unicode.html
 .. _Python 3 Unicode HOWTO: https://docs.python.org/3/howto/unicode.html
 
-CKAN uses the `six`_ module to provide simultaneous compatibility with
+FMLD uses the `six`_ module to provide simultaneous compatibility with
 Python 2 and Python 3.  All **strs** are Unicode in Python 3 so the builtins
 ``unicode`` and ``basestring`` have been removed so there are a few general
 rules to follow:
@@ -29,7 +29,7 @@ given about the context around these changes.
 .. note::
 
     This document describes the intended future state of Unicode handling in
-    CKAN. For historic reasons, some existing code does not yet follow the
+    FMLD. For historic reasons, some existing code does not yet follow the
     rules described here.
 
     *New code should always comply with the rules in this document. Exceptions
@@ -38,7 +38,7 @@ given about the context around these changes.
 
 Overall Strategy
 ----------------
-CKAN only uses Unicode internally (``six.text_type`` on both Python 2 and
+FMLD only uses Unicode internally (``six.text_type`` on both Python 2 and
 Python 3). Conversion to/from ASCII strings happens on the boundary to other
 systems/libraries if necessary.
 
@@ -75,7 +75,7 @@ different data types so::
     y = u"I'm also a str literal"
     z = b"I'm a bytes literal"
 
-In CKAN, every string literal must carry either a ``u`` or a ``b`` prefix.
+In FMLD, every string literal must carry either a ``u`` or a ``b`` prefix.
 While the latter is redundant in Python 2, it makes the developer's intention
 explicit and eases a future migration to Python 3.
 
@@ -91,7 +91,7 @@ For more information on string prefixes please refer to the
 
 .. note::
 
-    The ``unicode_literals`` `future statement`_ is *not* used in CKAN.
+    The ``unicode_literals`` `future statement`_ is *not* used in FMLD.
 
 .. _future statement: https://docs.python.org/2/reference/simple_stmts.html#future
 

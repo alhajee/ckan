@@ -1,5 +1,5 @@
 # encoding: utf-8
-'''CKAN environment configuration'''
+'''FMLD environment configuration'''
 from __future__ import annotations
 
 import os
@@ -23,7 +23,7 @@ import ckan.logic as logic
 import ckan.authz as authz
 from ckan.lib.webassets_tools import webassets_init, register_core_assets
 
-from ckan.common import CKANConfig, config, config_declaration
+from ckan.common import FMLDConfig, config, config_declaration
 from ckan.exceptions import CkanConfigurationException
 from ckan.types import Config
 
@@ -33,12 +33,12 @@ log = logging.getLogger(__name__)
 warnings.simplefilter('ignore', UserWarning)
 
 
-def load_environment(conf: Union[Config, CKANConfig]):
+def load_environment(conf: Union[Config, FMLDConfig]):
     """
     Configure the Pylons environment via the ``pylons.config`` object. This
     code should only need to be run once.
     """
-    os.environ['CKAN_CONFIG'] = cast(str, conf['__file__'])
+    os.environ['FMLD_CONFIG'] = cast(str, conf['__file__'])
 
     valid_base_public_folder_names = ['public']
     static_files = conf.get('ckan.base_public_folder', 'public')
@@ -52,7 +52,7 @@ def load_environment(conf: Union[Config, CKANConfig]):
 
     log.info('Loading static files from %s' % static_files)
 
-    # Initialize main CKAN config object
+    # Initialize main FMLD config object
     config.update(conf)
 
     # Setup the SQLAlchemy database engine
@@ -64,7 +64,7 @@ def load_environment(conf: Union[Config, CKANConfig]):
     for msg in msgs:
         warnings.filterwarnings('ignore', msg, sqlalchemy.exc.SAWarning)
 
-    # load all CKAN plugins
+    # load all FMLD plugins
     p.load_all()
 
     # Check Redis availability
@@ -78,23 +78,23 @@ def load_environment(conf: Union[Config, CKANConfig]):
 # Note: Do not remove the following lines, they are used in the docs
 # Start CONFIG_FROM_ENV_VARS
 CONFIG_FROM_ENV_VARS: dict[str, str] = {
-    'sqlalchemy.url': 'CKAN_SQLALCHEMY_URL',
-    'ckan.datastore.write_url': 'CKAN_DATASTORE_WRITE_URL',
-    'ckan.datastore.read_url': 'CKAN_DATASTORE_READ_URL',
-    'ckan.redis.url': 'CKAN_REDIS_URL',
-    'solr_url': 'CKAN_SOLR_URL',
-    'solr_user': 'CKAN_SOLR_USER',
-    'solr_password': 'CKAN_SOLR_PASSWORD',
-    'ckan.site_id': 'CKAN_SITE_ID',
-    'ckan.site_url': 'CKAN_SITE_URL',
-    'ckan.storage_path': 'CKAN_STORAGE_PATH',
-    'ckan.datapusher.url': 'CKAN_DATAPUSHER_URL',
-    'smtp.server': 'CKAN_SMTP_SERVER',
-    'smtp.starttls': 'CKAN_SMTP_STARTTLS',
-    'smtp.user': 'CKAN_SMTP_USER',
-    'smtp.password': 'CKAN_SMTP_PASSWORD',
-    'smtp.mail_from': 'CKAN_SMTP_MAIL_FROM',
-    'ckan.max_resource_size': 'CKAN_MAX_UPLOAD_SIZE_MB'
+    'sqlalchemy.url': 'FMLD_SQLALCHEMY_URL',
+    'ckan.datastore.write_url': 'FMLD_DATASTORE_WRITE_URL',
+    'ckan.datastore.read_url': 'FMLD_DATASTORE_READ_URL',
+    'ckan.redis.url': 'FMLD_REDIS_URL',
+    'solr_url': 'FMLD_SOLR_URL',
+    'solr_user': 'FMLD_SOLR_USER',
+    'solr_password': 'FMLD_SOLR_PASSWORD',
+    'ckan.site_id': 'FMLD_SITE_ID',
+    'ckan.site_url': 'FMLD_SITE_URL',
+    'ckan.storage_path': 'FMLD_STORAGE_PATH',
+    'ckan.datapusher.url': 'FMLD_DATAPUSHER_URL',
+    'smtp.server': 'FMLD_SMTP_SERVER',
+    'smtp.starttls': 'FMLD_SMTP_STARTTLS',
+    'smtp.user': 'FMLD_SMTP_USER',
+    'smtp.password': 'FMLD_SMTP_PASSWORD',
+    'smtp.mail_from': 'FMLD_SMTP_MAIL_FROM',
+    'ckan.max_resource_size': 'FMLD_MAX_UPLOAD_SIZE_MB'
 }
 # End CONFIG_FROM_ENV_VARS
 

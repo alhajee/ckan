@@ -44,7 +44,7 @@ def deprecated(
 
         @functools.wraps(fn)
         def wrapped(*args: P.args, **kw: P.kwargs) -> RT:
-            since_msg = f'since CKAN v{since}' if since else ''
+            since_msg = f'since FMLD v{since}' if since else ''
             msg = (
                 'Function %s() in module %s has been deprecated %s'
                 ' and will be removed in a later release of ckan. %s'

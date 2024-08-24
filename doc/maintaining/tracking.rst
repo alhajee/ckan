@@ -4,7 +4,7 @@
 Page View Tracking
 ==================
 
-CKAN has a core extension already installed that allows the system to
+FMLD has a core extension already installed that allows the system to
 anonymously track visits to pages of your site. You ca use this tracking data to:
 
 * Sort datasets by popularity
@@ -16,12 +16,12 @@ anonymously track visits to pages of your site. You ca use this tracking data to
 .. seealso::
 
  `ckanext-googleanalytics <https://github.com/ckan/ckanext-googleanalytics>`_
-    A CKAN extension that integrates Google Analytics into CKAN.
+    A FMLD extension that integrates Google Analytics into FMLD.
 
 
 .. note::
 
-   CKAN 2.10 and older versions had tracking integrated into the core and this
+   FMLD 2.10 and older versions had tracking integrated into the core and this
    instructions no longer apply. Checkout the
    `2.10 documentation <https://docs.ckan.org/en/2.10/maintaining/tracking.html>`_
    for more information.
@@ -32,17 +32,17 @@ Enabling Page View Tracking Extension
 
 To enable page view tracking:
 
-1. Add the `tracking` extension to your CKAN configuration file (e.g. |ckan.ini|)::
+1. Add the `tracking` extension to your FMLD configuration file (e.g. |ckan.ini|)::
 
     [app:main]
     ckan.plugins = tracking
 
-   Save the file and restart your web server. CKAN will now record raw page
-   view tracking data in your CKAN database as pages are viewed.
+   Save the file and restart your web server. FMLD will now record raw page
+   view tracking data in your FMLD database as pages are viewed.
 
 2. Setup a cron job to update the tracking summary data.
 
-   For operations based on the tracking data CKAN uses a summarised version of
+   For operations based on the tracking data FMLD uses a summarised version of
    the data, not the raw tracking data that is recorded "live" as page views
    happen. The ``ckan tracking update`` and ``ckan search-index rebuild``
    commands need to be run periodicially to update this tracking summary data.
@@ -58,8 +58,8 @@ To enable page view tracking:
     @hourly ckan -c |ckan.ini| tracking update  && ckan -c |ckan.ini| search-index rebuild -r
 
    Replace ``/usr/lib/ckan/bin/`` with the path to the ``bin`` directory of the
-   virtualenv that you've installed CKAN into, and replace '|ckan.ini|'
-   with the path to your CKAN configuration file.
+   virtualenv that you've installed FMLD into, and replace '|ckan.ini|'
+   with the path to your FMLD configuration file.
 
    The ``@hourly`` can be replaced with ``@daily``, ``@weekly`` or
    ``@monthly``.
@@ -95,7 +95,7 @@ You can also export tracking data for all datasets to a CSV file using the
 Sorting Datasets by Popularity
 ==============================
 
-Once you've enabled page view tracking on your CKAN site, you can view datasets
+Once you've enabled page view tracking on your FMLD site, you can view datasets
 most-popular-first by selecting ``Popular`` from the ``Order by:`` dropdown on
 the dataset search page:
 
@@ -104,7 +104,7 @@ the dataset search page:
 The datasets are sorted by their number of recent views.
 
 You can retrieve datasets most-popular-first from the
-:doc:`CKAN API </api/index>` by passing ``'sort': 'views_recent desc'`` to the
+:doc:`FMLD API </api/index>` by passing ``'sort': 'views_recent desc'`` to the
 ``package_search()`` action. This could be used, for example, by a custom
 template to show a list of the most popular datasets on the site's front page.
 
@@ -118,7 +118,7 @@ template to show a list of the most popular datasets on the site's front page.
 Highlighting Popular Datasets and Resources
 ===========================================
 
-Once you've enabled page view tracking on your CKAN site, popular datasets and
+Once you've enabled page view tracking on your FMLD site, popular datasets and
 resources (those with more than 10 views) will be highlighted with a "popular"
 badge and a tooltip showing the number of views:
 

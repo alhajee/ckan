@@ -9,7 +9,7 @@ from flask.sessions import SecureCookieSessionInterface
 from flask_session.redis import RedisSessionInterface
 
 from ckan.common import config
-from ckan.types import CKANApp, Request
+from ckan.types import FMLDApp, Request
 from ckan.lib.redis import connect_to_redis
 
 
@@ -20,7 +20,7 @@ class RootPathMiddleware(object):
     path and ckan addes the root url causing a duplication of the root path.
     This is a middleware to ensure that even redirects use this logic.
     '''
-    def __init__(self, app: CKANApp):
+    def __init__(self, app: FMLDApp):
         self.app = app
 
     def __call__(self, environ: Any, start_response: Any):
@@ -36,7 +36,7 @@ class HostHeaderMiddleware(object):
         Prevent the `Host` header from the incoming request to be used
         in the `Location` header of a redirect.
     '''
-    def __init__(self, app: CKANApp):
+    def __init__(self, app: FMLDApp):
         self.app = app
 
     def __call__(self, environ: Any, start_response: Any) -> Any:
@@ -50,7 +50,7 @@ class HostHeaderMiddleware(object):
         return self.app(environ, start_response)
 
 
-class CKANSecureCookieSessionInterface(SecureCookieSessionInterface):
+class FMLDSecureCookieSessionInterface(SecureCookieSessionInterface):
     """Flask cookie-based sessions with expiration support.
 
     Parent class supports only cookies stored till the end of the browser's
@@ -59,10 +59,10 @@ class CKANSecureCookieSessionInterface(SecureCookieSessionInterface):
 
     """
 
-    def __init__(self, app: CKANApp):
+    def __init__(self, app: FMLDApp):
         pass
 
-    def open_session(self, app: CKANApp, request: Request):
+    def open_session(self, app: FMLDApp, request: Request):
         session = super().open_session(app, request)
         if session:
             # Cookie-based sessions expire with the browser's session. The line
@@ -75,8 +75,8 @@ class CKANSecureCookieSessionInterface(SecureCookieSessionInterface):
         return session
 
 
-class CKANRedisSessionInterface(RedisSessionInterface):
-    """Flask-Session redis-based sessions with CKAN's Redis connection.
+class FMLDRedisSessionInterface(RedisSessionInterface):
+    """Flask-Session redis-based sessions with FMLD's Redis connection.
 
     Parent class connects to Redis instance running on localhost:6379. This
     class initializes session with the connection to the Redis instance
@@ -84,7 +84,7 @@ class CKANRedisSessionInterface(RedisSessionInterface):
 
     """
 
-    def __init__(self, app: CKANApp):
+    def __init__(self, app: FMLDApp):
         app.config.setdefault("SESSION_REDIS", connect_to_redis())
         return super().__init__(
             app,

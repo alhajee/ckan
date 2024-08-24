@@ -24,12 +24,12 @@ def config():
 @click.option(
     "--core",
     is_flag=True,
-    help="Include declarations of CKAN core config options",
+    help="Include declarations of FMLD core config options",
 )
 @click.option(
     "--enabled",
     is_flag=True,
-    help="Include declarations of plugins enabled in the CKAN config file",
+    help="Include declarations of plugins enabled in the FMLD config file",
 )
 @click.option(
     "-f",
@@ -51,12 +51,12 @@ def describe(plugins: tuple[str, ...], core: bool, enabled: bool, fmt: str):
 @click.option(
     "--core",
     is_flag=True,
-    help="Include declarations of CKAN core config options",
+    help="Include declarations of FMLD core config options",
 )
 @click.option(
     "--enabled",
     is_flag=True,
-    help="Include declarations of plugins enabled in the CKAN config file",
+    help="Include declarations of plugins enabled in the FMLD config file",
 )
 @click.option(
     "-d",
@@ -89,12 +89,12 @@ def declaration(
 @click.option(
     "--core",
     is_flag=True,
-    help="Include declarations of CKAN core config options",
+    help="Include declarations of FMLD core config options",
 )
 @click.option(
     "--enabled",
     is_flag=True,
-    help="Include declarations of plugins enabled in the CKAN config file",
+    help="Include declarations of plugins enabled in the FMLD config file",
 )
 @click.option(
     "-f",

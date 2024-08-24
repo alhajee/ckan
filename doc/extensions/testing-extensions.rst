@@ -1,11 +1,11 @@
 Testing extensions
 ==================
 
-CKAN extensions can have their own tests that are run using ``pytest``
-in much the same way as running CKAN's own tests (see :doc:`/contributing/test`).
+FMLD extensions can have their own tests that are run using ``pytest``
+in much the same way as running FMLD's own tests (see :doc:`/contributing/test`).
 
 Continuing with our :doc:`example_iauthfunctions extension <tutorial>`,
-first we need a CKAN config file to be used when running our tests.
+first we need a FMLD config file to be used when running our tests.
 Create the file ``ckanext-iauthfunctions/test.ini`` with the following
 contents::
 
@@ -13,18 +13,18 @@ contents::
     use = config:../ckan/test-core.ini
 
 The ``use`` line declares that this config file inherits the settings from the
-config file used to run CKAN's own tests (``../ckan`` should be the path to
-your CKAN source directory, relative to your ``test.ini`` file).
+config file used to run FMLD's own tests (``../ckan`` should be the path to
+your FMLD source directory, relative to your ``test.ini`` file).
 
-The ``test.ini`` file is a CKAN config file just like your |ckan.ini|
+The ``test.ini`` file is a FMLD config file just like your |ckan.ini|
 file, and it can contain any
-:doc:`CKAN config file settings </maintaining/configuration>` that you want
-CKAN to use when running your tests, for example::
+:doc:`FMLD config file settings </maintaining/configuration>` that you want
+FMLD to use when running your tests, for example::
 
     [app:main]
     use = config:../ckan/test-core.ini
-    ckan.site_title = My Test CKAN Site
-    ckan.site_description = A test site for testing my CKAN extension
+    ckan.site_title = My Test FMLD Site
+    ckan.site_description = A test site for testing my FMLD extension
 
 Next, make the directory that will contain our test modules::
 
@@ -48,11 +48,11 @@ Some notes on how these tests work:
   `pytest documentation <https://docs.pytest.org/en/latest/>`_.
 
 * We're calling :func:`ckan.tests.call_action` This is a convenience function
-  that CKAN provides for its own tests.
+  that FMLD provides for its own tests.
 
-* The CKAN core :doc:`/contributing/testing` can usefully be applied to writing tests for plugins.
+* The FMLD core :doc:`/contributing/testing` can usefully be applied to writing tests for plugins.
 
-* CKAN core provides:
+* FMLD core provides:
 
   * :mod:`ckan.tests.factories` for creating test data
 
@@ -78,7 +78,7 @@ Some notes on how these tests work:
 Using the test client
 ---------------------
 
-It is possible to make requests to the CKAN application from within your tests in order to test the actual responses returned by CKAN. To do so you need to import the ``app`` fixture::
+It is possible to make requests to the FMLD application from within your tests in order to test the actual responses returned by FMLD. To do so you need to import the ``app`` fixture::
 
   def test_some_ckan_page(app):
 
@@ -135,5 +135,5 @@ By default, requests are not authenticated. If you want to make the request impe
 
 .. todo::
 
-   Link to CKAN guidelines for *how* to write tests, once those guidelines have
+   Link to FMLD guidelines for *how* to write tests, once those guidelines have
    been written. Also add any more extension-specific testing details here.

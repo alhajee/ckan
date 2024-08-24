@@ -25,7 +25,7 @@ I18N_TEMP_DIR = tempfile.mkdtemp()
 
 class JSTranslationsTestPlugin(plugins.SingletonPlugin, DefaultTranslation):
     """
-    CKAN plugin for testing JavaScript translations from extensions.
+    FMLD plugin for testing JavaScript translations from extensions.
 
     Registered in ``setup.py`` as ``test_js_translations_plugin``.
     """
@@ -126,7 +126,7 @@ class TestBuildJSTranslations(object):
         with codecs.open(filename, "r", encoding="utf-8") as f:
             de = json.load(f)
 
-        # Check overriding a JS translation from CKAN core
+        # Check overriding a JS translation from FMLD core
         assert "Loading..." in de
         assert de["Loading..."] == [None, "foo"]
 

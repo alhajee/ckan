@@ -18,7 +18,7 @@ def translate_data_dict(data_dict: dict[str, Any]):
     as possible translated into the desired or the fallback language.
 
     '''
-    desired_lang_code = request.environ['CKAN_LANG']
+    desired_lang_code = request.environ['FMLD_LANG']
     fallback_lang_code = config.get('ckan.locale_default')
 
     # Get a flattened copy of data_dict to do the translation on.
@@ -115,7 +115,7 @@ def translate_resource_data_dict(data_dict: dict[str, Any]):
 
     '''
 
-    desired_lang_code = request.environ['CKAN_LANG']
+    desired_lang_code = request.environ['FMLD_LANG']
     fallback_lang_code = config.get('ckan.locale_default')
 
     # Get a flattened copy of data_dict to do the translation on.
@@ -259,7 +259,7 @@ class MultilingualDataset(plugins.SingletonPlugin):
         lang_set = set(self.LANGS)
 
         try:
-            current_lang: str = request.environ['CKAN_LANG']
+            current_lang: str = request.environ['FMLD_LANG']
         except TypeError as err:
             if str(err) == ('No object (name: request) has been registered '
                                'for this thread'):
@@ -298,7 +298,7 @@ class MultilingualDataset(plugins.SingletonPlugin):
         if not facets:
             return search_results
 
-        desired_lang_code = request.environ['CKAN_LANG']
+        desired_lang_code = request.environ['FMLD_LANG']
         fallback_lang_code = config.get('ckan.locale_default')
 
         # Look up translations for all of the facets in one db query.
@@ -337,7 +337,7 @@ class MultilingualDataset(plugins.SingletonPlugin):
         # all the terms in c.fields (c.fields contains the selected facets)
         # and save them in c.translated_fields where the templates can
         # retrieve them later.
-        desired_lang_code = request.environ['CKAN_LANG']
+        desired_lang_code = request.environ['FMLD_LANG']
         fallback_lang_code = config.get('ckan.locale_default')
         try:
             fields = g.fields

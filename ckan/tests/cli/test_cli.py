@@ -5,7 +5,7 @@ import pytest
 import os
 
 from ckan.cli.cli import ckan
-from ckan.cli import CKANConfigLoader
+from ckan.cli import FMLDConfigLoader
 from ckan.exceptions import CkanConfigurationException
 
 
@@ -41,11 +41,11 @@ def test_correct_config_with_help(cli, ckan_config):
 
 def test_config_via_env_var(cli, ckan_config):
     """CliRunner uses test config automatically, so we have to explicitly
-    set CLI `-c` option to `None` when using env `CKAN_INI`.
+    set CLI `-c` option to `None` when using env `FMLD_INI`.
 
     """
     result = cli.invoke(ckan, [u'-c', None, u'-h'],
-                        env={u'CKAN_INI': ckan_config[u'__file__']})
+                        env={u'FMLD_INI': ckan_config[u'__file__']})
     assert not result.exit_code, result.output
 
 
@@ -63,12 +63,12 @@ def test_command_from_extension_shown_in_help_when_enabled(cli):
 
 def test_ckan_config_loader_parse_file():
     """
-    CKANConfigLoader should parse and interpolate variables in
+    FMLDConfigLoader should parse and interpolate variables in
     test-core.ini.tpl file both in DEFAULT and app:main section.
     """
     tpl_dir = os.path.dirname(__file__) + u'/templates'
     filename = os.path.join(tpl_dir, u'test-core.ini.tpl')
-    conf = CKANConfigLoader(filename).get_config()
+    conf = FMLDConfigLoader(filename).get_config()
 
     assert conf[u'debug'] == u'false'
 
@@ -86,7 +86,7 @@ def test_ckan_config_loader_parse_file():
 
 def test_ckan_config_loader_parse_two_files():
     """
-    CKANConfigLoader should parse both 'test-extension.ini.tpl' and
+    FMLDConfigLoader should parse both 'test-extension.ini.tpl' and
     'test-core.ini.tpl' and override the values of 'test-core.ini.tpl' with
     the values of test-extension.ini.tpl.
 
@@ -95,7 +95,7 @@ def test_ckan_config_loader_parse_two_files():
     tpl_dir = os.path.dirname(__file__) + u'/templates'
     extension_tpl_dir = tpl_dir + u'/ckanext-extension'
     filename = os.path.join(extension_tpl_dir, u'test-extension.ini.tpl')
-    conf = CKANConfigLoader(filename).get_config()
+    conf = FMLDConfigLoader(filename).get_config()
 
     # Debug should not be overridden by lower-level config test-core.ini.tpl
     assert conf[u'debug'] == u'true'
@@ -114,23 +114,23 @@ def test_ckan_config_loader_parse_two_files():
 
 
 def test_ckan_env_vars_in_config(monkeypatch):
-    """CKAN_ prefixed environment variables can be used in config.
+    """FMLD_ prefixed environment variables can be used in config.
     """
     filename = os.path.join(
         os.path.dirname(__file__), u'data', u'test-env-var.ini')
-    monkeypatch.setenv("CKAN_TEST_ENV_VAR", "value")
-    conf = CKANConfigLoader(filename).get_config()
+    monkeypatch.setenv("FMLD_TEST_ENV_VAR", "value")
+    conf = FMLDConfigLoader(filename).get_config()
     assert conf["var"] == "value"
 
 
 def test_other_env_vars_ignored(monkeypatch):
-    """Non-CKAN_ environment variables are ignored
+    """Non-FMLD_ environment variables are ignored
     """
     filename = os.path.join(
         os.path.dirname(__file__), u'data', u'test-no-env-var.ini')
     monkeypatch.setenv("TEST_ENV_VAR", "value")
     with pytest.raises(InterpolationMissingOptionError):
-        CKANConfigLoader(filename).get_config()
+        FMLDConfigLoader(filename).get_config()
 
 
 def test_chain_loading():
@@ -138,7 +138,7 @@ def test_chain_loading():
     """
     filename = os.path.join(
         os.path.dirname(__file__), u'data', u'test-one.ini')
-    conf = CKANConfigLoader(filename).get_config()
+    conf = FMLDConfigLoader(filename).get_config()
     assert conf[u'__file__'] == filename
     assert conf[u'key1'] == u'one'
     assert conf[u'key2'] == u'two'
@@ -153,7 +153,7 @@ def test_recursive_loading():
     filename = os.path.join(
         os.path.dirname(__file__), u'data', u'test-one-recursive.ini')
     with pytest.raises(CkanConfigurationException):
-        CKANConfigLoader(filename).get_config()
+        FMLDConfigLoader(filename).get_config()
 
 
 def test_variables_in_chained_files():
@@ -166,7 +166,7 @@ def test_variables_in_chained_files():
     here = os.path.dirname(__file__)
     filename = os.path.join(
         here, u'data', u'test-one.ini')
-    conf = CKANConfigLoader(filename).get_config()
+    conf = FMLDConfigLoader(filename).get_config()
     assert conf["one.from2"] == "2"
     assert conf["one.from3"] == "3"
 
@@ -185,7 +185,7 @@ def test_invalid_use_option():
     filename = os.path.join(
         os.path.dirname(__file__), u'data', u'test-invalid-use.ini')
     with pytest.raises(CkanConfigurationException):
-        CKANConfigLoader(filename).get_config()
+        FMLDConfigLoader(filename).get_config()
 
 
 def test_reference_to_non_existing_config():
@@ -194,4 +194,4 @@ def test_reference_to_non_existing_config():
     filename = os.path.join(
         os.path.dirname(__file__), u'data', u'test-non-existing-path.ini')
     with pytest.raises(CkanConfigurationException):
-        CKANConfigLoader(filename).get_config()
+        FMLDConfigLoader(filename).get_config()

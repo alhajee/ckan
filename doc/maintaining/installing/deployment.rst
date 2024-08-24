@@ -2,20 +2,20 @@
 Deploying a source install
 ==========================
 
-Once you've installed CKAN from source by following the instructions in
+Once you've installed FMLD from source by following the instructions in
 :doc:`install-from-source`, you can follow these instructions to deploy
-your CKAN site using a rudimentary web server, so that it's available
+your FMLD site using a rudimentary web server, so that it's available
 to the Internet.
 
-Because CKAN uses WSGI, a standard interface between web servers and Python web
-applications, CKAN can be used with a number of different web server and
-deployment configurations, however the CKAN project has now standardized on one NGINX_ with uwsgi
+Because FMLD uses WSGI, a standard interface between web servers and Python web
+applications, FMLD can be used with a number of different web server and
+deployment configurations, however the FMLD project has now standardized on one NGINX_ with uwsgi
 
 .. _uwsgi: https://uwsgi-docs.readthedocs.io/en/latest/
 .. _NGINX: http://nginx.org/
 .. _Supervisor: http://http://supervisord.org/
 
-This guide explains how to deploy CKAN using a uwsgi web server and proxied
+This guide explains how to deploy FMLD using a uwsgi web server and proxied
 with NGINX on an Ubuntu server. These instructions have been tested on Ubuntu
 18.04.
 
@@ -36,7 +36,7 @@ and add a layer of caching::
 2. Create the WSGI script file
 ------------------------------
 
-The WSGI script file can be copied from the CKAN distribution:
+The WSGI script file can be copied from the FMLD distribution:
 ``sudo cp /usr/lib/ckan/default/src/ckan/wsgi.py /etc/ckan/default/``
 
 Here is the file:
@@ -47,20 +47,20 @@ Here is the file:
 
     import os
     from ckan.config.middleware import make_app
-    from ckan.cli import CKANConfigLoader
+    from ckan.cli import FMLDConfigLoader
     from logging.config import fileConfig as loggingFileConfig
     config_filepath = os.path.join(
         os.path.dirname(os.path.abspath(__file__)), 'ckan.ini')
     abspath = os.path.join(os.path.dirname(os.path.abspath(__file__)))
     loggingFileConfig(config_filepath)
-    config = CKANConfigLoader(config_filepath).get_config()
+    config = FMLDConfigLoader(config_filepath).get_config()
     application = make_app(config)
 
 
 The WSGI Server (configured next) will redirect requests to this
 WSGI script file. The script file then handles those requests by directing them
-on to your CKAN instance (after first configuring the Python environment for
-CKAN to run in).
+on to your FMLD instance (after first configuring the Python environment for
+FMLD to run in).
 
 
 -------------------------
@@ -77,7 +77,7 @@ uwsgi
 -----
 
 Run ``pip install uwsgi``
-The uwsgi configuration file can be copied from the CKAN distribution:
+The uwsgi configuration file can be copied from the FMLD distribution:
 ``sudo cp /usr/lib/ckan/default/src/ckan/ckan-uwsgi.ini /etc/ckan/default/``
 
  Here is the file:
@@ -130,7 +130,7 @@ Create the  ``/etc/supervisor/conf.d/ckan-uwsgi.conf`` file
     numprocs=1
     process_name=%(program_name)s-%(process_num)02d
 
-    ; Log files - change this to point to the existing CKAN log files
+    ; Log files - change this to point to the existing FMLD log files
     stdout_logfile=/etc/ckan/default/uwsgi.OUT
     stderr_logfile=/etc/ckan/default/uwsgi.ERR
 
@@ -155,7 +155,7 @@ Create the  ``/etc/supervisor/conf.d/ckan-uwsgi.conf`` file
 5. Install an email server
 --------------------------
 
-If one isn't installed already, install an email server to enable CKAN's email
+If one isn't installed already, install an email server to enable FMLD's email
 features (such as sending traceback emails to sysadmins when crashes occur, or
 sending new activity :doc:`email notifications </maintaining/email-notifications>`
 to users). For example, to install the `Postfix <http://www.postfix.org/>`_
@@ -203,7 +203,7 @@ To prevent conflicts, disable your default nginx sites and restart:
 7. Generate JavaScript Translations
 -----------------------------------
 
-Some front-end features require translated strings from CKAN and its
+Some front-end features require translated strings from FMLD and its
 extensions. Run this command once to extract and make these
 strings available after initial installation, upgrades, enabling new
 plugins or enabling new languages.
@@ -214,18 +214,18 @@ plugins or enabling new languages.
 
 
 ------------------------
-8. Access your CKAN site
+8. Access your FMLD site
 ------------------------
 
 
 You should now be able to visit your server in a web browser and see your new
-CKAN instance.
+FMLD instance.
 
 
 --------------------------------------
 9. Setup a worker for background jobs
 --------------------------------------
-CKAN uses asynchronous :ref:`background jobs` for long tasks. These jobs are
+FMLD uses asynchronous :ref:`background jobs` for long tasks. These jobs are
 executed by a separate process which is called a :ref:`worker <background jobs
 workers>`.
 
@@ -237,22 +237,22 @@ To run the worker in a robust way, :ref:`install and configure Supervisor
 .. _deployment-changes-for-ckan-2.9:
 
 -------------------------------
-Deployment changes for CKAN 2.9
+Deployment changes for FMLD 2.9
 -------------------------------
 
-This section describes how to update your deployment for CKAN 2.9 or later, if
-you have an existing deployment of CKAN 2.8 or earlier. This is necessary,
-whether you continue running CKAN on Python 2 or Python 3, because the WSGI
-entry point for running CKAN has changed. If your existing deployment is
-different to that described in the `official CKAN 2.8 deployment instructions
+This section describes how to update your deployment for FMLD 2.9 or later, if
+you have an existing deployment of FMLD 2.8 or earlier. This is necessary,
+whether you continue running FMLD on Python 2 or Python 3, because the WSGI
+entry point for running FMLD has changed. If your existing deployment is
+different to that described in the `official FMLD 2.8 deployment instructions
 <https://docs.ckan.org/en/2.8/maintaining/installing/deployment.html>`_
 (apache2 + mod_wsgi + nginx) then you'll need to adapt these instructions to
 your setup.
 
 We now recommend you activate the Python virtual environment in a different
-place, compared to earlier CKAN versions. For the WSGI server, activation is done
+place, compared to earlier FMLD versions. For the WSGI server, activation is done
 in the uwsgi server config file (/etc/ckan/default/ckan-uwsgi.ini).
 
-(In CKAN 2.8.x and earlier, the virtual environment was activated in the WSGI
+(In FMLD 2.8.x and earlier, the virtual environment was activated in the WSGI
 script file.)
 

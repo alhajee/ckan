@@ -6,9 +6,9 @@ Table Designer extension
 
 .. versionadded:: 2.11
 
-The CKAN Table Designer extension is a *data ingestion* and *enforced-validation* tool that:
+The FMLD Table Designer extension is a *data ingestion* and *enforced-validation* tool that:
 
-- uses the :ref:`CKAN DataStore <datastore>` database as the primary data source
+- uses the :ref:`FMLD DataStore <datastore>` database as the primary data source
 - allows rows to be updated without re-loading all data
 - builds data schemas with custom types and constraints in the :ref:`data_dictionary` form
 - enables referencing other tables with simple and composite primary keys
@@ -48,7 +48,7 @@ Often there is no data schema other than field types that are detected or overri
 by the user. If the original data contains an incompatible type or the type is detected
 incorrectly the data loading process will fail leaving the DataStore empty.
 
-Table Designer instead uses the CKAN DataStore as the primary source of data.
+Table Designer instead uses the FMLD DataStore as the primary source of data.
 
 Rows can be individually created, updated and removed. Type validation
 and constraints are enforced so bad data can't be mixed with good data. Primary
@@ -65,7 +65,7 @@ Setting up Table Designer
 1. Enable the plugin
 ====================
 
-Add the ``tabledesigner`` plugin to your CKAN config file *before* the ``datatables_view``
+Add the ``tabledesigner`` plugin to your FMLD config file *before* the ``datatables_view``
 and ``datastore`` plugins::
 
  ckan.plugins = … tabledesigner datatables_view datastore …

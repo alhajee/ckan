@@ -19,7 +19,7 @@ Check that |postgres| was installed correctly by listing the existing databases:
 Check that the encoding of databases is ``UTF8``, if not you might find issues later
 on with internationalisation. Since changing the encoding of |postgres| may mean
 deleting existing databases, it is suggested that this is fixed before continuing with
-the CKAN install.
+the FMLD install.
 
 Next you'll need to create a database user if one doesn't already exist.
 Create a new |postgres| user called |database_user|, and enter a

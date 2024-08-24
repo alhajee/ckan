@@ -1,20 +1,20 @@
 this.jQuery.date = {
   /* A map of date methods to text strings. */
   METHODS: {
-    "yyyy": "getUTCFullYear",
-    "MM":   "getUTCMonth",
-    "dd":   "getUTCDate",
-    "HH":   "getUTCHours",
-    "mm":   "getUTCMinutes",
-    "ss":   "getUTCSeconds",
-    "fff":  "getUTCMilliseconds"
+    yyyy: "getUTCFullYear",
+    MM: "getUTCMonth",
+    dd: "getUTCDate",
+    HH: "getUTCHours",
+    mm: "getUTCMinutes",
+    ss: "getUTCSeconds",
+    fff: "getUTCMilliseconds",
   },
 
   /* Formatting of an ISO8601 compatible date */
   ISO8601: "yyyy-MM-ddTHH:mm:ss.fffZ",
 
-  /* Formatting of a CKAN compatible ISO string. See helpers.py */
-  CKAN8601: "yyyy-MM-ddTHH:mm:ss",
+  /* Formatting of a FMLD compatible ISO string. See helpers.py */
+  FMLD8601: "yyyy-MM-ddTHH:mm:ss",
 
   /* Returns a date string for the format provided.
    *
@@ -30,14 +30,14 @@ this.jQuery.date = {
 
     function pad(str, exp) {
       str = "" + str;
-      exp = exp.replace(/[a-z]/ig, '0');
+      exp = exp.replace(/[a-z]/gi, "0");
       return str.length !== exp.length ? exp.slice(str.length) + str : str;
     }
 
     return format.replace(/([a-zA-Z])\1+/g, function (_, $1) {
       if (map[_]) {
         var value = date[map[_]]();
-        if (_ === 'MM') {
+        if (_ === "MM") {
           value += 1;
         }
         return pad(value, _);
@@ -46,18 +46,18 @@ this.jQuery.date = {
     });
   },
 
-  /* Generates a CKAN friendly ISO8601 timestamp.
+  /* Generates a FMLD friendly ISO8601 timestamp.
    *
    * date - A date object to convert.
    *
    * Examples
    *
-   *   var timestamp = jQuery.date.toCKANString(new Date());
+   *   var timestamp = jQuery.date.toFMLDString(new Date());
    *
    * Returns a timestamp string.
    */
-  toCKANString: function (date) {
-    return this.format(this.CKAN8601, date);
+  toFMLDString: function (date) {
+    return this.format(this.FMLD8601, date);
   },
 
   /* Generates a ISO8601 timestamp. Uses the native methods if available.
@@ -78,5 +78,5 @@ this.jQuery.date = {
     } else {
       return this.format(this.ISO8601, date);
     }
-  }
+  },
 };

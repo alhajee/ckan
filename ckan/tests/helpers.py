@@ -15,7 +15,7 @@ But some test helper functions just increase the readability of tests so much
 and make writing tests so much easier, that it's worth having them despite the
 potential drawbacks.
 
-New in CKAN 2.9: Consider using :ref:`fixtures` whenever possible for setting
+New in FMLD 2.9: Consider using :ref:`fixtures` whenever possible for setting
 up the initial state of a test or to create helpers objects like client apps.
 
 """
@@ -47,7 +47,7 @@ log = logging.getLogger(__name__)
 
 
 def reset_db():
-    """Reset CKAN's database.
+    """Reset FMLD's database.
 
     Rather than use this function directly, use the ``clean_db`` fixture
     either for all tests in a class::
@@ -76,7 +76,7 @@ def reset_db():
 
     """
     # Close any database connections that have been left open.
-    # This prevents CKAN from hanging waiting for some unclosed connection.
+    # This prevents FMLD from hanging waiting for some unclosed connection.
     model.Session.close_all()
 
     model.repo.rebuild_db()
@@ -163,14 +163,14 @@ def call_auth(auth_name: str, context, **kwargs) -> bool:
     return logic.check_access(auth_name, context, data_dict=kwargs)
 
 
-class CKANCliRunner(CliRunner):
+class FMLDCliRunner(CliRunner):
     def invoke(self, *args, **kwargs):
         # prevent cli runner from str/bytes exceptions
-        kwargs.setdefault(u'complete_var', u'_CKAN_COMPLETE')
-        return super(CKANCliRunner, self).invoke(*args, **kwargs)
+        kwargs.setdefault(u'complete_var', u'_FMLD_COMPLETE')
+        return super(FMLDCliRunner, self).invoke(*args, **kwargs)
 
 
-class CKANResponse(Response):
+class FMLDResponse(Response):
     @property
     def body(self):
         return self.get_data(as_text=True)
@@ -183,10 +183,10 @@ class CKANResponse(Response):
         return segment in self.body
 
 
-class CKANTestApp(object):
+class FMLDTestApp(object):
     """A wrapper around flask.testing.Client
 
-    It adds some convenience methods for CKAN
+    It adds some convenience methods for FMLD
     """
 
     _flask_app: Any = None
@@ -201,7 +201,7 @@ class CKANTestApp(object):
         self.app = app
 
     def test_client(self, use_cookies=True):
-        return CKANTestClient(self.app, CKANResponse, use_cookies=use_cookies)
+        return FMLDTestClient(self.app, FMLDResponse, use_cookies=use_cookies)
 
     def options(self, url, *args, **kwargs):
         res = self.test_client().options(url, *args, **kwargs)
@@ -223,9 +223,9 @@ class CKANTestApp(object):
         return res
 
 
-class CKANTestClient(FlaskClient):
+class FMLDTestClient(FlaskClient):
     def open(self, *args, **kwargs):
-        # extensions with support of CKAN<2.9 can use this parameter
+        # extensions with support of FMLD<2.9 can use this parameter
         # to make errors of webtest.TestApp more verbose. FlaskClient
         # doesn't have anything similar, so we'll just drop this
         # parameter for backward compatibility and ask for updating
@@ -234,7 +234,7 @@ class CKANTestClient(FlaskClient):
             log.warning(
                 '`expect_errors` parameter passed to `test_app.post` '
                 'has no effect. Remove it or pass conditionally, for '
-                'CKAN version prior 2.9.0.'
+                'FMLD version prior 2.9.0.'
             )
 
         status = kwargs.pop("status", None)
@@ -245,7 +245,7 @@ class CKANTestClient(FlaskClient):
         if args and isinstance(args[0], str):
             kwargs.setdefault("follow_redirects", True)
             kwargs.setdefault("base_url", config["ckan.site_url"])
-        res = super(CKANTestClient, self).open(*args, **kwargs)
+        res = super(FMLDTestClient, self).open(*args, **kwargs)
 
         if status:
             assert (
@@ -256,7 +256,7 @@ class CKANTestClient(FlaskClient):
 
 
 def _get_test_app():
-    """Return a CKANTestApp.
+    """Return a FMLDTestApp.
 
     Don't use this function directly, use the ``app`` fixture::
 
@@ -267,13 +267,13 @@ def _get_test_app():
             response = app.get(url)
 
 
-    For functional tests that need to request CKAN pages or post to the API.
+    For functional tests that need to request FMLD pages or post to the API.
     Unit tests shouldn't need this.
 
     """
     config["testing"] = True
     app = ckan.config.middleware.make_app(config)
-    app = CKANTestApp(app)
+    app = FMLDTestApp(app)
 
     return app
 
@@ -296,9 +296,9 @@ class FunctionalTestBase(object):
                 response = app.get(url)
 
     Allows configuration changes by overriding _apply_config_changes and
-    resetting the CKAN config after your test class has run. It creates a
-    CKANTestApp at self.app for your class to use to make HTTP requests
-    to the CKAN web UI or API. Also loads plugins defined by
+    resetting the FMLD config after your test class has run. It creates a
+    FMLDTestApp at self.app for your class to use to make HTTP requests
+    to the FMLD web UI or API. Also loads plugins defined by
     _load_plugins in the class definition.
 
     If you're overriding methods that this class provides, like setup_class()
@@ -386,7 +386,7 @@ class FunctionalRQTestBase(RQTestBase):
 
 
 def change_config(key, value):
-    """Decorator to temporarily change CKAN's config to a new value
+    """Decorator to temporarily change FMLD's config to a new value
 
     This allows you to easily create tests that need specific config values to
     be set, making sure it'll be reverted to what it was originally, after your
@@ -394,14 +394,14 @@ def change_config(key, value):
 
     Usage::
 
-        @helpers.change_config('ckan.site_title', 'My Test CKAN')
+        @helpers.change_config('ckan.site_title', 'My Test FMLD')
         def test_ckan_site_title(self):
-            assert config['ckan.site_title'] == 'My Test CKAN'
+            assert config['ckan.site_title'] == 'My Test FMLD'
 
     :param key: the config key to be changed, e.g. ``'ckan.site_title'``
     :type key: string
 
-    :param value: the new config key's value, e.g. ``'My Test CKAN'``
+    :param value: the new config key's value, e.g. ``'My Test FMLD'``
     :type value: string
 
     .. seealso:: The context manager :py:func:`changed_config`
@@ -423,14 +423,14 @@ def changed_config(key, value):
     """
     Context manager for temporarily changing a config value.
 
-    Allows you to temporarily change the value of a CKAN configuration
+    Allows you to temporarily change the value of a FMLD configuration
     option. The original value is restored once the context manager is
     left.
 
     Usage::
 
-        with changed_config(u'ckan.site_title', u'My Test CKAN'):
-            assert config[u'ckan.site_title'] == u'My Test CKAN'
+        with changed_config(u'ckan.site_title', u'My Test FMLD'):
+            assert config[u'ckan.site_title'] == u'My Test FMLD'
 
     .. seealso:: The decorator :py:func:`change_config`
     """
@@ -608,5 +608,5 @@ class FakeSMTP(smtplib.SMTP):
         self._msgs.append((None, from_addr, to_addrs, msg))
 
 
-def body_contains(res: CKANResponse, content: str):
+def body_contains(res: FMLDResponse, content: str):
     return content in res.body

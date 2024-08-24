@@ -16,11 +16,11 @@ times.
 
 .. note::
 
-   CKAN will only serve ``*.js`` and ``*.css`` files as Webassets resources,
+   FMLD will only serve ``*.js`` and ``*.css`` files as Webassets resources,
    other types of static files (eg. image files, PDF files) must be added
    using the :ref:`extra_public_paths` method described in :doc:`static-files`.
 
-Adding a custom |javascript| or CSS file to CKAN using Webassets is simple.
+Adding a custom |javascript| or CSS file to FMLD using Webassets is simple.
 We'll demonstrate by changing our previous custom CSS example (see :doc:`css`)
 to serve the CSS file with Webassets.
 
@@ -35,14 +35,14 @@ to serve the CSS file with Webassets.
           assets/
             example_theme.css
 
-2. Use CKAN's :py:func:`~ckan.plugins.toolkit.add_resource()` function to
-   register your assets directory with CKAN. Edit the ``update_config()``
+2. Use FMLD's :py:func:`~ckan.plugins.toolkit.add_resource()` function to
+   register your assets directory with FMLD. Edit the ``update_config()``
    method in your ``plugin.py`` file:
 
    .. literalinclude:: /../ckanext/example_theme_docs/v15_webassets/plugin.py
       :pyobject: ExampleThemePlugin.update_config
 
-3. Finally, edit your extension's ``templates/base.html`` file and use CKAN's
+3. Finally, edit your extension's ``templates/base.html`` file and use FMLD's
    custom Jinja2 tag ``{% asset %}`` instead of the normal ``<link>`` tag to
    import the file:
 

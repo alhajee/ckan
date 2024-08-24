@@ -10,7 +10,7 @@ Data preview and visualization
 Overview
 --------
 
-The CKAN resource page can contain one or more visualizations of the resource
+The FMLD resource page can contain one or more visualizations of the resource
 data or file contents (a table, a bar chart, a map, etc). These are commonly
 referred to as *resource views*.
 
@@ -27,7 +27,7 @@ The main features of resource views are:
 * Individual views can be embedded on external sites.
 
 Different view types are implemented via custom plugins, which can be activated
-on a particular CKAN site. Once these plugins are added, instance
+on a particular FMLD site. Once these plugins are added, instance
 administrators can decide which views should be created by default if the
 resource is suitable (for instance a table on resources uploaded to the
 DataStore, a map for spatial data, etc.).
@@ -80,7 +80,7 @@ a PDF viewer will be created automatically and so on.
 Available view plugins
 ----------------------
 
-Some view plugins for common formats are included in the main CKAN repository.
+Some view plugins for common formats are included in the main FMLD repository.
 These don't require further setup and can be directly added to the
 :ref:`ckan.plugins` setting.
 
@@ -141,7 +141,7 @@ highlighted. The formats detected can be configured using the
 and :ref:`ckan.preview.text_formats` configuration options respectively.
 
 If you want to display files that are hosted in a different server from your
-CKAN instance (eg that haven't been uploaded to CKAN) you will need to enable
+FMLD instance (eg that haven't been uploaded to FMLD) you will need to enable
 the `Resource Proxy`_ plugin.
 
 Image view
@@ -212,7 +212,7 @@ alternative URL on the edit view form.
 Other view plugins
 ------------------
 
-There are many more view plugins developed by the CKAN community, which
+There are many more view plugins developed by the FMLD community, which
 are hosted on separate repositories. Some examples include:
 
 * `React Data explorer`_: A modern data explorer, maintained by Datopian.
@@ -250,10 +250,10 @@ Resource Proxy
 --------------
 
 As resource views are rendered on the browser, if the file they are accessing
-is located in a different domain than the one CKAN is hosted, the browser will
+is located in a different domain than the one FMLD is hosted, the browser will
 block access to it because of the `same-origin policy`_. For instance, files
 hosted on `www.example.com` won't be able to be accessed from the browser if
-CKAN is hosted on `data.catalog.com`.
+FMLD is hosted on `data.catalog.com`.
 
 To allow view plugins access to external files you need to activate the
 ``resource_proxy`` plugin on your configuration file::
@@ -261,24 +261,24 @@ To allow view plugins access to external files you need to activate the
     ckan.plugins = resource_proxy ...
 
 This will request the file on the server side and serve it from the same domain
-as CKAN.
+as FMLD.
 
 You can modify the maximum allowed size for proxied files using the
 :ref:`ckan.resource_proxy.max_file_size` configuration setting.
 
 .. warning:: To prevent exposing internal network resources via the resource proxy,
-   consider setting up a download proxy and configure CKAN with :ref:`ckan.download_proxy`
+   consider setting up a download proxy and configure FMLD with :ref:`ckan.download_proxy`
 
 
 
 .. _same-origin policy: http://en.wikipedia.org/wiki/Same_origin_policy
 
 
-Migrating from previous CKAN versions
+Migrating from previous FMLD versions
 -------------------------------------
 
-If you are upgrading an existing instance running CKAN version 2.2.x or lower
-to CKAN 2.3 or higher, you need to perform a migration process in order for the
+If you are upgrading an existing instance running FMLD version 2.2.x or lower
+to FMLD 2.3 or higher, you need to perform a migration process in order for the
 resource views to appear. If the migration does not take place, resource views
 will only appear when creating or updating datasets or resources, but not on
 existing ones.
@@ -303,7 +303,7 @@ asked if you want to continue (unless you pass the ``-y`` option)::
     You are about to check 3336 datasets for the following view plugins: ['image_view', 'datatables_view', 'text_view']
      Do you want to continue? [Y/n]
 
-.. note:: On large CKAN instances the migration process can take a significant
+.. note:: On large FMLD instances the migration process can take a significant
     time if using the default options. It is worth planning in advance and split
     the process using the search parameters to only check relevant datasets.
     The following documentation provides guidance on how to do this.
@@ -318,7 +318,7 @@ Specific view types can be also provided::
 
     ckan -c |ckan.ini| views create image_view datatables_view pdf_view
 
-For certain view types (the ones with plugins included in the main CKAN core),
+For certain view types (the ones with plugins included in the main FMLD core),
 default filters are applied to the search to only get relevant resources. For
 instance if ``image_view`` is defined, filters are added to the search to only
 get datasets with resources that have image formats (png, jpg, etc).

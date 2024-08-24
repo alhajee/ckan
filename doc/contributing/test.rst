@@ -1,26 +1,26 @@
 ============
-Testing CKAN
+Testing FMLD
 ============
 
-If you're a CKAN developer, if you're developing an extension for CKAN, or if
-you're just installing CKAN from source, you should make sure that CKAN's tests
-pass for your copy of CKAN. This section explains how to run CKAN's tests.
+If you're a FMLD developer, if you're developing an extension for FMLD, or if
+you're just installing FMLD from source, you should make sure that FMLD's tests
+pass for your copy of FMLD. This section explains how to run FMLD's tests.
 
-CKAN's testsuite contains automated tests for both the back-end (Python) and
+FMLD's testsuite contains automated tests for both the back-end (Python) and
 the front-end (JavaScript). In addition, the correct functionality of the
 complete front-end (HTML, CSS, JavaScript) on all supported browsers should be
 tested manually.
 
 .. seealso::
 
-   :doc:`CKAN coding standards for tests <testing>`
-     Conventions for writing tests for CKAN
+   :doc:`FMLD coding standards for tests <testing>`
+     Conventions for writing tests for FMLD
 
 --------------
 Back-end tests
 --------------
 
-Most of CKAN's testsuite is for the backend Python code. You can run
+Most of FMLD's testsuite is for the backend Python code. You can run
 the code in a dockerized environment that replicates circleci, or you
 can use a virtual environment based testing.
 
@@ -84,7 +84,7 @@ virtual environment:
 
     |activate|
 
-Install pytest and other test-specific CKAN dependencies into your virtual
+Install pytest and other test-specific FMLD dependencies into your virtual
 environment:
 
 .. parsed-literal::
@@ -169,9 +169,9 @@ To enable multi-core:
 Run the tests
 =============
 
-To run CKAN's tests using PostgreSQL as the database, you have to give the
+To run FMLD's tests using PostgreSQL as the database, you have to give the
 ``--ckan-ini=test-core.ini`` option on the command line. This command will
-run the tests for CKAN core and for the core extensions::
+run the tests for FMLD core and for the core extensions::
 
      pytest --ckan-ini=test-core.ini ckan/ ckanext/
 
@@ -232,7 +232,7 @@ tests::
 ~~~~~~~~~~~~
 Manual tests
 ~~~~~~~~~~~~
-All new CKAN features should be coded so that they work in the
+All new FMLD features should be coded so that they work in the
 following browsers:
 
 * Internet Explorer: 11, 10, 9 & 8
@@ -264,7 +264,7 @@ as you can.
 
 Thirdly you should fully test all new features that have a front-end
 element in all browsers before making your pull request into
-CKAN master.
+FMLD master.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Common front-end pitfalls & their fixes

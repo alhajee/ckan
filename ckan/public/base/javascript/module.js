@@ -51,10 +51,10 @@ this.ckan = this.ckan || {};
  */
 (function (ckan, jQuery, window) {
   // Prefixes for the HTML attributes use to pass options into the modules.
-  var MODULE_PREFIX = 'data-module';
-  var MODULE_OPTION_PREFIX = 'data-module-';
+  var MODULE_PREFIX = "data-module";
+  var MODULE_OPTION_PREFIX = "data-module-";
 
-  /* BaseModule is the core of the CKAN website. It represents a single element
+  /* BaseModule is the core of the FMLD website. It represents a single element
    * in the current document and is used to add functionality to that element.
    *
    * I should not be used itself but rather subclasses using the ckan.module()
@@ -142,17 +142,19 @@ this.ckan = this.ckan || {};
      *  Returns the translated string or the key if not found.
      */
     i18n: function (key /* args... */) {
-      var args  = [].slice.call(arguments, 1);
-      var i18n  = this.options.i18n;
+      var args = [].slice.call(arguments, 1);
+      var i18n = this.options.i18n;
       var trans = (i18n && i18n[key]) || key;
 
       // Allow the option to be a getter function that returns a Jed instance.
-      if (typeof trans === 'function') {
+      if (typeof trans === "function") {
         trans = trans.apply(null, args);
       }
 
       // If the result has a fetch method, call it with the args.
-      return typeof trans.fetch === 'function' ? trans.fetch.apply(trans, args) : trans;
+      return typeof trans.fetch === "function"
+        ? trans.fetch.apply(trans, args)
+        : trans;
     },
 
     /*
@@ -162,10 +164,10 @@ this.ckan = this.ckan || {};
      * since those might now have been defined, yet. Hence we redirect at
      * runtime.
      */
-    _: function(/* args */) {
+    _: function (/* args */) {
       return ckan.i18n._.apply(ckan.i18n, arguments);
     },
-    ngettext: function(/* args */) {
+    ngettext: function (/* args */) {
       return ckan.i18n.ngettext.apply(ckan.i18n, arguments);
     },
 
@@ -196,7 +198,7 @@ this.ckan = this.ckan || {};
     remove: function () {
       this.teardown();
       this.el.remove();
-    }
+    },
   });
 
   /* Add a new module to the registry.
@@ -232,12 +234,12 @@ this.ckan = this.ckan || {};
    */
   function module(name, properties) {
     if (module.registry[name]) {
-      throw new Error('There is already a module registered as "' + name  + '"');
+      throw new Error('There is already a module registered as "' + name + '"');
     }
 
     // If a function is provided then call it to get a returns object of
     // properties.
-    if (typeof properties === 'function') {
+    if (typeof properties === "function") {
       // The `ckan.i18n.translate` and `ckan.i18n` arguments are deprecated
       // and only passed for backwards-compatibility.
       properties = properties(jQuery, ckan.i18n.translate, ckan.i18n);
@@ -245,14 +247,19 @@ this.ckan = this.ckan || {};
 
     // Provide a named constructor, this helps with debugging in the Webkit
     // Web Inspector.
-    properties = jQuery.extend({
-      constructor: function Module() {
-        BaseModule.apply(this, arguments);
-      }
-    }, properties);
+    properties = jQuery.extend(
+      {
+        constructor: function Module() {
+          BaseModule.apply(this, arguments);
+        },
+      },
+      properties
+    );
 
     // Extend the instance.
-    module.registry[name] = jQuery.inherit(BaseModule, properties, {namespace: name});
+    module.registry[name] = jQuery.inherit(BaseModule, properties, {
+      namespace: name,
+    });
 
     return ckan;
   }
@@ -276,7 +283,7 @@ this.ckan = this.ckan || {};
     // Start caching all calls to .publish() until all modules are loaded.
     ckan.pubsub.enqueue();
 
-    jQuery('[data-module]', document.body).each(function (index, element) {
+    jQuery("[data-module]", document.body).each(function (index, element) {
       module.initializeElement(this);
     });
 
@@ -289,21 +296,21 @@ this.ckan = this.ckan || {};
   /* Initializes an individual dom modules element
    *
    * element = DOM node you want to initialize (not jQuery collection)
-   * 
+   *
    * Examples
    *
    *    ckan.module.initializeElement(jQuery('[data-module="foo"]')[0])
    *
    * Returns nothing
    */
-  module.initializeElement = function(element) {
+  module.initializeElement = function (element) {
     var registry = module.registry;
-    var names = jQuery.trim(element.getAttribute(MODULE_PREFIX)).split(' ');
+    var names = jQuery.trim(element.getAttribute(MODULE_PREFIX)).split(" ");
 
     jQuery.each(names, function (index, name) {
       var Module = registry[name];
 
-      if (Module && typeof Module === 'function') {
+      if (Module && typeof Module === "function") {
         module.createInstance(Module, element);
       }
     });
@@ -329,12 +336,12 @@ this.ckan = this.ckan || {};
    * Returns nothing.
    */
   module.createInstance = function (Module, element) {
-    var options  = module.extractOptions(element);
-    var sandbox  = ckan.sandbox(element, options);
+    var options = module.extractOptions(element);
+    var sandbox = ckan.sandbox(element, options);
 
     var instance = new Module(element, options, sandbox);
 
-    if (typeof instance.initialize === 'function') {
+    if (typeof instance.initialize === "function") {
       instance.initialize();
     }
 
@@ -393,5 +400,4 @@ this.ckan = this.ckan || {};
 
   ckan.module = module;
   ckan.module.BaseModule = BaseModule;
-
 })(this.ckan, this.jQuery, this);

@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from ckan.types import Context
 from typing import Any
-from ckan.common import CKANConfig
+from ckan.common import FMLDConfig
 import logging
 
 import ckan.plugins as p
@@ -20,7 +20,7 @@ class ImageView(p.SingletonPlugin):
     p.implements(p.IConfigurer, inherit=True)
     p.implements(p.IResourceView, inherit=True)
 
-    def update_config(self, config: CKANConfig):
+    def update_config(self, config: FMLDConfig):
         p.toolkit.add_template_directory(config, 'theme/templates')
         self.formats = config.get('ckan.preview.image_formats').split()
 

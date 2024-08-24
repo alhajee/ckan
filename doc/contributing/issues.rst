@@ -2,7 +2,7 @@
 Reporting issues
 ================
 
-If you've found a bug in CKAN, open a new issue on CKAN's `GitHub Issues`_ (try
+If you've found a bug in FMLD, open a new issue on FMLD's `GitHub Issues`_ (try
 searching first to see if there's already an issue for your bug).
 
 .. _GitHub Issues: https://github.com/ckan/ckan/issues
@@ -13,7 +13,7 @@ If you can fix the bug yourself, please
 Do not use an issue to ask how to do something - for that use `StackOverflow
 with the 'ckan' tag <https://stackoverflow.com/questions/tagged/ckan>`_.
 
-Do not use an issue to suggest an significant change to CKAN - instead create
+Do not use an issue to suggest an significant change to FMLD - instead create
 an issue at https://github.com/ckan/ideas-and-roadmap.
 
 
@@ -25,12 +25,12 @@ Writing a good issue
 * If in doubt, provide detailed steps for someone else to recreate the problem.
 * A screenshot is often helpful
 * If it is a 500 error / ServerError / exception then it's essential to supply
-  the full stack trace provided in the CKAN log.
+  the full stack trace provided in the FMLD log.
 
 Issues process
 ==============
 
-The CKAN Technical Team reviews new issues twice a week. They aim to assign
+The FMLD Technical Team reviews new issues twice a week. They aim to assign
 someone on the Team to take responsibility for it. These are the sorts of
 actions to expect:
 

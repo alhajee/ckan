@@ -45,7 +45,7 @@ def test_apitoken_in_x_ckan_header(app):
     user = factories.Sysadmin()
     user_token = factories.APIToken(user=user["id"], context={})
     # non-standard header name is defined in test-core.ini
-    request_headers = {"X-Non-Standard-CKAN-API-Key": user_token}
+    request_headers = {"X-Non-Standard-FMLD-API-Key": user_token}
 
     app.get("/dataset/new", headers=request_headers)
 
@@ -409,7 +409,7 @@ def test_cors_config_origin_allow_all_false_with_multiple_whitelisted_origins_2(
 
 @pytest.mark.ckan_config("ckan.cors.origin_allow_all", "true")
 @pytest.mark.ckan_config("ckan.site_url", "http://test.ckan.org")
-@pytest.mark.ckan_config("apitoken_header_name", "X-CKAN-API-TOKEN")
+@pytest.mark.ckan_config("apitoken_header_name", "X-FMLD-API-TOKEN")
 @pytest.mark.ckan_config("ckan.plugins", "test_blueprint_plugin")
 @pytest.mark.usefixtures("with_plugins")
 def test_cors_config_custom_auth_header(app):
@@ -423,7 +423,7 @@ def test_cors_config_custom_auth_header(app):
 
     assert (
         response_headers["Access-Control-Allow-Headers"]
-        == "X-CKAN-API-TOKEN, Content-Type"
+        == "X-FMLD-API-TOKEN, Content-Type"
     )
 
 

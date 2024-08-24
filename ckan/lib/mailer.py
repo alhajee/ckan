@@ -68,7 +68,7 @@ def _mail_recipient(
     msg['To'] = utils.formataddr((recipient_name, recipient_email))
     msg['Date'] = utils.formatdate(time())
     if not config.get('ckan.hide_version'):
-        msg['X-Mailer'] = "CKAN %s" % ckan.__version__
+        msg['X-Mailer'] = "FMLD %s" % ckan.__version__
     # Check if extension is setting reply-to via headers or use config option
     if reply_to and reply_to != '' and not msg['Reply-to']:
         msg['Reply-to'] = reply_to
@@ -107,7 +107,7 @@ def _mail_recipient(
         # Identify ourselves and prompt the server for supported features.
         smtp_connection.ehlo()
 
-        # If 'smtp.starttls' is on in CKAN config, try to put the SMTP
+        # If 'smtp.starttls' is on in FMLD config, try to put the SMTP
         # connection into TLS mode.
         if smtp_starttls:
             if smtp_connection.has_extn('STARTTLS'):
@@ -117,7 +117,7 @@ def _mail_recipient(
             else:
                 raise MailerException("SMTP server does not support STARTTLS")
 
-        # If 'smtp.user' is in CKAN config, try to login to SMTP server.
+        # If 'smtp.user' is in FMLD config, try to login to SMTP server.
         if smtp_user:
             assert smtp_password, ("If smtp.user is configured then "
                                    "smtp.password must be configured as well.")
@@ -192,11 +192,11 @@ def mail_user(recipient: model.User,
               body_html: Optional[str] = None,
               headers: Optional[dict[str, Any]] = None,
               attachments: Optional[Iterable[Attachment]] = None) -> None:
-    '''Sends an email to a CKAN user.
+    '''Sends an email to a FMLD user.
 
     You need to set up the :ref:`email-settings` to able to send emails.
 
-    :param recipient: a CKAN user object
+    :param recipient: a FMLD user object
     :type recipient: a model.User object
 
     For further parameters see

@@ -29,7 +29,7 @@ package::
     sudo apt-get install -y nodejs
 
 .. note:: If you use the package on the default Ubuntu repositories (eg ``sudo apt-get install nodejs``),
-    the node binary will be called ``nodejs``. This will prevent the CKAN Sass script to
+    the node binary will be called ``nodejs``. This will prevent the FMLD Sass script to
     work properly, so you will need to create a link to make it work::
 
         ln -s /usr/bin/nodejs /usr/bin/node
@@ -41,21 +41,21 @@ Dependencies can then be installed via the node package manager (npm).
 We use ``gulp`` to make our Sass compiler a watcher
 style script.
 
-``cd`` into the CKAN source folder (eg |virtualenv|/src/ckan ) and run:
+``cd`` into the FMLD source folder (eg |virtualenv|/src/ckan ) and run:
 
 ::
 
     $ npm install
 
 
-You may need to use ``sudo`` depending on your CKAN install type.
+You may need to use ``sudo`` depending on your FMLD install type.
 
 --------------
 File structure
 --------------
 
 All front-end files to be served via a web server are located in the
-``public`` directory (in the case of the new CKAN base theme it's
+``public`` directory (in the case of the new FMLD base theme it's
 ``public/base``).
 
 ::
@@ -136,13 +136,13 @@ ckan.scss:
 
 There is a basic pattern primer available at:
 http://localhost:5000/testing/primer/ that shows all the main page
-elements that make up the CKAN core interface.
+elements that make up the FMLD core interface.
 
 ----------
 JavaScript
 ----------
 
-The core of the CKAN JavaScript is split up into three areas.
+The core of the FMLD JavaScript is split up into three areas.
 
 -  Core (such as i18n, pub/sub and API clients)
 -  Modules (small HTML components or widgets)
@@ -151,7 +151,7 @@ The core of the CKAN JavaScript is split up into three areas.
 Core
 ====
 
-Everything in the CKAN application lives on the ``ckan`` namespace.
+Everything in the FMLD application lives on the ``ckan`` namespace.
 Currently there are four main components that make up the core.
 
 - Modules
@@ -162,7 +162,7 @@ Currently there are four main components that make up the core.
 Modules
 =======
 
-Modules are the core of the CKAN website, every component that is
+Modules are the core of the FMLD website, every component that is
 interactive on the page should be a module. These are then initialized
 by including a ``data-module`` attribute on an element on the page. For
 example::
@@ -237,7 +237,7 @@ Client
 ======
 
 Ideally no module should use jQuery.ajax() to make XHR requests to the
-CKAN API, all functionality should be provided via the client object.
+FMLD API, all functionality should be provided via the client object.
 
 ::
 
@@ -259,7 +259,7 @@ See :ref:`javascript_i18n`.
 Life cycle
 ==========
 
-CKAN modules are intialised on dom ready. The ``ckan.module.initialize()``
+FMLD modules are intialised on dom ready. The ``ckan.module.initialize()``
 will look for all elements on the page with a ``data-module`` attribute and
 attempt to create an instance.
 
@@ -316,7 +316,7 @@ be attached)::
 
     describe('ckan.module.MyModule()', function () {
       before(() => {
-          // Open CKAN front page
+          // Open FMLD front page
           cy.visit('/');
 
           // Pull the class out of the registry.

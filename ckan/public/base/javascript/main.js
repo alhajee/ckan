@@ -2,11 +2,11 @@
 this.ckan = this.ckan || {};
 
 (function (ckan, jQuery) {
-  ckan.PRODUCTION = 'production';
-  ckan.DEVELOPMENT = 'development';
-  ckan.TESTING = 'testing';
+  ckan.PRODUCTION = "production";
+  ckan.DEVELOPMENT = "development";
+  ckan.TESTING = "testing";
 
-  /* Initialises the CKAN JavaScript setting up environment variables and
+  /* Initialises the FMLD JavaScript setting up environment variables and
    * loading localisations etc. Should be called once the page is ready.
    *
    * Examples
@@ -18,33 +18,36 @@ this.ckan = this.ckan || {};
    * Returns nothing.
    */
   ckan.initialize = function () {
-    var body = jQuery('body');
-    var locale = jQuery('html').attr('lang');
+    var body = jQuery("body");
+    var locale = jQuery("html").attr("lang");
     var location = window.location;
-    var root = location.protocol + '//' + location.host;
+    var root = location.protocol + "//" + location.host;
 
     function getRootFromData(key) {
-      return (body.data(key) || root).replace(/\/$/, '');
+      return (body.data(key) || root).replace(/\/$/, "");
     }
 
-    ckan.SITE_ROOT   = getRootFromData('siteRoot');
-    ckan.LOCALE_ROOT = getRootFromData('localeRoot');
+    ckan.SITE_ROOT = getRootFromData("siteRoot");
+    ckan.LOCALE_ROOT = getRootFromData("localeRoot");
 
     // Convert all datetimes to the users timezone
-    jQuery('.automatic-local-datetime').each(function() {
-        moment.locale(locale);
-        var date = moment(jQuery(this).data('datetime'));
-        if (date.isValid()) {
-            jQuery(this).html(date.format("LL, LT ([UTC]Z)"));
-        }
-        jQuery(this).show();
-    })
+    jQuery(".automatic-local-datetime").each(function () {
+      moment.locale(locale);
+      var date = moment(jQuery(this).data("datetime"));
+      if (date.isValid()) {
+        jQuery(this).html(date.format("LL, LT ([UTC]Z)"));
+      }
+      jQuery(this).show();
+    });
 
     // Load the localisations before instantiating the modules.
-    ckan.sandbox().client.getLocaleData(locale).done(function (data) {
-      ckan.i18n.load(data);
-      ckan.module.initialize();
-    });
+    ckan
+      .sandbox()
+      .client.getLocaleData(locale)
+      .done(function (data) {
+        ckan.i18n.load(data);
+        ckan.module.initialize();
+      });
 
     // Initialize all popovers on a page if popover function exists
     if (jQuery.fn.popover !== undefined) {
@@ -71,40 +74,39 @@ this.ckan = this.ckan || {};
    * Returns a url string.
    */
   ckan.url = function (path, includeLocale) {
-    if (typeof path === 'boolean') {
+    if (typeof path === "boolean") {
       includeLocale = path;
       path = null;
     }
 
-    path = (path || '').replace(/^\//, '');
+    path = (path || "").replace(/^\//, "");
 
     var root = includeLocale ? ckan.LOCALE_ROOT : ckan.SITE_ROOT;
-    return path ? root + '/' + path : root;
+    return path ? root + "/" + path : root;
   };
 
-  ckan.sandbox.extend({url: ckan.url});
+  ckan.sandbox.extend({ url: ckan.url });
 
   if (ckan.ENV !== ckan.TESTING) {
     jQuery(function () {
       ckan.initialize();
     });
   }
-
 })(this.ckan, this.jQuery);
 
 // Show / hide filters for mobile
-$(function() {
-  $(".show-filters").click(function() {
+$(function () {
+  $(".show-filters").click(function () {
     $("body").addClass("filters-modal");
   });
-  $(".hide-filters").click(function() {
+  $(".hide-filters").click(function () {
     $("body").removeClass("filters-modal");
   });
 });
 
 // Initialize tooltips using Bootstrap
-$(function() {
+$(function () {
   $('[data-bs-toggle="tooltip"]').each(function (index, element) {
-    bootstrap.Tooltip.getOrCreateInstance(element)
-  })
-})
+    bootstrap.Tooltip.getOrCreateInstance(element);
+  });
+});

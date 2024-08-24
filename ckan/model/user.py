@@ -102,7 +102,7 @@ class User(core.StatefulObjectMixin,
 
     @classmethod
     def all(cls) -> list[Self]:
-        '''Return all users in this CKAN instance.
+        '''Return all users in this FMLD instance.
 
         :rtype: list of ckan.model.user.User objects
 

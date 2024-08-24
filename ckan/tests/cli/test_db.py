@@ -39,7 +39,7 @@ class TestMigrations:
             "migration/example_database_migrations/alembic.ini")
 
     def test_current_migration_version(self):
-        """CKAN migration applied because of clean_db fixture.
+        """FMLD migration applied because of clean_db fixture.
 
         Migrations from plugins are not applied automatically.
         """

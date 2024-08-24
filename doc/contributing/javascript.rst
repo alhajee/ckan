@@ -250,7 +250,7 @@ The formatting is as follows::
 
 For example::
 
-    /* Loads an HTML template from the CKAN snippet API endpoint. Template
+    /* Loads an HTML template from the FMLD snippet API endpoint. Template
      * variables can be passed through the API using the params object.
      *
      * Optional success and error callbacks can be provided or these can
@@ -307,10 +307,10 @@ Ajax
 ====
 
 .. Note::
-    Calls to the CKAN API from JavaScript should be done through the
-    `CKAN client`_.
+    Calls to the FMLD API from JavaScript should be done through the
+    `FMLD client`_.
 
-.. _CKAN client: ./frontend/index.html#client
+.. _FMLD client: ./frontend/index.html#client
 
 Ajax requests can be used to improve the experience of submitting forms and
 other actions that require server interactions. Nearly all requests will
@@ -400,7 +400,7 @@ you are including them inline this can be done with jQuery::
 
     jQuery(template).find('span').text(this._('This is my text string'));
 
-Larger templates can be loaded in using the CKAN snippet API. Modules get
+Larger templates can be loaded in using the FMLD snippet API. Modules get
 access to this functionality via the ``sandbox.client`` object::
 
     initialize: function () {

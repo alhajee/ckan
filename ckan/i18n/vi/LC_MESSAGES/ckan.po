@@ -1205,20 +1205,20 @@ msgid "About {0}"
 msgstr "Thông tin {0}"
 
 #: ckan/templates/footer.html:15
-msgid "CKAN API"
-msgstr "Giao diện người sử dụng CKAN"
+msgid "FMLD API"
+msgstr "Giao diện người sử dụng FMLD"
 
 #: ckan/templates/footer.html:16
-msgid "CKAN Association"
+msgid "FMLD Association"
 msgstr ""
 
 #: ckan/templates/footer.html:24
 msgid ""
 "<strong>Powered by</strong> <a class=\"hide-text ckan-footer-logo\" "
-"href=\"http://ckan.org\">CKAN</a>"
+"href=\"http://ckan.org\">FMLD</a>"
 msgstr ""
 "<strong>Được phát triển bởi</strong> <a class=\"hide-text ckan-footer-logo\""
-" href=\"http://ckan.org\">CKAN</a>"
+" href=\"http://ckan.org\">FMLD</a>"
 
 #: ckan/templates/header.html:11
 msgid "Sysadmin settings"
@@ -1415,20 +1415,20 @@ msgid "Update Config"
 msgstr "Cập nhật cấu hình"
 
 #: ckan/templates/admin/config.html:44
-msgid "CKAN config options"
-msgstr "các lựa chọn cấu hình CKAN "
+msgid "FMLD config options"
+msgstr "các lựa chọn cấu hình FMLD "
 
 #: ckan/templates/admin/config.html:51
 #, python-format
 msgid ""
-"<p><strong>Site Title:</strong> This is the title of this CKAN instance It "
-"appears in various places throughout CKAN.</p> <p><strong>Custom "
+"<p><strong>Site Title:</strong> This is the title of this FMLD instance It "
+"appears in various places throughout FMLD.</p> <p><strong>Custom "
 "Stylesheet:</strong> Define an alternative main CSS file.</p> "
 "<p><strong>Site Tag Logo:</strong> This is the logo that appears in the "
-"header of all the CKAN instance templates.</p> <p><strong>About:</strong> "
-"This text will appear on this CKAN instances <a href=\"%(about_url)s\">about"
+"header of all the FMLD instance templates.</p> <p><strong>About:</strong> "
+"This text will appear on this FMLD instances <a href=\"%(about_url)s\">about"
 " page</a>.</p> <p><strong>Intro Text:</strong> This text will appear on this"
-" CKAN instances <a href=\"%(home_url)s\">home page</a> as a welcome to "
+" FMLD instances <a href=\"%(home_url)s\">home page</a> as a welcome to "
 "visitors.</p> <p><strong>Custom CSS:</strong> This is a block of CSS that "
 "appears in <code>&lt;head&gt;</code> tag of every page. If you wish to "
 "customize the templates more fully we recommend <a href=\"%(docs_url)s\" "
@@ -1457,14 +1457,14 @@ msgid "Promote"
 msgstr ""
 
 #: ckan/templates/admin/index.html:73
-msgid "Administer CKAN"
+msgid "Administer FMLD"
 msgstr ""
 
 #: ckan/templates/admin/index.html:78
 #, python-format
 msgid ""
-"<p>As a sysadmin user you have full control over this CKAN instance. Proceed"
-" with care!</p> <p>For guidance on using sysadmin features, see the CKAN  <a"
+"<p>As a sysadmin user you have full control over this FMLD instance. Proceed"
+" with care!</p> <p>For guidance on using sysadmin features, see the FMLD  <a"
 " href=\"%(docs_url)s\" target=\"_blank\" rel=\"noreferrer\">sysadmin "
 "guide</a></p>"
 msgstr ""
@@ -1943,12 +1943,12 @@ msgstr "Nhóm là gì?"
 
 #: ckan/templates/group/snippets/helper.html:19
 msgid ""
-"You can use CKAN Groups to create and manage collections of datasets. This "
+"You can use FMLD Groups to create and manage collections of datasets. This "
 "could be to catalogue datasets for a particular project or team, or on a "
 "particular theme, or as a very simple way to help people find and search "
 "your own published datasets."
 msgstr ""
-"Bạn có thể dùng CKAN Groups để tạo và quản lý các bộ sưu tập của các tập dữ "
+"Bạn có thể dùng FMLD Groups để tạo và quản lý các bộ sưu tập của các tập dữ "
 "liệu. Điều này có thể cho tập dữ liệu cho một dự án hoặc nhóm cụ thể, hoặc "
 "trên một chủ để cụ thể, hoặc là rất đợn giản để giúp mọi người tìm và tìm "
 "kiếm tập dữ liệu được phổ biến của chính họ."
@@ -1973,36 +1973,36 @@ msgstr "Chào đón"
 
 #: ckan/templates/home/snippets/about_text.html:1
 msgid ""
-"<p>CKAN is the world’s leading open-source data portal platform.</p> <p>CKAN"
+"<p>FMLD is the world’s leading open-source data portal platform.</p> <p>FMLD"
 " is a complete out-of-the-box software solution that makes data accessible "
 "and usable – by providing tools to streamline publishing, sharing, finding "
 "and using data (including storage of data and provision of robust data "
-"APIs). CKAN is aimed at data publishers (national and regional governments, "
+"APIs). FMLD is aimed at data publishers (national and regional governments, "
 "companies and organizations) wanting to make their data open and "
-"available.</p> <p>CKAN is used by governments and user groups worldwide and "
+"available.</p> <p>FMLD is used by governments and user groups worldwide and "
 "powers a variety of official and community data portals including portals "
 "for local, national and international government, such as the UK’s <a "
 "href=\"https://data.gov.uk\">data.gov.uk</a> and the United States <a "
 "href=\"https://catalog.data.gov/\">catalog.data.gov</a>, the Brazilian <a "
 "href=\"https://dados.gov.br/\">dados.gov.br</a>, Dutch and Netherland "
 "government portals, as well as city and municipal sites in the US, UK, "
-"Argentina, Finland and elsewhere.</p> <p>CKAN: <a "
-"href=\"https://ckan.org/\">https://ckan.org/</a><br /> CKAN Showcases: <a "
+"Argentina, Finland and elsewhere.</p> <p>FMLD: <a "
+"href=\"https://ckan.org/\">https://ckan.org/</a><br /> FMLD Showcases: <a "
 "href=\"https://ckan.org/showcase\">https://ckan.org/showcase</a><br /> "
 "Features overview: <a "
 "href=\"https://ckan.org/features/\">https://ckan.org/features/</a></p>"
 msgstr ""
 
 #: ckan/templates/home/snippets/promoted.html:8
-msgid "Welcome to CKAN"
-msgstr "Chào mừng gia nhập CKAN"
+msgid "Welcome to FMLD"
+msgstr "Chào mừng gia nhập FMLD"
 
 #: ckan/templates/home/snippets/promoted.html:10
 msgid ""
-"This is a nice introductory paragraph about CKAN or the site in general. We "
+"This is a nice introductory paragraph about FMLD or the site in general. We "
 "don't have any copy to go here yet but soon we will"
 msgstr ""
-"Đây là đoạn giới thiệu hay về CKAN hoặc tổng quát site. Chúng toi không có "
+"Đây là đoạn giới thiệu hay về FMLD hoặc tổng quát site. Chúng toi không có "
 "mọi bản sao ở đây nhưng chúng tôi sẽ sớm hoàn thành nó"
 
 #: ckan/templates/home/snippets/promoted.html:19
@@ -2200,11 +2200,11 @@ msgstr "Tổ chức là gì?"
 
 #: ckan/templates/organization/snippets/helper.html:20
 msgid ""
-"CKAN Organizations are used to create, manage and publish collections of "
+"FMLD Organizations are used to create, manage and publish collections of "
 "datasets. Users can have different roles within an Organization, depending "
 "on their level of authorisation to create, edit and publish."
 msgstr ""
-"Các tổ chức CKAN được dùng để lập ra, quản lý và công bố các bộ dữ liệu. "
+"Các tổ chức FMLD được dùng để lập ra, quản lý và công bố các bộ dữ liệu. "
 "Người dùng có thể có nhiều vai trò trong một Tổ chức, tùy thuộc vào cấp độ "
 "quyền của họ trong việc tạo ra, chỉnh sửa và đưa tin."
 
@@ -2248,11 +2248,11 @@ msgstr "Bộ dữ liệu là gì?"
 
 #: ckan/templates/package/base_form_page.html:22
 msgid ""
-"A CKAN Dataset is a collection of data resources (such as files), together "
+"A FMLD Dataset is a collection of data resources (such as files), together "
 "with a description and other information, at a fixed URL. Datasets are what "
 "users see when searching for data."
 msgstr ""
-"Bộ dữ liệu CKAN là một tập hợp các dữ liệu nguồn (như các tập tin), với mô "
+"Bộ dữ liệu FMLD là một tập hợp các dữ liệu nguồn (như các tập tin), với mô "
 "tả và các thông tin khác, tại một địa chỉ cố định. Bộ dữ liệu là những gì "
 "người dùng thấy khi tìm kiếm dữ liệu."
 
@@ -3107,9 +3107,9 @@ msgstr "Thông tin tài khoản"
 
 #: ckan/templates/user/edit.html:19
 msgid ""
-"Your profile lets other CKAN users know about who you are and what you do."
+"Your profile lets other FMLD users know about who you are and what you do."
 msgstr ""
-"Lí lịch của bạn cho phép những người sử dụng CKAN khác biết bạn là ai và làm"
+"Lí lịch của bạn cho phép những người sử dụng FMLD khác biết bạn là ai và làm"
 " nghề gì"
 
 #: ckan/templates/user/edit_user_form.html:10
@@ -4646,8 +4646,8 @@ msgid "User {0} not authorized to update resource {1}"
 msgstr "Người dùng {0} không có quyền cập nhật nguồn {1}"
 
 #: ckanext/datastore/templates/ajax_snippets/api_info.html:35
-msgid "CKAN Data API"
-msgstr "Giao diện người sử dụng dữ liệu CKAN "
+msgid "FMLD Data API"
+msgstr "Giao diện người sử dụng dữ liệu FMLD "
 
 #: ckanext/datastore/templates/ajax_snippets/api_info.html:39
 msgid "Access resource data via a web API with powerful query support"
@@ -4657,7 +4657,7 @@ msgstr ""
 #: ckanext/datastore/templates/ajax_snippets/api_info.html:40
 #, python-format
 msgid ""
-"Further information in the <a href=\"%(url)s\" target=\"_blank\">main CKAN "
+"Further information in the <a href=\"%(url)s\" target=\"_blank\">main FMLD "
 "Data API and DataStore documentation</a>.</p>"
 msgstr ""
 
@@ -4977,7 +4977,7 @@ msgid "This group has no description"
 msgstr "Không có mô tả nào về nhóm này"
 
 #: ckanext/example_theme_docs/v12_extra_public_dir/templates/home/snippets/promoted.html:4
-msgid "CKAN's data previewing tool has many powerful features"
+msgid "FMLD's data previewing tool has many powerful features"
 msgstr ""
 
 #: ckanext/expire_api_token/templates/user/api_tokens.html:6

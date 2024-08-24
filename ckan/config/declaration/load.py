@@ -16,7 +16,7 @@ loader(declaration, "custom-format", *args, **kwargs)
 ```
 
 This mechanism allows you to re-define default loaders, though it should be
-avoided unless you have an irresistible desire to hack into CKAN core.
+avoided unless you have an irresistible desire to hack into FMLD core.
 
 """
 from __future__ import annotations
@@ -79,7 +79,7 @@ DeclarationDict = DeclarationDictV1
 
 @handler.register("plugin")
 def load_plugin(declaration: "Declaration", name: str):
-    """Load declarations from CKAN plugin.
+    """Load declarations from FMLD plugin.
     """
     from ckan.plugins import IConfigDeclaration, PluginNotFoundException
     from ckan.plugins.core import _get_service

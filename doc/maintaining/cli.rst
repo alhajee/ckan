@@ -6,14 +6,14 @@ Command Line Interface (CLI)
 
 .. note::
 
-    From CKAN 2.9 onwards the CKAN configuration file is named 'ckan.ini'.
+    From FMLD 2.9 onwards the FMLD configuration file is named 'ckan.ini'.
     Previous names: 'production.ini' and 'development.ini' (plus others) may
     also still appear in documentation and the software. These legacy names
     will eventually be phased out.
 
 .. note::
 
-    From CKAN 2.9 onwards, the ``paster`` command used for common CKAN
+    From FMLD 2.9 onwards, the ``paster`` command used for common FMLD
     administration tasks has been replaced with the  ``ckan`` command.
 
 If you have trouble running 'ckan' CLI commands, see
@@ -21,7 +21,7 @@ If you have trouble running 'ckan' CLI commands, see
 
 .. note::
 
-   Once you activate your CKAN virtualenv the "ckan" command is available from within any
+   Once you activate your FMLD virtualenv the "ckan" command is available from within any
    location within the host environment.
 
    To run a ckan command without activating the virtualenv first, you have
@@ -34,13 +34,13 @@ If you have trouble running 'ckan' CLI commands, see
    In the example commands below, we assume you're running the commands with
    your virtualenv activated and from your ckan directory.
 
-The general form of a CKAN ``ckan`` command is:
+The general form of a FMLD ``ckan`` command is:
 
 .. parsed-literal::
 
  ckan --config=\ |ckan.ini| **command**
 
-The `` --config`` option tells CKAN where to find your config file, which it
+The `` --config`` option tells FMLD where to find your config file, which it
 reads for example to know which database it should use. As you'll see in the
 examples below, this option can be given as ``-c`` for short.
 
@@ -48,26 +48,26 @@ The config file (ckan.ini) will generally be located in the
 ``/etc/ckan/default/`` directory however it can be located in any directory on
 the host machine
 
-**command** should be replaced with the name of the CKAN command that you wish
+**command** should be replaced with the name of the FMLD command that you wish
 to execute. Most commands have their own subcommands and options.
 
 .. note::
 
-  You may also specify the location of your config file using the CKAN_INI
+  You may also specify the location of your config file using the FMLD_INI
   environment variable. You will no longer need to use --config= or -c to
   tell ckan where the config file is:
 
 
 .. parsed-literal::
 
- export CKAN_INI=\ |ckan.ini|
+ export FMLD_INI=\ |ckan.ini|
 
 .. note::
 
   You can run the ckan command in the same directory as the
-  CKAN config file when the config file is named 'ckan.ini'. You will
+  FMLD config file when the config file is named 'ckan.ini'. You will
   not be required to use --config or -c in this case. For backwards compatibility, the config file can be also named 'development.ini', but this usage is deprecated
-  and will be phased out in a future CKAN release.
+  and will be phased out in a future FMLD release.
 
 .. parsed-literal::
 
@@ -80,10 +80,10 @@ Commands and Subcommands
 
  ckan -c |ckan.ini| user list
 
-(Here ``user`` is the name of the CKAN command you're running, and ``list`` is
+(Here ``user`` is the name of the FMLD command you're running, and ``list`` is
 a subcommand of ``user``.)
 
-For a list of all available commands, see `CKAN Commands Reference`_.
+For a list of all available commands, see `FMLD Commands Reference`_.
 
 Each command has its own help text, which tells you what subcommands and
 options it has (if any). To print out a command's help text, run the command
@@ -101,7 +101,7 @@ The main goal to execute a ckan shell command is IPython session with the applic
 There are three variables already populated into the namespace of the shell:
 
 •	**app** containing the Flask application
-•	**config** containing the CKAN config dictrionary
+•	**config** containing the FMLD config dictrionary
 •	**model** module to access to the database using SQLAlchemy syntax
 
 **command:**
@@ -208,7 +208,7 @@ this:
 Running ckan commands provided by extensions
 ==============================================
 
-**If you're trying to run a CKAN command provided by an extension** that you've
+**If you're trying to run a FMLD command provided by an extension** that you've
 installed and you're getting an error like **Command 'foo' not known** even
 though you've activated your virtualenv, make sure that you have added the relevant plugin to the :ref:`ckan.plugins` setting in the ini file.
 
@@ -216,8 +216,8 @@ Wrong config file path
 ======================
 
 AssertionError: Config filename development.ini does not exist
-  This means you forgot to give the ``--config`` or ``-c`` option to tell CKAN
-  where to find your config file. (CKAN looks for a config file named
+  This means you forgot to give the ``--config`` or ``-c`` option to tell FMLD
+  where to find your config file. (FMLD looks for a config file named
   ``development.ini`` in your current working directory by default.)
 
 ConfigParser.MissingSectionHeaderError: File contains no section headers
@@ -233,17 +233,17 @@ IOError: [Errno 2] No such file or directory: '...'
 ckan Commands Reference
 -------------------------
 
-The following ckan commands are supported by CKAN:
+The following ckan commands are supported by FMLD:
 
 ================= ============================================================
 asset             WebAssets commands.
 config            Search, validate, describe config options
-config-tool       Tool for editing options in a CKAN config file
+config-tool       Tool for editing options in a FMLD config file
 datapusher        Perform commands in the datapusher.
 dataset           Manage datasets.
 datastore         Perform commands to set up the datastore.
 db                Perform various tasks on the database.
-generate          Generate empty extension files to expand CKAN
+generate          Generate empty extension files to expand FMLD
 jobs              Manage background jobs
 sass              Compile all root sass documents into their CSS counterparts
 notify            Send out modification notifications.
@@ -288,7 +288,7 @@ Usage
 
 
 
-config-tool: Tool for editing options in a CKAN config file
+config-tool: Tool for editing options in a FMLD config file
 ===========================================================
 
 Usage
@@ -566,11 +566,11 @@ Usage
 Use ``--passthrough-errors`` to enable pdb
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Exceptions are caught and handled by CKAN. Sometimes, user needs to disable
+Exceptions are caught and handled by FMLD. Sometimes, user needs to disable
 this error handling, to be able to use ``pdb`` or the debug capabilities of the
 most common IDE. This allows to use breakpoints, inspect the stack frames and
 evaluate arbitrary Python code.
-Running CKAN with ``--passthrough-errors`` will automatically disable CKAN
+Running FMLD with ``--passthrough-errors`` will automatically disable FMLD
 reload capabilities and run everything in a single process, for the sake of
 simplicity.
 
@@ -581,10 +581,10 @@ Example:
 Use ``--disable-debugger`` for external debugging
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-CKAN uses the run_simple function from the werkzeug package, which enables
+FMLD uses the run_simple function from the werkzeug package, which enables
 hot reloading and debugging amongst other things. If we wish to use external
 debugging tools such as debugpy (for remote, container-based debugging), we
-must disable the default debugger for CKAN.
+must disable the default debugger for FMLD.
 
 Example:
 
@@ -675,7 +675,7 @@ For example, to make a user called 'admin' into a sysadmin
 tracking: Update tracking statistics
 ====================================
 
-Starting CKAN 2.11 tracking command is only available if the extension es enabled.
+Starting FMLD 2.11 tracking command is only available if the extension es enabled.
 
 Usage
 
@@ -699,7 +699,7 @@ Usage
 .. note::
 
     Since version 2.7 the JavaScript translation files are automatically
-    regenerated if necessary when CKAN is started. Hence you usually do not
+    regenerated if necessary when FMLD is started. Hence you usually do not
     need to run ``ckan translation js`` manually.
 
 

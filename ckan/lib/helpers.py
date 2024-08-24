@@ -110,7 +110,7 @@ LEGACY_ROUTE_NAMES = {
 
 
 class HelperAttributeDict(Dict[str, Callable[..., Any]]):
-    """Collection of CKAN native and extension-provided helpers.
+    """Collection of FMLD native and extension-provided helpers.
     """
     def __missing__(self, key: str) -> NoReturn:
         raise ckan.exceptions.HelperError(
@@ -329,7 +329,7 @@ def url_for(*args: Any, **kw: Any) -> str:
     '''Return the URL for an endpoint given some parameters.
 
     This is a wrapper for :py:func:`flask.url_for`
-    and :py:func:`routes.url_for` that adds some extra features that CKAN
+    and :py:func:`routes.url_for` that adds some extra features that FMLD
     needs.
 
     To build a URL for a Flask view, pass the name of the blueprint and the
@@ -481,7 +481,7 @@ def _url_for_flask(*args: Any, **kw: Any) -> str:
         # Flask to pass the host explicitly, so we rebuild the URL manually
         # based on `ckan.site_url`, which is essentially what we did on Pylons
         protocol, host = get_site_protocol_and_host()
-        # these items cannot be empty because CKAN won't start otherwise
+        # these items cannot be empty because FMLD won't start otherwise
         assert (protocol, host) != (None, None)
         parts = urlparse(my_url)
         my_url = urlunparse((protocol, host, parts.path, parts.params,
@@ -572,8 +572,8 @@ def _local_url(url_to_amend: str, **kw: Any):
             default_locale = True
     else:
         try:
-            locale = request.environ.get('CKAN_LANG')
-            default_locale = request.environ.get('CKAN_LANG_IS_DEFAULT', True)
+            locale = request.environ.get('FMLD_LANG')
+            default_locale = request.environ.get('FMLD_LANG_IS_DEFAULT', True)
         except TypeError:
             default_locale = True
 
@@ -647,19 +647,19 @@ def url_is_local(url: str) -> bool:
 def full_current_url() -> str:
     ''' Returns the fully qualified current url (eg http://...) useful
     for sharing etc '''
-    return (url_for(request.environ['CKAN_CURRENT_URL'], qualified=True))
+    return (url_for(request.environ['FMLD_CURRENT_URL'], qualified=True))
 
 
 @core_helper
 def current_url() -> str:
     ''' Returns current url unquoted'''
-    return request.environ['CKAN_CURRENT_URL']
+    return request.environ['FMLD_CURRENT_URL']
 
 
 @core_helper
 def lang() -> Optional[str]:
     ''' Return the language code for the current locale eg `en` '''
-    return request.environ.get('CKAN_LANG')
+    return request.environ.get('FMLD_LANG')
 
 
 @core_helper
@@ -673,7 +673,7 @@ def strxfrm(s: str) -> str:
 
 @core_helper
 def ckan_version() -> str:
-    '''Return CKAN version'''
+    '''Return FMLD version'''
     return ckan.__version__
 
 
@@ -1001,7 +1001,7 @@ def humanize_entity_type(entity_type: str, object_type: str,
         `breadcrumb`: "Home / [object]s / New" section in breadcrums
         `content tab`: "[object]s | Groups | Activity" tab on details page
         `create label`: "Home / ... / Create [object]" part of breadcrumb
-        `create title`: "Create [object] - CKAN" section of page title
+        `create title`: "Create [object] - FMLD" section of page title
         `delete confirmation`: Confirmation popup when object is deleted
         `description placeholder`: Placeholder for description field on form
         `edit label`: "Edit [object]" label/breadcrumb/title
@@ -1015,7 +1015,7 @@ def humanize_entity_type(entity_type: str, object_type: str,
         `no associated label`: no gorups for dataset
         `no description`: object has no description
         `no label`: package with no organization
-        `page title`: "Title - [objec]s - CKAN" section of page title
+        `page title`: "Title - [objec]s - FMLD" section of page title
         `save label`: "Save [object]" button
         `search placeholder`: "Search [object]s..." placeholder
         `update label`: "Update [object]" button
@@ -1269,7 +1269,7 @@ def group_name_to_title(name: str) -> str:
 
 @core_helper
 @maintain.deprecated("helpers.truncate() is deprecated and will be removed "
-                     "in a future version of CKAN. Instead, please use the "
+                     "in a future version of FMLD. Instead, please use the "
                      "builtin jinja filter instead.",
                      since="2.10.0")
 def truncate(text: str,
@@ -2762,21 +2762,21 @@ def decode_view_request_filters() -> dict[str, Any] | None:
 @core_helper
 def check_ckan_version(min_version: Optional[str] = None,
                        max_version: Optional[str] = None):
-    """Return ``True`` if the CKAN version is greater than or equal to
+    """Return ``True`` if the FMLD version is greater than or equal to
     ``min_version`` and less than or equal to ``max_version``,
     return ``False`` otherwise.
 
-    If no ``min_version`` is given, just check whether the CKAN version is
+    If no ``min_version`` is given, just check whether the FMLD version is
     less than or equal to ``max_version``.
 
-    If no ``max_version`` is given, just check whether the CKAN version is
+    If no ``max_version`` is given, just check whether the FMLD version is
     greater than or equal to ``min_version``.
 
-    :param min_version: the minimum acceptable CKAN version,
+    :param min_version: the minimum acceptable FMLD version,
         eg. ``'2.1'``
     :type min_version: string
 
-    :param max_version: the maximum acceptable CKAN version,
+    :param max_version: the maximum acceptable FMLD version,
         eg. ``'2.3'``
     :type max_version: string
 

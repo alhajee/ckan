@@ -2,7 +2,7 @@
 Templating
 ==========
 
-Within CKAN 2.0 we moved out templating to use Jinja2 from Genshi. This was
+Within FMLD 2.0 we moved out templating to use Jinja2 from Genshi. This was
 done to provide a more flexible, extensible and most importantly easy to
 understand templating language.
 
@@ -29,12 +29,12 @@ The lookup path for templates is as follows. Give the template path
 3. Look in the main ckan template directory.
 4. Look in the template\_legacy directory.
 
-CKAN will automatically determine the template engine to use.
+FMLD will automatically determine the template engine to use.
 
 File Structure
 --------------
 
-The file structure for the CKAN templates is pretty much the same as
+The file structure for the FMLD templates is pretty much the same as
 before with a directory per controller and individual files per action.
 
 With Jinja2 we also have the ability to use snippets which are small
@@ -140,7 +140,7 @@ Templating within extensions
 ----------------------------
 
 When you need to add or customize a template from within an extension you need
-to tell CKAN that there is a template directory that it can call from. Within
+to tell FMLD that there is a template directory that it can call from. Within
 your ``update_config`` method for the extension you'll need to add a
 ``extra_template_paths`` to the ``config``.
 

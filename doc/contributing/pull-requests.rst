@@ -2,8 +2,8 @@
 Making a pull request
 =====================
 
-Once you've written some CKAN code or documentation, you can submit it for
-review and merge into the central CKAN git repository by making a pull request.
+Once you've written some FMLD code or documentation, you can submit it for
+review and merge into the central FMLD git repository by making a pull request.
 This section will walk you through the steps for making a pull request.
 
 .. note:: Except in some special cases, all pull requests should target the ``master``
@@ -18,19 +18,19 @@ This section will walk you through the steps for making a pull request.
    its own branch forked from the master branch.
 
    The name of the branch should include the issue number (if this work has an
-   issue in the `CKAN issue tracker`_), and a brief one-line synopsis of the work,
+   issue in the `FMLD issue tracker`_), and a brief one-line synopsis of the work,
    for example::
 
     2298-add-sort-by-controls-to-search-page
 
 
-#. Fork CKAN on GitHub
+#. Fork FMLD on GitHub
 
    Sign up for a free account on GitHub and
-   `fork CKAN <https://help.github.com/articles/fork-a-repo>`_, so that you
+   `fork FMLD <https://help.github.com/articles/fork-a-repo>`_, so that you
    have somewhere to publish your work.
 
-   Add your CKAN fork to your local CKAN git repo as a git remote. Replace
+   Add your FMLD fork to your local FMLD git repo as a git remote. Replace
    ``USERNAME`` with  your GitHub username::
 
        git remote add my_fork https://github.com/USERNAME/ckan
@@ -53,11 +53,11 @@ This section will walk you through the steps for making a pull request.
 #. Send a pull request
 
    Once your work on a branch is complete and is ready to be merged into the
-   master branch, `create a pull request on GitHub`_.  A member of the CKAN
+   master branch, `create a pull request on GitHub`_.  A member of the FMLD
    team will review your work and provide feedback on the pull request page.
    The reviewer may ask you to make some changes. Once your pull request has
    passed the review, the reviewer will merge your code into the master branch
-   and it will become part of CKAN!
+   and it will become part of FMLD!
 
    When submitting a pull request:
 
@@ -67,7 +67,7 @@ This section will walk you through the steps for making a pull request.
    - You should have good commit messages, see :doc:`commit-messages`.
 
    - Your branch should contain new or changed tests for any new or changed
-     code, and all the CKAN tests should pass on your branch, see
+     code, and all the FMLD tests should pass on your branch, see
      :doc:`test`.
 
    - Your pull request shouldn't lower our test coverage. You can check it at
@@ -78,7 +78,7 @@ This section will walk you through the steps for making a pull request.
      updated code, see :doc:`documentation`.
 
    - Your branch should be up to date with the master branch of the central
-     CKAN repo, so pull the central master branch into your feature branch
+     FMLD repo, so pull the central master branch into your feature branch
      before submitting your pull request.
 
      For long-running feature branches, it's a good idea to pull master into

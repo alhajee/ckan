@@ -1,6 +1,6 @@
 # encoding: utf-8
 # type: ignore
-"""This is a collection of factory classes for building CKAN users, datasets,
+"""This is a collection of factory classes for building FMLD users, datasets,
 etc.
 
 Factories can be either used directly or via corresponding pytest fixtures to
@@ -35,13 +35,13 @@ Usage::
      another_user_dict = factories.User()
 
  # Create a user and specify your own user name and email (this works
- # with any params that CKAN's user_create() accepts):
+ # with any params that FMLD's user_create() accepts):
  def test_creation():
      custom_user_dict = factories.User(name='bob', email='bob@bob.com')
 
  # Get a user dict containing the attributes (name, email, password, etc.)
  # that the factory would use to create a user, but without actually
- # creating the user in CKAN:
+ # creating the user in FMLD:
  def test_creation():
      user_attributes_dict = vars(factories.User.stub())
 
@@ -65,7 +65,7 @@ Usage::
 
 
  # In order to create your own factory:
- # * inherit from :py:class:`~ckan.tests.factories.CKANFactory`
+ # * inherit from :py:class:`~ckan.tests.factories.FMLDFactory`
  # * create `Meta` class inside it, with the two properties:
  #   * model: corresponding SQLAlchemy model
  #   * action: API action that can create instances of the model
@@ -73,10 +73,10 @@ Usage::
  # * register factory as a fixture using :py:func:`~pytest_factoryboy.register`
  import factory
  from pytest_factoryboy import register
- from ckan.tests.factories import CKANFactory
+ from ckan.tests.factories import FMLDFactory
 
  @register
- class RatingFactory(CKANFactory):
+ class RatingFactory(FMLDFactory):
 
      class Meta:
          model = ckanext.ext.model.Rating
@@ -149,10 +149,10 @@ def _name(type_):
     )
 
 
-class CKANOptions(factory.alchemy.SQLAlchemyOptions):
-    """CKANFactory options.
+class FMLDOptions(factory.alchemy.SQLAlchemyOptions):
+    """FMLDFactory options.
 
-    :param action: name of the CKAN API action used for entity creation
+    :param action: name of the FMLD API action used for entity creation
     :param primary_key: name of the entity's property that can be used for
         retrieving entity object from database
 
@@ -165,10 +165,10 @@ class CKANOptions(factory.alchemy.SQLAlchemyOptions):
         ]
 
 
-class CKANFactory(factory.alchemy.SQLAlchemyModelFactory):
+class FMLDFactory(factory.alchemy.SQLAlchemyModelFactory):
     """Extension of SQLAlchemy factory.
 
-    Creates entities via CKAN API using an action specified by the
+    Creates entities via FMLD API using an action specified by the
     `Meta.action`.
 
     Provides ``model`` method that returns created model object instead of the
@@ -179,7 +179,7 @@ class CKANFactory(factory.alchemy.SQLAlchemyModelFactory):
 
     """
 
-    _options_class = CKANOptions
+    _options_class = FMLDOptions
 
     class Meta:
         sqlalchemy_session = ckan.model.Session
@@ -220,8 +220,8 @@ class CKANFactory(factory.alchemy.SQLAlchemyModelFactory):
         return cls.api_create(kwargs)
 
 
-class User(CKANFactory):
-    """A factory class for creating CKAN users."""
+class User(FMLDFactory):
+    """A factory class for creating FMLD users."""
 
     class Meta:
         model = ckan.model.User
@@ -240,8 +240,8 @@ class User(CKANFactory):
     sysadmin = False
 
 
-class Resource(CKANFactory):
-    """A factory class for creating CKAN resources."""
+class Resource(FMLDFactory):
+    """A factory class for creating FMLD resources."""
 
     class Meta:
         model = ckan.model.Resource
@@ -255,8 +255,8 @@ class Resource(CKANFactory):
     package_id = factory.LazyFunction(lambda: Dataset()["id"])
 
 
-class ResourceView(CKANFactory):
-    """A factory class for creating CKAN resource views.
+class ResourceView(FMLDFactory):
+    """A factory class for creating FMLD resource views.
 
     Note: if you use this factory, you need to load the `image_view` plugin
     on your test class (and unload it later), otherwise you will get an error.
@@ -285,8 +285,8 @@ class Sysadmin(User):
     sysadmin = True
 
 
-class Group(CKANFactory):
-    """A factory class for creating CKAN groups."""
+class Group(FMLDFactory):
+    """A factory class for creating FMLD groups."""
 
     class Meta:
         model = ckan.model.Group
@@ -300,7 +300,7 @@ class Group(CKANFactory):
 
 
 class Organization(Group):
-    """A factory class for creating CKAN organizations."""
+    """A factory class for creating FMLD organizations."""
 
     class Meta:
         action = "organization_create"
@@ -310,8 +310,8 @@ class Organization(Group):
     type = "organization"
 
 
-class Dataset(CKANFactory):
-    """A factory class for creating CKAN datasets."""
+class Dataset(FMLDFactory):
+    """A factory class for creating FMLD datasets."""
 
     class Meta:
         model = ckan.model.Package
@@ -322,7 +322,7 @@ class Dataset(CKANFactory):
     notes = factory.LazyFunction(lambda: fake.text(max_nb_chars=60))
 
 
-class Vocabulary(CKANFactory):
+class Vocabulary(FMLDFactory):
     """A factory class for creating tag vocabularies."""
 
     class Meta:
@@ -332,7 +332,7 @@ class Vocabulary(CKANFactory):
     name = factory.LazyFunction(partial(_name, "vocabulary"))
 
 
-class Tag(CKANFactory):
+class Tag(FMLDFactory):
     """A factory class for creating tag vocabularies."""
 
     class Meta:
@@ -344,7 +344,7 @@ class Tag(CKANFactory):
 
 
 class MockUser(factory.Factory):
-    """A factory class for creating mock CKAN users using the mock library."""
+    """A factory class for creating mock FMLD users using the mock library."""
 
     class Meta:
         model = mock.MagicMock
@@ -363,7 +363,7 @@ class MockUser(factory.Factory):
 
     @classmethod
     def _build(cls, target_class, *args, **kwargs):
-        raise NotImplementedError(".build() isn't supported in CKAN")
+        raise NotImplementedError(".build() isn't supported in FMLD")
 
     @classmethod
     def _create(cls, target_class, *args, **kwargs):
@@ -401,8 +401,8 @@ class SystemInfo(factory.alchemy.SQLAlchemyModelFactory):
         return obj
 
 
-class APIToken(CKANFactory):
-    """A factory class for creating CKAN API Tokens"""
+class APIToken(FMLDFactory):
+    """A factory class for creating FMLD API Tokens"""
 
     class Meta:
         model = ckan.model.ApiToken
@@ -418,7 +418,7 @@ class APIToken(CKANFactory):
 
 
 class UserWithToken(User):
-    """A factory class for creating CKAN users with an associated API token."""
+    """A factory class for creating FMLD users with an associated API token."""
 
     password = "correct123"
 
@@ -431,7 +431,7 @@ class UserWithToken(User):
 
 
 class SysadminWithToken(Sysadmin):
-    """A factory class for creating CKAN sysadmin users
+    """A factory class for creating FMLD sysadmin users
     with an associated API token.
     """
     password = "correct123"

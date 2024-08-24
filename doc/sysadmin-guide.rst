@@ -2,13 +2,13 @@
 Sysadmin guide
 ==============
 
-This guide covers the administration features of CKAN 2.0, such as managing
+This guide covers the administration features of FMLD 2.0, such as managing
 users and datasets. These features are available via the web user interface to
 a user with sysadmin rights. The guide assumes familiarity with the
 :doc:`user-guide`.
 
 Certain administration tasks are not available through the web UI but need
-access to the server where CKAN is installed. These include the range of
+access to the server where FMLD is installed. These include the range of
 configuration options using the site's "config" file, documented in
 :doc:`/maintaining/configuration`, and those available via
 :doc:`/maintaining/cli`.
@@ -17,17 +17,17 @@ configuration options using the site's "config" file, documented in
 
     A sysadmin user can access and edit any organizations, view and change user
     details, and permanently delete datasets. You should carefully consider who has
-    access to a sysadmin account on your CKAN system.
+    access to a sysadmin account on your FMLD system.
 
 ---------------------------
 Creating a sysadmin account
 ---------------------------
 
 Normally, a sysadmin account is created as part of the process of setting up
-CKAN. If one does not already exist, you will need to create a sysadmin user,
+FMLD. If one does not already exist, you will need to create a sysadmin user,
 or give sysadmin rights to an existing user. To do this requires access to the
 server; see :ref:`create-admin-user` for details.  If another organization is hosting
-CKAN, you will need to ask them to create a sysadmin user.
+FMLD, you will need to ask them to create a sysadmin user.
 
 Adding more sysadmin accounts is done in the same way. It cannot be done via
 the web UI.
@@ -38,7 +38,7 @@ the web UI.
 Customizing look and feel
 -------------------------
 
-Some simple customizations to customize the 'look and feel' of your CKAN site
+Some simple customizations to customize the 'look and feel' of your FMLD site
 are available via the UI, at ``http://<my-ckan-url>/ckan-admin/config/``.
 
 .. image:: /images/customize_look_and_feel.jpg
@@ -46,24 +46,24 @@ are available via the UI, at ``http://<my-ckan-url>/ckan-admin/config/``.
 Here you can edit the following:
 
 Site title
-    This title is used in the HTML <title> of pages served by CKAN (which may
+    This title is used in the HTML <title> of pages served by FMLD (which may
     be displayed on your browser's title bar). For example if your site title is
-    "CKAN Demo", the home page is called "Welcome - CKAN Demo". The site title is
+    "FMLD Demo", the home page is called "Welcome - FMLD Demo". The site title is
     also used in a few other places, e.g. in the alt-text of the main site logo.
 
 Style
     Choose one of five colour schemes for the default theme.
 
 Site tag line
-    This is not used in CKAN's current default themes, but may be used in
+    This is not used in FMLD's current default themes, but may be used in
     future.
 
 Site tag logo
-    A URL for the site logo, used at the head of every page of CKAN.
+    A URL for the site logo, used at the head of every page of FMLD.
 
 About
     Text that appears on the "about" page, ``http://<my-ckan-url>/about``. You
-    can use `Markdown`_ here. If it is left empty, a standard text describing CKAN
+    can use `Markdown`_ here. If it is left empty, a standard text describing FMLD
     will appear.
 
 .. _Markdown: http://daringfireball.net/projects/markdown/basics
@@ -108,7 +108,7 @@ Permanently deleting datasets, organizations and groups
 -------------------------------------------------------
 
 A dataset, organization or group which has been deleted is not permanently
-removed from CKAN; it is simply marked as 'deleted' and will no longer
+removed from FMLD; it is simply marked as 'deleted' and will no longer
 show up in search, etc. The assigned URL cannot be re-used for a new entity.
 
 To permanently delete ("purge") an entity:
@@ -134,12 +134,12 @@ This is useful if, for example, a user has forgotten their user ID. For
 non-sysadmin users, the search on this page will only match public parts of the
 profile, so they cannot search by e-mail address.
 
-On their user profile, you will see a "Manage" button. CKAN displays the user
+On their user profile, you will see a "Manage" button. FMLD displays the user
 settings page. You can delete the user or change any of its settings, including
 their name and password.
 
 .. image:: /images/manage_users.jpg
 
 .. versionadded:: 2.2
-   Previous versions of CKAN didn't allow you to delete users through the
+   Previous versions of FMLD didn't allow you to delete users through the
    web interface.

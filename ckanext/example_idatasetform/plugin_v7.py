@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-from ckan.common import CKANConfig
+from ckan.common import FMLDConfig
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
 
@@ -9,7 +9,7 @@ class ExampleIDatasetFormPlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
     p.implements(p.IConfigurer)
     p.implements(p.IDatasetForm)
 
-    def update_config(self, config: CKANConfig):
+    def update_config(self, config: FMLDConfig):
         tk.add_template_directory(config, u'templates')
 
     def is_fallback(self):

@@ -18,7 +18,7 @@ class ExampleIConfigurerPlugin(plugins.SingletonPlugin):
         is_positive_integer = toolkit.get_validator('is_positive_integer')
 
         schema.update({
-            # This is an existing CKAN core configuration option, we are just
+            # This is an existing FMLD core configuration option, we are just
             # making it available to be editable at runtime
             'ckan.datasets_per_page': [ignore_missing, is_positive_integer],
 

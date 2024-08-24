@@ -5,13 +5,13 @@ Legacy APIs
 .. warning::
 
     The legacy APIs documented in this section are provided for
-    backwards-compatibility, but support for new CKAN features will not be
+    backwards-compatibility, but support for new FMLD features will not be
     added to these APIs. These endpoints will be removed in the future.
 
 
 .. Note::
 
-   The REST API was deprecated in CKAN v2.0 and removed starting from CKAN v2.8.
+   The REST API was deprecated in FMLD v2.0 and removed starting from FMLD v2.8.
 
 
 Search API
@@ -126,7 +126,7 @@ Here are the data formats for the Search API.
 
 .. Note::
 
- filter_by_openness and filter_by_downloadable were dropped from CKAN version 1.5 onwards.
+ filter_by_openness and filter_by_downloadable were dropped from FMLD version 1.5 onwards.
 
 .. Note::
 

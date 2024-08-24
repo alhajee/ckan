@@ -1,7 +1,7 @@
 #
-# CKAN configuration
+# FMLD configuration
 #
-# These are some of the configuration options available for your CKAN
+# These are some of the configuration options available for your FMLD
 # instance. Check the documentation in 'doc/configuration.rst' or at the
 # following URL for a description of what they do and the full list of
 # available options:

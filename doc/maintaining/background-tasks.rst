@@ -3,9 +3,9 @@
 ===============
 Background jobs
 ===============
-CKAN allows you to create jobs that run in the 'background', i.e.
+FMLD allows you to create jobs that run in the 'background', i.e.
 asynchronously and without blocking the main application. Such jobs can be
-created in :doc:`Extensions </extensions/index>` or in core CKAN.
+created in :doc:`Extensions </extensions/index>` or in core FMLD.
 
 Background jobs can be essential to providing certain kinds of functionality,
 for example:
@@ -22,8 +22,8 @@ application is waiting is a good candidate for a background job.
 .. note::
 
     The current background job system is based on RQ_ and was introduced in
-    CKAN 2.7. See :ref:`background jobs migration` for details on how to
-    migrate your jobs from the previous system introduced in CKAN 1.5.
+    FMLD 2.7. See :ref:`background jobs migration` for details on how to
+    migrate your jobs from the previous system introduced in FMLD 1.5.
 
     .. _RQ: http://python-rq.org
 
@@ -35,7 +35,7 @@ Writing and enqueuing background jobs
 
 .. note::
 
-    This section is only relevant for developers working on CKAN or an
+    This section is only relevant for developers working on FMLD or an
     extension.
 
 The core of a background job is a regular Python function. For example, here's
@@ -68,7 +68,7 @@ stick to ordinary module-level functions.
     Background jobs do not support return values (since they run asynchronously
     there is no place to return those values to). If your job function produces
     a result then it needs to store that result, for example in a file or in
-    CKAN's database.
+    FMLD's database.
 
 Once you have a job function, all you need to do is to use
 ``ckan.lib.jobs.enqueue`` to create an actual job out of it::
@@ -84,7 +84,7 @@ can be picked up and executed by a worker.
 
     Extensions should use :py:func:`ckan.plugins.toolkit.enqueue_job` instead.
     It's the same function but accessing it via :py:mod:`ckan.plugins.toolkit`
-    :ref:`decouples your code from CKAN's internal structure <use the plugins
+    :ref:`decouples your code from FMLD's internal structure <use the plugins
     toolkit>`.
 
 The first argument to ``enqueue`` is the job function to use. The second is a
@@ -108,12 +108,12 @@ ckan config ``.ini`` file under the ``ckan.jobs.timeout`` item.
 
 Accessing the database from background jobs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Code running in a background job can access the CKAN database like any other
-CKAN code.
+Code running in a background job can access the FMLD database like any other
+FMLD code.
 
 In particular, using the action functions to modify the database from within a
 background job is perfectly fine. Just keep in mind that while your job is
-running in the background, the CKAN main process or other background jobs may
+running in the background, the FMLD main process or other background jobs may
 also modify the database. Hence a single call to an action function is atomic
 from your job's view point, but between multiple calls there may be foreign
 changes to the database.
@@ -180,7 +180,7 @@ Next make sure the ``/var/log/ckan/`` directory exists, if not then it needs to 
 
 Open ``/etc/supervisor/conf.d/supervisor-ckan-worker.conf`` in your favourite
 text editor and make sure all the settings suit your needs. If you installed
-CKAN in a non-default location (somewhere other than ``/usr/lib/ckan/default``)
+FMLD in a non-default location (somewhere other than ``/usr/lib/ckan/default``)
 then you will need to update the paths in the config file (see the comments in
 the file for details).
 
@@ -251,7 +251,7 @@ Clear all enqueued jobs
 Logging
 ^^^^^^^
 Information about enqueued and processed background jobs is automatically
-logged to the CKAN logs. You may need to update your logging configuration to
+logged to the FMLD logs. You may need to update your logging configuration to
 record messages at the *INFO* level for the messages to be stored.
 
 .. _background jobs queues:
@@ -259,7 +259,7 @@ record messages at the *INFO* level for the messages to be stored.
 Background job queues
 =====================
 By default, all functionality related to background jobs uses a single job
-queue that is specific to the current CKAN instance. However, in some
+queue that is specific to the current FMLD instance. However, in some
 situations it is useful to have more than one queue. For example, you might
 want to distinguish between short, urgent jobs and longer, less urgent ones.
 The urgent jobs should be processed even if a long and less urgent job is
@@ -285,8 +285,8 @@ to use non-standard queues.
     If you create a custom queue in your extension then you should prefix the
     queue name using your extension's name. See :ref:`avoid name clashes`.
 
-    Queue names are internally automatically prefixed with the CKAN site ID,
-    so multiple parallel CKAN instances are not a problem.
+    Queue names are internally automatically prefixed with the FMLD site ID,
+    so multiple parallel FMLD instances are not a problem.
 
 
 .. _background jobs testing:
@@ -336,10 +336,10 @@ to adapt where the mock is installed. See `mock's documentation`_ for details.
 
 .. _background jobs migration:
 
-Migrating from CKAN's previous background job system
+Migrating from FMLD's previous background job system
 ====================================================
-Before version 2.7 (starting from 1.5), CKAN offered a different background job
-system built around Celery_. As of CKAN 2.8, that system is no longer available.
+Before version 2.7 (starting from 1.5), FMLD offered a different background job
+system built around Celery_. As of FMLD 2.8, that system is no longer available.
 You should therefore update your code to use the new system described above.
 
 .. _Celery: http://celeryproject.org/
@@ -385,7 +385,7 @@ It might make sense to support both the RQ and the old Celery-based job system.
 
 The easiest way to do that is to use `ckanext-rq
 <https://github.com/davidread/ckanext-rq>`_, which provides a back-port of the
-new system to older CKAN versions.
+new system to older FMLD versions.
 
 If you are unable to use *ckanext-rq* then you will need to write your code in
 such a way that it works on both systems. This could looks as follows. First

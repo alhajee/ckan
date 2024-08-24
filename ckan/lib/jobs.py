@@ -8,8 +8,8 @@ Note that most job management functions are not available from this
 module but via the various ``job_*`` API functions.
 
 Internally, RQ queue names are prefixed with a string containing the
-CKAN site ID to avoid key collisions when the same Redis database is
-used for multiple CKAN instances. The functions of this module expect
+FMLD site ID to avoid key collisions when the same Redis database is
+used for multiple FMLD instances. The functions of this module expect
 unprefixed queue names (e.g. ``'default'``) unless noted otherwise. The
 raw RQ objects (e.g. a queue returned by ``get_queue``) use the full,
 prefixed names. Use the functions ``add_queue_name_prefix`` and
@@ -231,7 +231,7 @@ def test_job(*args: Any) -> None:
 
 class Worker(rq.Worker):
     u'''
-    CKAN-specific worker.
+    FMLD-specific worker.
 
     Note that starting an instance of this class (via the ``work``
     method) disposes the currently active database engine and the

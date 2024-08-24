@@ -26,7 +26,7 @@
  * can also be applied to parse the value. Only data-type="date" is currently
  * supported and expects data-value to be a unix timestamp.
  */
-this.ckan.module('plot', function (jQuery) {
+this.ckan.module("plot", function (jQuery) {
   return {
     /* Holds the jQuery.plot() object when created */
     graph: null,
@@ -38,8 +38,8 @@ this.ckan.module('plot', function (jQuery) {
     options: {
       xaxis: {},
       yaxis: {},
-      legend: {position: 'nw'},
-      colors: ['#ffcc33', '#ff8844']
+      legend: { position: "nw" },
+      colors: ["#ffcc33", "#ff8844"],
     },
 
     /* Sets up the canvas element and parses the table.
@@ -49,8 +49,10 @@ this.ckan.module('plot', function (jQuery) {
     initialize: function () {
       jQuery.proxyAll(this, /_on/);
 
-      if (!this.el.is('table')) {
-        throw new Error('CKAN module plot can only be called on table elements');
+      if (!this.el.is("table")) {
+        throw new Error(
+          "FMLD module plot can only be called on table elements"
+        );
       }
 
       this.setupCanvas();
@@ -92,7 +94,7 @@ this.ckan.module('plot', function (jQuery) {
      * Returns nothing.
      */
     draw: function () {
-      if (!this.drawn && this.canvas.is(':visible')) {
+      if (!this.drawn && this.canvas.is(":visible")) {
         this.graph = jQuery.plot(this.canvas, this.data, this.options);
       }
     },
@@ -114,21 +116,21 @@ this.ckan.module('plot', function (jQuery) {
       var data = [];
       var _this = this;
 
-      var headings = table.find('thead tr:first th').map(function () {
+      var headings = table.find("thead tr:first th").map(function () {
         return this.innerHTML;
       });
 
-      table.find('tbody tr').each(function (row) {
+      table.find("tbody tr").each(function (row) {
         var element = jQuery(this);
         var x = [];
 
-        x[row] = _this.getValue(element.find('th'));
+        x[row] = _this.getValue(element.find("th"));
 
-        element.find('td').each(function (series) {
-          var value   = _this.getValue(this);
+        element.find("td").each(function (series) {
+          var value = _this.getValue(this);
           var label = headings[series + 1];
 
-          data[series] = data[series] || {data: [], label: label};
+          data[series] = data[series] || { data: [], label: label };
           data[series].data[row] = [x[row], value];
         });
       });
@@ -161,9 +163,9 @@ this.ckan.module('plot', function (jQuery) {
      * Returns the parsed value.
      */
     getValue: function (cell) {
-      var item  = cell instanceof jQuery ? cell : jQuery(cell);
-      var type  = item.data('type')  || 'string';
-      var value = item.data('value') || item.text();
+      var item = cell instanceof jQuery ? cell : jQuery(cell);
+      var type = item.data("type") || "string";
+      var value = item.data("value") || item.text();
       return this.parseValue(value, type);
     },
 
@@ -184,7 +186,7 @@ this.ckan.module('plot', function (jQuery) {
      * Returns the parsed value.
      */
     parseValue: function (value, type) {
-      if (type === 'date') {
+      if (type === "date") {
         value = new Date(parseInt(value, 10) * 1000);
         if (!value) {
           value = 0;
@@ -201,9 +203,12 @@ this.ckan.module('plot', function (jQuery) {
      * Returns nothing.
      */
     _onShown: function (event) {
-      if (!this.drawn && jQuery.contains(jQuery(event.target.hash)[0], this.canvas[0])) {
+      if (
+        !this.drawn &&
+        jQuery.contains(jQuery(event.target.hash)[0], this.canvas[0])
+      ) {
         this.draw();
       }
-    }
+    },
   };
 });

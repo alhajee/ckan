@@ -6,8 +6,8 @@ Overview
 
 
 
-Welcome to CKAN's documentation! These docs are organized into several guides,
-each guide serves a different audience of CKAN users or contributors.
+Welcome to FMLD's documentation! These docs are organized into several guides,
+each guide serves a different audience of FMLD users or contributors.
 
 .. toctree::
   :maxdepth: 2
@@ -27,6 +27,6 @@ each guide serves a different audience of CKAN users or contributors.
 
 .. note::
 
-   These docs are maintained by the CKAN development team. CKAN and its
+   These docs are maintained by the FMLD development team. FMLD and its
    documentation are free and open source, and contributions are welcome.
    To contribute to these docs, see :doc:`/contributing/documentation`.

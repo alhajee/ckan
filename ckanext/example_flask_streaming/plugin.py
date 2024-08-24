@@ -7,7 +7,7 @@ from flask import Blueprint
 import flask
 
 import ckan.plugins as p
-from ckan.common import CKANConfig, streaming_response
+from ckan.common import FMLDConfig, streaming_response
 
 
 def stream_string():
@@ -60,7 +60,7 @@ class ExampleFlaskStreamingPlugin(p.SingletonPlugin):
 
     # IConfigurer
 
-    def update_config(self, config: CKANConfig):
+    def update_config(self, config: FMLDConfig):
         # Add extension templates directory
         p.toolkit.add_template_directory(config, u'templates')
 

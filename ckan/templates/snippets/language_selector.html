@@ -1,4 +1,4 @@
-{% set current_lang = request.environ.CKAN_LANG %}
+{% set current_lang = request.environ.FMLD_LANG %}
 <form class="lang-select" action="{% url_for 'util.internal_redirect' %}" data-module="select-switch" method="POST">
   {{ h.csrf_input() }} 
   <div class="form-group">

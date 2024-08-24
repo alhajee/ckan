@@ -107,10 +107,10 @@ Will become: ::
     jQuery('.btn').data('fileFormat'); //=> "csv"
     jQuery('.btn').data(); => {fileFormat: "csv"}
 
-Ideally you should be using `CKAN's JavaScript module`_ format for defining
+Ideally you should be using `FMLD's JavaScript module`_ format for defining
 how JavaScript is initiated and interacts with the DOM.
 
-.. _CKAN's JavaScript module: ./frontend/javascript-module-tutorial.html
+.. _FMLD's JavaScript module: ./frontend/javascript-module-tutorial.html
 
 ---------------------------
 Targeting Internet Explorer

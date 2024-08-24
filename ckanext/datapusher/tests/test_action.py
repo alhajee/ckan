@@ -155,7 +155,7 @@ class TestSubmit:
         func.assert_not_called()
 
         # Call datapusher_hook with state complete, to mock the DataPusher
-        # finishing the job and telling CKAN
+        # finishing the job and telling FMLD
         data_dict = {
             "metadata": {
                 "resource_id": resource["id"],
@@ -205,7 +205,7 @@ class TestSubmit:
         func.assert_not_called()
 
         # Call datapusher_hook with state complete, to mock the DataPusher
-        # finishing the job and telling CKAN
+        # finishing the job and telling FMLD
         data_dict = {
             "metadata": {
                 "resource_id": resource["id"],
@@ -257,7 +257,7 @@ class TestSubmit:
         func.assert_not_called()
 
         # Call datapusher_hook with state complete, to mock the DataPusher
-        # finishing the job and telling CKAN
+        # finishing the job and telling FMLD
         data_dict = {
             "metadata": {
                 "resource_id": resource["id"],
@@ -305,7 +305,7 @@ class TestSubmit:
         # Not called
         func.assert_not_called()
         # Call datapusher_hook with state complete, to mock the DataPusher
-        # finishing the job and telling CKAN
+        # finishing the job and telling FMLD
         data_dict = {
             "metadata": {
                 "resource_id": resource["id"],

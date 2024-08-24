@@ -18,7 +18,7 @@ serialized_declaration = serializer(
 ```
 
 This mechanism allows you to re-define default serializers, though it should be
-avoided unless you have an irresistible desire to hack into CKAN core.
+avoided unless you have an irresistible desire to hack into FMLD core.
 
 """
 import os
@@ -130,7 +130,7 @@ def serialize_rst(declaration: "Declaration"):
     # Config option may refer to the absolute filepath in their default
     # values. One of such options is `ckan.resource_formats`. Just to avoid
     # misunderstanding, we'll update these options, replacing the path till
-    # CKAN root with `/<CKAN_ROOT>` segment.
+    # FMLD root with `/<FMLD_ROOT>` segment.
     ckan_root = os.path.dirname(
         os.path.dirname(os.path.realpath(ckan.__file__)))
 
@@ -164,7 +164,7 @@ def serialize_rst(declaration: "Declaration"):
 
             if default != '':
                 if default.startswith(ckan_root):
-                    default = default.replace(ckan_root, '/<CKAN_ROOT>')
+                    default = default.replace(ckan_root, '/<FMLD_ROOT>')
                 default = f"``{default}``"
             else:
                 default = "none"
@@ -184,7 +184,7 @@ def serialize_md(declaration: "Declaration"):
     # Config option may refer to the absolute filepath in their default
     # values. One of such options is `ckan.resource_formats`. Just to avoid
     # misunderstanding, we'll update these options, replacing the path till
-    # CKAN root with `/<CKAN_ROOT>` segment.
+    # FMLD root with `/<FMLD_ROOT>` segment.
     ckan_root = os.path.dirname(
         os.path.dirname(os.path.realpath(ckan.__file__)))
 
@@ -213,7 +213,7 @@ def serialize_md(declaration: "Declaration"):
 
             if default != '':
                 if default.startswith(ckan_root):
-                    default = default.replace(ckan_root, '/<CKAN_ROOT>')
+                    default = default.replace(ckan_root, '/<FMLD_ROOT>')
                 default = f"`{default}`"
             else:
                 default = "none"

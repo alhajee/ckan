@@ -4,12 +4,12 @@ Testing coding standards
 
 **All new code, or changes to existing code, should have new or updated tests
 before being merged into master**. This document gives some guidelines for
-developers who are writing tests or reviewing code for CKAN.
+developers who are writing tests or reviewing code for FMLD.
 
 .. seealso::
 
-   :doc:`Testing CKAN <test>`
-     How to set up your development environment to run CKAN's test suite
+   :doc:`Testing FMLD <test>`
+     How to set up your development environment to run FMLD's test suite
 
    :ref:`background jobs testing`
      How to handle asynchronous background jobs in your tests
@@ -31,7 +31,7 @@ Fast
 
   * Where appropriate, use the ``monkeypatch`` `fixture
     <https://docs.pytest.org/en/latest/monkeypatch.html>`_ to avoid
-    pulling in other parts of CKAN (especially the database).
+    pulling in other parts of FMLD (especially the database).
 
 Independent
   * Each test module, class and method should be able to be run on its own.
@@ -72,7 +72,7 @@ Easy to write
   to read.
 
 The follow sections give some more specific guidelines and tips for writing
-CKAN tests.
+FMLD tests.
 
 
 .. _organization:
@@ -130,9 +130,9 @@ Do this even if it means your method name gets really long, since we don't
 write code that calls our test methods there's no advantage to having short
 test method names.
 
-Some modules in CKAN contain large numbers of loosely related functions.
+Some modules in FMLD contain large numbers of loosely related functions.
 For example, :mod:`ckan.logic.action.update` contains all functions for
-updating things in CKAN. This means that
+updating things in FMLD. This means that
 :mod:`ckan.tests.logic.action.test_update` is going to contain an even larger
 number of test functions.
 
@@ -183,7 +183,7 @@ give the following recipe for all unit test methods to follow:
 3. Make assertions about the return value, and / or any side effects.
 4. Do absolutely nothing else.
 
-Most CKAN tests should follow this form. Here's an example of a simple action
+Most FMLD tests should follow this form. Here's an example of a simple action
 function test demonstrating the recipe:
 
 .. literalinclude:: /../ckan/tests/logic/action/test_update.py
@@ -198,7 +198,7 @@ How detailed should tests be?
 Generally, what we're trying to do is test the *interfaces* between modules in
 a way that supports modularization: if you change the code within a function,
 method, class or module, if you don't break any of that code's tests you
-should be able to expect that CKAN as a whole will not be broken.
+should be able to expect that FMLD as a whole will not be broken.
 
 As a general guideline, the tests for a function or method should:
 
@@ -253,8 +253,8 @@ Mocking: the ``mock`` library
 -----------------------------
 
 We use the `mock library <http://www.voidspace.org.uk/python/mock/>`_ to
-replace parts of CKAN with mock objects. This allows a CKAN
-function to be tested independently of other parts of CKAN or third-party
+replace parts of FMLD with mock objects. This allows a FMLD
+function to be tested independently of other parts of FMLD or third-party
 libraries that the function uses. This generally makes the test simpler and
 faster (especially when :py:mod:`ckan.model` is mocked out so that the tests
 don't touch the database). With mock objects we can also make assertions about
@@ -278,7 +278,7 @@ what methods the function called on the mock object and with which arguments.
      validator tests in :py:mod:`ckan.tests.logic.auth`, and most (all?)
      lib tests in :py:mod:`ckan.tests.lib` are unit tests and should use
      mocking when necessary (often it's possible to unit test a method in
-     isolation from other CKAN code without doing any mocking, which is ideal).
+     isolation from other FMLD code without doing any mocking, which is ideal).
 
      In these kind of tests we can often mock one or two objects in a simple
      and easy to understand way, and make the test both simpler and faster.
@@ -319,13 +319,13 @@ out :py:mod:`ckan.model`:
 ----
 
 The following sections will give specific guidelines and examples for writing
-tests for each module in CKAN.
+tests for each module in FMLD.
 
 .. note::
 
    When we say that *all* functions should have tests in the sections below, we
    mean all *public* functions that the module or class exports for use by
-   other modules or classes in CKAN or by extensions or templates.
+   other modules or classes in FMLD or by extensions or templates.
 
    *Private* helper methods (with names beginning with ``_``) never have to
    have their own tests, although they can have tests if helpful.
@@ -353,7 +353,7 @@ all their options, and converters and validators are not only used by the
 action functions but are also available to plugins. Having unit tests will also
 help to clarify the intended behavior of each converter and validator.
 
-CKAN's action functions call
+FMLD's action functions call
 :py:func:`ckan.lib.navl.dictization_functions.validate` to validate data posted
 by the user. Each action function passes a schema from
 :py:mod:`ckan.logic.schema` to
@@ -364,7 +364,7 @@ conversion functions are defined in :py:mod:`ckan.logic.validators`,
 :py:mod:`ckan.logic.converters` and :py:mod:`ckan.lib.navl.validators`.
 
 Most validator and converter tests should be unit tests that test the validator
-or converter function in isolation, without bringing in other parts of CKAN or
+or converter function in isolation, without bringing in other parts of FMLD or
 touching the database.  This requires using the ``mock`` library to mock
 ``ckan.model``, see :ref:`mock`.
 
@@ -420,6 +420,6 @@ Writing :mod:`ckan.plugins` tests
 Writing :mod:`ckan.ckanext` tests
 ---------------------------------
 
-Within extensions, follow the same guidelines as for CKAN core. For example if
+Within extensions, follow the same guidelines as for FMLD core. For example if
 an extension adds an action function then the action function should have
 tests, etc.

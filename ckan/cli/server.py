@@ -126,7 +126,7 @@ def run(ctx: click.Context, host: str, port: str, disable_reloader: bool,
     # Once automatic on startup, run only here for faster debug iterations
     build_js_translations()
 
-    log.info(u"Running CKAN on {scheme}://{host}:{port}{prefix}".format(
+    log.info(u"Running FMLD on {scheme}://{host}:{port}{prefix}".format(
         scheme='https' if ssl_context else 'http', host=host, port=port_int,
         prefix=prefix))
 

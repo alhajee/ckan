@@ -30,7 +30,7 @@ def pytest_addoption(parser):
 
 
 def pytest_sessionstart(session):
-    """Initialize CKAN environment.
+    """Initialize FMLD environment.
     """
     conf = load_config(session.config.option.ckan_ini)
     # Set this internal test request context with the configured environment so

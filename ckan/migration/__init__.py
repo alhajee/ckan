@@ -6,7 +6,7 @@ from typing import Any
 def skip_based_on_legacy_engine_version(op: Any, filename: str) -> bool:
     u'''Safe way to update instances sqlalchemy-migrate migrations applied.
 
-    CKAN `db upgrade/init` command is trying to obtain current version
+    FMLD `db upgrade/init` command is trying to obtain current version
     of sqlalchemy-migrate migrations from database. In that case, we
     are going to compare existing version from DB with alembic
     migration script's prefix in filename which defines corresponding

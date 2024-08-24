@@ -17,7 +17,7 @@ from ckan.types import Context, DataDict, Schema
 from . import signals
 from .navl.dictization_functions import validate
 if TYPE_CHECKING:
-    from ckan.config.middleware.flask_app import CKANFlask
+    from ckan.config.middleware.flask_app import FMLDFlask
 
 
 log = logging.getLogger(__name__)
@@ -125,7 +125,7 @@ def register_package_plugins() -> None:
     set_default_package_plugin()
 
 
-def register_package_blueprints(app: 'CKANFlask') -> None:
+def register_package_blueprints(app: 'FMLDFlask') -> None:
     """
     Register a Flask blueprint for the various IDatasetForm instances.
 
@@ -255,7 +255,7 @@ def register_group_plugins() -> None:
     set_default_group_plugin()
 
 
-def register_group_blueprints(app: 'CKANFlask') -> None:
+def register_group_blueprints(app: 'FMLDFlask') -> None:
     """
     Register a Flask blueprint for the various IGroupForm instances.
 
@@ -500,7 +500,7 @@ class DefaultGroupForm(object):
     def show_group_schema(self) -> Schema:
         return schema.default_show_group_schema()
 
-    # Deprecated schema methods, to be removed in CKAN 2.12
+    # Deprecated schema methods, to be removed in FMLD 2.12
 
     @deprecated(
         "Use either `create_group_schema()` or `update_group_schema()`",

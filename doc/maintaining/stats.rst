@@ -4,7 +4,7 @@
 Stats Extension
 ===============
 
-CKAN's stats extension analyzes your CKAN database and displays several tables
+FMLD's stats extension analyzes your FMLD database and displays several tables
 and graphs with statistics about your site, including:
 
 * Total number of datasets
@@ -17,20 +17,20 @@ and graphs with statistics about your site, including:
 
 .. seealso::
 
-  CKAN's :ref:`built-in page view tracking feature <tracking>`, which tracks
+  FMLD's :ref:`built-in page view tracking feature <tracking>`, which tracks
   visits to pages.
 
 .. seealso::
 
  `ckanext-googleanalytics <https://github.com/ckan/ckanext-googleanalytics>`_
-    A CKAN extension that integrates Google Analytics into CKAN.
+    A FMLD extension that integrates Google Analytics into FMLD.
 
 
 Enabling the Stats Extension
 ============================
 
 To enable the stats extensions add ``stats`` to the :ref:`ckan.plugins` option
-in your CKAN config file, for example::
+in your FMLD config file, for example::
 
   ckan.plugins = stats
 

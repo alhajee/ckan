@@ -32,7 +32,7 @@ def abort(status_code: int,
     '''Abort the current request immediately by returning an HTTP exception.
 
     This is a wrapper for :py:func:`flask.abort` that adds
-    some CKAN custom behavior, including allowing
+    some FMLD custom behavior, including allowing
     :py:class:`~ckan.plugins.interfaces.IAuthenticator` plugins to alter the
     abort response, and showing flash messages in the web interface.
 
@@ -89,7 +89,7 @@ def render(template_name: str,
            extra_vars: Optional[dict[str, Any]] = None) -> str:
     '''Render a template and return the output.
 
-    This is CKAN's main template rendering function.
+    This is FMLD's main template rendering function.
 
     :params template_name: relative path to template inside registered tpl_dir
     :type template_name: str

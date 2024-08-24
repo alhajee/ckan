@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-'''API functions for searching for and getting data from CKAN.'''
+'''API functions for searching for and getting data from FMLD.'''
 from __future__ import annotations
 
 import uuid
@@ -628,7 +628,7 @@ def organization_list_for_user(context: Context,
     By default this returns the list of organizations that the currently
     authorized user is member of, in any capacity.
 
-    When a user becomes a member of an organization in CKAN they're given a
+    When a user becomes a member of an organization in FMLD they're given a
     "capacity" (sometimes called a "role"), for example "member", "editor" or
     "admin".
 

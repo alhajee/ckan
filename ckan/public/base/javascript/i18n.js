@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
 /*
- * CKAN JavaScript i18n functionality.
+ * FMLD JavaScript i18n functionality.
  *
- * Adds an `i18n` attribute to the CKAN object (`this.ckan`).
+ * Adds an `i18n` attribute to the FMLD object (`this.ckan`).
  *
  * Singular strings can be translated using `i18n._`:
  *
@@ -38,7 +38,7 @@
  *                        num_items,
  *                        {name: 'Thomas'})
  *
- * Note that inside a CKAN JS module you can also use the shortcuts `this._`
+ * Note that inside a FMLD JS module you can also use the shortcuts `this._`
  * and `this.ngettext`.
  */
 
@@ -48,17 +48,17 @@ this.ckan = this.ckan || {};
   // See: http://slexaxton.github.com/Jed/
   var domain = {
     "": {
-      "domain": "ckan",
-      "lang": "en",
-      "plural_forms": "nplurals=2; plural=(n != 1);"
-    }
+      domain: "ckan",
+      lang: "en",
+      plural_forms: "nplurals=2; plural=(n != 1);",
+    },
   };
 
   var jed = new Jed({
-    domain: 'ckan',
+    domain: "ckan",
     locale_data: {
-      ckan: domain
-    }
+      ckan: domain,
+    },
   });
 
   ckan.i18n = {};
@@ -75,9 +75,9 @@ this.ckan = this.ckan || {};
    * Internal function to load a translation.
    */
   ckan.i18n.load = function (data) {
-    if (data && data['']) {
+    if (data && data[""]) {
       // Extend our default domain data with the new keys.
-      jQuery.extend(domain, data);;
+      jQuery.extend(domain, data);
     }
   };
 
@@ -85,9 +85,9 @@ this.ckan = this.ckan || {};
     return jed.sprintf(jed.gettext(string), values || {});
   };
 
-  ckan.i18n.ngettext = function(singular, plural, num, values) {
+  ckan.i18n.ngettext = function (singular, plural, num, values) {
     values = values || {};
-    values['num'] = num;
+    values["num"] = num;
     return jed.sprintf(jed.ngettext(singular, plural, num), values);
   };
 
@@ -96,6 +96,6 @@ this.ckan = this.ckan || {};
     i18n: ckan.i18n,
 
     /* An alias for ckan.l18n.translate() [DEPRECATED] */
-    translate: ckan.i18n.translate
+    translate: ckan.i18n.translate,
   });
 })(this.ckan, this.jQuery, this.Jed);

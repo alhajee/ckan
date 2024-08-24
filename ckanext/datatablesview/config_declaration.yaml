@@ -75,7 +75,7 @@ groups:
       The `moment.js date format
       <https://momentjscom.readthedocs.io/en/latest/moment/04-displaying/01-format/>`_
       to use to convert raw timestamps to a user-friendly date format using
-      CKAN's current locale language code. This value can be overridden at the
+      FMLD's current locale language code. This value can be overridden at the
       resource level when configuring a DataTables resource view.
 
       .. note:: The value ``NONE`` is a special value as it indicates that no

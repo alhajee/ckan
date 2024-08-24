@@ -55,7 +55,7 @@ def compare_domains(urls: Iterable[str]) -> bool:
 
 
 def on_same_domain(data_dict: dict[str, Any]) -> bool:
-    # compare CKAN domain and resource URL
+    # compare FMLD domain and resource URL
     ckan_url = config.get('ckan.site_url')
     resource_url = data_dict['resource']['url']
 

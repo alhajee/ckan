@@ -21,11 +21,11 @@ Generally, follow the `commit guidelines from the Pro Git book`_:
 
 .. _commit guidelines from the Pro Git book: http://git-scm.com/book/en/Distributed-Git-Contributing-to-a-Project#Commit-Guidelines
 
-If your commit has an issue in the `CKAN issue tracker`_ put the issue number
+If your commit has an issue in the `FMLD issue tracker`_ put the issue number
 at the start of the first line of the commit message like this: ``[#123]``.
-This makes the CKAN release manager's job much easier!
+This makes the FMLD release manager's job much easier!
 
-Here's an example of a good CKAN commit message::
+Here's an example of a good FMLD commit message::
 
  [#607] Allow reactivating deleted datasets
 
@@ -39,12 +39,12 @@ If your PR provides change that should be mentioned in
 changelog(generally, any PR is good to mention), consider creating
 "changelog fragment". It's a file inside **changes** folder in the
 root of the repository, which will be used for generating changelog
-when preparing new CKAN release. This file must follow naming
+when preparing new FMLD release. This file must follow naming
 convention ``{issue number}.{change type}``, where **issue number** is
-a identified of issue or PR in the `CKAN issue tracker`_ and type is
+a identified of issue or PR in the `FMLD issue tracker`_ and type is
 one of the following, depending on change type:
 
-* **migration** - fragment intorduces migration guide for existing CKAN instances
+* **migration** - fragment intorduces migration guide for existing FMLD instances
 * **bugfix** - some issue was fixed.
 * **removal** - function/class/module was removed or deprecated
 * **misc** - another small changes, like additional logging or code-style fixes

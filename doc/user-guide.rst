@@ -2,8 +2,8 @@
 User guide
 ==========
 
-This user guide covers using CKAN's web interface to organize, publish and find
-data. CKAN also has a powerful API (machine interface), which makes it easy to
+This user guide covers using FMLD's web interface to organize, publish and find
+data. FMLD also has a powerful API (machine interface), which makes it easy to
 develop extensions and links with other information systems. The API is
 documented in :doc:`/api/index`.
 
@@ -11,10 +11,10 @@ Some web UI features relating to site administration are available only to
 users with sysadmin status, and are documented in :doc:`sysadmin-guide`.
 
 -------------
-What is CKAN?
+What is FMLD?
 -------------
 
-CKAN is a tool for making open data websites. (Think of a content management
+FMLD is a tool for making open data websites. (Think of a content management
 system like WordPress - but for data, instead of pages and blog posts.) It
 helps you manage and publish collections of data. It is used by national and
 local governments, research institutions, and other organizations who collect a
@@ -28,7 +28,7 @@ or even your own staff.
 Datasets and resources
 ======================
 
-For CKAN purposes, data is published in units called "datasets". A dataset is a
+For FMLD purposes, data is published in units called "datasets". A dataset is a
 parcel of data - for example, it could be the crime statistics for a region,
 the spending figures for a government department, or temperature readings from
 various weather stations. When users search for data, the search results they
@@ -40,16 +40,16 @@ A dataset contains two things:
   publisher, date, what formats it is available in, what license it is released
   under, etc.
 
-* A number of "resources", which hold the data itself. CKAN does not mind what
+* A number of "resources", which hold the data itself. FMLD does not mind what
   format the data is in. A resource can be a CSV or Excel spreadsheet, XML file,
-  PDF document, image file, linked data in RDF format, etc. CKAN can store the
+  PDF document, image file, linked data in RDF format, etc. FMLD can store the
   resource internally, or store it simply as a link, the resource itself being
   elsewhere on the web. A dataset can contain any number of resources. For
   example, different resources might contain the data for different years, or
   they might contain the same data in different formats.
 
 
-.. note:: On early CKAN versions, datasets were called "packages" and this name
+.. note:: On early FMLD versions, datasets were called "packages" and this name
     has stuck in some places, specially internally and on API calls. Package has
     exactly the same meaning as "dataset".
 
@@ -57,13 +57,13 @@ A dataset contains two things:
 Users, organizations and authorization
 ======================================
 
-CKAN users can register user accounts and log in. Normally (depending on the
+FMLD users can register user accounts and log in. Normally (depending on the
 site setup), login is not needed to search for and find data, but is needed for
 all publishing functions: datasets can be created, edited, etc by users with
 the appropriate permissions.
 
-Normally, each dataset is owned by an "organization". A CKAN instance can have
-any number of organizations. For example, if CKAN is being used as a data
+Normally, each dataset is owned by an "organization". A FMLD instance can have
+any number of organizations. For example, if FMLD is being used as a data
 portal by a national government, the organizations might be different
 government departments, each of which publishes data. Each organization can
 have its own workflow and authorizations, allowing it to manage its own
@@ -78,7 +78,7 @@ the press of a button. This may require a higher authorization level within the
 organization.
 
 Datasets cannot normally be created except within organizations. It is
-possible, however, to set up CKAN to allow datasets not owned by any
+possible, however, to set up FMLD to allow datasets not owned by any
 organization. Such datasets can be edited by any logged-in user, creating the
 possibility of a wiki-like datahub.
 
@@ -86,13 +86,13 @@ possibility of a wiki-like datahub.
 
     The user guide covers all the main features of the web user interface (UI).
     In practice, depending on how the site is configured, some of these functions
-    may be slightly different or unavailable. For example, in an official CKAN
+    may be slightly different or unavailable. For example, in an official FMLD
     instance in a production setting, the site administrator will probably have
     made it impossible for users to create new organizations via the UI. You can
     try out all the features described at http://demo.ckan.org.
 
 ----------
-Using CKAN
+Using FMLD
 ----------
 
 Registering and logging in
@@ -104,7 +104,7 @@ Registering and logging in
     features, such as "following" datasets. It is not needed to search for and
     download data.
 
-To create a user ID, use the "Register" link at the top of any page. CKAN will
+To create a user ID, use the "Register" link at the top of any page. FMLD will
 ask for the following:
 
 * *Username* -- choose a username using only letters, numbers, - and _ characters.
@@ -118,8 +118,8 @@ ask for the following:
 
 .. image:: /images/register_account.jpg
 
-If there are problems with any of the fields, CKAN will tell you the problem
-and enable you to correct it. When the fields are filled in correctly, CKAN
+If there are problems with any of the fields, FMLD will tell you the problem
+and enable you to correct it. When the fields are filled in correctly, FMLD
 will create your user account and automatically log you in.
 
 .. note::
@@ -144,7 +144,7 @@ Adding a new dataset
     but dataset features relating to authorization and organizations will not be
     available.
 
-**Step 1**. You can access CKAN's "Create dataset" screen in two ways.
+**Step 1**. You can access FMLD's "Create dataset" screen in two ways.
 
 a) Select the "Datasets" link at the top of any page. From this, above the
    search box, select the "Add Dataset" button.
@@ -154,10 +154,10 @@ b) Alternatively, select the "organizations" link at the top of a page. Now
    that you are a member of this organization, you can now select the "Add
    Dataset" button above the search box.
 
-**Step 2**. CKAN will ask for the following information about your data. (The
+**Step 2**. FMLD will ask for the following information about your data. (The
 actual data will be added in step 4.)
 
-* *Title* -- this title will be unique across CKAN, so make it brief but specific.
+* *Title* -- this title will be unique across FMLD, so make it brief but specific.
   E.g. "UK population density by region" is better than "Population figures".
 
 * *Description* -- You can add a longer description of the dataset here, including
@@ -176,7 +176,7 @@ actual data will be added in step 4.)
 * *Organization* - If you are a member of any organizations, this drop-down will
   enable you to choose which one should own the dataset. Ensure the default
   chosen is the correct one before you proceed. (Probably most users will be in
-  only one organization. If this is you, CKAN will have chosen your organization
+  only one organization. If this is you, FMLD will have chosen your organization
   by default and you need not do anything.)
 
 .. image:: /images/add_dataset_1.jpg
@@ -193,7 +193,7 @@ actual data will be added in step 4.)
 Data" button. (Alternatively select "Cancel" to discard the information filled
 in.)
 
-**Step 4**. CKAN will display the "Add data" screen.
+**Step 4**. FMLD will display the "Add data" screen.
 
 .. image:: /images/add_dataset_2.jpg
 
@@ -201,15 +201,15 @@ This is where you will add one or more "resources" which contain the data for
 this dataset. Choose a file or link for your data resource and select the
 appropriate choice at the top of the screen:
 
-* If you are giving CKAN a link to the data, like
+* If you are giving FMLD a link to the data, like
   ``http://example.com/mydata.csv``, then select "Link to a file" or "Link to an
   API". (If you don't know what an API is, you don't need to worry about this
   option - select "Link to a file".)
 
-* If the data to be added to CKAN is in a file on your computer, select "Upload
-  a file". CKAN will give you a file browser to select it.
+* If the data to be added to FMLD is in a file on your computer, select "Upload
+  a file". FMLD will give you a file browser to select it.
 
-**Step 5**. Add the other information on the page. CKAN does not require this
+**Step 5**. Add the other information on the page. FMLD does not require this
 information, but it is good practice to add it:
 
 * *Name* -- a name for this resource, e.g. "Population density 2011, CSV".
@@ -224,7 +224,7 @@ information, but it is good practice to add it:
 the "Save & add another" button. When you have finished adding resources,
 select "Next: Additional Info".
 
-**Step 7**. CKAN displays the "Additional data" screen.
+**Step 7**. FMLD displays the "Additional data" screen.
 
 * *Visibility* -- a ``Public`` dataset is public and can be seen by any user of the
   site. A ``Private`` dataset can only be seen by members of the organization owning
@@ -254,15 +254,15 @@ select "Next: Additional Info".
     named.
 
 .. versionchanged:: 2.2
-   Previous versions of CKAN used to allow adding the dataset to existing
+   Previous versions of FMLD used to allow adding the dataset to existing
    groups in this step. This was changed. To add a dataset to an existing group
    now, go to the "Group" tab in the Dataset's page.
 
-**Step 8**. Select the 'Finish' button. CKAN creates the dataset and shows you
+**Step 8**. Select the 'Finish' button. FMLD creates the dataset and shows you
 the result. You have finished!
 
 You should be able to find your dataset by typing the title, or some relevant
-words from the description, into the search box on any page in your CKAN
+words from the description, into the search box on any page in your FMLD
 instance. For more information about finding data, see the section
 :ref:`finding_data`.
 
@@ -278,7 +278,7 @@ organization, then any registered user can edit it.)
 
 #. Select the "Edit" button, which you should see above the dataset title.
 
-#. CKAN displays the "Edit dataset" screen. You can edit any of the fields
+#. FMLD displays the "Edit dataset" screen. You can edit any of the fields
    (Title, Description, Dataset, etc), change the visibility (Private/Public), and
    add or delete tags or custom fields. For details of these fields, see
    :ref:`adding_a_new_dataset`.
@@ -311,7 +311,7 @@ Deleting a dataset
 
 #. Select the "Delete" button.
 
-#. CKAN displays a confirmation dialog box. To complete deletion of the
+#. FMLD displays a confirmation dialog box. To complete deletion of the
    dataset, select "Confirm".
 
 .. note::
@@ -343,12 +343,12 @@ To create an organization:
 
 #. Select the "Add Organization" button below the search box.
 
-#. CKAN displays the "Create an Organization" page.
+#. FMLD displays the "Create an Organization" page.
 
 #. Enter a name for the organization, and, optionally, a description and image
    URL for the organization's home page.
 
-#. Select the "Create Organization" button. CKAN creates your organization and
+#. Select the "Create Organization" button. FMLD creates your organization and
    displays its home page. Initially, of course, the organization has no datasets.
 
 .. image:: /images/create_organization.jpg
@@ -359,7 +359,7 @@ organization; see :ref:`adding_a_new_dataset` above.
 
 .. note::
 
-    Depending on how CKAN is set up, you may not be authorized to create new
+    Depending on how FMLD is set up, you may not be authorized to create new
     organizations. In this case, if you need a new organization, you will need to
     contact your site administrator.
 
@@ -369,20 +369,20 @@ organization; see :ref:`adding_a_new_dataset` above.
 Managing an organization
 ------------------------
 
-When you create an organization, CKAN automatically makes you its "Admin".
+When you create an organization, FMLD automatically makes you its "Admin".
 From the organization's page you should see an "Admin" button above the search
-box. When you select this, CKAN displays the organization admin page. This page
+box. When you select this, FMLD displays the organization admin page. This page
 has two tabs:
 
 * *Info* -- Here you can edit the information supplied when the organization
   was created (title, description and image).
 
 * *Members* -- Here you can add, remove and change access roles for different
-  users in the organization. Note: you will need to know their username on CKAN.
+  users in the organization. Note: you will need to know their username on FMLD.
 
 .. image:: /images/manage_organization.jpg
 
-By default CKAN allows members of organizations with three roles:
+By default FMLD allows members of organizations with three roles:
 
 * *Member* -- can see the organization's private datasets
 
@@ -398,8 +398,8 @@ Finding data
 Searching the site
 ------------------
 
-To find datasets in CKAN, type any combination of search words (e.g. "health",
-"transport", etc) in the search box on any page. CKAN displays the first page
+To find datasets in FMLD, type any combination of search words (e.g. "health",
+"transport", etc) in the search box on any page. FMLD displays the first page
 of results for your search. You can:
 
 * View more pages of results
@@ -413,7 +413,7 @@ If there are a large number of results, the filters can be very helpful, since
 you can combine filters, selectively adding and removing them, and modify and
 repeat the search with existing filters still in place.
 
-If datasets are tagged by geographical area, it is also possible to run CKAN
+If datasets are tagged by geographical area, it is also possible to run FMLD
 with an extension which allows searching and filtering of datasets by selecting
 an area on a map.
 
@@ -424,16 +424,16 @@ Searching within an organization
 --------------------------------
 
 If you want to look for data owned by a particular organization, you can search
-within that organization from its home page in CKAN.
+within that organization from its home page in FMLD.
 
 #. Select the "Organizations" link at the top of any page.
 
-#. Select the organization you are interested in. CKAN will display your
+#. Select the organization you are interested in. FMLD will display your
    organization's home page.
 
 #. Type your search query in the main search box on the page.
 
-CKAN will return search results as normal, but restricted to datasets from the
+FMLD will return search results as normal, but restricted to datasets from the
 organization.
 
 If the organization is of interest, you can opt to be notified of changes to it
@@ -445,7 +445,7 @@ below. You must have a user account and be logged in to use this feature.
 Exploring datasets
 ------------------
 
-When you have found a dataset you are interested and selected it, CKAN will
+When you have found a dataset you are interested and selected it, FMLD will
 display the dataset page. This includes
 
 * The name, description, and other information about the dataset
@@ -475,15 +475,15 @@ logged in to use this feature.
 Search in detail
 ================
 
-CKAN supports two search modes, both are used from the same search field.
+FMLD supports two search modes, both are used from the same search field.
 If the search terms entered into the search field contain no colon (":")
-CKAN will perform a simple search. If the search expression does contain at
-least one colon (":") CKAN will perform an advanced search.
+FMLD will perform a simple search. If the search expression does contain at
+least one colon (":") FMLD will perform an advanced search.
 
 Simple Search
 -------------
 
-CKAN defers most of the search to Solr and by default it uses the `DisMax Query
+FMLD defers most of the search to Solr and by default it uses the `DisMax Query
 Parser <https://solr.apache.org/guide/8_11/the-dismax-query-parser.html>`_
 that was primarily designed to be easy to use and to accept almost any input
 without returning an error.
@@ -497,7 +497,7 @@ By default, all words or phrases specified by the user are treated as
 
 .. note::
 
-    CKAN will search for the **complete** word and when doing simple search are
+    FMLD will search for the **complete** word and when doing simple search are
     wildcards are not supported.
 
 Simple search examples:
@@ -553,7 +553,7 @@ Advanced Search Examples:
   datasets which title contains the words "european" and "census" within a
   distance of 4 words.
 
-* ``author:powell~`` CKAN supports fuzzy searches based on the Levenshtein
+* ``author:powell~`` FMLD supports fuzzy searches based on the Levenshtein
   Distance, or Edit Distance algorithm. To do a fuzzy search use the "~"
   symbol at the end of a single-word term. In this example words like
   "jowell" or "pomell" will also be found.
@@ -568,18 +568,18 @@ Advanced Search Examples:
 
 .. note::
 
-    CKAN uses Apache Solr as its search engine. For further details check the
+    FMLD uses Apache Solr as its search engine. For further details check the
     `Solr documentation
     <https://lucene.apache.org/solr/guide/6_6/searching.html#searching>`_.
-    Please note that CKAN sometimes uses different values than what is mentioned
+    Please note that FMLD sometimes uses different values than what is mentioned
     in that documentation. Also note that not the whole functionality is offered
-    through the simplified search interface in CKAN or it can differ due to
-    extensions or local development in your CKAN instance.
+    through the simplified search interface in FMLD or it can differ due to
+    extensions or local development in your FMLD instance.
 
 Personalization
 ===============
 
-CKAN provides features to personalize the experience of both searching for and
+FMLD provides features to personalize the experience of both searching for and
 publishing data. You must be logged in to use these features.
 
 .. _managing_your_news_feed:
@@ -587,7 +587,7 @@ publishing data. You must be logged in to use these features.
 Managing your news feed
 -----------------------
 
-At the top of any page, select the dashboard symbol (next to your name). CKAN
+At the top of any page, select the dashboard symbol (next to your name). FMLD
 displays your News feed. This shows changes to datasets that you follow, and
 any changed or new datasets in organizations that you follow. The number by the
 dashboard symbol shows the number of new notifications in your News feed since
@@ -603,7 +603,7 @@ the "Unfollow" button.
 Managing your user profile
 --------------------------
 
-You can change the information that CKAN holds about you, including what other
+You can change the information that FMLD holds about you, including what other
 users see about you by editing your user profile. (Users are most likely to see
 your profile when you edit a dataset or upload data to an organization that
 they are following.) To do this, select the gearwheel symbol at the top of any
@@ -611,7 +611,7 @@ page.
 
 .. image:: /images/manage_user_profile.jpg
 
-CKAN displays the user settings page. Here you can change:
+FMLD displays the user settings page. Here you can change:
 
 * Your full name
 

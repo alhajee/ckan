@@ -79,7 +79,7 @@
    </span>
 {%- endmacro -%}
 
-{#- we create tooltip here instead of javascript so we can leverage the automatic-local-datetime class date conversion CKAN does -#}
+{#- we create tooltip here instead of javascript so we can leverage the automatic-local-datetime class date conversion FMLD does -#}
 {%- set res = resource %}
 <div id="dtv-resource-info" style="display: none;">
   {{- _('Data last updated') }}: {{ local_friendly_datetime(res.last_modified) }}&#10;

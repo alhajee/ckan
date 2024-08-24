@@ -1,23 +1,23 @@
 .. include:: /_substitutions.rst
 
 ===========================
-Installing CKAN from source
+Installing FMLD from source
 ===========================
 
-CKAN is a Python application that requires three main services: PostgreSQL, Solr and Redis.
+FMLD is a Python application that requires three main services: PostgreSQL, Solr and Redis.
 
-This section describes how to install CKAN from source. Although
+This section describes how to install FMLD from source. Although
 :doc:`install-from-package` is simpler, it requires Ubuntu 20.04 64-bit or
-Ubuntu 22.04 64-bit. Installing CKAN from source works with other
+Ubuntu 22.04 64-bit. Installing FMLD from source works with other
 versions of Ubuntu and with other operating systems (e.g. RedHat, Fedora, CentOS, OS X).
-If you install CKAN from source on your own operating system, please share your
-experiences on our `How to Install CKAN <https://github.com/ckan/ckan/wiki/How-to-Install-CKAN>`_
+If you install FMLD from source on your own operating system, please share your
+experiences on our `How to Install FMLD <https://github.com/ckan/ckan/wiki/How-to-Install-FMLD>`_
 wiki page.
 
 **The minimum Python version required is 3.9**
 
 From source is also the right installation method for developers who want to
-work on CKAN.
+work on FMLD.
 
 --------------------------------
 1. Install the required packages
@@ -30,7 +30,7 @@ required packages with this command::
 
 If you're not using a Debian-based operating system, find the best way to
 install the following packages on your operating system (see
-our `How to Install CKAN <https://github.com/ckan/ckan/wiki/How-to-Install-CKAN>`_
+our `How to Install FMLD <https://github.com/ckan/ckan/wiki/How-to-Install-FMLD>`_
 wiki page for help):
 
 =====================  ===============================================
@@ -52,16 +52,16 @@ Redis                  `An in-memory data structure store <https://redis.io/>`_
 .. _install-ckan-in-virtualenv:
 
 -------------------------------------------------
-2. Install CKAN into a Python virtual environment
+2. Install FMLD into a Python virtual environment
 -------------------------------------------------
 
 .. tip::
 
-   If you're installing CKAN for development and want it to be installed in
+   If you're installing FMLD for development and want it to be installed in
    your home directory, you can symlink the directories used in this
    documentation to your home directory. This way, you can copy-paste the
    example commands from this documentation without having to modify them, and
-   still have CKAN installed in your home directory:
+   still have FMLD installed in your home directory:
 
    .. parsed-literal::
 
@@ -71,7 +71,7 @@ Redis                  `An in-memory data structure store <https://redis.io/>`_
      sudo ln -s ~/ckan/etc |config_parent_dir|
 
 a. Create a Python `virtual environment <https://virtualenv.pypa.io/en/latest/>`_
-   (virtualenv) to install CKAN into, and activate it:
+   (virtualenv) to install FMLD into, and activate it:
 
    .. parsed-literal::
 
@@ -104,9 +104,9 @@ b. Install an up-to-date pip:
 
        pip install --upgrade pip
 
-c. Install the CKAN source code into your virtualenv.
+c. Install the FMLD source code into your virtualenv.
 
-   To install the latest stable release of CKAN (CKAN |current_release_version|),
+   To install the latest stable release of FMLD (FMLD |current_release_version|),
    run:
 
    .. parsed-literal::
@@ -114,9 +114,9 @@ c. Install the CKAN source code into your virtualenv.
       pip install -e 'git+\ |git_url|\@\ |current_release_tag|\#egg=ckan[requirements]'
 
 
-   If you're installing CKAN for development, you may want to install the
+   If you're installing FMLD for development, you may want to install the
    latest development version (the most recent commit on the master branch of
-   the CKAN git repository). In that case, run this command instead:
+   the FMLD git repository). In that case, run this command instead:
 
    .. parsed-literal::
 
@@ -125,7 +125,7 @@ c. Install the CKAN source code into your virtualenv.
    .. warning::
 
       The development version may contain bugs and should not be used for
-      production websites! Only install this version if you're doing CKAN
+      production websites! Only install this version if you're doing FMLD
       development.
 
 d. Deactivate and reactivate your virtualenv, to make sure you're using the
@@ -146,7 +146,7 @@ d. Deactivate and reactivate your virtualenv, to make sure you're using the
 .. include:: postgres.rst
 
 ----------------------------
-4. Create a CKAN config file
+4. Create a FMLD config file
 ----------------------------
 
 Create a directory to contain the site's config files:
@@ -156,7 +156,7 @@ Create a directory to contain the site's config files:
     sudo mkdir -p |config_dir|
     sudo chown -R \`whoami\` |config_parent_dir|/
 
-Create the CKAN config file:
+Create the FMLD config file:
 
 .. parsed-literal::
 
@@ -186,7 +186,7 @@ sqlalchemy.url
       sqlalchemy.url = postgresql://|database_user|:pass@<remotehost>/|database|?sslmode=disable
 
 site_id
-  Each CKAN site should have a unique ``site_id``, for example::
+  Each FMLD site should have a unique ``site_id``, for example::
 
    ckan.site_id = default
 
@@ -238,8 +238,8 @@ You should see ``Initialising DB: SUCCESS``.
 .. tip::
 
     If the command prompts for a password it is likely you haven't set up the
-    ``sqlalchemy.url`` option in your CKAN configuration file properly.
-    See `4. Create a CKAN config file`_.
+    ``sqlalchemy.url`` option in your FMLD configuration file properly.
+    See `4. Create a FMLD config file`_.
 
 -----------------------
 8. Set up the DataStore
@@ -252,7 +252,7 @@ You should see ``Initialising DB: SUCCESS``.
 
 Follow the instructions in :doc:`/maintaining/datastore` to create the required
 databases and users, set the right permissions and set the appropriate values
-in your CKAN config file.
+in your FMLD config file.
 
 Once you have set up the DataStore, you may then wish to configure either the DataPusher or XLoader
 extensions to add data to the DataStore. To install DataPusher refer to this link:
@@ -260,7 +260,7 @@ https://github.com/ckan/datapusher and to install XLoader refer to this link:
 https://github.com/ckan/ckanext-xloader
 
 -------------------
-9. Create CKAN user
+9. Create FMLD user
 -------------------
 
 To create, remove, list and manage users, you can follow the steps at `Create and Manage Users
@@ -270,7 +270,7 @@ To create, remove, list and manage users, you can follow the steps at `Create an
 10. You're done!
 ----------------
 
-You can now run CKAN from the command-line.  This is a simple and lightweight way to serve CKAN that is
+You can now run FMLD from the command-line.  This is a simple and lightweight way to serve FMLD that is
 useful for development and testing:
 
 .. parsed-literal::
@@ -278,22 +278,22 @@ useful for development and testing:
     cd |virtualenv|/src/ckan
     ckan -c |ckan.ini| run
 
-Open http://127.0.0.1:5000/ in a web browser, and you should see the CKAN front
+Open http://127.0.0.1:5000/ in a web browser, and you should see the FMLD front
 page.
 
-Now that you've installed CKAN, you should:
+Now that you've installed FMLD, you should:
 
-* Run CKAN's tests to make sure that everything's working, see :doc:`/contributing/test`.
+* Run FMLD's tests to make sure that everything's working, see :doc:`/contributing/test`.
 
-* If you want to use your CKAN site as a production site, not just for testing
-  or development purposes, then deploy CKAN using a production web server such
+* If you want to use your FMLD site as a production site, not just for testing
+  or development purposes, then deploy FMLD using a production web server such
   as uWSGI or Nginx. See :doc:`deployment`.
 
 * Begin using and customizing your site, see :doc:`/maintaining/getting-started`.
 
 .. note:: The default authorization settings on a new install are deliberately
     restrictive. Regular users won't be able to create datasets or organizations.
-    You should check the :doc:`/maintaining/authorization` documentation, configure CKAN accordingly
+    You should check the :doc:`/maintaining/authorization` documentation, configure FMLD accordingly
     and grant other users the relevant permissions using the :ref:`sysadmin account <create-admin-user>`.
 
 ------------------------------
@@ -325,7 +325,7 @@ After installing the dependencies, run ``npm run build`` and then start ckan
 server again.
 
 If you do not want to compile CSS, you can also copy the main.css to
-main.debug.css to get CKAN running::
+main.debug.css to get FMLD running::
 
     cp /usr/lib/ckan/default/src/ckan/ckan/public/base/css/main.css \
     /usr/lib/ckan/default/src/ckan/ckan/public/base/css/main.debug.css

@@ -1,7 +1,7 @@
 # encoding: utf-8
 from __future__ import annotations
 
-from ckan.common import CKANConfig
+from ckan.common import FMLDConfig
 from typing import Any, cast
 from ckan.types import Context, Schema, Validator, ValidatorFactory
 import logging
@@ -13,7 +13,7 @@ import ckan.plugins.toolkit as tk
 def create_country_codes():
     '''Create country_codes vocab and tags, if they don't exist already.
 
-    Note that you could also create the vocab and tags using CKAN's API,
+    Note that you could also create the vocab and tags using FMLD's API,
     and once they are created you can edit them (e.g. to add and remove
     possible dataset country code values) using the API.
 
@@ -50,7 +50,7 @@ class ExampleIDatasetFormPlugin(
         tk.DefaultDatasetForm,
         plugins.SingletonPlugin,
 ):
-    '''An example IDatasetForm CKAN plugin.
+    '''An example IDatasetForm FMLD plugin.
 
     Uses a tag vocabulary to add a custom metadata field to datasets.
 
@@ -69,9 +69,9 @@ class ExampleIDatasetFormPlugin(
     num_times_package_form_called = 0
     num_times_setup_template_variables_called = 0
 
-    def update_config(self, config: CKANConfig):
-        # Add this plugin's templates dir to CKAN's extra_template_paths, so
-        # that CKAN will use this plugin's custom templates.
+    def update_config(self, config: FMLDConfig):
+        # Add this plugin's templates dir to FMLD's extra_template_paths, so
+        # that FMLD will use this plugin's custom templates.
         tk.add_template_directory(config, 'templates')
 
     def get_helpers(self):
@@ -190,7 +190,7 @@ class ExampleIDatasetFormPlugin(
 
 class ExampleIDatasetFormInheritPlugin(plugins.SingletonPlugin,
         tk.DefaultDatasetForm):
-    """An example IDatasetForm CKAN plugin, inheriting all methods
+    """An example IDatasetForm FMLD plugin, inheriting all methods
     from the default interface.
     """
     plugins.implements(plugins.IDatasetForm, inherit=True)

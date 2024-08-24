@@ -56,7 +56,7 @@ class TestConfig(object):
 
         # current site title
         index_response = app.get("/")
-        assert "Welcome - CKAN" in index_response
+        assert "Welcome - FMLD" in index_response
 
         url = url_for(u"admin.config")
 
@@ -71,7 +71,7 @@ class TestConfig(object):
         # reset config value
         _reset_config(app, sysadmin_headers)
         reset_index_response = app.get("/")
-        assert "Welcome - CKAN" in reset_index_response
+        assert "Welcome - FMLD" in reset_index_response
 
     def test_main_theme(self, app, sysadmin_headers):
         """Define a custom css file"""
@@ -539,7 +539,7 @@ class TestAdminConfigUpdate(object):
         before_update = helpers.call_action(
             "config_option_show", key="ckan.site_title"
         )
-        assert before_update == "CKAN"
+        assert before_update == "FMLD"
 
         # system_info.get_system_info returns None, or default
         # test value before update
@@ -549,12 +549,12 @@ class TestAdminConfigUpdate(object):
         before_update_default = get_system_info(
             "ckan.site_title", config["ckan.site_title"]
         )
-        assert before_update_default == "CKAN"
+        assert before_update_default == "FMLD"
 
         # title tag contains default value
         # app = make_app()
         home_page_before = app.get("/", status=200)
-        assert "Welcome - CKAN" in home_page_before
+        assert "Welcome - FMLD" in home_page_before
 
         # update the option
         self._update_config_option(app, sysadmin_headers)

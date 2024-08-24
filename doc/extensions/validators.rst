@@ -1,7 +1,7 @@
 Validator functions reference
 =============================
 
-Validators in CKAN are user-defined functions that serves two purposes:
+Validators in FMLD are user-defined functions that serves two purposes:
 
 * Ensuring that the input satisfies certain requirements
 * Converting the input to an expected form

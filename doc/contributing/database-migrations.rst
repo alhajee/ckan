@@ -4,19 +4,19 @@ Database migrations
 
 .. _db migrations:
 
-When changes are made to the model classes in ``ckan.model`` that alter CKAN's
-database schema, a migration script has to be added to migrate old CKAN
-databases to the new database schema when they upgrade their copies of CKAN.
+When changes are made to the model classes in ``ckan.model`` that alter FMLD's
+database schema, a migration script has to be added to migrate old FMLD
+databases to the new database schema when they upgrade their copies of FMLD.
 These migration scripts are kept in ``ckan.migration.versions``.
 
-When you upgrade a CKAN instance, as part of the upgrade process you
+When you upgrade a FMLD instance, as part of the upgrade process you
 run any necessary migration scripts with the :ref:`ckan db upgrade <db
 upgrade>` command.
 
-A migration script should be checked into CKAN at the same time as the model
+A migration script should be checked into FMLD at the same time as the model
 changes it is related to.
 
-To auto generate a new migration script from your model changes, use CKAN CLI::
+To auto generate a new migration script from your model changes, use FMLD CLI::
 
      ckan -c /etc/ckan/default/ckan.ini generate --autogenerate migration -m "Add account table"
 

@@ -1,20 +1,20 @@
 ======================
-CKAN code architecture
+FMLD code architecture
 ======================
 
-This section documents our CKAN-specific coding standards, which are guidelines
+This section documents our FMLD-specific coding standards, which are guidelines
 for writing code that is consistent with the intended design and architecture
-of CKAN.
+of FMLD.
 
   .. image:: /images/architecture.png
-     :alt: CKAN architecture diagram
+     :alt: FMLD architecture diagram
 
 
 ----------
 Blueprints
 ----------
 
-CKAN is based on Flask and built using Blueprints.
+FMLD is based on Flask and built using Blueprints.
 
 Default blueprints are defined along views in ``ckan.views`` and extended with the
 :class:`ckan.plugins.interfaces.IBlueprint` plugin interface.
@@ -26,7 +26,7 @@ Views
 
 Views process requests by reading and updating data with action
 function and return a response by rendering Jinja2 templates.
-CKAN views are defined in ``ckan.views`` and templates in
+FMLD views are defined in ``ckan.views`` and templates in
 ``ckan.templates``.
 
 Views and templates may use ``logic.check_access`` or
@@ -59,7 +59,7 @@ Always go through the action functions
 ######################################
 
 Whenever some code, for example in ``ckan.lib`` or ``ckan.controllers``, wants
-to get, create, update or delete an object from CKAN's model it should do so by
+to get, create, update or delete an object from FMLD's model it should do so by
 calling a function from the ``ckan.logic.action`` package, and *not* by
 accessing ``ckan.model`` directly.
 
@@ -172,7 +172,7 @@ required files may be invalid or absent. Naive Code like::
 
   id = data_dict['id']
 
-may raise a ``KeyError`` and cause CKAN to crash with a 500 Server Error
+may raise a ``KeyError`` and cause FMLD to crash with a 500 Server Error
 and no message to explain what went wrong. Instead do::
 
   id = _get_or_bust(data_dict, "id")
@@ -238,11 +238,11 @@ Deprecation
   decorator and add "deprecated" to the function's docstring::
 
     @maintain.deprecated("helpers.get_action() is deprecated and will be removed "
-                        "in a future version of CKAN. Instead, please use the "
+                        "in a future version of FMLD. Instead, please use the "
                         "extra_vars param to render() in your controller to pass "
                         "results from action functions to your templates.")
     def get_action(action_name, data_dict=None):
-        '''Calls an action function from a template. Deprecated in CKAN 2.3.'''
+        '''Calls an action function from a template. Deprecated in FMLD 2.3.'''
         if data_dict is None:
             data_dict = {}
         return logic.get_action(action_name)({}, data_dict)

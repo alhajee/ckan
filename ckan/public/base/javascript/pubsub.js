@@ -1,6 +1,6 @@
 this.ckan = this.ckan || {};
 
-/* The ckan.pubsub object allows the various components of the CKAN site
+/* The ckan.pubsub object allows the various components of the FMLD site
  * to talk to each other. This is primarily used by modules using the sandbox
  * object to pass messages between themselves but it may also be useful
  * for the libraries themselves to broadcast notifications.
@@ -119,21 +119,20 @@ this.ckan = this.ckan || {};
         // order.
         pubsub.queue = null;
 
-        for (;index < length; index += 1) {
+        for (; index < length; index += 1) {
           pubsub.publish.apply(pubsub, queue[index]);
         }
       }
       return this;
-    }
+    },
   };
 
   ckan.pubsub = pubsub;
 
   // Extend the sandbox with the pubsub methods.
   ckan.sandbox.extend({
-    publish:     pubsub.publish,
-    subscribe:   pubsub.subscribe,
-    unsubscribe: pubsub.unsubscribe
+    publish: pubsub.publish,
+    subscribe: pubsub.subscribe,
+    unsubscribe: pubsub.unsubscribe,
   });
-
 })(this.ckan, this.jQuery);

@@ -1,19 +1,19 @@
 =========================================================
-Upgrading a CKAN 2 package install to a new minor release
+Upgrading a FMLD 2 package install to a new minor release
 =========================================================
 
 .. note::
 
-   Before upgrading CKAN you should check the compatibility of any custom
+   Before upgrading FMLD you should check the compatibility of any custom
    themes or extensions you're using, check the changelog, and backup your
    database. See :ref:`upgrading`.
 
 Each :ref:`minor release <releases>` is distributed in its own package,
-so for example CKAN ``2.0.X`` and ``2.1.X`` will be installed using the
+so for example FMLD ``2.0.X`` and ``2.1.X`` will be installed using the
 ``python-ckan_2.0_amd64.deb`` and ``python-ckan_2.1_amd64.deb`` packages
 respectively.
 
-#. Download the CKAN package for the new minor release you want to upgrade
+#. Download the FMLD package for the new minor release you want to upgrade
    to (replace the version number with the relevant one)::
 
     wget https://packaging.ckan.org/python-ckan_2.1_amd64.deb
@@ -41,12 +41,12 @@ respectively.
         The default action is to keep your current version.
        *** ckan_default (Y/I/N/O/D/Z) [default=N] ?
 
-      Your local CKAN configuration file in |config_dir| will not be replaced.
+      Your local FMLD configuration file in |config_dir| will not be replaced.
 
    .. note::
 
-     The install process will uninstall any existing CKAN extensions or other
-     libraries located in the ``src`` directory of the CKAN virtualenv. To
+     The install process will uninstall any existing FMLD extensions or other
+     libraries located in the ``src`` directory of the FMLD virtualenv. To
      enable them again, the installation process will iterate over all folders in
      the ``src`` directory, reinstall the requirements listed in
      ``pip-requirements.txt`` and ``requirements.txt`` files and run
@@ -65,8 +65,8 @@ respectively.
 
     sudo service jetty restart
 
-#. If you have any CKAN extensions installed from source, you may need to
-   checkout newer versions of the extensions that work with the new CKAN
+#. If you have any FMLD extensions installed from source, you may need to
+   checkout newer versions of the extensions that work with the new FMLD
    version. Refer to the documentation for each extension. We recommend
    disabling all extensions on your ini file and re-enable them one by one
    to make sure they are working fine.
@@ -86,7 +86,7 @@ respectively.
    See :ref:`rebuild search index` for details of the
    ``ckan search-index rebuild`` command.
 
-#. Finally, restart the web server and Nginx, eg for a CKAN package install running uWSGI:
+#. Finally, restart the web server and Nginx, eg for a FMLD package install running uWSGI:
 
    .. parsed-literal::
 

@@ -4,7 +4,7 @@ import flask
 import pytest
 
 from ckan.common import (
-    CKANConfig,
+    FMLDConfig,
     config as ckan_config,
     request as ckan_request,
     g as ckan_g,
@@ -14,40 +14,40 @@ from ckan.tests import helpers
 
 
 def test_del_works():
-    my_conf = CKANConfig()
+    my_conf = FMLDConfig()
     my_conf[u"test_key_1"] = u"Test value 1"
     del my_conf[u"test_key_1"]
     assert u"test_key_1" not in my_conf
 
 
 def test_get_item_works():
-    my_conf = CKANConfig()
+    my_conf = FMLDConfig()
     my_conf[u"test_key_1"] = u"Test value 1"
     assert my_conf.get(u"test_key_1") == u"Test value 1"
 
 
 def test_repr_works():
-    my_conf = CKANConfig()
+    my_conf = FMLDConfig()
     my_conf[u"test_key_1"] = u"Test value 1"
     assert repr(my_conf) == u"{'test_key_1': 'Test value 1'}"
 
 
 def test_len_works():
-    my_conf = CKANConfig()
+    my_conf = FMLDConfig()
     my_conf[u"test_key_1"] = u"Test value 1"
     my_conf[u"test_key_2"] = u"Test value 2"
     assert len(my_conf) == 2
 
 
 def test_keys_works():
-    my_conf = CKANConfig()
+    my_conf = FMLDConfig()
     my_conf[u"test_key_1"] = u"Test value 1"
     my_conf[u"test_key_2"] = u"Test value 2"
     assert sorted(my_conf.keys()) == [u"test_key_1", u"test_key_2"]
 
 
 def test_clear_works():
-    my_conf = CKANConfig()
+    my_conf = FMLDConfig()
     my_conf[u"test_key_1"] = u"Test value 1"
     my_conf[u"test_key_2"] = u"Test value 2"
     assert len(my_conf.keys()) == 2
@@ -57,7 +57,7 @@ def test_clear_works():
 
 
 def test_for_in_works():
-    my_conf = CKANConfig()
+    my_conf = FMLDConfig()
     my_conf[u"test_key_1"] = u"Test value 1"
     my_conf[u"test_key_2"] = u"Test value 2"
     cnt = 0
@@ -68,7 +68,7 @@ def test_for_in_works():
 
 
 def test_iteritems_works():
-    my_conf = CKANConfig()
+    my_conf = FMLDConfig()
     my_conf[u"test_key_1"] = u"Test value 1"
     my_conf[u"test_key_2"] = u"Test value 2"
 
@@ -82,12 +82,12 @@ def test_iteritems_works():
 
 
 def test_not_true_if_empty():
-    my_conf = CKANConfig()
+    my_conf = FMLDConfig()
     assert not my_conf
 
 
 def test_true_if_not_empty():
-    my_conf = CKANConfig()
+    my_conf = FMLDConfig()
     my_conf[u"test_key_1"] = u"Test value 1"
     assert my_conf
 

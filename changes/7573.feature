@@ -1,1 +1,1 @@
-Improve CKAN Data API dialog with syntax highlighting, multiple client languages and jinja2 blocks for expansion
+Improve FMLD Data API dialog with syntax highlighting, multiple client languages and jinja2 blocks for expansion

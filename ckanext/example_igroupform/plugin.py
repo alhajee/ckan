@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-from ckan.common import CKANConfig
+from ckan.common import FMLDConfig
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as tk
 
@@ -16,7 +16,7 @@ group_type_utf8 = group_type.encode('utf8')
 
 class ExampleIGroupFormPlugin(plugins.SingletonPlugin,
                               tk.DefaultGroupForm):
-    '''An example IGroupForm CKAN plugin with custom group_type.
+    '''An example IGroupForm FMLD plugin with custom group_type.
 
     Doesn't do much yet.
     '''
@@ -25,7 +25,7 @@ class ExampleIGroupFormPlugin(plugins.SingletonPlugin,
 
     # IConfigurer
 
-    def update_config(self, config_: CKANConfig):
+    def update_config(self, config_: FMLDConfig):
         tk.add_template_directory(config_, 'templates')
 
     # IGroupForm
@@ -42,7 +42,7 @@ class ExampleIGroupFormPlugin(plugins.SingletonPlugin,
 
 class ExampleIGroupFormPlugin_DefaultGroupType(plugins.SingletonPlugin,  # noqa
                                                tk.DefaultGroupForm):
-    '''An example IGroupForm CKAN plugin for default group_type.
+    '''An example IGroupForm FMLD plugin for default group_type.
 
     Doesn't do much yet.
     '''
@@ -51,7 +51,7 @@ class ExampleIGroupFormPlugin_DefaultGroupType(plugins.SingletonPlugin,  # noqa
 
     # IConfigurer
 
-    def update_config(self, config_: CKANConfig):
+    def update_config(self, config_: FMLDConfig):
         tk.add_template_directory(config_, 'templates')
 
     # IGroupForm
@@ -68,7 +68,7 @@ class ExampleIGroupFormPlugin_DefaultGroupType(plugins.SingletonPlugin,  # noqa
 
 class ExampleIGroupFormOrganizationPlugin(plugins.SingletonPlugin,
                                           tk.DefaultOrganizationForm):
-    '''An example IGroupForm Organization CKAN plugin with custom group_type.
+    '''An example IGroupForm Organization FMLD plugin with custom group_type.
 
     Doesn't do much yet.
     '''
@@ -77,7 +77,7 @@ class ExampleIGroupFormOrganizationPlugin(plugins.SingletonPlugin,
 
     # IConfigurer
 
-    def update_config(self, config_: CKANConfig):
+    def update_config(self, config_: FMLDConfig):
         tk.add_template_directory(config_, 'templates')
 
     # IGroupForm

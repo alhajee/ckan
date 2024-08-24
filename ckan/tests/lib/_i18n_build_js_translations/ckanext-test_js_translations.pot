@@ -13,7 +13,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.1.1\n"
 
-# Overriding a JS translation from CKAN core
+# Overriding a JS translation from FMLD core
 #: ckan/public/base/javascript/modules/activity-stream.js:20
 #: ckan/public/base/javascript/modules/popover-context.js:45
 #: ckan/templates/package/snippets/data_api_button.html:8
@@ -23,7 +23,7 @@ msgstr ""
 msgid "Loading..."
 msgstr ""
 
-# Introducing a (fake) JS translation string that doesn't occur in CKAN core
+# Introducing a (fake) JS translation string that doesn't occur in FMLD core
 #: ckanext/test_js_translations/does-not-exist.js:1
 msgid "Test JS Translations 1"
 msgstr ""

@@ -141,9 +141,9 @@ def handle_i18n(environ: Optional[dict[str, Any]] = None) -> None:
     (eg '/sk/about' -> '/about') and sets environ variables for the
     language selected:
 
-        * CKAN_LANG is the language code eg en, fr
-        * CKAN_LANG_IS_DEFAULT is set to True or False
-        * CKAN_CURRENT_URL is set to the current application url
+        * FMLD_LANG is the language code eg en, fr
+        * FMLD_LANG_IS_DEFAULT is set to True or False
+        * FMLD_CURRENT_URL is set to the current application url
     '''
     environ = environ or request.environ
     assert environ
@@ -152,19 +152,19 @@ def handle_i18n(environ: Optional[dict[str, Any]] = None) -> None:
 
     # We only update once for a request so we can keep
     # the language and original url which helps with 404 pages etc
-    if u'CKAN_LANG' not in environ:
+    if u'FMLD_LANG' not in environ:
         path_parts = environ[u'PATH_INFO'].split(u'/')
         if len(path_parts) > 1 and path_parts[1] in locale_list:
-            environ[u'CKAN_LANG'] = path_parts[1]
-            environ[u'CKAN_LANG_IS_DEFAULT'] = False
+            environ[u'FMLD_LANG'] = path_parts[1]
+            environ[u'FMLD_LANG_IS_DEFAULT'] = False
             # rewrite url
             if len(path_parts) > 2:
                 environ[u'PATH_INFO'] = u'/'.join([u''] + path_parts[2:])
             else:
                 environ[u'PATH_INFO'] = u'/'
         else:
-            environ[u'CKAN_LANG'] = default_locale
-            environ[u'CKAN_LANG_IS_DEFAULT'] = True
+            environ[u'FMLD_LANG'] = default_locale
+            environ[u'FMLD_LANG_IS_DEFAULT'] = True
 
         set_ckan_current_url(environ)
 
@@ -178,6 +178,6 @@ def set_ckan_current_url(environ: Any) -> None:
 
     qs = environ.get(u'QUERY_STRING')
     if qs:
-        environ[u'CKAN_CURRENT_URL'] = u'%s?%s' % (path_info, qs)
+        environ[u'FMLD_CURRENT_URL'] = u'%s?%s' % (path_info, qs)
     else:
-        environ[u'CKAN_CURRENT_URL'] = path_info
+        environ[u'FMLD_CURRENT_URL'] = path_info

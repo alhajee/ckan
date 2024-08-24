@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-'''API functions for adding data to CKAN.'''
+'''API functions for adding data to FMLD.'''
 from __future__ import annotations
 
 from ckan.types.logic import ActionResult

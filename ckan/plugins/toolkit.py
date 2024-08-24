@@ -1,6 +1,6 @@
 # encoding: utf-8
 """This module is intended to make functions/objects consistently available to
-plugins, whilst giving core CKAN developers the ability move code around or
+plugins, whilst giving core FMLD developers the ability move code around or
 change underlying frameworks etc.
 
 It should not be used internally within ckan - only by extensions.
@@ -58,7 +58,7 @@ from ckan.exceptions import (
     HelperError,
 )
 from ckan.common import (
-    CKANConfig,
+    FMLDConfig,
     config,
     _,
     ungettext,
@@ -165,7 +165,7 @@ def render_snippet(template: str, data: Optional[dict[str, Any]] = None):
     return base.render_snippet(template, **data)
 
 
-def add_template_directory(config_: CKANConfig, relative_path: str):
+def add_template_directory(config_: FMLDConfig, relative_path: str):
     """Add a path to the :ref:`extra_template_paths` config setting.
 
     The path is relative to the file calling this function.
@@ -174,7 +174,7 @@ def add_template_directory(config_: CKANConfig, relative_path: str):
     _add_served_directory(config_, relative_path, "plugin_template_paths")
 
 
-def add_public_directory(config_: CKANConfig, relative_path: str):
+def add_public_directory(config_: FMLDConfig, relative_path: str):
     """Add a path to the :ref:`extra_public_paths` config setting.
 
     The path is relative to the file calling this function.
@@ -193,7 +193,7 @@ def add_public_directory(config_: CKANConfig, relative_path: str):
 
 
 def _add_served_directory(
-        config_: CKANConfig, relative_path: str, config_var: str):
+        config_: FMLDConfig, relative_path: str, config_var: str):
     """Add extra public/template directories to config."""
     import inspect
     import os
@@ -214,7 +214,7 @@ def _add_served_directory(
 
 
 def add_resource(path: str, name: str):
-    """Add a WebAssets library to CKAN.
+    """Add a WebAssets library to FMLD.
 
     WebAssets libraries are directories containing static resource
     files (e.g. CSS, JavaScript or image files) that can be
@@ -238,21 +238,21 @@ def add_resource(path: str, name: str):
 
 def check_ckan_version(
         min_version: Optional[str] = None, max_version: Optional[str] = None):
-    """Return ``True`` if the CKAN version is greater than or equal to
+    """Return ``True`` if the FMLD version is greater than or equal to
     ``min_version`` and less than or equal to ``max_version``,
     return ``False`` otherwise.
 
-    If no ``min_version`` is given, just check whether the CKAN version is
+    If no ``min_version`` is given, just check whether the FMLD version is
     less than or equal to ``max_version``.
 
-    If no ``max_version`` is given, just check whether the CKAN version is
+    If no ``max_version`` is given, just check whether the FMLD version is
     greater than or equal to ``min_version``.
 
-    :param min_version: the minimum acceptable CKAN version,
+    :param min_version: the minimum acceptable FMLD version,
         eg. ``'2.1'``
     :type min_version: string
 
-    :param max_version: the maximum acceptable CKAN version,
+    :param max_version: the maximum acceptable FMLD version,
         eg. ``'2.3'``
     :type max_version: string
 
@@ -282,21 +282,21 @@ def check_ckan_version(
 
 def requires_ckan_version(min_version: str, max_version: Optional[str] = None):
     """Raise :py:exc:`~ckan.plugins.toolkit.CkanVersionException` if the
-    CKAN version is not greater than or equal to ``min_version`` and
+    FMLD version is not greater than or equal to ``min_version`` and
     less then or equal to ``max_version``.
 
-    If no ``max_version`` is given, just check whether the CKAN version is
+    If no ``max_version`` is given, just check whether the FMLD version is
     greater than or equal to ``min_version``.
 
-    Plugins can call this function if they require a certain CKAN version,
-    other versions of CKAN will crash if a user tries to use the plugin
+    Plugins can call this function if they require a certain FMLD version,
+    other versions of FMLD will crash if a user tries to use the plugin
     with them.
 
-    :param min_version: the minimum acceptable CKAN version,
+    :param min_version: the minimum acceptable FMLD version,
         eg. ``'2.1'``
     :type min_version: string
 
-    :param max_version: the maximum acceptable CKAN version,
+    :param max_version: the maximum acceptable FMLD version,
         eg. ``'2.3'``
     :type max_version: string
 
@@ -331,7 +331,7 @@ def get_endpoint() -> Union[tuple[str, str], tuple[None, None]]:
 # plugins toolkit will use these docstring overrides instead of the
 # object's actual docstring, when present.
 docstring_overrides = {
-    "config": """The CKAN configuration object.
+    "config": """The FMLD configuration object.
 
 It stores the configuration values defined in the :ref:`config_file`, eg::
 

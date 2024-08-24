@@ -28,14 +28,14 @@ services:
       - default
     environment:
       HOME: /usr/src
-      CKAN_DATASTORE_POSTGRES_DB: datastore_test
-      CKAN_DATASTORE_POSTGRES_READ_USER: datastore_read
-      CKAN_DATASTORE_POSTGRES_READ_PWD: pass
-      CKAN_DATASTORE_POSTGRES_WRITE_USER: datastore_write
-      CKAN_DATASTORE_POSTGRES_WRITE_PWD: pass
-      CKAN_POSTGRES_DB: ckan_test
-      CKAN_POSTGRES_USER: ckan_default
-      CKAN_POSTGRES_PWD: pass
+      FMLD_DATASTORE_POSTGRES_DB: datastore_test
+      FMLD_DATASTORE_POSTGRES_READ_USER: datastore_read
+      FMLD_DATASTORE_POSTGRES_READ_PWD: pass
+      FMLD_DATASTORE_POSTGRES_WRITE_USER: datastore_write
+      FMLD_DATASTORE_POSTGRES_WRITE_PWD: pass
+      FMLD_POSTGRES_DB: ckan_test
+      FMLD_POSTGRES_USER: ckan_default
+      FMLD_POSTGRES_PWD: pass
       PGPASSWORD: ckan
       PYTEST_COMMON_OPTIONS: -v --ckan-ini=test-core-circle-ci.ini --cov=ckan --cov=ckanext --junitxml=~/junit/junit.xml
       # report usage of deprecated features
@@ -43,5 +43,4 @@ services:
     working_dir: "/usr/src"
     volumes:
       - "../:/usr/src"
-    command:
-      ['tail', '-f', '/etc/debian_version']
+    command: ["tail", "-f", "/etc/debian_version"]

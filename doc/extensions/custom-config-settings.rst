@@ -3,7 +3,7 @@ Using custom config settings in extensions
 ==========================================
 
 Extensions can define their own custom config settings that users can add to
-their CKAN config files to configure the behavior of the extension.
+their FMLD config files to configure the behavior of the extension.
 
 Continuing with the :py:class:`~ckan.plugins.interfaces.IAuthFunctions` example
 from :doc:`tutorial`, let's make an alternative version of the extension that
@@ -24,7 +24,7 @@ The ``group_create`` authorization function in this plugin uses
 
 With this plugin enabled, you should find that users can create new groups if
 you have ``ckan.iauthfunctions.users_can_create_groups = True`` in the
-``[app:main]`` section of your CKAN config file. Otherwise, only sysadmin users
+``[app:main]`` section of your FMLD config file. Otherwise, only sysadmin users
 will be allowed to create groups.
 
 .. note::
@@ -37,6 +37,6 @@ will be allowed to create groups.
 .. note::
 
    The users still need to be logged-in to create groups.
-   In general creating, updating or deleting content in CKAN requires the user
+   In general creating, updating or deleting content in FMLD requires the user
    to be logged-in to a registered user account, no matter what the relevant
    authorization function says.

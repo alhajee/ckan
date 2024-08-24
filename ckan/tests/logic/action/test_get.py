@@ -47,7 +47,7 @@ class TestPackageShow(object):
 
         # checking the whole dataset is a bit brittle as a test, but it
         # documents what the package_dict is clearly and tracks how it changes
-        # as CKAN changes over time.
+        # as FMLD changes over time.
 
         # fix values which change every time you run this test
         def replace_uuid(dict_, key):
@@ -2575,7 +2575,7 @@ class TestGetHelpShow(object):
 
 @pytest.mark.usefixtures("non_clean_db")
 class TestConfigOptionShow(object):
-    @pytest.mark.ckan_config("ckan.site_title", "My Test CKAN")
+    @pytest.mark.ckan_config("ckan.site_title", "My Test FMLD")
     def test_config_option_show_in_config_not_in_db(self):
         """config_option_show returns value from config when value on in
         system_info table."""
@@ -2583,9 +2583,9 @@ class TestConfigOptionShow(object):
         title = helpers.call_action(
             "config_option_show", key="ckan.site_title"
         )
-        assert title == "My Test CKAN"
+        assert title == "My Test FMLD"
 
-    @pytest.mark.ckan_config("ckan.site_title", "My Test CKAN")
+    @pytest.mark.ckan_config("ckan.site_title", "My Test FMLD")
     def test_config_option_show_in_config_and_in_db(self):
         """config_option_show returns value from db when value is in both
         config and system_info table."""
@@ -2975,7 +2975,7 @@ class TestStatusShow(object):
 
         assert status["ckan_version"] == __version__
         assert status["site_url"] == "http://test.ckan.net"
-        assert status["site_title"] == "CKAN"
+        assert status["site_title"] == "FMLD"
         assert status["site_description"] == ""
         assert status["locale_default"] == "en"
 
@@ -2989,9 +2989,9 @@ class TestStatusShow(object):
 
         status = helpers.call_action("status_show")
 
-        assert "ckan_version" not in status, "Should have skipped CKAN version"
+        assert "ckan_version" not in status, "Should have skipped FMLD version"
         assert status["site_url"] == "http://test.ckan.net"
-        assert status["site_title"] == "CKAN"
+        assert status["site_title"] == "FMLD"
         assert status["site_description"] == ""
         assert status["locale_default"] == "en"
 
@@ -3007,7 +3007,7 @@ class TestStatusShow(object):
 
         assert status["ckan_version"] == __version__
         assert status["site_url"] == "http://test.ckan.net"
-        assert status["site_title"] == "CKAN"
+        assert status["site_title"] == "FMLD"
         assert status["site_description"] == ""
         assert status["locale_default"] == "en"
 

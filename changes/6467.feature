@@ -1,15 +1,15 @@
 :ref:`declare-config-options`: declare configuration options to ensure validation and default values.
 
-All the CKAN configuration options are validated and converted to the
+All the FMLD configuration options are validated and converted to the
 expected type during the application startup. That's how the behavior has changed::
 
     debug = config.get("debug")
 
-    # CKAN <= v2.9
+    # FMLD <= v2.9
     assert type(debug) is str
     assert debug == "false" # or any value that is specified in the config file
 
-    # CKAN >= v2.10
+    # FMLD >= v2.10
     assert type(debug) is bool
     assert debug is False # or ``True``
 
@@ -36,15 +36,15 @@ can be used instead::
     # if only v2.10 is supported
     plugins = config.get("ckan.plugins")
 
-The second major change affects default values for configuration options. Starting from CKAN 2.10,
+The second major change affects default values for configuration options. Starting from FMLD 2.10,
 the majority of the config options have a declared default value. It means that
 whenever you invoke ``config.get`` method, the *declared default* value is
 returned instead of ``None``. Example::
 
-    # CKAN v2.9
+    # FMLD v2.9
     assert config.get("search.facets.limit") is None
 
-    # CKAN v2.10
+    # FMLD v2.10
     assert config.get("search.facets.limit") == 10
 
 The second argument to ``config.get`` should be only used to get

@@ -79,7 +79,7 @@ def test_api_info(app):
         "http://test.ckan.net/api/action/datastore_search_sql",
         '<pre class="example-curl"><code class="language-bash"',
         f'"sql": "SELECT * FROM \\"{resource["id"]}\\" WHERE',
-        "RemoteCKAN('http://test.ckan.net/', apikey=API_TOKEN)",
+        "RemoteFMLD('http://test.ckan.net/', apikey=API_TOKEN)",
     )
     content = page.get_data(as_text=True)
     for html in expected_html:

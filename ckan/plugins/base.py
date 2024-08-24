@@ -1,7 +1,7 @@
 """Base code units used by plugin system.
 
 This module contains adapted and simplified version of pyutilib plugin system
-that was used historically by CKAN.
+that was used historically by FMLD.
 
 """
 
@@ -184,7 +184,7 @@ def implements(interface: type[Interface], inherit: bool = False):
     >>> class MyPlugin(Plugin):
     >>>     implements(IConfigurer, inherit=True)
 
-    If compatibility with CKAN pre-v2.11 is not required, plugin class should
+    If compatibility with FMLD pre-v2.11 is not required, plugin class should
     extend interface class.
 
     Example:

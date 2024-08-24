@@ -1,6 +1,6 @@
 version: 1
 groups:
-  # Internal options, that are used/computed by CKAN in runtime
+  # Internal options, that are used/computed by FMLD in runtime
   - annotation: ~
     options:
       - key: __file__
@@ -26,21 +26,21 @@ groups:
   # Options that are available inside CircleCI containers:
   - annotation: ~
     options:
-      - key: CKAN_POSTGRES_USER
+      - key: FMLD_POSTGRES_USER
         internal: true
-      - key: CKAN_DATASTORE_POSTGRES_WRITE_USER
+      - key: FMLD_DATASTORE_POSTGRES_WRITE_USER
         internal: true
-      - key: CKAN_DATASTORE_POSTGRES_READ_USER
+      - key: FMLD_DATASTORE_POSTGRES_READ_USER
         internal: true
-      - key: CKAN_POSTGRES_DB
+      - key: FMLD_POSTGRES_DB
         internal: true
-      - key: CKAN_DATASTORE_POSTGRES_DB
+      - key: FMLD_DATASTORE_POSTGRES_DB
         internal: true
-      - key: CKAN_DATASTORE_POSTGRES_WRITE_PWD
+      - key: FMLD_DATASTORE_POSTGRES_WRITE_PWD
         internal: true
-      - key: CKAN_POSTGRES_PWD
+      - key: FMLD_POSTGRES_PWD
         internal: true
-      - key: CKAN_DATASTORE_POSTGRES_READ_PWD
+      - key: FMLD_DATASTORE_POSTGRES_READ_PWD
         internal: true
 
   # Flask configuration options
@@ -56,7 +56,7 @@ groups:
         ignored: true
       - key: BABEL_TRANSLATION_DIRECTORIES
         ignored: true
-      - key: CKAN_INI
+      - key: FMLD_INI
         internal: true
       - key: DEBUG
         internal: true
@@ -110,11 +110,11 @@ groups:
     options:
       - key: debug
         type: bool
-        example: 'true'
+        example: "true"
         description: |
           This enables the `Flask-DebugToolbar
           <https://flask-debugtoolbar.readthedocs.io/>`_ in the web interface, makes
-          Webassets serve unminified JS and CSS files, and enables CKAN templates'
+          Webassets serve unminified JS and CSS files, and enables FMLD templates'
           debugging features.
 
           You will need to ensure the ``Flask-DebugToolbar`` python package is installed,
@@ -122,8 +122,8 @@ groups:
 
               pip install -r /usr/lib/ckan/default/src/ckan/dev-requirements.txt
 
-          If you are running CKAN on Apache, you must change the WSGI
-          configuration to run a single process of CKAN. Otherwise
+          If you are running FMLD on Apache, you must change the WSGI
+          configuration to run a single process of FMLD. Otherwise
           the execution will fail with: ``AssertionError: The EvalException
           middleware is not usable in a multi-process environment``. Eg. change::
 
@@ -147,7 +147,7 @@ groups:
         callable_args:
           nbytes: 20
         description: |
-          This is the secret token that is used by security related tasks by CKAN and its extensions.
+          This is the secret token that is used by security related tasks by FMLD and its extensions.
           ``ckan generate config`` generates a unique
           value for this each time it generates a config file. Alternatively you can generate one with
           the following command::
@@ -155,7 +155,6 @@ groups:
             python -c "import secrets; print(secrets.token_urlsafe(20))"
 
           When used in a cluster environment, the value must be the same on every machine.
-
 
       - key: ckan.legacy_route_mappings
         default: {}
@@ -173,8 +172,8 @@ groups:
         example: strict
         description: |
 
-          .. warning:: This configuration option has no effect starting from CKAN 2.11. The
-            default behaviour going forward is the old ``strict`` mode, where CKAN will not
+          .. warning:: This configuration option has no effect starting from FMLD 2.11. The
+            default behaviour going forward is the old ``strict`` mode, where FMLD will not
             start unless **all** config options are valid according to the validators defined in the
             configuration declaration. For every invalid config option, an error will be
             printed to the output stream.
@@ -183,7 +182,7 @@ groups:
     options:
       - key: ckan.devserver.host
         default: localhost
-        example: '0.0.0.0'
+        example: "0.0.0.0"
         description: Host name to use when running the development server.
       - key: ckan.devserver.port
         type: int
@@ -192,7 +191,7 @@ groups:
         description: Port to use when running the development server.
       - key: ckan.devserver.threaded
         type: bool
-        example: 'true'
+        example: "true"
         description: Controls whether the development server should handle each request in a separate thread.
       - key: ckan.devserver.multiprocess
         type: int
@@ -203,7 +202,7 @@ groups:
           maximum number of concurrent processes.
       - key: ckan.devserver.watch_patterns
         type: list
-        example: 'mytheme/**/*.yaml mytheme/**/*.json'
+        example: "mytheme/**/*.yaml mytheme/**/*.json"
         description: |
           A list of files the reloader should watch to restart the development server, in addition to the
           Python modules (for example configuration files)
@@ -220,7 +219,7 @@ groups:
               chmod 400 host.key
               openssl req -new -x509 -nodes -sha256 -days 3650 -key host.key > host.cert
 
-          After that you can run CKAN locally with SSL using this command::
+          After that you can run FMLD locally with SSL using this command::
 
               ckan -c /path/to/ckan.ini run --ssl-cert=/path/to/host.cert --ssl-key=/path/to/host.key
 
@@ -246,14 +245,14 @@ groups:
       - key: SESSION_TYPE
         default: cookie
         description: |
-            Specifies which type of session interface to use. The default
-            ``cookie`` value stores the session data inside a JSON-serialized signed
-            cookie. Alternatively, this can be set to any of the types
-            supported by `Flask-Session
-            <https://flask-session.readthedocs.io/en/latest/config.html#SESSION_TYPE>`_
-            like ``redis``, ``filesystem``, etc. Keep in mind
-            that certaint session types require additional Python packages and configuration settings.
-            Setting a not supported value will raise an exception on startup.
+          Specifies which type of session interface to use. The default
+          ``cookie`` value stores the session data inside a JSON-serialized signed
+          cookie. Alternatively, this can be set to any of the types
+          supported by `Flask-Session
+          <https://flask-session.readthedocs.io/en/latest/config.html#SESSION_TYPE>`_
+          like ``redis``, ``filesystem``, etc. Keep in mind
+          that certaint session types require additional Python packages and configuration settings.
+          Setting a not supported value will raise an exception on startup.
 
       - key: SESSION_COOKIE_NAME
         default: ckan
@@ -339,7 +338,7 @@ groups:
         required: true
         example: postgres://tester:pass@localhost/ckantest3
         description: |
-          This defines the database that CKAN is to use. The format is::
+          This defines the database that FMLD is to use. The format is::
 
            sqlalchemy.url = postgres://USERNAME:PASSWORD@HOST/DBNAME
 
@@ -370,12 +369,12 @@ groups:
         placeholder: http://localhost:5000
         example: http://scotdata.ckan.net
         description: |
-          Set this to the URL of your CKAN site. Many CKAN features that need an absolute URL to your
+          Set this to the URL of your FMLD site. Many FMLD features that need an absolute URL to your
           site use this setting.
 
           This setting should only contain the protocol (e.g. ``http://``), host (e.g.
           ``www.example.com``) and (optionally) the port (e.g. ``:8080``). In particular,
-          if you have mounted CKAN at a path other than ``/`` then the mount point must
+          if you have mounted FMLD at a path other than ``/`` then the mount point must
           *not* be included in ``ckan.site_url``. Instead, you need to set
           :ref:`ckan.root_path`.
 
@@ -385,10 +384,10 @@ groups:
 
       - key: apitoken_header_name
         default: Authorization
-        legacy_key: apikey_header_name  # since v2.10.0
-        example: X-CKAN-API-TOKEN
+        legacy_key: apikey_header_name # since v2.10.0
+        example: X-FMLD-API-TOKEN
         description: |
-          This allows to customize the name of the HTTP header used to provide the CKAN API
+          This allows to customize the name of the HTTP header used to provide the FMLD API
           token. This is useful in some scenarios where using the default ``Authorization`` one
           causes problems.
 
@@ -423,7 +422,7 @@ groups:
         default: 3600
         type: int
         example: 2592000
-        description: Controls CKAN static files' cache max age, if we're serving and caching them.
+        description: Controls FMLD static files' cache max age, if we're serving and caching them.
 
       - key: ckan.valid_url_schemes
         type: list
@@ -446,7 +445,7 @@ groups:
         default: False
         example: True
         type: bool
-        description: If set to True, CKAN will not publicly expose its version number.
+        description: If set to True, FMLD will not publicly expose its version number.
 
   - annotation: Authorization Settings
     options:
@@ -631,7 +630,7 @@ groups:
           so it should be used with caution.
 
       - key: ckan.auth.route_after_login
-        legacy_key: ckan.route_after_login  # since v2.10.0
+        legacy_key: ckan.route_after_login # since v2.10.0
         default: dashboard.datasets
         description: |
           Allows to customize the route that the user will get redirected to after a successful login.
@@ -822,11 +821,11 @@ groups:
         default: default
         example: my_ckan_instance
         description: |
-          CKAN uses Solr to index and search packages. The search index is
+          FMLD uses Solr to index and search packages. The search index is
           linked to the value of the ``ckan.site_id``, so if you have more than
-          one CKAN instance using the same `solr_url`_, they will each have a
+          one FMLD instance using the same `solr_url`_, they will each have a
           separate search index as long as their ``ckan.site_id`` values are
-          different. If you are only running a single CKAN instance then this
+          different. If you are only running a single FMLD instance then this
           can be ignored.
 
           .. note:: If you change this value, you need to rebuild the search index.
@@ -839,7 +838,7 @@ groups:
           This configures the Solr server used for search. The Solr schema
           found at that URL must be one of the ones in ``ckan/config/solr``
           (generally the most recent one). A check of the schema version number
-          occurs when CKAN starts.
+          occurs when FMLD starts.
 
           Optionally, ``solr_user`` and ``solr_password`` can also be
           configured to specify HTTP Basic authentication details for all Solr
@@ -902,7 +901,7 @@ groups:
           visible to everyone.
 
       - key: ckan.search.default_package_sort
-        default:  score desc, metadata_modified desc
+        default: score desc, metadata_modified desc
         example: name asc
         description: >-
           Controls whether the default search page (``/dataset``) should different
@@ -1004,9 +1003,9 @@ groups:
         placeholder: activity
         example: activity scheming_datasets datatables_view datastore xloader
         description: |
-          Specify which CKAN plugins are to be enabled.
+          Specify which FMLD plugins are to be enabled.
 
-          .. warning::  If you specify a plugin but have not installed the code,  CKAN will not start.
+          .. warning::  If you specify a plugin but have not installed the code,  FMLD will not start.
 
           Format as a space-separated list of the plugin names. The plugin name
           is the key in the ``[ckan.plugins]`` section of the extension's
@@ -1015,14 +1014,14 @@ groups:
 
           .. note::
               The order of the plugin names in the configuration file influences the
-              order that CKAN will load the plugins in. As long as each plugin class is
+              order that FMLD will load the plugins in. As long as each plugin class is
               implemented in a separate Python module (i.e. in a separate Python source
               code file), the plugins will be loaded in the order given in the
               configuration file.
 
-              When multiple plugins are implemented in the same Python module, CKAN will
+              When multiple plugins are implemented in the same Python module, FMLD will
               process the plugins in the order that they're given in the config file, but as
-              soon as it reaches one plugin from a given Python module, CKAN will load all
+              soon as it reaches one plugin from a given Python module, FMLD will load all
               plugins from that Python module, in the order that the plugin classes are
               defined in the module.
 
@@ -1034,7 +1033,7 @@ groups:
               override templates in template directories added later.
 
           .. todo::
-              Fix CKAN's plugin loading order to simply load all plugins in the order
+              Fix FMLD's plugin loading order to simply load all plugins in the order
               they're given in the config file, regardless of which Python modules
               they're implemented in.
 
@@ -1045,23 +1044,23 @@ groups:
           when downloading remote files. This may be useful for enabling access to
           restricted network locations, or restricting access to privileged ones, eg
           preventing `Server Side Request Forgery <https://feeding.cloud.geek.nz/posts/restricting-outgoing-webapp-requests-using-squid-proxy/>`_.
-          It will not be used by CKAN core.
+          It will not be used by FMLD core.
 
   - annotation: Front-End Settings
     options:
       - key: ckan.site_title
-        default: CKAN
+        default: FMLD
         example: Open Data Scotland
-        description: This sets the name of the site, as displayed in the CKAN web interface.
+        description: This sets the name of the site, as displayed in the FMLD web interface.
         editable: true
 
       - key: ckan.site_description
         example: The easy way to get, use and share data
-        description: This is for a description, or tag line for the site, as displayed in the header of the CKAN web interface.
+        description: This is for a description, or tag line for the site, as displayed in the header of the FMLD web interface.
         editable: true
 
       - key: ckan.site_intro_text
-        example: Nice introductory paragraph about CKAN or the site in general.
+        example: Nice introductory paragraph about FMLD or the site in general.
         description: This is for an introductory text used in the default template's index page.
         editable: true
 
@@ -1175,7 +1174,7 @@ groups:
           .. note:: This info only shows if debug is set to True.
 
       - key: ckan.site_custom_css
-        description: Custom CSS directives to include on all CKAN pages.
+        description: Custom CSS directives to include on all FMLD pages.
         editable: true
 
   - annotation: Resource Views Settings
@@ -1202,15 +1201,15 @@ groups:
   - annotation: Theming Settings
     options:
       - key: ckan.template_title_delimiter
-        default: '-'
-        example: '|'
+        default: "-"
+        example: "|"
         description: This sets the delimiter between the site's subtitle (if there's one) and its title, in HTML's ``<title>``.
 
       - key: extra_template_paths
         default: ""
         example: /home/okfn/brazil_ckan_config/templates
         description: |
-          Use this option to specify where CKAN should look for additional
+          Use this option to specify where FMLD should look for additional
           templates, before reverting to the ``ckan/templates`` folder. You can
           supply more than one folder, separating the paths with a comma (,).
 
@@ -1220,9 +1219,9 @@ groups:
         default: ""
         example: /home/okfn/brazil_ckan_config/public
         description: |
-          To customise the display of CKAN you can supply replacements for
+          To customise the display of FMLD you can supply replacements for
           static files such as HTML, CSS, script and PNG files. Use this option
-          to specify where CKAN should look for additional files, before
+          to specify where FMLD should look for additional files, before
           reverting to the ``ckan/public`` folder. You can supply more than one
           folder, separating the paths with a comma (,).
 
@@ -1233,7 +1232,7 @@ groups:
         example: public
         description: |
           This config option is used to configure the base folder for static files used
-          by CKAN core. Starting CKAN 2.11 it only accepts: ``public`` as a value.
+          by FMLD core. Starting FMLD 2.11 it only accepts: ``public`` as a value.
           (This variable is kept for backwards compatibility when updating Bootstrap
           versions.)
 
@@ -1242,7 +1241,7 @@ groups:
         example: templates
         description: |
           This config option is used to configure the base folder for templates used
-          by CKAN core. Starting CKAN 2.11 it only accepts: ``templates`` as a value.
+          by FMLD core. Starting FMLD 2.11 it only accepts: ``templates`` as a value.
           (This variable is kept for backwards compatibility when updating Bootstrap
           versions.)
 
@@ -1292,7 +1291,7 @@ groups:
       - key: ckan.storage_path
         placeholder: /var/lib/ckan/default
         example: /var/lib/ckan/default
-        description: This defines the location of where CKAN will store all uploaded data.
+        description: This defines the location of where FMLD will store all uploaded data.
 
       - key: ckan.max_resource_size
         type: int
@@ -1339,7 +1338,7 @@ groups:
         description: |
           In order to increase performance, static assets (CSS and JS files) included via an ``asset`` tag inside templates are compiled only once,
           when the asset is used for the first time. All subsequent requests to the
-          asset will use the existing file. CKAN stores the compiled webassets in the file system, in the path specified by this config option.
+          asset will use the existing file. FMLD stores the compiled webassets in the file system, in the path specified by this config option.
 
       - key: ckan.webassets.url
         example: /serve/assets/from/here
@@ -1354,7 +1353,6 @@ groups:
           When serving static files, if this setting is ``True``, the applicatin will set the ``X-Sendfile`` header instead of
           serving the files directly with Flask. This will increase performance when serving the assets, but it
           requires that the web server (eg Nginx) supports the ``X-Sendfile`` header. See :ref:`x-sendfile` for more information.
-
 
   - annotation: User Settings
     options:
@@ -1378,10 +1376,11 @@ groups:
         type: bool
         default: true
         example: "false"
-        description: Turns on and off the activity streams used to track changes on datasets, groups, users, etc.
-                     The activity feature has been moved to a separate activity plugin. To keep showing the
-                     activities in the UI and enable the activity related API actions you need to add the activity
-                     plugin to the ckan.plugins config option.
+        description:
+          Turns on and off the activity streams used to track changes on datasets, groups, users, etc.
+          The activity feature has been moved to a separate activity plugin. To keep showing the
+          activities in the UI and enable the activity related API actions you need to add the activity
+          plugin to the ckan.plugins config option.
 
       - key: ckan.activity_streams_email_notifications
         type: bool
@@ -1404,7 +1403,7 @@ groups:
         description: Maximum allowed value for Activity Stream ``limit`` parameter.
 
       - key: ckan.email_notifications_since
-        default: '2 days'
+        default: "2 days"
         example: 2 days
         description: |
           Email notifications for events older than this time delta will not be sent.
@@ -1420,7 +1419,6 @@ groups:
           is a sysadmin user on every ckan user with a username that's equal to
           :ref:`ckan.site_id`. This user is used by ckan for performing actions from the
           command-line.
-
 
   - annotation: Feeds Settings
     options:
@@ -1455,14 +1453,14 @@ groups:
         example: de
         description: |
           Use this to specify the locale (language of the text) displayed in
-          the CKAN Web UI. This requires a suitable `mo` file installed for the
+          the FMLD Web UI. This requires a suitable `mo` file installed for the
           locale in the ckan/i18n. For more information on
           internationalization, see :doc:`/contributing/i18n`. If you don't
           specify a default locale, then it will default to the first locale
           offered, which is by default English (alter that with
           `ckan.locales_offered` and `ckan.locales_filtered_out`.
 
-          .. note: In versions of CKAN before 1.5, the settings used for this
+          .. note: In versions of FMLD before 1.5, the settings used for this
             was variously `lang` or `ckan.locale`, which have now been
             deprecated in favour of `ckan.locale_default`.
 
@@ -1544,16 +1542,16 @@ groups:
           The valid values for this options [can be found at
           pytz](http://pytz.sourceforge.net/#helpers)
           (``pytz.all_timezones``). You can specify the special value `server`
-          to use the timezone settings of the server, that is running CKAN.
+          to use the timezone settings of the server, that is running FMLD.
 
       - key: ckan.root_path
         example: /my/custom/path/{{LANG}}/foo
         description: |
-          This setting is used to construct URLs inside CKAN. It specifies two things:
+          This setting is used to construct URLs inside FMLD. It specifies two things:
 
-          * *At which path CKAN is mounted:* By default it is assumed that CKAN is mounted
+          * *At which path FMLD is mounted:* By default it is assumed that FMLD is mounted
             at ``/``, i.e. at the root of your web server. If you have configured your
-            web server to serve CKAN from a different mount point then you need to
+            web server to serve FMLD from a different mount point then you need to
             duplicate that setting here.
 
           * *Where the locale is added to an URL:* By default, URLs are formatted as
@@ -1566,7 +1564,7 @@ groups:
               spaces between the brackets.
 
           .. seealso::
-              The host of your CKAN installation can be set via :ref:`ckan.site_url`.
+              The host of your FMLD installation can be set via :ref:`ckan.site_url`.
 
       - key: ckan.resource_formats
         example: /path/to/resource_formats
@@ -1583,7 +1581,6 @@ groups:
           Please look in ckan/config/resource_formats.json for full details and and as an
           example.
 
-
   - annotation: Form Settings
     options:
       - key: ckan.dataset.create_on_ui_requires_resources
@@ -1599,7 +1596,7 @@ groups:
 
            package_new_return_url = http://datadotgc.ca/new_dataset_complete?name=<NAME>
 
-          This is useful for integrating CKAN's new dataset form into a third-party
+          This is useful for integrating FMLD's new dataset form into a third-party
           interface, see :ref:`form-integration`.
 
           The ``<NAME>`` string is replaced with the name of the dataset created.
@@ -1611,7 +1608,7 @@ groups:
 
            package_edit_return_url = http://datadotgc.ca/dataset/<NAME>
 
-          This is useful for integrating CKAN's edit dataset form into a third-party
+          This is useful for integrating FMLD's edit dataset form into a third-party
           interface, see :ref:`form-integration`.
 
           The ``<NAME>`` string is replaced with the name of the dataset that was edited.
@@ -1624,13 +1621,12 @@ groups:
           creating or editing a dataset.
 
           This is entirely optional - by default, the system will use an internal cached
-          version of the CKAN list of licenses available from the
+          version of the FMLD list of licenses available from the
           http://licenses.opendefinition.org/licenses/groups/ckan.json.
 
           More details about the license objects - including the license format and some
           example license lists - can be found at the `Open Licenses Service
           <http://licenses.opendefinition.org/>`_.
-
 
   - annotation: Email settings
     options:
@@ -1655,7 +1651,7 @@ groups:
       - key: smtp.mail_from
         example: ckan@example.com
         description: >-
-          The email address that emails sent by CKAN will come from. Note that, if left blank, the
+          The email address that emails sent by FMLD will come from. Note that, if left blank, the
           SMTP server may insert its own.
 
       - key: smtp.reply_to
@@ -1672,7 +1668,6 @@ groups:
       - key: error_email_from
         example: ckan-errors@example.com
         description: This controls from which email the error messages will come from.
-
 
   - annotation: Background Job Settings
     options:

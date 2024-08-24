@@ -1,1 +1,1 @@
-CKAN is typed now
+FMLD is typed now

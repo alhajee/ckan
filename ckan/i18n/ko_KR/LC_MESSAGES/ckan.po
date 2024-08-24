@@ -1198,20 +1198,20 @@ msgid "About {0}"
 msgstr "About {0}"
 
 #: ckan/templates/footer.html:15
-msgid "CKAN API"
-msgstr "CKAN API"
+msgid "FMLD API"
+msgstr "FMLD API"
 
 #: ckan/templates/footer.html:16
-msgid "CKAN Association"
-msgstr "CKAN 협회"
+msgid "FMLD Association"
+msgstr "FMLD 협회"
 
 #: ckan/templates/footer.html:24
 msgid ""
 "<strong>Powered by</strong> <a class=\"hide-text ckan-footer-logo\" "
-"href=\"http://ckan.org\">CKAN</a>"
+"href=\"http://ckan.org\">FMLD</a>"
 msgstr ""
 "<strong>Powered by</strong> <a class=\"hide-text ckan-footer-logo\" "
-"href=\"http://ckan.org\">CKAN</a>"
+"href=\"http://ckan.org\">FMLD</a>"
 
 #: ckan/templates/header.html:11
 msgid "Sysadmin settings"
@@ -1408,20 +1408,20 @@ msgid "Update Config"
 msgstr "설정 업데이트"
 
 #: ckan/templates/admin/config.html:44
-msgid "CKAN config options"
-msgstr "CKAN 구성 옵션"
+msgid "FMLD config options"
+msgstr "FMLD 구성 옵션"
 
 #: ckan/templates/admin/config.html:51
 #, python-format
 msgid ""
-"<p><strong>Site Title:</strong> This is the title of this CKAN instance It "
-"appears in various places throughout CKAN.</p> <p><strong>Custom "
+"<p><strong>Site Title:</strong> This is the title of this FMLD instance It "
+"appears in various places throughout FMLD.</p> <p><strong>Custom "
 "Stylesheet:</strong> Define an alternative main CSS file.</p> "
 "<p><strong>Site Tag Logo:</strong> This is the logo that appears in the "
-"header of all the CKAN instance templates.</p> <p><strong>About:</strong> "
-"This text will appear on this CKAN instances <a href=\"%(about_url)s\">about"
+"header of all the FMLD instance templates.</p> <p><strong>About:</strong> "
+"This text will appear on this FMLD instances <a href=\"%(about_url)s\">about"
 " page</a>.</p> <p><strong>Intro Text:</strong> This text will appear on this"
-" CKAN instances <a href=\"%(home_url)s\">home page</a> as a welcome to "
+" FMLD instances <a href=\"%(home_url)s\">home page</a> as a welcome to "
 "visitors.</p> <p><strong>Custom CSS:</strong> This is a block of CSS that "
 "appears in <code>&lt;head&gt;</code> tag of every page. If you wish to "
 "customize the templates more fully we recommend <a href=\"%(docs_url)s\" "
@@ -1450,14 +1450,14 @@ msgid "Promote"
 msgstr ""
 
 #: ckan/templates/admin/index.html:73
-msgid "Administer CKAN"
-msgstr "CKAN 관리"
+msgid "Administer FMLD"
+msgstr "FMLD 관리"
 
 #: ckan/templates/admin/index.html:78
 #, python-format
 msgid ""
-"<p>As a sysadmin user you have full control over this CKAN instance. Proceed"
-" with care!</p> <p>For guidance on using sysadmin features, see the CKAN  <a"
+"<p>As a sysadmin user you have full control over this FMLD instance. Proceed"
+" with care!</p> <p>For guidance on using sysadmin features, see the FMLD  <a"
 " href=\"%(docs_url)s\" target=\"_blank\" rel=\"noreferrer\">sysadmin "
 "guide</a></p>"
 msgstr ""
@@ -1932,12 +1932,12 @@ msgstr "그룹이란?"
 
 #: ckan/templates/group/snippets/helper.html:19
 msgid ""
-"You can use CKAN Groups to create and manage collections of datasets. This "
+"You can use FMLD Groups to create and manage collections of datasets. This "
 "could be to catalogue datasets for a particular project or team, or on a "
 "particular theme, or as a very simple way to help people find and search "
 "your own published datasets."
 msgstr ""
-"데이터셋의 집합을 생성하고 관리하기 위해 CKAN 그룹을 사용할 수 있습니다. 그룹은 특정한 프로젝트 또는 팀을 위한 카탈로그 데이터셋일"
+"데이터셋의 집합을 생성하고 관리하기 위해 FMLD 그룹을 사용할 수 있습니다. 그룹은 특정한 프로젝트 또는 팀을 위한 카탈로그 데이터셋일"
 " 수 있고, 또는 특정한 주제입니다. 그룹을 통해 다른 사용자들은  출판된 데이터셋을 찾거나 검색할 수 있습니다. "
 
 #: ckan/templates/group/snippets/info.html:19
@@ -1960,35 +1960,35 @@ msgstr "환영합니다"
 
 #: ckan/templates/home/snippets/about_text.html:1
 msgid ""
-"<p>CKAN is the world’s leading open-source data portal platform.</p> <p>CKAN"
+"<p>FMLD is the world’s leading open-source data portal platform.</p> <p>FMLD"
 " is a complete out-of-the-box software solution that makes data accessible "
 "and usable – by providing tools to streamline publishing, sharing, finding "
 "and using data (including storage of data and provision of robust data "
-"APIs). CKAN is aimed at data publishers (national and regional governments, "
+"APIs). FMLD is aimed at data publishers (national and regional governments, "
 "companies and organizations) wanting to make their data open and "
-"available.</p> <p>CKAN is used by governments and user groups worldwide and "
+"available.</p> <p>FMLD is used by governments and user groups worldwide and "
 "powers a variety of official and community data portals including portals "
 "for local, national and international government, such as the UK’s <a "
 "href=\"https://data.gov.uk\">data.gov.uk</a> and the United States <a "
 "href=\"https://catalog.data.gov/\">catalog.data.gov</a>, the Brazilian <a "
 "href=\"https://dados.gov.br/\">dados.gov.br</a>, Dutch and Netherland "
 "government portals, as well as city and municipal sites in the US, UK, "
-"Argentina, Finland and elsewhere.</p> <p>CKAN: <a "
-"href=\"https://ckan.org/\">https://ckan.org/</a><br /> CKAN Showcases: <a "
+"Argentina, Finland and elsewhere.</p> <p>FMLD: <a "
+"href=\"https://ckan.org/\">https://ckan.org/</a><br /> FMLD Showcases: <a "
 "href=\"https://ckan.org/showcase\">https://ckan.org/showcase</a><br /> "
 "Features overview: <a "
 "href=\"https://ckan.org/features/\">https://ckan.org/features/</a></p>"
 msgstr ""
 
 #: ckan/templates/home/snippets/promoted.html:8
-msgid "Welcome to CKAN"
-msgstr "CKAN에 오신 것을 환영합니다"
+msgid "Welcome to FMLD"
+msgstr "FMLD에 오신 것을 환영합니다"
 
 #: ckan/templates/home/snippets/promoted.html:10
 msgid ""
-"This is a nice introductory paragraph about CKAN or the site in general. We "
+"This is a nice introductory paragraph about FMLD or the site in general. We "
 "don't have any copy to go here yet but soon we will"
-msgstr "CKAN이나 사이트에 대해 서문입니다. "
+msgstr "FMLD이나 사이트에 대해 서문입니다. "
 
 #: ckan/templates/home/snippets/promoted.html:19
 msgid "This is a featured section"
@@ -2183,11 +2183,11 @@ msgstr "조직이란?"
 
 #: ckan/templates/organization/snippets/helper.html:20
 msgid ""
-"CKAN Organizations are used to create, manage and publish collections of "
+"FMLD Organizations are used to create, manage and publish collections of "
 "datasets. Users can have different roles within an Organization, depending "
 "on their level of authorisation to create, edit and publish."
 msgstr ""
-"CKAN 기관은 데이터셋의 집합을 생성, 관리, 출판하는데 사용됩니다. 사용자는 기관내에서 서로 다른 역할을 갖을 수 있으며, 권한의 "
+"FMLD 기관은 데이터셋의 집합을 생성, 관리, 출판하는데 사용됩니다. 사용자는 기관내에서 서로 다른 역할을 갖을 수 있으며, 권한의 "
 "등급에 따라 생성, 편집, 출판이 다릅니다."
 
 #: ckan/templates/organization/snippets/info.html:41
@@ -2230,11 +2230,11 @@ msgstr "데이터셋이란?"
 
 #: ckan/templates/package/base_form_page.html:22
 msgid ""
-"A CKAN Dataset is a collection of data resources (such as files), together "
+"A FMLD Dataset is a collection of data resources (such as files), together "
 "with a description and other information, at a fixed URL. Datasets are what "
 "users see when searching for data."
 msgstr ""
-"CKAN 데이터셋은 리소스에 대한 설명과 추가적인 정보를 갖고 있는 리소스의 집합으로, 고정된 URL을 갖고 있습니다. 데이터셋은 "
+"FMLD 데이터셋은 리소스에 대한 설명과 추가적인 정보를 갖고 있는 리소스의 집합으로, 고정된 URL을 갖고 있습니다. 데이터셋은 "
 "데이터를 탐색할 때 사용자가 보는 결과입니다."
 
 #: ckan/templates/package/confirm_delete.html:12
@@ -3089,8 +3089,8 @@ msgstr "계정 정보"
 
 #: ckan/templates/user/edit.html:19
 msgid ""
-"Your profile lets other CKAN users know about who you are and what you do."
-msgstr "프로파일을 CKAN 사용자가 볼 수 있도록 해 주세요"
+"Your profile lets other FMLD users know about who you are and what you do."
+msgstr "프로파일을 FMLD 사용자가 볼 수 있도록 해 주세요"
 
 #: ckan/templates/user/edit_user_form.html:10
 msgid "Change details"
@@ -4627,8 +4627,8 @@ msgid "User {0} not authorized to update resource {1}"
 msgstr "사용자 {0}는 리소스 {1}를 업데이트할 수 있는 권한이 없습니다"
 
 #: ckanext/datastore/templates/ajax_snippets/api_info.html:35
-msgid "CKAN Data API"
-msgstr "CKAN 데이터 API"
+msgid "FMLD Data API"
+msgstr "FMLD 데이터 API"
 
 #: ckanext/datastore/templates/ajax_snippets/api_info.html:39
 msgid "Access resource data via a web API with powerful query support"
@@ -4637,7 +4637,7 @@ msgstr "강력한 질의 지원을 하는 웹 API를 통해 리소스 데이터 
 #: ckanext/datastore/templates/ajax_snippets/api_info.html:40
 #, python-format
 msgid ""
-"Further information in the <a href=\"%(url)s\" target=\"_blank\">main CKAN "
+"Further information in the <a href=\"%(url)s\" target=\"_blank\">main FMLD "
 "Data API and DataStore documentation</a>.</p>"
 msgstr ""
 
@@ -4957,8 +4957,8 @@ msgid "This group has no description"
 msgstr "이 그룹은 설명이 없습니다"
 
 #: ckanext/example_theme_docs/v12_extra_public_dir/templates/home/snippets/promoted.html:4
-msgid "CKAN's data previewing tool has many powerful features"
-msgstr "CKAN의 데이터 미리보기 도구는 강력한 기능을 갖고 있습니다."
+msgid "FMLD's data previewing tool has many powerful features"
+msgstr "FMLD의 데이터 미리보기 도구는 강력한 기능을 갖고 있습니다."
 
 #: ckanext/expire_api_token/templates/user/api_tokens.html:6
 msgid "Second"

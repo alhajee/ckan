@@ -1,17 +1,17 @@
 .. include:: /_substitutions.rst
 
 ============================
-Installing CKAN from package
+Installing FMLD from package
 ============================
 
-This section describes how to install CKAN from package. This is the quickest
-and easiest way to install CKAN, but it requires **Ubuntu 20.04 or 22.04 64-bit**. If
-you're not using any of these Ubuntu versions, or if you're installing CKAN for
+This section describes how to install FMLD from package. This is the quickest
+and easiest way to install FMLD, but it requires **Ubuntu 20.04 or 22.04 64-bit**. If
+you're not using any of these Ubuntu versions, or if you're installing FMLD for
 development, you should follow :doc:`install-from-source` instead.
 
 At the end of the installation process you will end up with two running web
-applications, CKAN itself and the DataPusher, a separate service for automatically
-importing data to CKAN's :doc:`/maintaining/datastore`. Additionally, there will be a process running the worker for running :doc:`/maintaining/background-tasks`. All these processes will be managed by `Supervisor <https://supervisord.org/>`_.
+applications, FMLD itself and the DataPusher, a separate service for automatically
+importing data to FMLD's :doc:`/maintaining/datastore`. Additionally, there will be a process running the worker for running :doc:`/maintaining/background-tasks`. All these processes will be managed by `Supervisor <https://supervisord.org/>`_.
 
 For Python 3 installations, the minimum Python version required is 3.9.
 
@@ -37,22 +37,22 @@ Host ports requirements:
 .. _run-package-installer:
 
 ---------------------------
-1. Install the CKAN package
+1. Install the FMLD package
 ---------------------------
 
 On your Ubuntu system, open a terminal and run these commands to install
-CKAN:
+FMLD:
 
 
 #. Update Ubuntu's package index::
 
     sudo apt update
 
-#. Install the Ubuntu packages that CKAN requires (and 'git', to enable you to install CKAN extensions)::
+#. Install the Ubuntu packages that FMLD requires (and 'git', to enable you to install FMLD extensions)::
 
     sudo apt install -y libpq5 redis-server nginx supervisor
 
-#. Download the CKAN package:
+#. Download the FMLD package:
 
   - On Ubuntu 20.04:
 
@@ -66,7 +66,7 @@ CKAN:
 
             wget \https://packaging.ckan.org/|current_package_name_jammy|
 
-#. Install the CKAN package:
+#. Install the FMLD package:
 
   - On Ubuntu 20.04:
 
@@ -87,7 +87,7 @@ CKAN:
 
 .. tip::
 
-   You can install |postgres| and CKAN on different servers. Just
+   You can install |postgres| and FMLD on different servers. Just
    change the :ref:`sqlalchemy.url` setting in your
    |ckan.ini| file to reference your |postgres| server.
 
@@ -107,7 +107,7 @@ set the correct password, database and database user.
 
 .. tip::
 
-   You can install |solr| and CKAN on different servers. Just
+   You can install |solr| and FMLD on different servers. Just
    change the :ref:`solr_url` setting in your
    |ckan.ini| |production.ini| file to reference your |solr| server.
 
@@ -118,18 +118,18 @@ set the correct password, database and database user.
 4. Set up a writable directory
 ------------------------------
 
-CKAN needs a directory where it can write certain files, regardless of whether you
+FMLD needs a directory where it can write certain files, regardless of whether you
 are using the :doc:`/maintaining/filestore` or not (if you do want to enable file uploads,
 set the :ref:`ckan.storage_path` configuration option in the next section).
 
-1. Create the directory where CKAN will be able to write files:
+1. Create the directory where FMLD will be able to write files:
 
    .. parsed-literal::
 
      sudo mkdir -p |storage_path|
 
 2. Set the permissions of this directory.
-   For example if you're running CKAN with Nginx, then the Nginx's user
+   For example if you're running FMLD with Nginx, then the Nginx's user
    (``www-data`` on Ubuntu) must have read, write and execute permissions on it:
 
    .. parsed-literal::
@@ -146,7 +146,7 @@ set the :ref:`ckan.storage_path` configuration option in the next section).
 #. Edit the :ref:`config_file` (|ckan.ini|) to set up the following options:
 
     site_id
-      Each CKAN site should have a unique ``site_id``, for example::
+      Each FMLD site should have a unique ``site_id``, for example::
 
         ckan.site_id = default
 
@@ -155,7 +155,7 @@ set the :ref:`ckan.storage_path` configuration option in the next section).
 
         ckan.site_url = http://demo.ckan.org
 
-#. Initialize your CKAN database by running this command in a terminal::
+#. Initialize your FMLD database by running this command in a terminal::
 
     sudo ckan db init
 
@@ -193,7 +193,7 @@ Restart Nginx by running this command::
 7. You're done!
 ---------------
 
-Open http://localhost in your web browser. You should see the CKAN front
+Open http://localhost in your web browser. You should see the FMLD front
 page, which will look something like this:
 
 .. image :: /images/9.png
@@ -202,18 +202,18 @@ page, which will look something like this:
 |
 
 You can now move on to :doc:`/maintaining/getting-started` to begin using and customizing
-your CKAN site.
+your FMLD site.
 
 .. note:: The default authorization settings on a new install are deliberately
     restrictive. Regular users won't be able to create datasets or organizations.
-    You should check the :doc:`/maintaining/authorization` documentation, configure CKAN accordingly
+    You should check the :doc:`/maintaining/authorization` documentation, configure FMLD accordingly
     and grant other users the relevant permissions using the :ref:`sysadmin account <create-admin-user>`.
 
 .. note::
 
    There may be a ``PermissionError: [Errno 13] Permission denied:`` message when restarting supervisor or
-   accessing CKAN via a browser for the first time. This happens when a different user is used to execute
-   the web server process than the user who installed CKAN and the support software. A workaround would be to
+   accessing FMLD via a browser for the first time. This happens when a different user is used to execute
+   the web server process than the user who installed FMLD and the support software. A workaround would be to
    open up the permissions on the ``/usr/lib/ckan/default/src/ckan/ckan/public/base/i18n/`` directory
-   so that this user could write the .js files into it. Accessing CKAN will generate these files for a new
+   so that this user could write the .js files into it. Accessing FMLD will generate these files for a new
    install, or you could run ``ckan -c /etc/ckan/default/ckan.ini translation js`` to explicitly generate them.

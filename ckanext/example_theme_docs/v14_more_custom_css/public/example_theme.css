@@ -3,7 +3,7 @@
    ===================================================== */
 
 .account-masthead {
-    background-color: rgb(40, 40, 40);
+  background-color: rgb(40, 40, 40);
 }
 /* The "bubble" containing the number of new notifications. */
 .account-masthead .account .notifications a span {
@@ -19,7 +19,6 @@
   color: rgba(255, 255, 255, 0.7);
   background-color: black;
 }
-
 
 /* ========================================================================
    The main masthead bar that contains the site logo, nav links, and search
@@ -46,7 +45,6 @@
   box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.7);
 }
 
-
 /* ===========================================
    The content in the middle of the front page
    =========================================== */
@@ -55,7 +53,7 @@
 .box {
   box-shadow: none;
 }
-/* Remove the borders around the "Welcome to CKAN" and "Search Your Data"
+/* Remove the borders around the "Welcome to FMLD" and "Search Your Data"
    boxes. */
 .hero .box {
   border: none;
@@ -69,7 +67,7 @@
 .homepage .module-search .tags {
   background-color: rgb(61, 61, 61);
 }
-/* Remove some padding. This makes the bottom edges of the "Welcome to CKAN"
+/* Remove some padding. This makes the bottom edges of the "Welcome to FMLD"
    and "Search Your Data" boxes line up. */
 .module-content:last-child {
   padding-bottom: 0px;
@@ -81,7 +79,6 @@
 .homepage [role="main"] {
   border-top: 1px solid rgb(204, 204, 204);
 }
-
 
 /* ====================================
    The footer at the bottom of the site

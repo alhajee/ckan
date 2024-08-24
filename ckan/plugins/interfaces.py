@@ -1,7 +1,7 @@
 # encoding: utf-8
 
-u'''A collection of interfaces that CKAN plugins can implement to customize and
-extend CKAN.
+u'''A collection of interfaces that FMLD plugins can implement to customize and
+extend FMLD.
 
 '''
 from __future__ import annotations
@@ -17,7 +17,7 @@ from flask.wrappers import Response
 from ckan.types import (
     Action, AuthFunction, Context, DataDict, PFeedFactory,
     PUploader, PResourceUploader, Schema, SignalMapping, Validator,
-    CKANApp)
+    FMLDApp)
 
 from .base import Interface, Plugin
 
@@ -26,8 +26,8 @@ if TYPE_CHECKING:
     import ckan.model as model
 
     from collections import OrderedDict
-    from ckan.common import CKANConfig
-    from ckan.config.middleware.flask_app import CKANFlask
+    from ckan.common import FMLDConfig
+    from ckan.config.middleware.flask_app import FMLDFlask
     from ckan.config.declaration import Declaration, Key
 
 
@@ -67,13 +67,13 @@ __all__ = [
 
 
 class IMiddleware(Interface):
-    u'''Hook into the CKAN middleware stack
+    u'''Hook into the FMLD middleware stack
 
     Note that methods on this interface will be called two times,
     one for the Pylons stack and one for the Flask stack (eventually
     there will be only the Flask stack).
     '''
-    def make_middleware(self, app: CKANApp, config: 'CKANConfig') -> CKANApp:
+    def make_middleware(self, app: FMLDApp, config: 'FMLDConfig') -> FMLDApp:
         u'''Return an app configured with this middleware
 
         When called on the Flask stack, this method will get the actual Flask
@@ -95,8 +95,8 @@ class IMiddleware(Interface):
         '''
         return app
 
-    def make_error_log_middleware(self, app: 'CKANFlask',
-                                  config: 'CKANConfig') -> 'CKANFlask':
+    def make_error_log_middleware(self, app: 'FMLDFlask',
+                                  config: 'FMLDConfig') -> 'FMLDFlask':
         u'''Return an app configured with this error log middleware
 
         Note that both on the Flask and Pylons middleware stacks, this
@@ -163,8 +163,8 @@ class IFeed(Interface):
             )
 
         """
-        from ckan.views.feed import CKANFeed
-        return CKANFeed
+        from ckan.views.feed import FMLDFeed
+        return FMLDFeed
 
     def get_item_additional_fields(
             self, dataset_dict: dict[str, Any]) -> dict[str, Any]:
@@ -696,26 +696,26 @@ class IPluginObserver(Interface):
 
 class IConfigurable(Interface):
     u'''
-    Hook called during the startup of CKAN
+    Hook called during the startup of FMLD
 
     See also :py:class:`IConfigurer`.
     '''
-    def configure(self, config: 'CKANConfig') -> None:
+    def configure(self, config: 'FMLDConfig') -> None:
         u'''
-        Called during CKAN's initialization.
+        Called during FMLD's initialization.
 
         This function allows plugins to initialize themselves during
-        CKAN's initialization. It is called after most of the
+        FMLD's initialization. It is called after most of the
         environment (e.g. the database) is already set up.
 
         Note that this function is not only called during the
-        initialization of the main CKAN process but also during the
+        initialization of the main FMLD process but also during the
         execution of paster commands and background jobs, since these
         run in separate processes and are therefore initialized
         independently.
 
         :param config: dict-like configuration object
-        :type config: :py:class:`ckan.common.CKANConfig`
+        :type config: :py:class:`ckan.common.FMLDConfig`
         '''
         return
 
@@ -776,7 +776,7 @@ class IConfigDeclaration(Interface):
 
 class IConfigurer(Interface):
     u'''
-    Configure the CKAN environment via the ``config`` object
+    Configure the FMLD environment via the ``config`` object
 
     See also :py:class:`IConfigurable`.
     '''
@@ -785,7 +785,7 @@ class IConfigurer(Interface):
     # plugins from the end of the list
     _reverse_iteration_order = True
 
-    def update_config(self, config: 'CKANConfig') -> None:
+    def update_config(self, config: 'FMLDConfig') -> None:
         u'''
         Called by load_environment at the earliest point that config is
         available to plugins. The config should be updated in place.
@@ -797,7 +797,7 @@ class IConfigurer(Interface):
         u'''
         Return a schema with the runtime-editable config options.
 
-        CKAN will use the returned schema to decide which configuration options
+        FMLD will use the returned schema to decide which configuration options
         can be edited during runtime (using
         :py:func:`ckan.logic.action.update.config_option_update`) and to
         validate them before storing them.
@@ -877,7 +877,7 @@ class IValidators(Interface):
 
 
 class IAuthFunctions(Interface):
-    u'''Override CKAN's authorization functions, or add new auth functions.'''
+    u'''Override FMLD's authorization functions, or add new auth functions.'''
 
     def get_auth_functions(self) -> dict[str, AuthFunction]:
         u'''Return the authorization functions provided by this plugin.
@@ -888,18 +888,18 @@ class IAuthFunctions(Interface):
             {'user_create': my_custom_user_create_function,
              'group_create': my_custom_group_create}
 
-        When a user tries to carry out an action via the CKAN API or web
-        interface and CKAN or a CKAN plugin calls
+        When a user tries to carry out an action via the FMLD API or web
+        interface and FMLD or a FMLD plugin calls
         ``check_access('some_action')`` as a result, an authorization function
         named ``'some_action'`` will be searched for in the authorization
-        functions registered by plugins and in CKAN's core authorization
+        functions registered by plugins and in FMLD's core authorization
         functions (found in ``ckan/logic/auth/``).
 
         For example when action function ``'package_create'`` is called, a
         ``'package_create'`` authorization function is searched for.
 
         If an extension registers an authorization function with the same name
-        as one of CKAN's default authorization functions (as with
+        as one of FMLD's default authorization functions (as with
         ``'user_create'`` and ``'group_create'`` above), the extension's
         function will override the default one.
 
@@ -1003,9 +1003,9 @@ class ITemplateHelpers(Interface):
 
 
 class IDatasetForm(Interface):
-    u'''Customize CKAN's dataset (package) schemas and forms.
+    u'''Customize FMLD's dataset (package) schemas and forms.
 
-    By implementing this interface plugins can customise CKAN's dataset schema,
+    By implementing this interface plugins can customise FMLD's dataset schema,
     for example to add new custom fields to datasets.
 
     Multiple IDatasetForm plugins can be used at once, each plugin associating
@@ -1030,7 +1030,7 @@ class IDatasetForm(Interface):
         then this plugin instance will be delegated to.
 
         There cannot be two IDatasetForm plugins that return the same dataset
-        type, if this happens then CKAN will raise an exception at startup.
+        type, if this happens then FMLD will raise an exception at startup.
 
         :rtype: iterable of strings
 
@@ -1045,11 +1045,11 @@ class IDatasetForm(Interface):
         instead.
 
         There cannot be more than one IDatasetForm plugin whose
-        ``is_fallback()`` method returns ``True``, if this happens CKAN will
+        ``is_fallback()`` method returns ``True``, if this happens FMLD will
         raise an exception at startup.
 
         If no IDatasetForm plugin's ``is_fallback()`` method returns ``True``,
-        CKAN will use ``DefaultDatasetForm`` as the fallback.
+        FMLD will use ``DefaultDatasetForm`` as the fallback.
 
         :rtype: bool
 
@@ -1059,7 +1059,7 @@ class IDatasetForm(Interface):
     def create_package_schema(self) -> Schema:
         u'''Return the schema for validating new dataset dicts.
 
-        CKAN will use the returned schema to validate and convert data coming
+        FMLD will use the returned schema to validate and convert data coming
         from users (via the dataset form or API) when creating new datasets,
         before entering that data into the database.
 
@@ -1067,7 +1067,7 @@ class IDatasetForm(Interface):
         plugin can call ``DefaultDatasetForm``'s ``create_package_schema()``
         method to get the default schema and then modify and return it.
 
-        CKAN's ``convert_to_tags()`` or ``convert_to_extras()`` functions can
+        FMLD's ``convert_to_tags()`` or ``convert_to_extras()`` functions can
         be used to convert custom fields into dataset tags or extras for
         storing in the database.
 
@@ -1083,7 +1083,7 @@ class IDatasetForm(Interface):
     def update_package_schema(self) -> Schema:
         u'''Return the schema for validating updated dataset dicts.
 
-        CKAN will use the returned schema to validate and convert data coming
+        FMLD will use the returned schema to validate and convert data coming
         from users (via the dataset form or API) when updating datasets, before
         entering that data into the database.
 
@@ -1091,7 +1091,7 @@ class IDatasetForm(Interface):
         plugin can call ``DefaultDatasetForm``'s ``update_package_schema()``
         method to get the default schema and then modify and return it.
 
-        CKAN's ``convert_to_tags()`` or ``convert_to_extras()`` functions can
+        FMLD's ``convert_to_tags()`` or ``convert_to_extras()`` functions can
         be used to convert custom fields into dataset tags or extras for
         storing in the database.
 
@@ -1108,7 +1108,7 @@ class IDatasetForm(Interface):
         u'''
         Return a schema to validate datasets before they're shown to the user.
 
-        CKAN will use the returned schema to validate and convert data coming
+        FMLD will use the returned schema to validate and convert data coming
         from the database before it is returned to the user via the API or
         passed to a template for rendering.
 
@@ -1161,7 +1161,7 @@ class IDatasetForm(Interface):
         ``'package/read.html'``.
 
         If the user requests the dataset in a format other than HTML, then
-        CKAN will try to render a template file with the same path as returned
+        FMLD will try to render a template file with the same path as returned
         by this function, but a different filename extension,
         e.g. ``'package/read.rdf'``.  If your extension (or another one)
         does not provide this version of the template file, the user
@@ -1275,7 +1275,7 @@ class IDatasetForm(Interface):
                                   blueprint: Blueprint) -> Blueprint:
         u'''Update or replace dataset blueprint for given package type.
 
-        Internally CKAN registers blueprint for every custom dataset
+        Internally FMLD registers blueprint for every custom dataset
         type. Before default routes added to this blueprint and it
         registered inside application this method is called. It can be
         used either for registration of the view function under new
@@ -1293,7 +1293,7 @@ class IDatasetForm(Interface):
                                    blueprint: Blueprint) -> Blueprint:
         u'''Update or replace resource blueprint for given package type.
 
-        Internally CKAN registers separate resource blueprint for
+        Internally FMLD registers separate resource blueprint for
         every custom dataset type. Before default routes added to this
         blueprint and it registered inside application this method is
         called. It can be used either for registration of the view
@@ -1381,7 +1381,7 @@ class IGroupForm(Interface):
     def create_group_schema(self) -> Schema:
         '''Return the schema for validating new group or organization dicts.
 
-        CKAN will use the returned schema to validate and convert data coming
+        FMLD will use the returned schema to validate and convert data coming
         from users (via the dataset form or API) when creating new groups,
         before entering that data into the database.
 
@@ -1398,7 +1398,7 @@ class IGroupForm(Interface):
         '''Return the schema for validating updated group or organization
         dicts.
 
-        CKAN will use the returned schema to validate and convert data coming
+        FMLD will use the returned schema to validate and convert data coming
         from users (via the dataset form or API) when updating groups, before
         entering that data into the database.
 
@@ -1416,7 +1416,7 @@ class IGroupForm(Interface):
         Return a schema to validate groups or organizations before they're
         shown to the user.
 
-        CKAN will use the returned schema to validate and convert data coming
+        FMLD will use the returned schema to validate and convert data coming
         from the database before it is returned to the user via the API or
         passed to a template for rendering.
 
@@ -1536,7 +1536,7 @@ class IGroupForm(Interface):
                                 blueprint: Blueprint) -> Blueprint:
         u'''Update or replace group blueprint for given group type.
 
-        Internally CKAN registers separate blueprint for
+        Internally FMLD registers separate blueprint for
         every custom group type. Before default routes added to this
         blueprint and it registered inside application this method is
         called. It can be used either for registration of the view
@@ -1562,7 +1562,7 @@ class IFacets(Interface):
     organization pages and group pages.
 
     The ``facets_dict`` passed to each of the functions below is an
-    ``OrderedDict`` in which the keys are CKAN's internal names for the facets
+    ``OrderedDict`` in which the keys are FMLD's internal names for the facets
     and the values are the titles that will be shown for the facets in the web
     interface. The order of the keys in the dict determine the order that
     facets appear in on the page.  For example::
@@ -1586,12 +1586,12 @@ class IFacets(Interface):
         })
 
     Dataset searches can be faceted on any field in the dataset schema that it
-    makes sense to facet on. This means any dataset field that is in CKAN's
+    makes sense to facet on. This means any dataset field that is in FMLD's
     Solr search index, basically any field that you see returned by
     :py:func:`~ckan.logic.action.get.package_show`.
 
     If there are multiple ``IFacets`` plugins active at once, each plugin will
-    be called (in the order that they're listed in the CKAN config file) and
+    be called (in the order that they're listed in the FMLD config file) and
     they will each be able to modify the facets dict in turn.
 
     '''
@@ -1676,7 +1676,7 @@ class IFacets(Interface):
 
 
 class IAuthenticator(Interface):
-    u'''Allows custom authentication methods to be integrated into CKAN.
+    u'''Allows custom authentication methods to be integrated into FMLD.
 
         All interface methods except for the ``abort()`` one support
         returning a Flask response object. This can be used for instance to
@@ -1712,7 +1712,7 @@ class IAuthenticator(Interface):
          - g.userobj: The actual user object
 
         Alternatively, plugins can return a response object in order to prevent
-        the default CKAN authorization flow. See
+        the default FMLD authorization flow. See
         the :py:class:`~ckan.plugins.interfaces.IAuthenticator` documentation
         for more details.
 
@@ -1722,7 +1722,7 @@ class IAuthenticator(Interface):
         u'''Called before the login starts (that is before asking the user for
         user name and a password in the default authentication).
 
-        Plugins can return a response object to prevent the default CKAN
+        Plugins can return a response object to prevent the default FMLD
         authorization flow. See
         the :py:class:`~ckan.plugins.interfaces.IAuthenticator` documentation
         for more details.
@@ -1732,7 +1732,7 @@ class IAuthenticator(Interface):
         u'''Called before the logout starts (that is before clicking the logout
         button in the default authentication).
 
-        Plugins can return a response object to prevent the default CKAN
+        Plugins can return a response object to prevent the default FMLD
         authorization flow. See
         the :py:class:`~ckan.plugins.interfaces.IAuthenticator` documentation
         for more details.
@@ -1935,11 +1935,11 @@ class IPermissionLabels(Interface):
 
 class IForkObserver(Interface):
     u'''
-    Observe forks of the CKAN process.
+    Observe forks of the FMLD process.
     '''
     def before_fork(self) -> None:
         u'''
-        Called shortly before the CKAN process is forked.
+        Called shortly before the FMLD process is forked.
         '''
 
 
@@ -2110,14 +2110,14 @@ class IClick(Interface):
 
 
 class ISignal(Interface):
-    """Subscribe to CKAN signals.
+    """Subscribe to FMLD signals.
     """
 
     def get_signal_subscriptions(self) -> SignalMapping:
         """Return a mapping of signals to their listeners.
 
         Note that keys are not strings, they are instances of
-        ``blinker.Signal``. When using signals provided by CKAN core,
+        ``blinker.Signal``. When using signals provided by FMLD core,
         it is better to use the references from the :doc:`plugins
         toolkit <plugins-toolkit>` for better future
         compatibility. Values should be a list of listener functions::
@@ -2220,7 +2220,7 @@ class ISignal(Interface):
         is the triggering of side effects, like logging, starting background
         jobs, calls to external services, etc.
 
-        Any mutation or attempt to change CKAN behavior through signals should
+        Any mutation or attempt to change FMLD behavior through signals should
         be considered unsafe and may lead to hard to track bugs in
         the future. So never modify the arguments of signal listener and
         treat them as constants.

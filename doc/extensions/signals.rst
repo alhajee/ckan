@@ -2,12 +2,12 @@ Signals
 =======
 
 
-CKAN provides built-in signal support, powered by `blinker
+FMLD provides built-in signal support, powered by `blinker
 <https://pythonhosted.org/blinker/>`_.
 
 The same library is used by `Flask
 <https://flask.palletsprojects.com/en/1.1.x/signals/>`_ and anything
-written in the Flask documentation also applies to CKAN. Probably, the most
+written in the Flask documentation also applies to FMLD. Probably, the most
 important point:
 
     Flask comes with a couple of signals and other extensions
@@ -37,8 +37,8 @@ arguments::
     def subscriber(sender, **kwargs):
         ...
 
-CKAN core doesn't make any guarantees as for the concrete named arguments
-that will be passed to subscriber. For particular CKAN version one can
+FMLD core doesn't make any guarantees as for the concrete named arguments
+that will be passed to subscriber. For particular FMLD version one can
 use signlal-listing below as a reference, but in future versions
 signature may change. In additon, any event can be fired by
 a third-party plugin, so it is always safer to check whether a particular
@@ -51,7 +51,7 @@ Even though it is possible to register subscribers using decorators::
         pass
 
 the recommended approach is to use the
-:class:`ckan.plugins.interfaces.ISignal` interface, in order to give CKAN more
+:class:`ckan.plugins.interfaces.ISignal` interface, in order to give FMLD more
 control over the subscriptions available depending on the enabled plugins::
 
     class ExampleISignalPlugin(p.SingletonPlugin):
@@ -70,10 +70,10 @@ control over the subscriptions available depending on the enabled plugins::
 
 .. warning:: Arguments passed to subscribers should never be
              modified. Use subscribers only to trigger side effects and
-             not to change existing CKAN behavior. If one needs to alter
-             CKAN behavior use :mod:`ckan.plugins.interfaces` instead.
+             not to change existing FMLD behavior. If one needs to alter
+             FMLD behavior use :mod:`ckan.plugins.interfaces` instead.
 
-There are a number of built-in signals in CKAN (check the list at the bottom
+There are a number of built-in signals in FMLD (check the list at the bottom
 of the page). All of them are created inside one of the
 available namespaces: ``ckan`` and ``ckanext``. For simplicity sake,
 all built in signals have aliases inside ``ckan.lib.signals`` (or

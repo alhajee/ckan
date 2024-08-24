@@ -42,7 +42,7 @@ from sqlalchemy.exc import (ProgrammingError, IntegrityError,
                             DBAPIError, DataError, DatabaseError)
 
 import ckan.plugins as plugins
-from ckan.common import CKANConfig, config
+from ckan.common import FMLDConfig, config
 
 from ckanext.datastore.backend import (
     DatastoreBackend,
@@ -87,7 +87,7 @@ _UPDATE = 'update'
 if not os.environ.get('DATASTORE_LOAD'):
     ValidationError = toolkit.ValidationError  # type: ignore
 else:
-    log.warn("Running datastore without CKAN")
+    log.warn("Running datastore without FMLD")
 
     class ValidationError(Exception):
         def __init__(self, error_dict: ErrorDict):
@@ -832,7 +832,7 @@ def _insert_links(data_dict: dict[str, Any], limit: int, offset: int):
 
     # get the url from the request
     try:
-        urlstring = toolkit.request.environ['CKAN_CURRENT_URL']
+        urlstring = toolkit.request.environ['FMLD_CURRENT_URL']
     except (KeyError, TypeError, RuntimeError):
         return  # no links required for local actions
 
@@ -1889,7 +1889,7 @@ class DatastorePostgresqlBackend(DatastoreBackend):
 
         if self._same_ckan_and_datastore_db():
             self._log_or_raise(
-                'CKAN and DataStore database cannot be the same.')
+                'FMLD and DataStore database cannot be the same.')
 
         if self._same_read_and_write_url():
             self._log_or_raise('The write and read-only database '
@@ -1924,7 +1924,7 @@ class DatastorePostgresqlBackend(DatastoreBackend):
         return True
 
     def _same_ckan_and_datastore_db(self):
-        '''Returns True if the CKAN and DataStore db are the same'''
+        '''Returns True if the FMLD and DataStore db are the same'''
         return self._get_db_from_url(self.ckan_url) == self._get_db_from_url(
             self.read_url)
 
@@ -1966,7 +1966,7 @@ class DatastorePostgresqlBackend(DatastoreBackend):
 
         return True
 
-    def configure(self, config: CKANConfig):
+    def configure(self, config: FMLDConfig):
         self.config = config
         # check for ckan.datastore.write_url and ckan.datastore.read_url
         if ('ckan.datastore.write_url' not in config):
@@ -2020,7 +2020,7 @@ class DatastorePostgresqlBackend(DatastoreBackend):
             return
 
         if self._is_read_only_database():
-            log.warn('We detected that CKAN is running on a read '
+            log.warn('We detected that FMLD is running on a read '
                      'only database. Permission checks and the creation '
                      'of _table_metadata are skipped.')
         else:

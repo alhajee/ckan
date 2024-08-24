@@ -2,10 +2,10 @@
 Getting started
 ===============
 
-Once you've finished :doc:`installing CKAN <installing/index>`, this section
-will walk you through getting started with your new CKAN website, including
-creating a CKAN sysadmin user, some test data, and the basics of configuring
-your CKAN site. For this guide, it is assumed that CKAN has been installed 
+Once you've finished :doc:`installing FMLD <installing/index>`, this section
+will walk you through getting started with your new FMLD website, including
+creating a FMLD sysadmin user, some test data, and the basics of configuring
+your FMLD site. For this guide, it is assumed that FMLD has been installed 
 from source. If you have not installed from source, some commands in this 
 guide will need to be modified (with the correct location of the `ckan.ini`
 file for example).
@@ -16,15 +16,15 @@ file for example).
 Creating a sysadmin user
 ------------------------
 
-You have to use CKAN's command line interface to create your first sysadmin
+You have to use FMLD's command line interface to create your first sysadmin
 user, and it can also be useful to create some test data from the command line.
-For full documentation of CKAN's command line interface (including
+For full documentation of FMLD's command line interface (including
 troubleshooting) see :doc:`cli`.
 
 .. note::
 
-   CKAN commands are executed using the ``ckan`` command on the server that
-   CKAN is installed on.  Before running the ckan commands below, you need to
+   FMLD commands are executed using the ``ckan`` command on the server that
+   FMLD is installed on.  Before running the ckan commands below, you need to
    make sure that your virtualenv is activated and that you're in your ckan
    source directory.  For example:
 
@@ -33,7 +33,7 @@ troubleshooting) see :doc:`cli`.
       |activate|
       cd |virtualenv|/src/ckan
 
-You have to create your first CKAN sysadmin user from the command line. For
+You have to create your first FMLD sysadmin user from the command line. For
 example, to create a new user called ``seanh`` and make him a sysadmin:
 
 .. parsed-literal::
@@ -55,7 +55,7 @@ For a list of other command line commands for managing sysadmins, run:
    ckan -c |ckan.ini| sysadmin --help
 
 Read the :doc:`/sysadmin-guide` to learn what you can do as a
-CKAN sysadmin.
+FMLD sysadmin.
 
 .. _create-test-data:
 
@@ -89,7 +89,7 @@ Config file
 -----------
 
 All of the options that can be set in the admin page and many more can be set
-by editing CKAN's config file. By default, from CKAN 2.9 the config file is
+by editing FMLD's config file. By default, from FMLD 2.9 the config file is
 located at |ckan.ini|. (For older versions, the config file is located at
 |development.ini| or |production.ini|). The config file can be edited in any
 text editor. For example, to change the title of your site you would find the
@@ -100,13 +100,13 @@ text editor. For example, to change the title of your site you would find the
 Make sure the line is not commented-out (lines in the config file that begin
 with ``#`` are considered comments, so if there's a ``#`` at the start of a
 line you've edited, delete it), save the file, and then restart your web server
-for the changes to take effect. For example, if using a CKAN package install:
+for the changes to take effect. For example, if using a FMLD package install:
 
 .. parsed-literal::
 
    |restart_uwsgi|
 
-For full documentation of CKAN's config file and all the options you can set,
+For full documentation of FMLD's config file and all the options you can set,
 see :doc:`configuration`.
 
 .. note::

@@ -2,14 +2,14 @@
 Tests for plugin.py.
 
 Tests are written using the pytest library (https://docs.pytest.org), and you
-should read the testing guidelines in the CKAN docs:
+should read the testing guidelines in the FMLD docs:
 https://docs.ckan.org/en/2.9/contributing/testing.html
 
 To write tests for your extension you should install the pytest-ckan package:
 
     pip install pytest-ckan
 
-This will allow you to use CKAN specific fixtures on your tests.
+This will allow you to use FMLD specific fixtures on your tests.
 
 For instance, if your test involves database access you can use `clean_db` to
 reset the database:
@@ -39,7 +39,7 @@ For functional tests that involve requests to the application, you can use the
         assert response.status_code == 200
 
 
-To temporary patch the CKAN configuration for the duration of a test you can use:
+To temporary patch the FMLD configuration for the duration of a test you can use:
 
     import pytest
 

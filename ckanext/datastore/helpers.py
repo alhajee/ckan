@@ -94,7 +94,7 @@ def get_table_and_function_names_from_sql(context: Context, sql: str):
 
     Note that this requires Postgres 9.x.
 
-    :param context: a CKAN context dict. It must contain a 'connection' key
+    :param context: a FMLD context dict. It must contain a 'connection' key
         with the current DB connection.
     :type context: dict
     :param sql: the SQL statement to parse for table and function names
@@ -229,7 +229,7 @@ def datastore_search_sql_enabled(*args: Any) -> bool:
     """
     Return the configuration setting
     if search sql is enabled as
-    CKAN__DATASTORE__SQLSEARCH__ENABLED
+    FMLD__DATASTORE__SQLSEARCH__ENABLED
     """
     try:
         config = tk.config.get('ckan.datastore.sqlsearch.enabled', False)

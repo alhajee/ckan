@@ -134,7 +134,7 @@ def test_group_create_with_no_curators_group():
     # Make sure there's no curators group.
     assert 'curators' not in helpers.call_action('group_list', {})
 
-    # Make our sysadmin user create a group. CKAN should not crash.
+    # Make our sysadmin user create a group. FMLD should not crash.
     context = {'ignore_auth': False, 'user': sysadmin['name']}
     helpers.call_action('group_create', context, name='test-group')
 

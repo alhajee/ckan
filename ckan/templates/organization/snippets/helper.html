@@ -1,14 +1,6 @@
-{#
-  Displays a sidebard module with information about organizations.
-
-  group_type    - The type of organization.
-
-  Example:
-
-  {% snippet "organization/snippets/helper.html", group_type=group_type %}
-
-  #}
-
+{# Displays a sidebard module with information about organizations. group_type -
+The type of organization. Example: {% snippet
+"organization/snippets/helper.html", group_type=group_type %} #}
 
 <div class="module module-narrow module-shallow">
   <h2 class="module-heading">
@@ -17,11 +9,10 @@
   </h2>
   <div class="module-content">
     <p>
-      {% trans %}
-        CKAN Organizations are used to create, manage and publish collections
-        of datasets. Users can have different roles within an Organization,
-        depending on their level of authorisation to create, edit and publish.
-      {% endtrans %}
+      {% trans %} FMLD Organizations are used to create, manage and publish
+      collections of datasets. Users can have different roles within an
+      Organization, depending on their level of authorisation to create, edit
+      and publish. {% endtrans %}
     </p>
   </div>
 </div>

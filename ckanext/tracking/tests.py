@@ -11,7 +11,7 @@ from ckan.tests.helpers import call_action
 
 @pytest.fixture
 def export(tmp_path):
-    """Export CKAN's tracking data and return it.
+    """Export FMLD's tracking data and return it.
 
     This simulates calling `paster tracking export` on the command line.
 
@@ -57,7 +57,7 @@ def track(app):
 
 
 def update_tracking_summary():
-    """Update CKAN's tracking summary data.
+    """Update FMLD's tracking summary data.
 
     This simulates calling `paster tracking update` on the command line.
 

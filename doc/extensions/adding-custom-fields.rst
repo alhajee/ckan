@@ -2,17 +2,17 @@
 Customizing dataset and resource metadata fields using IDatasetForm
 ===================================================================
 
-Storing additional metadata for a dataset beyond the default metadata in CKAN
-is a common use case. CKAN provides a simple way to do this by allowing you to
+Storing additional metadata for a dataset beyond the default metadata in FMLD
+is a common use case. FMLD provides a simple way to do this by allowing you to
 store arbitrary key/value pairs against a dataset when creating or updating the
 dataset. These appear under the "Additional Information" section on the web
 interface and in 'extras' field of the JSON when accessed via the API.
 
 Default extras can only take strings for their keys and values, no
 validation is applied to the inputs and you cannot make them mandatory or
-restrict the possible values to a defined list. By using CKAN's IDatasetForm
-plugin interface, a CKAN plugin can add custom, first-class metadata fields to
-CKAN datasets, and can do custom validation of these fields.
+restrict the possible values to a defined list. By using FMLD's IDatasetForm
+plugin interface, a FMLD plugin can add custom, first-class metadata fields to
+FMLD datasets, and can do custom validation of these fields.
 
 .. warning::
 
@@ -21,7 +21,7 @@ CKAN datasets, and can do custom validation of these fields.
    extension allows:
 
       * Metadata schema configuration using a YAML or JSON schema description
-      * Automatic conversion of custom fields to the internal representation used by CKAN
+      * Automatic conversion of custom fields to the internal representation used by FMLD
       * Automatic use of relevant template snippets according to the field type for editing and display
       * Use of may pre-configured presets for multiple choice fields, dates, repeating subfields, etc.
 
@@ -31,9 +31,9 @@ CKAN datasets, and can do custom validation of these fields.
    :doc:`/extensions/tutorial`.
 
 
-CKAN schemas and validation
+FMLD schemas and validation
 ---------------------------
-When a dataset is created, updated or viewed, the parameters passed to CKAN
+When a dataset is created, updated or viewed, the parameters passed to FMLD
 (e.g. via the web form when creating or updating a dataset, or posted to an API
 end point) are validated against a schema. For each parameter, the schema will
 contain a corresponding list of functions that will be run against the value of
@@ -59,14 +59,14 @@ override the schemas for creation, updating and displaying of datasets.
    ~ckan.plugins.interfaces.IDatasetForm.is_fallback
    ~ckan.plugins.interfaces.IDatasetForm.package_types
 
-CKAN allows you to have multiple IDatasetForm plugins, each handling different
-dataset types. So you could customize the CKAN web front end, for different
+FMLD allows you to have multiple IDatasetForm plugins, each handling different
+dataset types. So you could customize the FMLD web front end, for different
 types of datasets. In this tutorial we will be defining our plugin as the
 fallback plugin. This plugin is used if no other IDatasetForm plugin is found
 that handles that dataset type.
 
 The IDatasetForm also has other additional functions that allow you to
-provide a custom template to be rendered for the CKAN frontend, but we will
+provide a custom template to be rendered for the FMLD frontend, but we will
 not be using them for this tutorial.
 
 Adding custom fields to datasets
@@ -81,7 +81,7 @@ Create a new plugin named ``ckanext-extrafields`` and create a class named
 .. literalinclude:: ../../ckanext/example_idatasetform/plugin_v1.py
     :end-before: def create_package_schema(self) -> Schema:
 
-Updating the CKAN schema
+Updating the FMLD schema
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 The :py:meth:`~ckan.plugins.interfaces.IDatasetForm.create_package_schema`
@@ -95,9 +95,9 @@ super function and update it.
 .. literalinclude:: ../../ckanext/example_idatasetform/plugin_v1.py
     :pyobject: ExampleIDatasetFormPlugin.create_package_schema
 
-The CKAN schema is a dictionary where the key is the name of the field and the
+The FMLD schema is a dictionary where the key is the name of the field and the
 value is a list of validators and converters. Here we have a validator to tell
-CKAN to not raise a validation error if the value is missing and a converter to
+FMLD to not raise a validation error if the value is missing and a converter to
 convert the value to and save as an extra. We will want to change the
 :py:meth:`~ckan.plugins.interfaces.IDatasetForm.update_package_schema` function
 with the same update code.
@@ -133,7 +133,7 @@ code to contain the following:
 Updating templates
 ^^^^^^^^^^^^^^^^^^
 
-In order for our new field to be visible on the CKAN front-end, we need to
+In order for our new field to be visible on the FMLD front-end, we need to
 update the templates. Add an additional line to make the plugin implement the
 IConfigurer interface
 
@@ -144,8 +144,8 @@ IConfigurer interface
 
 This interface allows to implement a function
 :py:meth:`~ckan.plugins.interfaces.IDatasetForm.update_config` that allows us
-to update the CKAN config, in our case we want to add an additional location
-for CKAN to look for templates. Add the following code to your plugin.
+to update the FMLD config, in our case we want to add an additional location
+for FMLD to look for templates. Add the following code to your plugin.
 
 .. literalinclude:: ../../ckanext/example_idatasetform/plugin_v2.py
     :pyobject: ExampleIDatasetFormPlugin.update_config
@@ -166,13 +166,13 @@ file in our templates directory called
     :language: jinja
     :end-before: {% block package_metadata_fields %}
 
-This overrides the custom_fields block with an empty block so the default CKAN
+This overrides the custom_fields block with an empty block so the default FMLD
 custom fields form does not render.
 
 
 .. versionadded:: 2.3
 
-    Starting from CKAN 2.3 you can combine free extras with custom fields
+    Starting from FMLD 2.3 you can combine free extras with custom fields
     handled with ``convert_to_extras`` and ``convert_from_extras``. On prior
     versions you'll always need to remove the free extras handling.
 
@@ -222,7 +222,7 @@ you can share validators between extensions by registering
 them with the :py:class:`~ckan.plugins.interfaces.IValidators` interface.
 
 Any of the following objects may be used as validators as part
-of a custom dataset, group or organization schema. CKAN's validation
+of a custom dataset, group or organization schema. FMLD's validation
 code will check for and attempt to use them in this order:
 
 
@@ -436,13 +436,13 @@ Add the code below to ``package/snippets/resource_form.html``
 
 This adds our custom_resource_text to the editing form of the resources.
 
-Save and reload your development server CKAN will take any additional keys from
+Save and reload your development server FMLD will take any additional keys from
 the resource schema and save them the its extras field.  The templates will
 automatically check this field and display them in the resource_read page.
 
 Sorting by custom fields on the dataset search page
 ---------------------------------------------------
-Now that we've added our custom field, we can customize the CKAN web front end
+Now that we've added our custom field, we can customize the FMLD web front end
 search page to sort datasets by our custom field. Add a new file called
 ``ckanext-extrafields/ckanext/extrafields/templates/package/search.html`` containing:
 

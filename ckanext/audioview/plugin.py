@@ -5,7 +5,7 @@ from typing import Any
 
 import ckan.plugins as p
 from ckan.types import Context, DataDict
-from ckan.common import CKANConfig
+from ckan.common import FMLDConfig
 from ckan.config.declaration import Declaration, Key
 
 ignore_empty = p.toolkit.get_validator('ignore_empty')
@@ -19,7 +19,7 @@ class AudioView(p.SingletonPlugin):
     p.implements(p.IResourceView, inherit=True)
     p.implements(p.IConfigDeclaration)
 
-    def update_config(self, config: CKANConfig):
+    def update_config(self, config: FMLDConfig):
         p.toolkit.add_template_directory(config, 'theme/templates')
         self.formats = config.get('ckan.preview.audio_formats').split()
 

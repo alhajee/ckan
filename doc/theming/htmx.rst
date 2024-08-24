@@ -1,16 +1,16 @@
 Creating dynamic user interfaces with htmx
 ==========================================
 
-Starting version 2.11, CKAN is shipped with `htmx <https://htmx.org/>`_.
+Starting version 2.11, FMLD is shipped with `htmx <https://htmx.org/>`_.
 
     *"htmx gives you access to AJAX, CSS Transitions, WebSockets and Server Sent
     Events directly in HTML, using attributes, so you can build modern user
     interfaces with the simplicity and power of hypertext."*
     -- `htmx.org <https://htmx.org/>`_
 
-While not all CKAN templates have been updated to use ``htmx``, you can use it
+While not all FMLD templates have been updated to use ``htmx``, you can use it
 in your own extensions to build modern user interfaces. htmx will be the core
-component in the implementation of the new CKAN UI, so you should expect more
+component in the implementation of the new FMLD UI, so you should expect more
 of it in future versions.
 
 --------
@@ -47,7 +47,7 @@ For a full list of the HTML attributes and their usage, check the `htmx document
 Implementing new features with htmx
 -----------------------------------
 
-``htmx`` give us the flexibility to implement new dynamic features in CKAN by implementing
+``htmx`` give us the flexibility to implement new dynamic features in FMLD by implementing
 new endpoints that returns the partial HTML that we want to insert into the page. The
 **Follow** / **Unfollow** logic is a great example of this and we will explain the thought
 process behind it in this section.
@@ -69,7 +69,7 @@ What we need to achieve this behaviour is:
 1. HTML structure
 
 The HTML structure is very simple: an element that contains the button and the counter.
-To respect the current CKAN UX we update the ``package/snippets/info.html`` snippet.
+To respect the current FMLD UX we update the ``package/snippets/info.html`` snippet.
 We need to make sure that the ``section`` HTML element we want to replace has an id so
 we add it: ``id="package-info"``.
 
@@ -107,7 +107,7 @@ we want to replace the ``package-info`` element, so we can use the ``#package-in
 3. The endpoint
 
 The last step is to implement the endpoint that will be called when the user clicks on the button. In our case,
-we want to call the ``/dataset/follow/<dataset-id>`` endpoint. This endpoint is already implemented in CKAN.
+we want to call the ``/dataset/follow/<dataset-id>`` endpoint. This endpoint is already implemented in FMLD.
 We need to make sure that, under this new context, it should return only the partial HTML that we want to insert into the page
 instead of rendering the whole dataset page again.  We achieve that by making it sure that we return the snippet that
 contains the HTML that we want to display, in our case ``package/snippets/info.html``.
@@ -119,14 +119,14 @@ View:
 
 
 Note that this endpoint is reusing the ``package/snippets/info.html`` that is also being called in
-``package/read_base.html`` when calling ``/dataset/<dataset-id>``. This shows how modular and reusable the CKAN
+``package/read_base.html`` when calling ``/dataset/<dataset-id>``. This shows how modular and reusable the FMLD
 templates are with ``htmx``.
 
 -------------------------------------------
-2. Accesing to HTMX request headers in CKAN
+2. Accesing to HTMX request headers in FMLD
 -------------------------------------------
 
-CKAN adds a new property to the CKANRequest class called ``htmx`` that you can
+FMLD adds a new property to the FMLDRequest class called ``htmx`` that you can
 use to access the htmx request headers. For example::
 
     from ckan.common import request

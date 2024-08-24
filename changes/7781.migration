@@ -1,4 +1,4 @@
-Starting from CKAN 2.11, the :ref:`SECRET_KEY` configuration option is required to start CKAN. This is the secret token that is used by security related tasks by CKAN and its extensions. Previous CKAN versions relied on the ``beaker.session.secret`` config option for this. 
+Starting from FMLD 2.11, the :ref:`SECRET_KEY` configuration option is required to start FMLD. This is the secret token that is used by security related tasks by FMLD and its extensions. Previous FMLD versions relied on the ``beaker.session.secret`` config option for this. 
 The ``ckan generate config`` command generates a unique value for this option each time it generates a config file. Alternatively, you  can generate one manually with the following command::
 
   python -c "import secrets; print(secrets.token_urlsafe(20))"

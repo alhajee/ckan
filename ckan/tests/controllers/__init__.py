@@ -12,8 +12,8 @@
    * All controller methods should have tests
 
    * Controller tests should be high-level tests that work by posting simulated
-     HTTP requests to CKAN URLs and testing the response. So the controller
-     tests are also testing CKAN's templates and rendering - these are CKAN's
+     HTTP requests to FMLD URLs and testing the response. So the controller
+     tests are also testing FMLD's templates and rendering - these are FMLD's
      front-end tests.
 
      For example, maybe we use a testapp and then use beautiful soup
@@ -44,7 +44,7 @@
 
 .. warning::
 
-   Some CKAN controllers *do* contain a lot of complicated logic code.  These
+   Some FMLD controllers *do* contain a lot of complicated logic code.  These
    controllers should be refactored to move the logic into :mod:`ckan.logic` or
    :mod:`ckan.lib` where it can be tested easily.  Unfortunately in cases like
    this it may be necessary to write a lot of controller tests to get this

@@ -4,8 +4,8 @@ import ckan.plugins as p
 from typing import Any, Callable
 
 from ckan.plugins import toolkit
-from ckan.types import Context, CKANApp
-from ckan.common import CKANConfig
+from ckan.types import Context, FMLDApp
+from ckan.common import FMLDConfig
 
 from .cli.tracking import tracking
 from .helpers import popular
@@ -25,12 +25,12 @@ class TrackingPlugin(p.SingletonPlugin):
         return [tracking]
 
     # IConfigurer
-    def update_config(self, config: CKANConfig) -> None:
+    def update_config(self, config: FMLDConfig) -> None:
         toolkit.add_resource("assets", "tracking")
         toolkit.add_template_directory(config, "templates")
 
     # IMiddleware
-    def make_middleware(self, app: CKANApp, config: CKANConfig) -> Any:
+    def make_middleware(self, app: FMLDApp, config: FMLDConfig) -> Any:
         app.after_request(track_request)
         return app
 

@@ -27,7 +27,7 @@ from .describe import describer
 from .serialize import serializer
 
 if TYPE_CHECKING:
-    from ckan.common import CKANConfig
+    from ckan.common import FMLDConfig
 
 
 __all__ = ["Declaration", "Key"]
@@ -119,7 +119,7 @@ class Declaration:
             plugin.declare_config_options(self, Key())
         self._seal()
 
-    def make_safe(self, config: "CKANConfig"):
+    def make_safe(self, config: "FMLDConfig"):
         """Load defaul values for missing options.
         """
 
@@ -140,7 +140,7 @@ class Declaration:
             else:
                 config[str(key)] = info.default
 
-    def normalize(self, config: "CKANConfig"):
+    def normalize(self, config: "FMLDConfig"):
         """Validate and normalize all the values in the config object.
 
         This method ensures that all the config values are in-place and
@@ -170,7 +170,7 @@ class Declaration:
             config[k] = v
 
     def validate(
-            self, config: "CKANConfig"
+            self, config: "FMLDConfig"
     ) -> tuple[dict[str, Any], dict[str, Any]]:
         """Return validated config dict and dictionary with validation errors.
         """
@@ -197,7 +197,7 @@ class Declaration:
         self._sealed = True
 
     def load_core_declaration(self):
-        """Load CKAN core declarations(no plugins are loaded).
+        """Load FMLD core declarations(no plugins are loaded).
         """
         if self._core_loaded:
             log.debug("Declaration for core is already loaded")
@@ -318,7 +318,7 @@ class Declaration:
         will be grouped into separate config section.
 
         Sections only affect documentation/config template. They do not modify
-        CKAN behavior and are not reflected inside the `config` object.
+        FMLD behavior and are not reflected inside the `config` object.
 
         """
         if self._sealed:

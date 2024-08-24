@@ -404,7 +404,7 @@ class PackageSearchQuery(SearchQuery):
             fq.append(query['fq'])
         fq.extend(query.get('fq_list', []))
 
-        # show only results from this CKAN instance
+        # show only results from this FMLD instance
         fq.append('+site_id:%s' % solr_literal(config.get('ckan.site_id')))
 
         # filter for package status

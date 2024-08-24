@@ -25,7 +25,7 @@ class ConfigOption(click.ParamType):
 
 @click.command(
     name=u'config-tool',
-    short_help=u'Tool for editing options in a CKAN config file.'
+    short_help=u'Tool for editing options in a FMLD config file.'
 )
 @click.option(
     u'--section',
@@ -51,7 +51,7 @@ def config_tool(
         config_filepath: str,
         options: list[str], section: str, edit: bool,
         merge_filepath: str) -> None:
-    u'''Tool for editing options in a CKAN config file
+    u'''Tool for editing options in a FMLD config file
 
     ckan config-tool <default.ini> <key>=<value> [<key>=<value> ...]
 

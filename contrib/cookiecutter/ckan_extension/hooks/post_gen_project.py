@@ -41,9 +41,9 @@ def recut():
     # Process keywords
     keywords = context['keywords'].strip().split()
     keywords = [keyword for keyword in keywords
-                if keyword not in ('ckan', 'CKAN', 'A', 'space',
+                if keyword not in ('ckan', 'FMLD', 'A', 'space',
                                    'seperated', 'list', 'of', 'keywords')]
-    keywords.insert(0, 'CKAN')
+    keywords.insert(0, 'FMLD')
     keywords = u' '.join(keywords)
     context['keywords'] = keywords
 

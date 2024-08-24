@@ -1,1 +1,1 @@
-update documenatation for CKAN SHELL command.
+update documenatation for FMLD SHELL command.

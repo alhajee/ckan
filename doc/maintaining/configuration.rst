@@ -4,32 +4,32 @@
 Configuration Options
 =====================
 
-The functionality and features of CKAN can be modified using many different
-configuration options. These are generally set in the `CKAN configuration file`_,
+The functionality and features of FMLD can be modified using many different
+configuration options. These are generally set in the `FMLD configuration file`_,
 but some of them can also be set via `Environment variables`_ or at :ref:`runtime <runtime-config>`.
 
-.. note:: Looking for the available configuration options? Jump to `CKAN configuration file`_.
+.. note:: Looking for the available configuration options? Jump to `FMLD configuration file`_.
 
 
 Environment variables
 *********************
 
-Some of the CKAN configuration options can be defined as `Environment variables`_
+Some of the FMLD configuration options can be defined as `Environment variables`_
 on the server operating system.
 
 These are generally low-level critical settings needed when setting up the application, like the database
 connection, the Solr server URL, etc. Sometimes it can be useful to define them as environment variables to
-automate and orchestrate deployments without having to first modify the `CKAN configuration file`_.
+automate and orchestrate deployments without having to first modify the `FMLD configuration file`_.
 
-These options are only read at startup time to update the ``config`` object used by CKAN,
+These options are only read at startup time to update the ``config`` object used by FMLD,
 but they won't be accessed any more during the lifetime of the application.
 
-CKAN environment variable names match the options in the configuration file, but they are always uppercase
-and prefixed with `CKAN_` (this prefix is added even if
+FMLD environment variable names match the options in the configuration file, but they are always uppercase
+and prefixed with `FMLD_` (this prefix is added even if
 the corresponding option in the ini file does not have it), and replacing dots with underscores.
 
 This is the list of currently supported environment variables, please refer to the entries in the
-`CKAN configuration file`_ section below for more details about each one:
+`FMLD configuration file`_ section below for more details about each one:
 
 .. literalinclude:: /../ckan/config/environment.py
     :language: python
@@ -44,8 +44,8 @@ This is the list of currently supported environment variables, please refer to t
 Updating configuration options during runtime
 *********************************************
 
-CKAN configuration options are generally defined before starting the web application (either in the
-`CKAN configuration file`_ or via `Environment variables`_).
+FMLD configuration options are generally defined before starting the web application (either in the
+`FMLD configuration file`_ or via `Environment variables`_).
 
 A limited number of configuration options can also be edited during runtime. This can be done on the
 :ref:`administration interface <admin page>` or using the :py:func:`~ckan.logic.action.update.config_option_update`
@@ -59,22 +59,22 @@ details on how to do this check :doc:`/extensions/remote-config-update`.
 Config declaration
 ******************
 
-Tracking down all the possible config options in your CKAN site can be a
-challenging task. CKAN itself and its extensions change over time, deprecating
+Tracking down all the possible config options in your FMLD site can be a
+challenging task. FMLD itself and its extensions change over time, deprecating
 features and providing new ones, which means that some new config options may be
 introduced, while other options no longer have any effect. In
-order to keep track of all valid config options, CKAN uses config declarations.
+order to keep track of all valid config options, FMLD uses config declarations.
 
-CKAN itself declares all the config options that are used throught the
+FMLD itself declares all the config options that are used throught the
 code base (You can see the core config declarations in
 the ``ckan/config/config_declaration.yaml`` file). This allows to validate the
 current configuration against the declaration, or check which config
-options in the CKAN config file are not declared (and might have no effect).
+options in the FMLD config file are not declared (and might have no effect).
 
 Declaring config options
 ------------------------
 
-.. note:: Starting from CKAN 2.11, CKAN will log a warning every time a non-declared
+.. note:: Starting from FMLD 2.11, FMLD will log a warning every time a non-declared
   configuration option is accessed. To prevent this, declare the configuration options
   offered by your extension using the methods below
 
@@ -85,7 +85,7 @@ The recommended way of declaring config options is using the
 ``config_declarations``
 :py:attr:`~ckan.plugins.toolkit.ckan.plugins.toolkit.blanket`. It allows you to
 write less code and define your config options using JSON, YAML, or TOML (if the ``toml``
-package is installed inside your virtual environment). That is how CKAN
+package is installed inside your virtual environment). That is how FMLD
 declares config options for all its built-in plugins, like ``datastore`` or
 ``datatables_view``.
 
@@ -161,7 +161,7 @@ only for explanation and you don't need them in the real file::
             arg_2: "hello"
 
           # an alternative example of a valid value for option. Used only in
-          # CKAN documentation, thus has no value for extensions.
+          # FMLD documentation, thus has no value for extensions.
           example: some-valid-value
 
           # an explanation of the effect that option has. Don't hesistate to
@@ -258,7 +258,7 @@ You can assign validators to a declared config option::
   option.set_validators("not_missing boolean_validator")
 
 ``set_validators`` accepts a string with the names of validators that must be applied to the config option.
-These validators need to registered in CKAN core or in your own extension using
+These validators need to registered in FMLD core or in your own extension using
 the :py:class:`~ckan.plugins.interfaces.IValidators` interface.
 
 .. note:: Declared default values are also passed to validators. In addition,
@@ -287,9 +287,9 @@ Dynamic config options
 There is a special option type, ``dynamic``. This option type is used for a set
 of options that have common name-pattern. Because ``dynamic`` type defines
 multiple options, it has no default, validators and serves mostly documentation
-purposes. Let's use CKAN's ``sqlalchemy.*`` options as example. Every option
+purposes. Let's use FMLD's ``sqlalchemy.*`` options as example. Every option
 whose name follows the pattern ``sqlalchemy.SOMETHING`` is passed to the
-SQLAlchemy engine created by CKAN. CKAN doesn't actually know which options
+SQLAlchemy engine created by FMLD. FMLD doesn't actually know which options
 are valid and it's up to you to provide valid values. Basically, we have a set
 of options with prefix ``sqlalchemy.``. If use these options without declararing,
 it will trigger warnings about using undeclared options, which are harmless but can be
@@ -390,10 +390,10 @@ them separately::
 
 .. _config_file:
 
-CKAN configuration file
+FMLD configuration file
 ***********************
 
-From CKAN 2.9, by default, the configuration file is located at
+From FMLD 2.9, by default, the configuration file is located at
 ``/etc/ckan/default/ckan.ini``. Previous releases the configuration file(s)
 were:  ``/etc/ckan/default/development.ini`` or
 ``/etc/ckan/default/production.ini``. This section documents all of the config
@@ -423,7 +423,7 @@ file settings, for reference.
         ckan.plugins = stats text_view datatables_view
 
    If the same option is set more than once in your config file, exeption will
-   be raised and CKAN application will not start
+   be raised and FMLD application will not start
 
 
 

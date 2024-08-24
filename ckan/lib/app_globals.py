@@ -69,7 +69,7 @@ _CONFIG_CACHE: dict[str, Any] = {}
 def set_theme(asset: str) -> None:
     ''' Sets the theme.
 
-    The `asset` argument is a name of existing web-asset registered by CKAN
+    The `asset` argument is a name of existing web-asset registered by FMLD
     itself or by any enabled extension.
 
     If asset is not registered, use default theme instead.

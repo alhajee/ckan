@@ -1,7 +1,7 @@
 # encoding: utf-8
 from __future__ import annotations
 
-from ckan.common import CKANConfig
+from ckan.common import FMLDConfig
 from ckan.types import Action, AuthFunction, Context
 import logging
 from typing import Any, Callable
@@ -34,13 +34,13 @@ class DatapusherPlugin(p.SingletonPlugin):
     legacy_mode = False
     resource_show_action = None
 
-    def update_config(self, config: CKANConfig):
+    def update_config(self, config: FMLDConfig):
         templates_base = config.get(u'ckan.base_templates_folder')
         p.toolkit.add_template_directory(config, templates_base)
         p.toolkit.add_public_directory(config, 'public')
         p.toolkit.add_resource('assets', 'ckanext-datapusher')
 
-    def configure(self, config: CKANConfig):
+    def configure(self, config: FMLDConfig):
         self.config = config
 
         for config_option in (

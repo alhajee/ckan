@@ -328,7 +328,7 @@ def _get_schema_from_solr(file_offset: str):
 def check_solr_schema_version(schema_file: Optional[str]=None) -> bool:
     '''
         Checks if the schema version of the SOLR server is compatible
-        with this CKAN version.
+        with this FMLD version.
 
         The schema will be retrieved from the SOLR server, using the
         offset defined in SOLR_SCHEMA_FILE_OFFSET_MANAGED
@@ -341,7 +341,7 @@ def check_solr_schema_version(schema_file: Optional[str]=None) -> bool:
         different schema file, but it should only be used for testing
         purposes.
 
-        If the CKAN instance is configured to not use SOLR or the SOLR
+        If the FMLD instance is configured to not use SOLR or the SOLR
         server is not available, the function will return False, as the
         version check does not apply. If the SOLR server is available,
         a SearchError exception will be thrown if the version could not
@@ -372,7 +372,7 @@ def check_solr_schema_version(schema_file: Optional[str]=None) -> bool:
 
     tree = xml.dom.minidom.parseString(schema_content)
 
-    # Up to CKAN 2.9 the schema version was stored in the `version` attribute.
+    # Up to FMLD 2.9 the schema version was stored in the `version` attribute.
     # Going forward, we are storing it in the `name` one in the form `ckan-X.Y`
     version = ''
     name_attr = tree.documentElement.getAttribute('name')

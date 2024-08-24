@@ -53,7 +53,7 @@ def ckan_authenticator(
         identity: dict[str, Any]
 ) -> model.User | model.AnonymousUser | None:
     """Allows extensions that have implemented
-    `IAuthenticator.authenticate()` to hook into the CKAN authentication
+    `IAuthenticator.authenticate()` to hook into the FMLD authentication
     process with a custom implementation.
 
     Falls to `default_authenticate()` if no plugins are

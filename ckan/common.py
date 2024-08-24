@@ -48,7 +48,7 @@ logout_user = _logout_user
 @maintain.deprecated('All web requests are served by Flask', since="2.10.0")
 def is_flask_request():
     u'''
-    This function is deprecated. All CKAN requests are now served by Flask
+    This function is deprecated. All FMLD requests are now served by Flask
     '''
     return True
 
@@ -76,8 +76,8 @@ def ungettext(*args: Any, **kwargs: Any) -> str:
     return flask_ungettext(*args, **kwargs)
 
 
-class CKANConfig(MutableMapping):
-    u'''Main CKAN configuration object
+class FMLDConfig(MutableMapping):
+    u'''Main FMLD configuration object
 
     This is a dict-like object that also proxies any changes to the
     Flask and Pylons configuration objects.
@@ -149,7 +149,7 @@ def _get_request():
 class HtmxDetails(object):
     """Object to access htmx properties from the request headers.
 
-    This object will be added to the CKAN `request` object
+    This object will be added to the FMLD `request` object
     as `request.htmx`. It adds properties to easily access
     htmx's request headers defined in
     https://htmx.org/reference/#headers.
@@ -190,8 +190,8 @@ class HtmxDetails(object):
         return self.request.headers.get("HX-Trigger-Name")
 
 
-class CKANRequest(LocalProxy[Request]):
-    '''CKAN request class.
+class FMLDRequest(LocalProxy[Request]):
+    '''FMLD request class.
 
     This is a subclass of the Flask request object. It adds a new
     `htmx` property to access htmx properties from the request headers.
@@ -321,13 +321,13 @@ local = Local()
 local(u'config')
 
 # Thread-local safe objects
-config = local.config = CKANConfig()
+config = local.config = FMLDConfig()
 
 local("config_declaration")
 config_declaration = local.config_declaration = Declaration()
 
 # Proxies to already thread-local safe objects
-request = CKANRequest(_get_request)
+request = FMLDRequest(_get_request)
 # Provide a `c`  alias for `g` for backwards compatibility
 g: Any = LocalProxy(_get_c)
 c = g

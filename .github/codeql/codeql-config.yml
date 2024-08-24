@@ -1,4 +1,4 @@
-name: "CKAN CodeQL config"
+name: "FMLD CodeQL config"
 
 paths-ignore:
-  - '**/vendor/**'
+  - "**/vendor/**"

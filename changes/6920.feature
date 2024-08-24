@@ -1,5 +1,5 @@
 Added CSRF protection that would protect all the forms against Cross-Site Request Forgery attacks.
-This feature is enabled by default in CKAN core, extensions are excluded from CSRF protection till they are ready to implement the csrf_token to their forms.
+This feature is enabled by default in FMLD core, extensions are excluded from CSRF protection till they are ready to implement the csrf_token to their forms.
 
 To enable the CSRF protection in your extensions you would need to set:
 

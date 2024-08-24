@@ -23,7 +23,7 @@
 
 <!-- We update the version when there is a backward-incompatible change to this
 schema. We used to use the `version` attribute for this but this is an internal
-attribute that should not be used so starting from CKAN 2.10 we use the `name`
+attribute that should not be used so starting from FMLD 2.10 we use the `name`
 attribute with the form `ckan-X.Y` -->
 <schema name="ckan-2.11" version="1.6">
 

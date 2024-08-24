@@ -31,19 +31,19 @@ class Flag(enum.Flag):
     """Modifiers for :py:class:`~ckan.config.declaration.option.Option`
 
 
-    ignored: this option is ignored by CKAN(not used or unconditionally
+    ignored: this option is ignored by FMLD(not used or unconditionally
     overriden)
 
     experimental: this option is not stabilized and can change in
     future. Mainly exist for extension developers, as only stable features are
-    included into public CKAN release.
+    included into public FMLD release.
 
-    internal: this option is used internally by CKAN or Flask. Such options are
+    internal: this option is used internally by FMLD or Flask. Such options are
     not documented and are not supposed to be modified by users. Think about
     them as private class attributes.
 
     required: this option cannot be missing/empty. Add such flag to the option
-    only if CKAN application won't even start without them and there is no
+    only if FMLD application won't even start without them and there is no
     sensible default. If option does not have ``not_empty`` validator, it will
     be added before all other validators.
 
@@ -56,7 +56,7 @@ class Flag(enum.Flag):
     for optional settings that may break the application when default value is
     used. Example of such option is a cookie domain. When it's missing, the
     current domain is used, so this value is optional. But if you try to
-    provide default value, `example.com` or any other domain, CKAN
+    provide default value, `example.com` or any other domain, FMLD
     authentication will not work as long as application runs on different
     domain. While it's similar to `placeholder` attribute of the
     :py:class:`~ckan.config.declaration.option.Option`, their goals are
@@ -80,9 +80,9 @@ class Flag(enum.Flag):
     `commented` are virtually ignored, having absolutely no impact on the value
     of the config option.
 
-    reserved_*(01-10): these flags are added for extension developers. CKAN
+    reserved_*(01-10): these flags are added for extension developers. FMLD
     doesn't treat them specially, neither includes them in groups, like
-    `not_safe`/`not_iterable`. These flags are completely ignored by CKAN. If
+    `not_safe`/`not_iterable`. These flags are completely ignored by FMLD. If
     your extension enchances the behavior of config options using some sort of
     boolean flags - use reserved markers. Always rely on a config option that
     controls, which reserved marker to use, in order to avoid conflicts with

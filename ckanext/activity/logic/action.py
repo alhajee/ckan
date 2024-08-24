@@ -89,7 +89,7 @@ def activity_create(
     :param object_id: the name or id of the object of the activity, e.g.
         ``'my_dataset'``
     :param activity_type: the type of the activity, this must be an activity
-        type that CKAN knows how to render, e.g. ``'new package'``,
+        type that FMLD knows how to render, e.g. ``'new package'``,
         ``'changed user'``, ``'deleted group'`` etc.
     :type activity_type: string
     :param data: any additional data about the activity

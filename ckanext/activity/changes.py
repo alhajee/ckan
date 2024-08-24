@@ -932,7 +932,7 @@ def _version_change(change_list: ChangeList, old: Data, new: Data):
 def _extension_fields(change_list: ChangeList, old: Data, new: Data):
     """
     Checks whether any fields that have been added to the package
-    dictionaries by CKAN extensions have been changed between versions.
+    dictionaries by FMLD extensions have been changed between versions.
     If there have been any changes between the two versions (old and
     new), a general summary of the change is appended to change_list. This
     function does not produce summaries for fields added or deleted by

@@ -1,7 +1,7 @@
 # encoding: utf-8
 from __future__ import annotations
 
-from ckan.common import CKANConfig
+from ckan.common import FMLDConfig
 from typing import Any, Callable
 import ckan.plugins as plugins
 
@@ -29,14 +29,14 @@ class ExampleITemplateHelpersPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.ITemplateHelpers)
 
-    # Update CKAN's config settings, see the IConfigurer plugin interface.
-    def update_config(self, config: CKANConfig):
+    # Update FMLD's config settings, see the IConfigurer plugin interface.
+    def update_config(self, config: FMLDConfig):
 
-        # Tell CKAN to use the template files in
+        # Tell FMLD to use the template files in
         # ckanext/example_itemplatehelpers/templates.
         plugins.toolkit.add_template_directory(config, 'templates')
 
-    # Tell CKAN what custom template helper functions this plugin provides,
+    # Tell FMLD what custom template helper functions this plugin provides,
     # see the ITemplateHelpers plugin interface.
     def get_helpers(self) -> dict[str, Callable[..., Any]]:
         return {

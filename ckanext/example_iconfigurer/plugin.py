@@ -3,7 +3,7 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from ckan.types import Schema
-from ckan.common import CKANConfig
+from ckan.common import FMLDConfig
 
 import ckanext.example_iconfigurer.blueprint as blueprint
 
@@ -15,7 +15,7 @@ class ExampleIConfigurerPlugin(plugins.SingletonPlugin):
     1. How to to add a custom config tab in the admin pages by extending
        `ckan/templates/admin/base.html` template.
 
-    2. How to make CKAN configuration options runtime-editable via
+    2. How to make FMLD configuration options runtime-editable via
        the web frontend or the API
 
     '''
@@ -25,7 +25,7 @@ class ExampleIConfigurerPlugin(plugins.SingletonPlugin):
 
     # IConfigurer
 
-    def update_config(self, config: CKANConfig):
+    def update_config(self, config: FMLDConfig):
         # Add extension templates directory
 
         toolkit.add_template_directory(config, u'templates')
@@ -37,7 +37,7 @@ class ExampleIConfigurerPlugin(plugins.SingletonPlugin):
         is_positive_integer = toolkit.get_validator(u'is_positive_integer')
 
         schema.update({
-            # This is an existing CKAN core configuration option, we are just
+            # This is an existing FMLD core configuration option, we are just
             # making it available to be editable at runtime
             u'ckan.datasets_per_page': [ignore_missing, is_positive_integer],
 

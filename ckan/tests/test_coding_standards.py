@@ -3,7 +3,7 @@
 u"""A module for coding standards tests.
 
 These are tests that are not functional- or unit-testing any particular piece
-of CKAN code, but are checking coding standards. For example: checking that
+of FMLD code, but are checking coding standards. For example: checking that
 there are no errors in the Sphinx build, that there are no PEP8 problems,
 etc.
 
@@ -34,7 +34,7 @@ IGNORED_DIRS = [u"ckan/include", u"contrib/cookiecutter"]
 
 def walk_python_files(ext=".py"):
     u"""
-    Generator that yields all CKAN Python source files.
+    Generator that yields all FMLD Python source files.
 
     Yields 2-tuples containing the filename in absolute and relative (to
     the project root) form.

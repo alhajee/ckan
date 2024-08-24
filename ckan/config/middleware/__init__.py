@@ -10,8 +10,8 @@ from flask.ctx import RequestContext
 
 from ckan.config.environment import load_environment
 from ckan.config.middleware.flask_app import make_flask_stack
-from ckan.common import CKANConfig
-from ckan.types import CKANApp, Config
+from ckan.common import FMLDConfig
+from ckan.types import FMLDApp, Config
 
 
 log = logging.getLogger(__name__)
@@ -21,7 +21,7 @@ log = logging.getLogger(__name__)
 _internal_test_request_context: Optional[RequestContext] = None
 
 
-def make_app(conf: Union[Config, CKANConfig]) -> CKANApp:
+def make_app(conf: Union[Config, FMLDConfig]) -> FMLDApp:
     '''
     Initialise the Flask app and wrap it in dispatcher middleware.
     '''

@@ -1511,7 +1511,7 @@ class TestDatastoreSQLLegacyTests(object):
         "clean_datastore", "with_plugins"
     )
     def test_new_datastore_table_from_private_resource(self, app):
-        # make a private CKAN resource
+        # make a private FMLD resource
         group = self.dataset.get_groups()[0]
         context = {
             "user": self.sysadmin_user["name"],

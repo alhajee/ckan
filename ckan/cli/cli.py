@@ -55,7 +55,7 @@ class CtxObject(object):
         raw_config = ckan_cli.load_config(conf)
         self.app = make_app(raw_config)
 
-        # Attach the actual CKAN config object to the context
+        # Attach the actual FMLD config object to the context
         from ckan.common import config
         self.config = config
 
@@ -132,7 +132,7 @@ def _init_ckan_config(ctx: click.Context, param: str, value: str):
 
 
 def _add_ctx_object(ctx: click.Context, path: Optional[str] = None):
-    """Initialize CKAN App using config file available under provided path.
+    """Initialize FMLD App using config file available under provided path.
 
     """
     try:
@@ -164,7 +164,7 @@ def _add_external_commands(ctx: click.Context):
 
 
 def _command_with_ckan_meta(cmd: click.Command, name: str, type_: str):
-    """Mark command as one retrived from CKAN extension.
+    """Mark command as one retrived from FMLD extension.
 
     This information is used when CLI help text is generated.
     """

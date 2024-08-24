@@ -1527,7 +1527,7 @@ class TestSearch(object):
 
         # SOLR raises SyntaxError when it can't parse q (or other fields?).
         # Whilst this could be due to a bad user input, it could also be
-        # because CKAN mangled things somehow and therefore we flag it up to
+        # because FMLD mangled things somehow and therefore we flag it up to
         # the administrator and give a meaningless error, just in case
         offset = url_for("dataset.search") + "?q=--included"
         search_response = app.get(offset)

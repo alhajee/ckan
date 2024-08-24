@@ -17,15 +17,15 @@ with it. Nonetheless, here is an incomplete list of things to look for:
 
 - Does the pull request contain new or updated tests for any new or updated
   code, and do the tests follow
-  :doc:`CKAN's testing coding standards <testing>`?
+  :doc:`FMLD's testing coding standards <testing>`?
 
-- Do all the CKAN tests pass, on the new branch?
+- Do all the FMLD tests pass, on the new branch?
 
 - Does the pull request contain new or updated docs for any new or updated
   features, and do the docs follow
-  :doc:`CKAN's documentation guidelines <documentation>`?
+  :doc:`FMLD's documentation guidelines <documentation>`?
 
-- Does the new code follow CKAN's code architecture and the various coding
+- Does the new code follow FMLD's code architecture and the various coding
   standards for Python, JavaScript, etc.?
 
 - If the new code contains changes to the database schema, does it have a
@@ -37,7 +37,7 @@ with it. Nonetheless, here is an incomplete list of things to look for:
   </changelog>`?
 
   Backwards-compability needs to be considered when making changes that break
-  the interfaces that CKAN provides to third-party code, including API clients,
+  the interfaces that FMLD provides to third-party code, including API clients,
   plugins and themes.
 
   In general, any code that's documented in the reference sections of the
@@ -48,10 +48,10 @@ with it. Nonetheless, here is an incomplete list of things to look for:
   and validator functions (which are used by plugins), the custom Jinja2 tags
   and variables available to Jinja templates, the template helper functions,
   the core template files and their blocks, the sandbox available to JavaScript
-  modules (including custom jQuery plugins and the JavaScript CKAN API client),
+  modules (including custom jQuery plugins and the JavaScript FMLD API client),
   etc.
 
-- Does the new code add any dependencies to CKAN (e.g. new third-party Python
+- Does the new code add any dependencies to FMLD (e.g. new third-party Python
   modules imported)? If so, is the new dependency justified and has it been
   added following the right process? See :doc:`upgrading-dependencies`.
 

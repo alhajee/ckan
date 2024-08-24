@@ -1,12 +1,12 @@
 """This is a collection of pytest fixtures for use in tests.
 
-All fixtures below available anywhere under the root of CKAN
-repository. Any external CKAN extension should be able to include them
+All fixtures below available anywhere under the root of FMLD
+repository. Any external FMLD extension should be able to include them
 by adding next lines under root `conftest.py`
 
 .. literalinclude:: /../conftest.py
 
-There are three type of fixtures available in CKAN:
+There are three type of fixtures available in FMLD:
 
 * Fixtures that have some side-effect. They don't return any useful
   value and generally should be injected via
@@ -201,9 +201,9 @@ def cli(ckan_config):
 
     """
     env = {
-        u'CKAN_INI': ckan_config[u'__file__']
+        u'FMLD_INI': ckan_config[u'__file__']
     }
-    return test_helpers.CKANCliRunner(env=env)
+    return test_helpers.FMLDCliRunner(env=env)
 
 
 @pytest.fixture(scope=u"session")
@@ -397,7 +397,7 @@ def with_plugins(ckan_config):
        :start-after: # START-CONFIG-OVERRIDE
        :end-before: # END-CONFIG-OVERRIDE
 
-    Use this fixture if test relies on CKAN plugin infrastructure. For example,
+    Use this fixture if test relies on FMLD plugin infrastructure. For example,
     if test calls an action or helper registered by plugin XXX::
 
         @pytest.mark.ckan_config("ckan.plugins", "XXX")
@@ -407,7 +407,7 @@ def with_plugins(ckan_config):
             assert tk.h.xxx_helper()
 
     It will not work without ``with_plugins``. If ``XXX`` plugin is not loaded,
-    ``xxx_action`` and ``xxx_helper`` do not exist in CKAN registries.
+    ``xxx_action`` and ``xxx_helper`` do not exist in FMLD registries.
 
     But if the test above use direct imports instead, ``with_plugins`` is
     optional::

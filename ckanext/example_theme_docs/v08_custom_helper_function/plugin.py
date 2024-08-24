@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-from ckan.common import CKANConfig
+from ckan.common import FMLDConfig
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 
@@ -8,7 +8,7 @@ import ckan.plugins.toolkit as toolkit
 def most_popular_groups():
     '''Return a sorted list of the groups with the most datasets.'''
 
-    # Get a list of all the site's groups from CKAN, sorted by number of
+    # Get a list of all the site's groups from FMLD, sorted by number of
     # datasets.
     groups = toolkit.get_action('group_list')(
         {}, {'sort': 'package_count desc', 'all_fields': True})
@@ -28,10 +28,10 @@ class ExampleThemePlugin(plugins.SingletonPlugin):
     # Declare that this plugin will implement ITemplateHelpers.
     plugins.implements(plugins.ITemplateHelpers)
 
-    def update_config(self, config: CKANConfig):
+    def update_config(self, config: FMLDConfig):
 
-        # Add this plugin's templates dir to CKAN's extra_template_paths, so
-        # that CKAN will use this plugin's custom templates.
+        # Add this plugin's templates dir to FMLD's extra_template_paths, so
+        # that FMLD will use this plugin's custom templates.
         toolkit.add_template_directory(config, 'templates')
 
     def get_helpers(self):

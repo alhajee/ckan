@@ -30,7 +30,7 @@ tutorial.
 .. note::
 
     While this tutorial only covers Python/Jinja templates it is also possible
-    (since CKAN 2.7) to :ref:`translate strings in an extension's JavaScript
+    (since FMLD 2.7) to :ref:`translate strings in an extension's JavaScript
     modules <javascript_i18n>`.
 
 ---------------
@@ -132,13 +132,13 @@ by running::
 
     python setup.py compile_catalog
 
-This will generate a ``mo`` file containing your translations that can be used by CKAN.
+This will generate a ``mo`` file containing your translations that can be used by FMLD.
 
 --------------------------
 The ITranslation interface
 --------------------------
 
-Once you have created the translated strings, you will need to inform CKAN that
+Once you have created the translated strings, you will need to inform FMLD that
 your extension is translated by implementing the ``ITranslation`` interface in
 your extension. Edit your ``plugin.py`` to contain the following.
 
@@ -155,9 +155,9 @@ string``.
 Advanced ITranslation usage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you are translating a CKAN extension that already exists, or you have
+If you are translating a FMLD extension that already exists, or you have
 structured your extension differently from the default layout. You may have to
-tell CKAN where to locate your translated files, you can do this by not having
+tell FMLD where to locate your translated files, you can do this by not having
 your plugin inherit from the ``DefaultTranslation`` class and instead
 implement the ``ITranslation`` interface yourself.
 

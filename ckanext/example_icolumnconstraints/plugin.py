@@ -4,7 +4,7 @@ from typing import Type, List
 
 from ckan.types import Validator, Schema
 from ckan import plugins
-from ckan.common import CKANConfig
+from ckan.common import FMLDConfig
 from ckan.plugins.toolkit import add_template_directory, get_validator
 
 from ckanext.tabledesigner.interfaces import IColumnConstraints
@@ -19,7 +19,7 @@ class ExampleIColumnConstraintsPlugin(plugins.SingletonPlugin):
     plugins.implements(IColumnConstraints)
     plugins.implements(plugins.IConfigurer)
 
-    def update_config(self, config: CKANConfig):
+    def update_config(self, config: FMLDConfig):
         add_template_directory(config, "templates")
 
     def column_constraints(
